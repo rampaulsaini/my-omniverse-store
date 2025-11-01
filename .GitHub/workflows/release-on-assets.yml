@@ -28,4 +28,18 @@ jobs:
 gh release create v1.0 assets/product-001-starter-pack.zip assets/product-001-preview.png \
   --title "Starter Pack v1.0" \
   --notes "Starter pack includes X, Y, Z. Price: ₹499 (Personal). License: Personal"
-  
+  इसमें शामिल हैं:
+- Vision Wallpapers (4K)
+- Meditation Audio (MP3)
+- 3D Scene File (.glb)
+💸 Price: ₹199
+🪙 Pay via PayPal → https://paypal.me/sainirampaul60/199INR
+या GPay / UPI → sainirampaul90-1@okhdfcbank
+| प्रकार                               | फ़ाइल फॉर्मैट         | विवरण                                                            |
+| ------------------------------------ | --------------------- | ---------------------------------------------------------------- |
+| 🔮 **Omniverse Wallpapers Pack**     | `.zip` (10-20 images) | उच्च गुणवत्ता वाले AI Art और Vision backgrounds                  |
+| 🧘‍♂️ **Meditation Audio Series**    | `.mp3` या `.zip`      | “निष्पक्ष समझ ध्यान” के लिए आपके बोले हुए या instrumental tracks |
+| 🌌 **3D Vision Scenes**              | `.glb` / `.blend`     | Omniverse थीम पर 3D environment या symbolic scenes               |
+| 📜 **Yatharth Principles Booklet**   | `.pdf`                | आपकी विचारधारा पर छोटा 8–10 पन्नों का ई-बुक                      |
+| 🧠 **AI Prompt Sets / Visual Codes** | `.txt` / `.zip`       | AI Art, Midjourney या ChatGPT prompts का संग्रह                  |
+
