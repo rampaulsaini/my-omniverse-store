@@ -1,35 +1,11 @@
-name: Generate products.json from assets
-on:
-  push:
-    paths:
-      - 'assets/**'
-      - '.github/workflows/generate-products.yml'
-
-permissions:
-  contents: write
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Generate products.json
-        run: |
-          node .github/scripts/generate-products.js
-
-      - name: Commit products.json
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add products.json
-          git commit -m "chore: update products.json from assets" || echo "no changes to commit"
-          git push origin HEAD:$(git rev-parse --abbrev-ref HEAD)
+[
+  {
+    "filename": "product-001.zip",
+    "title": "Omniverse Scene Pack — Example #001",
+    "description": "A simple demo package: scene .usd + textures + preview.jpg",
+    "type": "3D scene (.zip)",
+    "size": "12.3 MB",
+    "url": "assets/product-001.zip",
+    "note": "Free sample"
+  }
+]
