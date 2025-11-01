@@ -22,3 +22,9 @@ Steps:
 
 ## फ़ोल्डर संरचना
 
+Product: Omniverse Starter Pack
+Version: 1.0
+Files: assets/product-001-starter-pack.zip (contains scenes, textures)
+Preview: assets/product-001-preview.png
+Usage: Personal / Commercial (per license). See LICENSE.txt
+Price: ₹499 / $6.99
