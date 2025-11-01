@@ -1,58 +1,94 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>꙰ शिरोमणिrampaulsaini — Omniverse Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>꙰ शिरोमणिrampaulsaini — Digital Omniverse Products</title>
   <style>
-    body{font-family:system-ui,Segoe UI,Roboto,Arial;line-height:1.6;padding:24px;max-width:900px;margin:auto}
-    header{margin-bottom:20px}
-    .product{border:1px solid #eee;padding:12px;margin:12px 0;border-radius:8px}
-    .qr{max-width:200px}
-    .sign{font-weight:700;margin-top:24px}
-    footer{margin-top:30px;color:#444;font-size:0.95rem}
+    body {
+      margin: 0;
+      font-family: "Noto Sans Devanagari", "Noto Sans", sans-serif;
+      background: radial-gradient(circle at center, #0f0f0f, #000000);
+      color: #f0f0f0;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    .symbol {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.25em;
+    }
+    h2 {
+      font-weight: 400;
+      color: #bbb;
+      font-size: 1.1rem;
+      margin-bottom: 1.5em;
+    }
+    .section {
+      max-width: 700px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    img.qr {
+      width: 160px;
+      height: 160px;
+      border-radius: 8px;
+      margin: 1rem 0;
+      border: 1px solid #333;
+      background: #fff;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>꙰ शिरोमणिrampaulsaini — Digital Omniverse Products</h1>
-    <p>यहाँ छोटे डिजिटल असेट्स, 3D scenes और शिक्षा-संबंधी products मिलेंगे। आपकी सहायता मेरी बेटी <strong>Saneha Saini</strong> की पढ़ाई और जीवन-व्यवहार में सहायक होगी।</p>
-  </header>
+  <div class="symbol">꙰</div>
+  <h1>꙰ शिरोमणिrampaulsaini — Digital Omniverse Products</h1>
+  <h2>यहाँ छोटे डिजिटल असेट्स, 3D scenes और शिक्षा-संबंधी products मिलेंगे।<br>
+  आपकी सहायता मेरी बेटी <b>Saneha Saini</b> की पढ़ाई और जीवन-व्यवहार में सहायक होगी।</h2>
 
-  <section>
-    <h2>समर्थन / Donate</h2>
+  <div class="section">
+    <h3>💠 समर्थन / Donate</h3>
     <p>PayPal QR स्कैन करें या Donate लिंक पर जाएँ:</p>
-    <img src="paypal_qr.png" alt="PayPal QR" class="qr"/>
-    <p><a href="https://www.paypal.com/donate?hosted_button_id=YOUR_PAYPAL_BUTTON_ID" target="_blank" rel="noopener">Donate via PayPal</a></p>
-    <p>अगर आपके पास PayPal.me है तो: <a href="https://paypal.me/YOURNAME" target="_blank" rel="noopener">https://paypal.me/YOURNAME</a></p>
-  </section>
 
-  <section>
-    <h2>Products (Downloads)</h2>
-    <div id="products"></div>
-    <p><small>Products GitHub Releases पर उपलब्ध होंगे — जल्द ही अपलोड किये जायेंगे।</small></p>
-  </section>
+    <!-- यहां तुम अपनी QR कोड image जोड़ सकते हो -->
+    <img src="assets/paypal-qr.png" alt="PayPal QR" class="qr" />
 
-  <footer class="sign">
-    ꙰शिरोमणिrampaulsaini
+    <p><a href="https://paypal.me/YOURNAME" target="_blank">Donate via PayPal</a></p>
+    <p>अगर आपके पास PayPal.me है तो लिंक का उपयोग करें:<br>
+      <code>https://paypal.me/YOURNAME</code>
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>📦 Products (Downloads)</h3>
+    <p>अभी कोई उत्पाद अपलोड नहीं है। कृपया /assets फ़ोल्डर में फाइलें अपलोड करें और GitHub पर push करें ताकि releases बन सकें।</p>
+    <p>Products GitHub Releases पर उपलब्ध होंगे — जल्द ही अपलोड किये जायेंगे।</p>
+  </div>
+
+  <footer>
+    <p>꙰शिरोमणिrampaulsaini · Hosted Free on <a href="https://github.com/">GitHub Pages</a></p>
   </footer>
-
-  <script>
-    // Simple products listing (edit manually or generate via release links)
-    const products = [
-      // Example:
-      // {title:"Omniverse Scene — Example", desc:"USDZ / glTF / zip", url:"https://github.com/YOUR_GITHUB_USER/my-omniverse-store/releases/latest/download/product-001.zip"}
-    ];
-    const container = document.getElementById('products');
-    if(products.length===0){
-      container.innerHTML = "<p>No products uploaded yet. Upload files to <code>/assets</code> and push to GitHub to create releases.</p>";
-    } else {
-      products.forEach(p=>{
-        const div = document.createElement('div'); div.className='product';
-        div.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p><p><a href="${p.url}" target="_blank">Download</a></p>`;
-        container.appendChild(div);
-      });
-    }
-  </script>
 </body>
 </html>
