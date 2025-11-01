@@ -24,4 +24,8 @@ jobs:
           files: assets/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+      # repo में रहें और assets फ़ोल्डर में files रखें
+gh release create v1.0 assets/product-001-starter-pack.zip assets/product-001-preview.png \
+  --title "Starter Pack v1.0" \
+  --notes "Starter pack includes X, Y, Z. Price: ₹499 (Personal). License: Personal"
+  
