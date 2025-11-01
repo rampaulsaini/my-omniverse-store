@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>꙰ शिरोमणि Rampaul Saini — Omniverse AI Vision</title>
-  <meta name="description" content="꙰ शिरोमणि Rampaul Saini — यथार्थ सिद्धांत, निष्पक्ष समझ और Omniverse AI Vision. Digital assets, 3D scenes, education products." />
+  <meta name="description" content="꙰ शिरोमणि Rampaul Saini — निष्पक्ष समझ, यथार्थ सिद्धांत और Omniverse AI Vision. Digital assets, 3D scenes, education products." />
   <!-- Open Graph / Social preview -->
   <meta property="og:title" content="꙰ शिरोमणि Rampaul Saini — Omniverse AI Vision" />
   <meta property="og:description" content="निष्पक्ष समझ, यथार्थ सिद्धांत और Omniverse AI — डिजिटल असेट्स व शिक्षात्मक उत्पाद।" />
@@ -14,7 +14,9 @@
   <meta name="twitter:image" content="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" />
 
   <style>
-    :root{--bg:#041227;--card:rgba(255,255,255,0.02);--accent:#6ee7b7;--muted:#9ab0c3;--text:#eaf6f3}
+    :root{
+      --bg:#041227;--card:rgba(255,255,255,0.02);--accent:#6ee7b7;--muted:#9ab0c3;--text:#eaf6f3;
+    }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter, 'Noto Sans Devanagari',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(180deg,#031024,#06142a);color:var(--text);-webkit-font-smoothing:antialiased}
     .wrap{max-width:980px;margin:28px auto;padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 40px rgba(2,6,23,0.6)}
@@ -27,7 +29,7 @@
     .cta{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#06221c;text-decoration:none;font-weight:700}
     .btn{display:inline-block;padding:8px 10px;border-radius:9px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:var(--text);text-decoration:none;margin-right:8px}
     .section{margin-top:18px;padding-top:14px;border-top:1px dashed rgba(255,255,255,0.03)}
-    .grid{display:grid;grid-template-columns:1fr 300px;gap:18px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
     .card{background:var(--card);padding:14px;border-radius:10px}
     .muted{color:var(--muted)}
     .note{font-size:13px;color:var(--muted);margin-top:8px}
@@ -37,6 +39,8 @@
     .sharebar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .share{padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);cursor:pointer;color:var(--text);font-weight:600}
     .qr{width:100%;height:auto;border-radius:8px;margin-top:8px;border:1px solid rgba(255,255,255,0.03)}
+    .field{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);margin-top:6px}
+    .admin{font-size:13px;color:var(--muted);margin-top:10px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.01)}
     @media(max-width:880px){.grid{grid-template-columns:1fr}.hero{flex-direction:row}.photo{width:96px;height:96px}}
   </style>
 </head>
@@ -51,7 +55,7 @@
     </header>
 
     <section class="hero" aria-label="hero">
-      <img class="photo" src="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" alt="निष्पक्ष समझ — Shirmani Rampaul Saini">
+      <img class="photo" id="heroPhoto" src="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" alt="निष्पक्ष समझ — Shirmani Rampaul Saini">
       <div>
         <p style="margin:0 0 10px 0;">
           मैं शिरोमणि Rampaul Saini — तुलनातीत, कालातीत, शब्दातीत और प्रेमतीत। मेरी निष्पक्ष समझ ही यथार्थ की नींव है — 
@@ -59,7 +63,7 @@
         </p>
 
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <a class="cta" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sainirampaul60%40gmail.com" target="_blank" rel="noopener">Donate / Pay via PayPal</a>
+          <a class="cta" id="paypalDonate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sainirampaul60%40gmail.com" target="_blank" rel="noopener">Donate / Pay via PayPal</a>
           <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener">PayPal.me</a>
           <a class="btn" href="mailto:sainirampaul60@gmail.com">Email</a>
           <a class="btn" href="tel:+918082935186">Call / Paytm</a>
@@ -69,7 +73,7 @@
           “निष्पक्ष समझ ही सत्य की नींव है — जब चेतना संतुलित होती है, तब मानव और प्रकृति एक ही श्वास में सांस लेते हैं।”
         </div>
 
-        <!-- SURPRISE: dynamic social share bar (uses current page URL) -->
+        <!-- dynamic sharebar -->
         <div style="margin-top:12px">
           <div style="font-weight:700;margin-bottom:6px">Share this page</div>
           <div class="sharebar" id="sharebar">
@@ -87,7 +91,7 @@
 
     <div class="section grid">
       <div>
-        <div class="card">
+        <div class="card" id="aboutCard">
           <h3>About the Project</h3>
           <p class="muted">
             Omniverse AI — मेरा प्रयास है जहाँ मानवता, प्रकृति और तकनीक मिलकर संतुलित युग की दिशा में चलें। 
@@ -95,18 +99,24 @@
           </p>
         </div>
 
-        <div class="card" style="margin-top:12px">
+        <div class="card" style="margin-top:12px" id="buyCard">
           <h3>How to Purchase / Download</h3>
           <ol class="muted">
-            <li>Products GitHub Releases पर अपलोड होंगे — Releases पेज चेक करें।</li>
+            <li>Products GitHub Releases पर अपलोड होंगे — Releases पेज चेक करें (नीचे GitHub सेटिंग में दें)।</li>
             <li>Direct purchase के लिए PayPal या PayPal.me का उपयोग करें।</li>
             <li>स्थानीय भुगतान के लिए QR/UPI या Paytm नंबर का उपयोग करें (नीचे)।</li>
           </ol>
+
+          <div style="margin-top:12px">
+            <button id="openReleases" class="btn">Open Releases</button>
+            <div class="note" style="margin-top:8px">यदि Releases लिंक placeholder है तो नीचे Admin में अपना GitHub username/repo दें।</div>
+          </div>
         </div>
 
-        <div class="card" style="margin-top:12px">
+        <div class="card" style="margin-top:12px" id="galleryCard">
           <h3>Gallery of Vision</h3>
-          <div class="gallery">
+          <div class="gallery" id="gallery">
+            <!-- user-provided gallery (fallbacks handled in script) -->
             <img src="https://i.ibb.co/wFz7xb39/IMG-20251007-081550.webp" alt="vision 1" />
             <img src="https://i.ibb.co/fdVv0T4H/c60c9d5d-1263-4f6e-a1b9-577186ed5268-093654.webp" alt="vision 2" />
             <img src="https://i.ibb.co/5W0PSRvc/-090744.webp" alt="vision 3" />
@@ -123,27 +133,44 @@
       <aside>
         <div class="card">
           <h3>Payments & Contact</h3>
-          <p class="muted"><strong>PayPal (email):</strong> sainirampaul60@gmail.com</p>
-          <p class="muted"><strong>PayPal.me:</strong> https://paypal.me/sainirampaul60</p>
-          <p class="muted"><strong>GPay / UPI VPA:</strong> <code>sainirampaul90-1@okhdfcbank</code></p>
-          <p class="muted"><strong>Phone / Paytm:</strong> +91 80829 35186</p>
+          <p class="muted"><strong>PayPal (email):</strong> <a href="mailto:sainirampaul60@gmail.com" style="color:var(--accent)">sainirampaul60@gmail.com</a></p>
+          <p class="muted"><strong>PayPal.me:</strong> <a href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener" style="color:var(--accent)">paypal.me/sainirampaul60</a></p>
+          <p class="muted"><strong>GPay / UPI VPA:</strong> <code id="upiText">sainirampaul90-1@okhdfcbank</code></p>
+          <p class="muted"><strong>Phone / Paytm:</strong> <a href="tel:+918082935186" style="color:var(--accent)">+91 80829 35186</a></p>
 
           <div style="margin-top:10px">
             <label class="muted">Scan to pay (UPI QR):</label>
-            <img src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="UPI QR" class="qr" />
+            <img id="qrImg" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="UPI QR" class="qr" />
             <p class="note">Scan via Google Pay / PhonePe / Paytm — or transfer to the UPI ID / phone number.</p>
           </div>
 
           <div style="margin-top:12px">
             <h4 class="muted">Quick Links</h4>
             <ul class="muted" style="padding-left:18px;margin:6px 0">
-              <li><a id="releasesLink" href="https://github.com/YOUR-USERNAME/YOUR-REPO/releases" target="_blank" rel="noopener" style="color:var(--accent)">GitHub Releases</a></li>
+              <li><a id="releasesLink" href="#" target="_blank" rel="noopener" style="color:var(--accent)">GitHub Releases</a></li>
               <li><a href="https://chat.whatsapp.com/CxwzR0ufxdL4yAGCqifPRh" target="_blank" rel="noopener" style="color:var(--accent)">WhatsApp Group</a></li>
               <li><a href="https://multicosmovision.blogspot.com/2025/09/2-e-h-e-c-e-e-1-d_11.html" target="_blank" rel="noopener" style="color:var(--accent)">Blog</a></li>
+              <li><a href="https://www.facebook.com/sharer/sharer.php?u=" id="facebookShareLink" target="_blank" rel="noopener" style="color:var(--accent)">Share on Facebook</a></li>
               <li><a href="https://youtube.com/@rampaulsaini-yk4gn?si=Y1MhQB1Eg84ARD6I" target="_blank" rel="noopener" style="color:var(--accent)">YouTube</a></li>
             </ul>
           </div>
         </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Admin (local)</h3>
+          <div class="admin">
+            <label>GitHub username:</label>
+            <input id="ghUser" class="field" placeholder="your-github-username" />
+            <label style="margin-top:8px">Repository name:</label>
+            <input id="ghRepo" class="field" placeholder="your-repo-name" />
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button id="saveAdmin" class="btn">Save</button>
+              <button id="clearAdmin" class="btn">Clear</button>
+            </div>
+            <div class="note" style="margin-top:8px">आप यहाँ username/repo डालें — Links और Releases बटन तुरंत update हो जायेंगे (saved in browser only).</div>
+          </div>
+        </div>
+
       </aside>
     </div>
 
@@ -162,38 +189,32 @@
   </main>
 
   <script>
-    // dynamic share buttons (use current page url so FB share always works)
     (function(){
+      // --- Basic dynamic share/popups ---
       function popup(url, title, w, h){
         var left = (screen.width/2)-(w/2);
         var top = (screen.height/2)-(h/2);
         window.open(url, title, 'toolbar=0,status=0,width='+w+',height='+h+',top='+top+',left='+left);
       }
-
       var pageUrl = encodeURIComponent(window.location.href);
       var pageTitle = encodeURIComponent(document.title);
 
       document.getElementById('share_fb').addEventListener('click', function(){
-        // Facebook sharer uses the page URL — works even with GitHub Pages
         var fb = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
         popup(fb, 'Share to Facebook', 700, 500);
       });
-
       document.getElementById('share_wa').addEventListener('click', function(){
         var wa = 'https://api.whatsapp.com/send?text=' + pageTitle + '%20' + pageUrl;
         window.open(wa, '_blank');
       });
-
       document.getElementById('share_tw').addEventListener('click', function(){
         var tw = 'https://twitter.com/intent/tweet?text=' + pageTitle + '%20' + pageUrl;
         popup(tw, 'Share to Twitter', 700, 420);
       });
-
       document.getElementById('share_ln').addEventListener('click', function(){
         var ln = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
         popup(ln, 'Share to LinkedIn', 700, 500);
       });
-
       document.getElementById('copy_link').addEventListener('click', function(){
         navigator.clipboard.writeText(window.location.href).then(function(){
           var s = document.getElementById('share_status');
@@ -206,8 +227,53 @@
         });
       });
 
+      // --- Open Releases button behavior (uses admin GitHub settings) ---
+      var openReleases = document.getElementById('openReleases');
+      var releasesLink = document.getElementById('releasesLink');
+      function getReleasesUrl(user, repo){
+        if(!user || !repo) return 'https://github.com/YOUR-USERNAME/YOUR-REPO/releases';
+        return 'https://github.com/' + encodeURIComponent(user) + '/' + encodeURIComponent(repo) + '/releases';
+      }
+      openReleases.addEventListener('click', function(){
+        var user = localStorage.getItem('gh_user') || '';
+        var repo = localStorage.getItem('gh_repo') || '';
+        var url = getReleasesUrl(user, repo);
+        window.open(url, '_blank');
+      });
+
+      // Admin save/load
+      var ghUser = document.getElementById('ghUser'), ghRepo = document.getElementById('ghRepo');
+      var saveAdmin = document.getElementById('saveAdmin'), clearAdmin = document.getElementById('clearAdmin');
+      function updateLinksFromAdmin(){
+        var user = localStorage.getItem('gh_user') || '';
+        var repo = localStorage.getItem('gh_repo') || '';
+        var url = getReleasesUrl(user, repo);
+        releasesLink.href = url;
+        document.getElementById('facebookShareLink').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href);
+      }
+      saveAdmin.addEventListener('click', function(){
+        var u = ghUser.value.trim(), r = ghRepo.value.trim();
+        if(!u || !r){ alert('Please enter both GitHub username and repository name'); return; }
+        localStorage.setItem('gh_user', u);
+        localStorage.setItem('gh_repo', r);
+        updateLinksFromAdmin();
+        alert('Saved locally — Releases link set to: ' + getReleasesUrl(u,r));
+      });
+      clearAdmin.addEventListener('click', function(){
+        localStorage.removeItem('gh_user'); localStorage.removeItem('gh_repo');
+        ghUser.value=''; ghRepo.value='';
+        updateLinksFromAdmin();
+        alert('Cleared local GitHub settings');
+      });
+      // Load into fields
+      ghUser.value = localStorage.getItem('gh_user') || '';
+      ghRepo.value = localStorage.getItem('gh_repo') || '';
+      updateLinksFromAdmin();
+
       // graceful image fallback
-      document.querySelectorAll('img').forEach(function(img){ img.onerror = function(){ this.style.display='none'; }; });
+      document.querySelectorAll('img').forEach(function(img){
+        img.onerror = function(){ this.style.display='none'; };
+      });
     })();
   </script>
 </body>
