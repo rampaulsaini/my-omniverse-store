@@ -21,6 +21,22 @@ Steps:
 ---
 
 ## फ़ोल्डर संरचना
+your-repo/
+├─ index.html
+├─ README.md
+├─ assets/
+│  ├─ products/
+│  │  ├─ product-001-starter-pack.zip
+│  │  ├─ product-001-preview.png
+│  │  ├─ product-002-environment.glb
+│  │  └─ ...
+│  └─ images/
+│     ├─ hero.webp
+│     └─ gallery1.webp
+└─ .github/
+   └─ workflows/
+      └─ auto-release.yml   (optional)
+      
 
 Product: Omniverse Starter Pack
 Version: 1.0
