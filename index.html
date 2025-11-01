@@ -12,7 +12,6 @@
       --accent:#6ee7b7;
       --muted:#94a3b8;
       --text:#e6eef6;
-      --glass: rgba(255,255,255,0.02);
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans',\"Helvetica Neue\",Arial; background:linear-gradient(180deg,#031224 0%, #07162a 100%);color:var(--text);-webkit-font-smoothing:antialiased}
@@ -33,7 +32,6 @@
     code{background:rgba(255,255,255,0.02);padding:2px 6px;border-radius:6px;color:var(--accent)}
     .note{font-size:13px;color:var(--muted);margin-top:8px}
     .btn{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none;display:inline-block}
-    .field{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);margin-top:6px}
     .qr{width:100%;height:auto;border-radius:8px;margin-top:8px;border:1px solid rgba(255,255,255,0.03)}
     .small{font-size:13px}
     ul{margin:8px 0 0 18px}
@@ -58,7 +56,8 @@
         <div style="font-size:15px;font-weight:700">꙰ शिरोमणिrampaulsaini</div>
         <div class="muted small">Digital Omniverse · Creator · Seller</div>
         <div style="margin-top:10px">
-          <a class="cta" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sainirampaul60@gmail.com&currency_code=USD" target="_blank" rel="noopener">Donate / Pay via PayPal</a>
+          <!-- PayPal donation form (direct to your PayPal account email). Currency left unspecified so donor chooses; you can add &currency_code=INR if you want INR forced -->
+          <a class="cta" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sainirampaul60%40gmail.com" target="_blank" rel="noopener">Donate / Pay via PayPal</a>
           <a class="btn" href="mailto:sainirampaul60@gmail.com" style="margin-left:10px">Email</a>
         </div>
         <div class="tag" style="margin-top:10px">
@@ -85,15 +84,17 @@
           <p class="muted">अंतरराष्ट्रीय भुगतान के लिए PayPal सक्रिय है। स्थानीय भुगतान (UPI/QR/Paytm) नीचे दिए गए हैं — QR इमेज और फोन नंबर से भुगतान किया जा सकता है।</p>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-            <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sainirampaul60@gmail.com&currency_code=USD" target="_blank" rel="noopener">PayPal (sainirampaul60@gmail.com)</a>
+            <!-- direct PayPal donation link works with the PayPal account email -->
+            <a class="btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sainirampaul60%40gmail.com" target="_blank" rel="noopener">PayPal (sainirampaul60@gmail.com)</a>
             <a class="btn" href="mailto:sainirampaul60@gmail.com">Email</a>
             <a class="btn" href="tel:+918082935186">Call / Paytm: +91 80829 35186</a>
           </div>
 
           <div style="margin-top:12px">
             <label class="muted small">UPI / QR (scan to pay):</label>
-            <img src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="UPI QR" class="qr" />
-            <p class="note">QR scan करके Paytm / Google Pay / PhonePe से पे करें — या फ़ोन नंबर पर ट्रांसफर करें।</p>
+            <!-- your provided QR image (hosted) -->
+            <img src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="UPI QR — scan to pay" class="qr" />
+            <p class="note">QR scan करके Google Pay / Paytm / PhonePe से पे करें — या फ़ोन नंबर पर ट्रांसफर करें।</p>
           </div>
 
         </div>
@@ -127,7 +128,7 @@
 
         <div class="card" style="margin-top:12px" id="about">
           <h3>About</h3>
-          <p class="muted">꙰ शिरोमणिrampaulsaini — Digital Omniverse maker. इस साइट का स्वर स्वाभिमानी, पेशेवर और आत्मनिर्भर है — दान प्राथमिक नहीं; विनिमय और व्यापार प्राथमिक हैं।</p>
+          <p class="muted">꙰ शिरोमणिrampaulsaini — Digital Omniverse maker. यह साइट सृजन और विनिमय के लिए है — दान प्राथमिक नहीं; विनिमय/खरीद प्राथमिक हैं।</p>
         </div>
       </aside>
     </div>
@@ -146,18 +147,14 @@
     </footer>
   </main>
 
-  <!-- small script: no external dependencies -->
   <script>
-    // nothing heavy here; all important links are hard-coded using the details you provided.
-    // If you later want client-side editable fields, we can re-introduce inputs.
+    // Minimal safety: hide images if not loading, but otherwise links are direct and active.
     (function(){
-      // Safety: verify images load; if not, hide gracefully.
-      var qr = document.querySelector('img[alt="UPI QR"]');
-      qr.onerror = function(){ this.style.display='none'; };
-      var photo = document.querySelector('img[alt^="निष्पक्ष"]');
-      photo.onerror = function(){ this.style.display='none'; };
+      var imgs = document.querySelectorAll('img');
+      imgs.forEach(function(i){
+        i.onerror = function(){ this.style.display='none'; };
+      });
     })();
   </script>
 </body>
-  </html>
-  
+</html>
