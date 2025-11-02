@@ -1,4 +1,65 @@
 <script>
+(async ()=>{
+  const path = "assets/audio.mp3";
+  console.log("Checking audio:", path);
+  try {
+    const r = await fetch(path, { method: 'HEAD' });
+    console.log("HEAD status", r.status, r.statusText);
+    for(const [k,v] of r.headers) { if(k.match(/content-type|content-length/i)) console.log(k,':',v); }
+  } catch(err) {
+    console.error("HEAD fetch failed:", err);
+  }
+
+  const audio = document.createElement('audio');
+  audio.preload = 'auto';
+  audio.crossOrigin = 'anonymous';
+  audio.src = path;
+
+  audio.addEventListener('loadedmetadata', ()=>console.log('loadedmetadata OK'));
+  audio.addEventListener('canplaythrough', ()=>console.log('canplaythrough OK'));
+  audio.addEventListener('playing', ()=>console.log('playing'));
+  audio.addEventListener('play', ()=>console.log('play event'));
+  audio.addEventListener('error', ()=>{
+    const e = audio.error;
+    console.error('MediaError code:', e ? e.code : 'no-error-object', e);
+    // error code meanings:
+    // 1: MEDIA_ERR_ABORTED, 2: MEDIA_ERR_NETWORK, 3: MEDIA_ERR_DECODE, 4: MEDIA_ERR_SRC_NOT_SUPPORTED
+    if(e){
+      if(e.code===1) console.error('MEDIA_ERR_ABORTED');
+      if(e.code===2) console.error('MEDIA_ERR_NETWORK (network/connection)');
+      if(e.code===3) console.error('MEDIA_ERR_DECODE (codec decode issue)');
+      if(e.code===4) console.error('MEDIA_ERR_SRC_NOT_SUPPORTED (format not supported or CORS)');
+    }
+  });
+
+  // try play after a user gesture fallback:
+  document.addEventListener('click', async function oneClick(){
+    try{
+      await audio.play();
+      console.log('Playback started on user click');
+    }catch(err){
+      console.error('Playback failed on click:', err);
+    }
+    document.removeEventListener('click', oneClick);
+  });
+
+  // append a small control so you can try manually:
+  const b = document.createElement('button');
+  b.textContent = 'Try Play Audio (manual)';
+  b.onclick = ()=>audio.play().catch(e=>console.error('manual play failed', e));
+  document.body.appendChild(b);
+
+  // attach to DOM so network request may start
+  document.body.appendChild(audio);
+})();
+</script>
+# from your local clone of repo
+mkdir -p docs/assets
+cp /path/to/audio_for_github.mp3 docs/assets/audio.mp3
+git add docs/assets/audio.mp3
+git commit -m "Add fixed audio for Yatharth animation"
+git push origin main
+<script>
 (async function(){
   const path = 'assets/audio.mp3'; // or 'docs/assets/audio.mp3' if needed
   console.log("Checking:", path);
