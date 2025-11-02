@@ -1,159 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</title>
-  <meta name="description" content="꙰ Yatharth Siddhant — The Era of Direct Truth" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग | शिरोमणि रामपॉल सैनी</title>
+
+  <meta name="description" content="The Era of Direct Truth — Experience the Message. Yatharth Siddhant by ꙰ शिरोमणि रामपॉल सैनी." />
+  <link rel="image_src" href="https://i.ibb.co/DfZJy1Z8/IMG-20251103-004246.jpg" />
+  <meta property="og:image" content="https://i.ibb.co/DfZJy1Z8/IMG-20251103-004246.jpg" />
+
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    :root{ --gold:#e9c77a; --bg1:#020812; --bg2:#000; --muted:#cfcfcf; --glass:rgba(255,255,255,0.04); }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at center,var(--bg1),var(--bg2));color:#fff}
-    a{color:inherit}
-    .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;gap:18px;text-align:center}
-    canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0}
-    .card{position:relative;z-index:2;background:linear-gradient(180deg,var(--glass),rgba(0,0,0,0.06));border-radius:14px;padding:20px;max-width:760px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.6)}
-    h1{color:var(--gold);font-size:20px;margin-bottom:6px;text-shadow:0 0 8px rgba(233,199,122,0.08)}
-    .subtitle{color:var(--muted);margin-bottom:12px}
-    .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:6px}
-    .btn{background:transparent;border:1px solid rgba(233,199,122,0.12);color:var(--gold);padding:8px 14px;border-radius:10px;text-decoration:none;cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.09), rgba(233,199,122,0.03));border-color:var(--gold)}
-    .big-sign{font-size:60px;color:rgba(233,199,122,0.95);margin:14px 0}
-    .sig-line{font-size:14px;color:rgba(255,255,255,0.92);margin-top:6px}
-    .preview{max-width:100%;border-radius:8px;margin-top:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-    pre.debug{margin-top:12px;background:#020;text-align:left;color:#8ff;padding:10px;border-radius:8px;max-height:140px;overflow:auto;font-size:13px}
-    footer{position:fixed;bottom:8px;width:100%;text-align:center;color:rgba(233,199,122,0.7);font-size:13px;z-index:2}
-    @media (min-width:880px){ h1{font-size:24px} .big-sign{font-size:86px}}
+    body {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      background: radial-gradient(circle, #000000, #0a0a0a, #1a1a1a);
+      color: #e6e6e6;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 { color: #ffda79; letter-spacing: 1px; }
+    .preview-image {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 16px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 4px 12px rgba(255,255,255,0.25);
+    }
+    .controls {
+      text-align: center;
+      margin-top: 12px;
+    }
+    .btn, #playPause {
+      background: #ffda79;
+      color: #111;
+      padding: 10px 18px;
+      margin: 6px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+    .btn:hover, #playPause:hover {
+      background: #ffe6a7;
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 40px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+    .social-links a {
+      color: #ffda79;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+    .payment {
+      margin-top: 20px;
+    }
+    .payment img {
+      width: 140px;
+      border-radius: 8px;
+      margin: 10px 0;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
   </style>
 </head>
+
 <body>
-  <canvas id="scene" aria-hidden="true"></canvas>
+  <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
+  <h2>The Era of Direct Truth — Experience the Message</h2>
 
-  <div class="wrap">
-    <div class="card" role="main" aria-labelledby="main-title">
-      <h1 id="main-title">꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
-      <div class="subtitle">The Era of Direct Truth — Experience the Message</div>
+  <img 
+    src="https://i.ibb.co/DfZJy1Z8/IMG-20251103-004246.jpg" 
+    alt="निष्पक्ष समझ — शिरोमणि रामपॉल सैनी"
+    class="preview-image"
+  />
 
-      <div class="controls" aria-hidden="false">
-        <button id="play" class="btn primary">Play / Pause</button>
-        <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" rel="noopener noreferrer">Read Manifesto (PDF)</a>
-        <!-- Replace the href with your Gumroad/PayPal/GPay link when ready -->
-        <a id="buy" class="btn" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener noreferrer">Buy Now ₹193</a>
-      </div>
-
-      <div class="big-sign" aria-hidden="true">꙰</div>
-
-      <img class="preview" src="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" alt="Yatharth Vision preview" />
-
-      <div class="sig-line">: &nbsp; "꙰"शिरोमणिrampaulsaini</div>
-
-      <pre id="debug" class="debug" aria-live="polite">꙰ Page loaded — tap Play to start audio</pre>
-    </div>
+  <div class="controls">
+    <button id="playPause">Play / Pause</button>
+    <a href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" class="btn">Read Manifesto (PDF)</a>
+    <a href="#" class="btn buy">Buy Now ₹193</a>
   </div>
 
-  <footer>꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</footer>
+  <section class="payment">
+    <h3>💎 योगदान / Support</h3>
+    <p>🙏 PayPal या GPay से योगदान देकर <b>Sanéha Saini</b> की शिक्षा में सहयोग करें</p>
+    <img src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="Google Pay QR" />
+    <p>🪙 <b>GPay / UPI:</b> sainirampaul90-1@okhdfcbank</p>
+    <p>💰 <b>PayPal:</b> sainirampaul60@gmail.com</p>
+  </section>
 
-<script>
-/* Lightweight canvas subtle motion (keeps site alive even if audio missing) + reliable audio attempt */
-const canvas = document.getElementById('scene');
-const ctx = canvas.getContext('2d');
-const dbg = document.getElementById('debug');
-const log = (m)=>{ if(dbg) dbg.textContent += m + '\\n'; console.log(m); };
+  <section class="social-links">
+    <h3>🌐 Connect & Explore</h3>
+    <p>
+      🔗 <a href="https://t.me/sampaulsaini" target="_blank">Telegram</a> |
+      🔗 <a href="https://chat.whatsapp.com/CxwzR0ufxdL4yAGCqifPRh?mode=wwt" target="_blank">WhatsApp</a> |
+      🔗 <a href="https://www.facebook.com/share/1Bc9qeE5uB/" target="_blank">Facebook</a> |
+      🔗 <a href="https://multicosmovision.blogspot.com/2025/09/2-e-h-e-c-e-e-1-d_11.html" target="_blank">Blogspot</a> |
+      🔗 <a href="https://youtube.com/@rampaulsaini-yk4gn?si=Y1MhQB1Eg84ARD6I" target="_blank">YouTube</a>
+    </p>
+  </section>
 
-function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
-addEventListener('resize', resize); resize();
+  <footer>
+    <p>꙰ "शिरोमणिrampaulsaini" — © Yatharth Siddhant</p>
+  </footer>
 
-// particles
-const particles = Array.from({length:110}, ()=>({
-  x: Math.random()*canvas.width,
-  y: Math.random()*canvas.height,
-  r: Math.random()*1.8+0.4,
-  s: Math.random()*0.6+0.2,
-  a: Math.random()*Math.PI*2
-}));
-
-function draw(){
-  // gentle fade
-  ctx.fillStyle = 'rgba(0,0,0,0.12)';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  // glow center
-  const g = ctx.createRadialGradient(canvas.width/2,canvas.height/2,10,canvas.width/2,canvas.height/2,Math.max(canvas.width,canvas.height)/1.2);
-  g.addColorStop(0,'rgba(233,199,122,0.06)'); g.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle = 'rgba(233,199,122,0.72)';
-  particles.forEach(p=>{
-    p.y += p.s; p.a += 0.01; p.x += Math.sin(p.a)*0.4;
-    if(p.y > canvas.height + 10){ p.y = -10; p.x = Math.random()*canvas.width; }
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-  });
-
-  // central small white core
-  ctx.beginPath(); ctx.fillStyle='rgba(255,255,255,0.96)'; ctx.arc(canvas.width/2,canvas.height/2,10,0,Math.PI*2); ctx.fill();
-
-  requestAnimationFrame(draw);
-}
-requestAnimationFrame(draw);
-
-/* Audio logic: graceful and informative */
-const AUDIO_PATH = 'assets/audio.mp3';
-let audio = null;
-let playing = false;
-
-async function initAudio(){
-  if(audio) return audio;
-  try{
-    audio = new Audio(AUDIO_PATH);
-    audio.crossOrigin = 'anonymous';
-    audio.preload = 'auto';
-    audio.addEventListener('canplay', ()=> log('✅ audio canplay'));
-    audio.addEventListener('canplaythrough', ()=> log('✅ audio canplaythrough'));
-    audio.addEventListener('error', ()=> {
-      const e = audio.error;
-      const code = e ? e.code : 'no-code';
-      log('❌ Audio error code=' + code + ' — check file or encoding');
+  <script>
+    const audio = new Audio('assets/audio.mp3');
+    const playBtn = document.getElementById('playPause');
+    playBtn.addEventListener('click', async () => {
+      try {
+        if (audio.paused) {
+          await audio.play();
+          playBtn.textContent = '⏸ Pause';
+        } else {
+          audio.pause();
+          playBtn.textContent = '▶ Play';
+        }
+      } catch (err) {
+        console.error('Audio play failed:', err);
+        alert('⚠️ कृपया पहले पेज पर टैप करें फिर Play दबाएँ (mobile autoplay नियम)');
+      }
     });
-    // quick HEAD check
-    try{
-      const r = await fetch(AUDIO_PATH, { method: 'HEAD' });
-      if(!r.ok) throw new Error('HTTP ' + r.status);
-      log('✅ Found audio at ' + AUDIO_PATH);
-    } catch(err){
-      log('❌ Audio HEAD failed: ' + err.message);
-    }
-    return audio;
-  }catch(e){
-    log('Audio init failed: ' + e.message);
-    return null;
-  }
-}
-
-document.getElementById('play').addEventListener('click', async ()=>{
-  const a = await initAudio();
-  if(!a){ log('No audio available — continue with visuals.'); return; }
-  try{
-    if(!playing){
-      await a.play();
-      playing = true;
-      document.getElementById('play').textContent = 'Pause';
-      log('🎧 Playing...');
-    } else {
-      a.pause();
-      playing = false;
-      document.getElementById('play').textContent = 'Play / Pause';
-      log('⏸️ Paused');
-    }
-  } catch(err){
-    log('❌ Audio play failed: ' + err.message);
-    log('Tip: if this is a mobile browser, tap the page once first to allow sound, or re-upload audio as MP3 (192 kbps).');
-  }
-});
-
-// Accessibility: let users open preview image in new tab via click
-document.querySelector('.preview')?.addEventListener('click', (e)=>{
-  window.open(e.target.src, '_blank', 'noopener');
-});
-</script>
+  </script>
 </body>
-</html>
+                                                                                                                    </html>
+  
