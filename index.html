@@ -1,39 +1,3 @@
-  document.body.appendChild(audio);
-
-  audio.addEventListener('error', function(ev){
-    const err = audio.error;
-    console.error('Audio element error event:', ev);
-    console.error('MediaError code:', err ? err.code : 'none', ' message:', err ? err.message : 'none');
-  });
-
-  // try to decode via WebAudio to get decode errors
-  try {
-    const r = await fetch(path);
-    const ab = await r.arrayBuffer();
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    ctx.decodeAudioData(ab, function(buf){
-      console.log('✅ decodeAudioData success. duration:', buf.duration);
-    }, function(err){
-      console.error('❌ decodeAudioData failed:', err);
-    });
-  } catch(e){
-    console.error('Fetch/Decode failed:', e);
-  }
-})();
-      </script>
-ffmpeg -i "input-file.ext" -codec:a libmp3lame -b:a 192k audio.mp3
-<audio id="theAudio" controls preload="auto">
-  <source src="assets/audio.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-<script>
-  const a = document.getElementById('theAudio');
-  a.addEventListener('error', ()=> {
-    console.error('Audio element error:', a.error);
-  });
-</script>
-const AUDIO_SRC = 'docs/assets/audio.mp3';
-<script>
 // === ꙰ AUDIO CHECK SCRIPT ===
 const audioPath = "assets/audio.mp3"; // <-- अपने MP3 का सही path रखें
 const logBox = document.createElement("pre");
