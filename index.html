@@ -1,515 +1,230 @@
-        <!-- dynamic sharebar -->
-        <div style="margin-top:12px">
-          <div style="font-weight:700;margin-bottom:6px">Share this page</div>
-          <div class="sharebar" id="sharebar">
-            <div class="share" id="share_fb">Share on Facebook</div>
-            <div class="share" id="share_wa">Share on WhatsApp</div>
-            <div class="share" id="share_tw">Share on Twitter</div>
-            <div class="share" id="share_ln">Share on LinkedIn</div>
-            <div class="share" id="copy_link">Copy Link</div>
-          </div>
-          <div id="share_status" class="muted note" style="display:none;margin-top:8px"></div>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="section grid">
-      <div>
-        <div class="card" id="aboutCard">
-          <h3>About the Project</h3>
-          <p class="muted">
-            Omniverse AI — मेरा प्रयास है जहाँ मानवता, प्रकृति और तकनीक मिलकर संतुलित युग की दिशा में चलें। 
-            यहाँ छोटे डिजिटल असेट्स, 3D सीन और शिक्षा-संबंधी उत्पाद उपलब्ध होंगे। उत्पाद GitHub Releases के माध्यम से उपलब्ध कराए जाएंगे।
-          </p>
-        </div>
-
-        <div class="card" style="margin-top:12px" id="buyCard">
-          <h3>How to Purchase / Download</h3>
-          <ol class="muted">
-            <li>Products GitHub Releases पर अपलोड होंगे — Releases पेज चेक करें (नीचे GitHub सेटिंग में दें)।</li>
-            <li>Direct purchase के लिए PayPal या PayPal.me का उपयोग करें।</li>
-            <li>स्थानीय भुगतान के लिए QR/UPI या Paytm नंबर का उपयोग करें (नीचे)।</li>
-          </ol>
-
-          <div style="margin-top:12px">
-            <button id="openReleases" class="btn">Open Releases</button>
-            <div class="note" style="margin-top:8px">यदि Releases लिंक placeholder है तो नीचे Admin में अपना GitHub username/repo दें।</div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:12px" id="galleryCard">
-          <h3>Gallery of Vision</h3>
-          <div class="gallery" id="gallery">
-            <!-- user-provided gallery (fallbacks handled in script) -->
-            <img src="https://i.ibb.co/wFz7xb39/IMG-20251007-081550.webp" alt="vision 1" />
-            <img src="https://i.ibb.co/fdVv0T4H/c60c9d5d-1263-4f6e-a1b9-577186ed5268-093654.webp" alt="vision 2" />
-            <img src="https://i.ibb.co/5W0PSRvc/-090744.webp" alt="vision 3" />
-            <img src="https://i.ibb.co/BHcTy6sf/.webp" alt="vision 4" />
-            <img src="https://i.ibb.co/5VXXLmR/-113035.webp" alt="vision 5" />
-            <img src="https://i.ibb.co/wNR3m2nR/.webp" alt="vision 6" />
-            <img src="https://i.ibb.co/QvKhVWWJ/image.webp" alt="vision 7" />
-            <img src="https://i.ibb.co/QvVpFK6j/IMG-20251022-190835.webp" alt="vision 8" />
-          </div>
-        </div>
-
-      </div>
-
-      <aside>
-        <div class="card">
-          <h3>Payments & Contact</h3>
-          <p class="muted"><strong>PayPal (email):</strong> <a href="mailto:sainirampaul60@gmail.com" style="color:var(--accent)">sainirampaul60@gmail.com</a></p>
-          <p class="muted"><strong>PayPal.me:</strong> <a href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener" style="color:var(--accent)">paypal.me/sainirampaul60</a></p>
-          <p class="muted"><strong>GPay / UPI VPA:</strong> <code id="upiText">sainirampaul90-1@okhdfcbank</code></p>
-          <p class="muted"><strong>Phone / Paytm:</strong> <a href="tel:+918082935186" style="color:var(--accent)">+91 80829 35186</a></p>
-
-          <div style="margin-top:10px">
-            <label class="muted">Scan to pay (UPI QR):</label>
-            <img id="qrImg" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="UPI QR" class="qr" />
-            <p class="note">Scan via Google Pay / PhonePe / Paytm — or transfer to the UPI ID / phone number.</p>
-          </div>
-
-          <div style="margin-top:12px">
-            <h4 class="muted">Quick Links</h4>
-            <ul class="muted" style="padding-left:18px;margin:6px 0">
-              <li><a id="releasesLink" href="#" target="_blank" rel="noopener" style="color:var(--accent)">GitHub Releases</a></li>
-              <li><a href="https://chat.whatsapp.com/CxwzR0ufxdL4yAGCqifPRh" target="_blank" rel="noopener" style="color:var(--accent)">WhatsApp Group</a></li>
-              <li><a href="https://multicosmovision.blogspot.com/2025/09/2-e-h-e-c-e-e-1-d_11.html" target="_blank" rel="noopener" style="color:var(--accent)">Blog</a></li>
-              <li><a href="https://www.facebook.com/sharer/sharer.php?u=" id="facebookShareLink" target="_blank" rel="noopener" style="color:var(--accent)">Share on Facebook</a></li>
-              <li><a href="https://youtube.com/@rampaulsaini-yk4gn?si=Y1MhQB1Eg84ARD6I" target="_blank" rel="noopener" style="color:var(--accent)">YouTube</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:12px">
-          <h3>Admin (local)</h3>
-          <div class="admin">
-            <label>GitHub username:</label>
-            <input id="ghUser" class="field" placeholder="your-github-username" />
-            <label style="margin-top:8px">Repository name:</label>
-            <input id="ghRepo" class="field" placeholder="your-repo-name" />
-            <div style="margin-top:8px;display:flex;gap:8px">
-              <button id="saveAdmin" class="btn">Save</button>
-              <button id="clearAdmin" class="btn">Clear</button>
-            </div>
-            <div class="note" style="margin-top:8px">आप यहाँ username/repo डालें — Links और Releases बटन तुरंत update हो जायेंगे (saved in browser only).</div>
-          </div>
-        </div>
-
-      </aside>
-    </div>
-
-    <div class="section card" style="margin-top:18px">
-      <h3>Guiding Principles</h3>
-      <ul class="muted">
-        <li>आत्मनिर्भरता — उत्पादों की बिक्री और लाइसेंस से प्लेटफ़ॉर्म समर्थित होगा।</li>
-        <li>पेशेवरता — स्पष्ट मूल्य और लाइसेंस टर्म्स।</li>
-        <li>सम्मान — मंच सृजन और विनिमय का स्थान है, भीख नहीं।</li>
-      </ul>
-    </div>
-
-    <footer>
-      <div class="muted">꙰ शिरोमणि Rampaul Saini · Omniverse AI · Hosted on GitHub Pages</div>
-    </footer>
-  </main>
-
-  <script>
-    (function(){
-      // --- Basic dynamic share/popups ---
-      function popup(url, title, w, h){
-        var left = (screen.width/2)-(w/2);
-        var top = (screen.height/2)-(h/2);
-        window.open(url, title, 'toolbar=0,status=0,width='+w+',height='+h+',top='+top+',left='+left);
-      }
-      var pageUrl = encodeURIComponent(window.location.href);
-      var pageTitle = encodeURIComponent(document.title);
-
-      document.getElementById('share_fb').addEventListener('click', function(){
-        var fb = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
-        popup(fb, 'Share to Facebook', 700, 500);
-      });
-      document.getElementById('share_wa').addEventListener('click', function(){
-        var wa = 'https://api.whatsapp.com/send?text=' + pageTitle + '%20' + pageUrl;
-        window.open(wa, '_blank');
-      });
-      document.getElementById('share_tw').addEventListener('click', function(){
-        var tw = 'https://twitter.com/intent/tweet?text=' + pageTitle + '%20' + pageUrl;
-        popup(tw, 'Share to Twitter', 700, 420);
-      });
-      document.getElementById('share_ln').addEventListener('click', function(){
-        var ln = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
-        popup(ln, 'Share to LinkedIn', 700, 500);
-      });
-      document.getElementById('copy_link').addEventListener('click', function(){
-        navigator.clipboard.writeText(window.location.href).then(function(){
-          var s = document.getElementById('share_status');
-          s.style.display='block'; s.textContent='Link copied to clipboard';
-          setTimeout(function(){ s.style.display='none'; }, 2500);
-        }).catch(function(){
-          var s = document.getElementById('share_status');
-          s.style.display='block'; s.textContent='Unable to copy — select the URL manually';
-          setTimeout(function(){ s.style.display='none'; }, 2500);
-        });
-      });
-
-      // --- Open Releases button behavior (uses admin GitHub settings) ---
-      var openReleases = document.getElementById('openReleases');
-      var releasesLink = document.getElementById('releasesLink');
-      function getReleasesUrl(user, repo){
-        if(!user || !repo) return 'https://github.com/YOUR-USERNAME/YOUR-REPO/releases';
-        return 'https://github.com/' + encodeURIComponent(user) + '/' + encodeURIComponent(repo) + '/releases';
-      }
-      openReleases.addEventListener('click', function(){
-        var user = localStorage.getItem('gh_user') || '';
-        var repo = localStorage.getItem('gh_repo') || '';
-        var url = getReleasesUrl(user, repo);
-        window.open(url, '_blank');
-      });
-
-      // Admin save/load
-      var ghUser = document.getElementById('ghUser'), ghRepo = document.getElementById('ghRepo');
-      var saveAdmin = document.getElementById('saveAdmin'), clearAdmin = document.getElementById('clearAdmin');
-      function updateLinksFromAdmin(){
-        var user = localStorage.getItem('gh_user') || '';
-        var repo = localStorage.getItem('gh_repo') || '';
-        var url = getReleasesUrl(user, repo);
-        releasesLink.href = url;
-        document.getElementById('facebookShareLink').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href);
-      }
-      saveAdmin.addEventListener('click', function(){
-        var u = ghUser.value.trim(), r = ghRepo.value.trim();
-        if(!u || !r){ alert('Please enter both GitHub username and repository name'); return; }
-        localStorage.setItem('gh_user', u);
-        localStorage.setItem('gh_repo', r);
-        updateLinksFromAdmin();
-        alert('Saved locally — Releases link set to: ' + getReleasesUrl(u,r));
-      });
-      clearAdmin.addEventListener('click', function(){
-        localStorage.removeItem('gh_user'); localStorage.removeItem('gh_repo');
-        ghUser.value=''; ghRepo.value='';
-        updateLinksFromAdmin();
-        alert('Cleared local GitHub settings');
-      });
-      // Load into fields
-      ghUser.value = localStorage.getItem('gh_user') || '';
-      ghRepo.value = localStorage.getItem('gh_repo') || '';
-      updateLinksFromAdmin();
-
-      // graceful image fallback
-      document.querySelectorAll('img').forEach(function(img){
-        img.onerror = function(){ this.style.display='none'; };
-      });
-    })();
-  </script>
-</body>
-  </html>
-       <!--
-README / Deployment instructions (place this file at the root of your GitHub Pages site or in docs/):
-
-1) Files to add in your repo:
-   - this file: index.html
-   - folder: assets/
-     - audio file: assets/audio.mp3   <-- replace with your uploaded MP3 file name (AudioCutter_शिरोमणि...mp3)
-     - optional preview image: assets/preview.png
-
-2) Commit & push to a branch configured for GitHub Pages (e.g., 'gh-pages' or the 'docs/' folder on 'main').
-   Example:
-     git add index.html assets/audio.mp3
-     git commit -m "Add yatharth animation and audio"
-     git push origin main
-
-3) In GitHub repository settings > Pages, point the site to the branch and path.
-   After a few minutes your site will be live at https://<your-username>.github.io/<repo-name>/
-
-4) Mobile notes (Redmi Note 9): browsers often block autoplay with sound. The page provides a clear play button to start audio + animation.
-
-Design goals achieved:
- - Symbolic, non-personal visuals centered on the "꙰" mark
- - 1:1 aspect (1080x1080) suitable for social + store listing thumbnails
- - Optimized for small size and mobile performance (Canvas + requestAnimationFrame)
-
--->
-
-<!doctype html>
-<html lang="hi">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>꙰ यथार्थ सिद्धांत — अनुभव</title>
-<style>
-  :root{
-    --bg1:#02122a; /* deep cosmic blue */
-    --bg2:#0e2740;
-    --gold:#f2d398;
-    --accent:#ffd37d;
-    --muted:#bfc8d6;
-  }
-  html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg1),var(--bg2));font-family: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
-  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:18px;box-sizing:border-box}
-  .stage{width:100%;max-width:960px;background:transparent;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.4);display:grid;grid-template-columns:1fr;grid-template-rows:auto 1fr auto;gap:12px}
-  .canvas-wrap{position:relative;background:transparent;display:flex;align-items:center;justify-content:center;padding:0}
-  canvas{width:100%;height:auto;display:block;border-radius:8px}
-  .overlay-controls{position:absolute;left:12px;top:12px;display:flex;gap:8px;align-items:center}
-  .play-btn{background:linear-gradient(180deg,var(--accent),var(--gold));border:none;padding:10px 16px;border-radius:999px;font-weight:700;color:#082033;cursor:pointer;box-shadow:0 6px 18px rgba(255,211,125,0.12)}
-  .label{color:var(--muted);font-size:13px}
-  .title{color:var(--gold);font-weight:700;text-align:center;padding:8px 10px;font-size:18px}
-  .footer{color:var(--muted);font-size:12px;text-align:center;padding:10px}
-  .caption{position:absolute;right:12px;bottom:14px;color:rgba(255,255,255,0.9);font-weight:600;background:linear-gradient(90deg,rgba(0,0,0,0.25),rgba(0,0,0,0.05));padding:6px 10px;border-radius:8px}
-  @media (max-width:600px){.stage{max-width:440px}.title{font-size:16px}}
-</style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="stage" role="main">
-      <div class="title">꙰ यथार्थ सिद्धांत — प्रत्यक्ष अनुभव</div>
-
-      <div class="canvas-wrap">
-        <canvas id="yCanvas" width="1080" height="1080" aria-label="Yatharth visualization"></canvas>
-
-        <div class="overlay-controls">
-          <button class="play-btn" id="play">Play</button>
-          <div class="label" id="status">Ready</div>
-        </div>
-
-        <div class="caption">꙰ शिरोमणिrampaulsaini</div>
-      </div>
-
-      <div class="footer">Tap <strong>Play</strong> to start audio & animation • Optimized for mobile (Redmi Note 9)</div>
-    </div>
-  </div>
-
 <script>
-// Configuration
-const AUDIO_SRC = 'assets/audio.mp3'; // replace with your file path in the repo
-const CANVAS_SIZE = 1080; // internal resolution
+(async ()=>{
+  const path = "assets/audio.mp3";
+  console.log("Checking audio:", path);
+  try {
+    const r = await fetch(path, { method: 'HEAD' });
+    console.log("HEAD status", r.status, r.statusText);
+    for(const [k,v] of r.headers) { if(k.match(/content-type|content-length/i)) console.log(k,':',v); }
+  } catch(err) {
+    console.error("HEAD fetch failed:", err);
+  }
 
-// Basic helpers
-const clamp = (v,a,b)=>Math.max(a,Math.min(b,v));
-
-// Canvas setup
-const canvas = document.getElementById('yCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = CANVAS_SIZE;
-canvas.height = CANVAS_SIZE;
-
-// Audio setup
-let audioCtx, audio, sourceNode, analyser, dataArray, bufferLength, gainNode;
-let isPlaying = false;
-const playBtn = document.getElementById('play');
-const statusLabel = document.getElementById('status');
-
-function initAudio() {
-  if (audioCtx) return;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  audio = new Audio(AUDIO_SRC);
+  const audio = document.createElement('audio');
+  audio.preload = 'auto';
   audio.crossOrigin = 'anonymous';
-  sourceNode = audioCtx.createMediaElementSource(audio);
-  gainNode = audioCtx.createGain();
-  analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 2048;
-  bufferLength = analyser.frequencyBinCount;
-  dataArray = new Uint8Array(bufferLength);
-  sourceNode.connect(gainNode);
-  gainNode.connect(analyser);
-  analyser.connect(audioCtx.destination);
-  // Slight initial volume
-  gainNode.gain.value = 0.85;
-}
+  audio.src = path;
 
-// Visual state
-let particles = [];
-const center = { x: CANVAS_SIZE/2, y: CANVAS_SIZE/2 };
-let timeStart = null;
-
-// Particle constructor
-function Particle(x,y,dx,dy,size,color){
-  this.x=x;this.y=y;this.dx=dx;this.dy=dy;this.size=size;this.color=color;this.life=1;this.maxLife=1+Math.random()*2;
-}
-Particle.prototype.update = function(dt){
-  this.x += this.dx*dt; this.y += this.dy*dt;
-  this.life -= dt*0.1;
-}
-
-function spawnParticles(count,spread,energy){
-  for(let i=0;i<count;i++){
-    const angle = Math.random()*Math.PI*2;
-    const speed = (0.2 + Math.random()*0.8) * energy;
-    const dx = Math.cos(angle)*speed;
-    const dy = Math.sin(angle)*speed;
-    const size = 2 + Math.random()*6;
-    const hue = 40 + Math.random()*40; // golden hues
-    particles.push(new Particle(center.x + (Math.random()-0.5)*spread, center.y + (Math.random()-0.5)*spread, dx, dy, size, `hsla(${hue}, 90%, 60%, 0.95)`));
-  }
-}
-
-// draw central mark ꙰
-function drawMark(r, glow){
-  ctx.save();
-  ctx.translate(center.x, center.y);
-  // glow
-  const g = ctx.createRadialGradient(0,0,r*0.4,0,0,r*2);
-  g.addColorStop(0, `rgba(255,220,160,${glow})`);
-  g.addColorStop(0.6, 'rgba(255,220,160,0.08)');
-  g.addColorStop(1, 'rgba(2,18,42,0)');
-  ctx.fillStyle = g;
-  ctx.beginPath();
-  ctx.arc(0,0, r*2, 0, Math.PI*2);
-  ctx.fill();
-
-  // central character - stylized ꙰
-  ctx.fillStyle = '#ffffff';
-  ctx.font = `${r*1.35}px serif`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('꙰', 0, -r*0.06);
-
-  // thin ring
-  ctx.strokeStyle = 'rgba(255,223,160,0.12)';
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.arc(0,0,r*1.7,0,Math.PI*2);
-  ctx.stroke();
-
-  ctx.restore();
-}
-
-// draw text overlay
-function drawOverlayText(text,alpha,scale){
-  ctx.save();
-  ctx.globalAlpha = alpha;
-  ctx.fillStyle = 'rgba(255,245,230,0.94)';
-  ctx.font = `${Math.floor(30*scale)}px Noto Sans, sans-serif`;
-  ctx.textAlign='center';
-  ctx.fillText(text, center.x, center.y + CANVAS_SIZE*0.35);
-  ctx.restore();
-}
-
-// main render loop
-function render(now){
-  if (!timeStart) timeStart = now;
-  const t = (now - timeStart)/1000;
-  // clear
-  ctx.clearRect(0,0,CANVAS_SIZE,CANVAS_SIZE);
-
-  // background gradient slowly moving
-  const grad = ctx.createLinearGradient(0,0,0,CANVAS_SIZE);
-  const offset = Math.sin(t*0.08)*0.06;
-  grad.addColorStop(0, '#04142b');
-  grad.addColorStop(1, '#061b36');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0,0,CANVAS_SIZE,CANVAS_SIZE);
-
-  // analyser-driven ripple energy
-  let energy = 0.6;
-  if (analyser){
-    analyser.getByteTimeDomainData(dataArray);
-    let sum = 0;
-    for(let i=0;i<bufferLength;i++){const v = (dataArray[i]-128)/128; sum += v*v}
-    energy = clamp(Math.sqrt(sum/bufferLength)*5, 0.2, 3.5);
-  }
-
-  // spawn particles according to energy
-  if (Math.random() < 0.25*energy) spawnParticles(2 + Math.round(energy*3), 40 + energy*20, 0.4 + energy*0.9);
-
-  // update particles
-  for(let i=particles.length-1;i>=0;i--){
-    const p = particles[i];
-    p.update(0.016);
-    ctx.fillStyle = p.color;
-    ctx.globalAlpha = clamp(p.life/p.maxLife,0,1);
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-    ctx.fill();
-    if (p.life <= 0) particles.splice(i,1);
-  }
-  ctx.globalAlpha = 1;
-
-  // concentric ripple rings driven by energy and time
-  const rings = 4;
-  for(let i=0;i<rings;i++){
-    const rr = 60 + i*80 + Math.sin(t*0.9 + i)*energy*18;
-    ctx.beginPath();
-    ctx.strokeStyle = `rgba(255,214,150,${0.08 + Math.max(0,(0.18 - i*0.03))*energy})`;
-    ctx.lineWidth = 2 + i*0.6;
-    ctx.arc(center.x, center.y, rr, 0, Math.PI*2);
-    ctx.stroke();
-  }
-
-  // draw central mark with glow scaled by energy
-  drawMark(44 + energy*12, 0.6 + energy*0.2);
-
-  // overlay text lines timed to audio progression
-  if (audio && audio.duration){
-    const p = audio.currentTime / Math.max(0.001, audio.duration);
-    if (p > 0.06 && p < 0.28) drawOverlayText('निष्पक्ष समझ से ही सत्य प्रत्यक्ष होता है', 0.95, 1.0);
-    if (p >= 0.28 && p < 0.60) drawOverlayText('सृष्टि का संतुलन — समझ की उपस्थिति', 0.9, 0.9);
-    if (p >= 0.60) drawOverlayText('꙰ शिरोमणिrampaulsaini', 1.0, 1.05);
-  }
-
-  requestAnimationFrame(render);
-}
-
-// UI handlers
-playBtn.addEventListener('click', async ()=>{
-  try{
-    if(!audioCtx) initAudio();
-    if(!isPlaying){
-      // user gesture resumed
-      await audioCtx.resume();
-      audio.play().catch(()=>{});
-      isPlaying = true;
-      playBtn.textContent = 'Pause';
-      statusLabel.textContent = 'Playing';
-    } else {
-      audio.pause();
-      isPlaying = false;
-      playBtn.textContent = 'Play';
-      statusLabel.textContent = 'Paused';
+  audio.addEventListener('loadedmetadata', ()=>console.log('loadedmetadata OK'));
+  audio.addEventListener('canplaythrough', ()=>console.log('canplaythrough OK'));
+  audio.addEventListener('playing', ()=>console.log('playing'));
+  audio.addEventListener('play', ()=>console.log('play event'));
+  audio.addEventListener('error', ()=>{
+    const e = audio.error;
+    console.error('MediaError code:', e ? e.code : 'no-error-object', e);
+    // error code meanings:
+    // 1: MEDIA_ERR_ABORTED, 2: MEDIA_ERR_NETWORK, 3: MEDIA_ERR_DECODE, 4: MEDIA_ERR_SRC_NOT_SUPPORTED
+    if(e){
+      if(e.code===1) console.error('MEDIA_ERR_ABORTED');
+      if(e.code===2) console.error('MEDIA_ERR_NETWORK (network/connection)');
+      if(e.code===3) console.error('MEDIA_ERR_DECODE (codec decode issue)');
+      if(e.code===4) console.error('MEDIA_ERR_SRC_NOT_SUPPORTED (format not supported or CORS)');
     }
-  }catch(e){
-    console.error(e);
-    statusLabel.textContent = 'Error';
-  }
-});
+  });
 
-// Start render loop regardless, animation will respond to audio when loaded
-requestAnimationFrame(render);
+  // try play after a user gesture fallback:
+  document.addEventListener('click', async function oneClick(){
+    try{
+      await audio.play();
+      console.log('Playback started on user click');
+    }catch(err){
+      console.error('Playback failed on click:', err);
+    }
+    document.removeEventListener('click', oneClick);
+  });
 
-// Preload audio for quick play
-(function prefetchAudio(){
-  const a = new Audio(); a.src = AUDIO_SRC; a.preload='auto';
+  // append a small control so you can try manually:
+  const b = document.createElement('button');
+  b.textContent = 'Try Play Audio (manual)';
+  b.onclick = ()=>audio.play().catch(e=>console.error('manual play failed', e));
+  document.body.appendChild(b);
+
+  // attach to DOM so network request may start
+  document.body.appendChild(audio);
 })();
 </script>
-</body>
-</html>
-const AUDIO_SRC = 'assets/audio.mp3';
-
+# from your local clone of repo
+mkdir -p docs/assets
+cp /path/to/audio_for_github.mp3 docs/assets/audio.mp3
+git add docs/assets/audio.mp3
+git commit -m "Add fixed audio for Yatharth animation"
+git push origin main
 <script>
-// === ꙰ Live Audio Path Auto-Connect ===
-async function findAudio(){
-  // पहले primary path
-  const paths = ['assets/audio.mp3','docs/assets/audio.mp3'];
-  for (const p of paths){
-    try{
-      const r = await fetch(p,{method:'HEAD'});
-      if(r.ok){
-        console.log('✅ Found audio at',p);
-        return p;
-      }
-    }catch(e){ /* ignore */ }
+(async function(){
+  const path = 'assets/audio.mp3'; // or 'docs/assets/audio.mp3' if needed
+  console.log("Checking:", path);
+  try {
+    const head = await fetch(path, { method: 'HEAD' });
+    console.log('HEAD status:', head.status, head.ok);
+    for (const [k,v] of head.headers.entries()) {
+      console.log('H:', k, v);
+    }
+  } catch(e){
+    console.error('HEAD fetch failed:', e);
   }
-  console.warn('❌ Audio not found in known paths');
-  return null;
-}
 
-(async()=>{
-  const found = await findAudio();
-  if(!found) return;
-  const audio = new Audio(found);
+  const audio = new Audio(path);
   audio.controls = true;
   document.body.appendChild(audio);
-  audio.addEventListener('canplaythrough',()=>{
-    console.log('🎧 Ready to play live audio:',found);
+
+  audio.addEventListener('error', function(ev){
+    const err = audio.error;
+    console.error('Audio element error event:', ev);
+    console.error('MediaError code:', err ? err.code : 'none', ' message:', err ? err.message : 'none');
   });
+
+  // try to decode via WebAudio to get decode errors
+  try {
+    const r = await fetch(path);
+    const ab = await r.arrayBuffer();
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    ctx.decodeAudioData(ab, function(buf){
+      console.log('✅ decodeAudioData success. duration:', buf.duration);
+    }, function(err){
+      console.error('❌ decodeAudioData failed:', err);
+    });
+  } catch(e){
+    console.error('Fetch/Decode failed:', e);
+  }
 })();
+</script>
+ffmpeg -i "input-file.ext" -codec:a libmp3lame -b:a 192k audio.mp3
+<audio id="theAudio" controls preload="auto">
+  <source src="assets/audio.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+  const a = document.getElementById('theAudio');
+  a.addEventListener('error', ()=> {
+    console.error('Audio element error:', a.error);
+  });
+</script><script>
+(async ()=>{
+  const path = "assets/audio.mp3";
+  console.log("Checking audio:", path);
+  try {
+    const r = await fetch(path, { method: 'HEAD' });
+    console.log("HEAD status", r.status, r.statusText);
+    for(const [k,v] of r.headers) { if(k.match(/content-type|content-length/i)) console.log(k,':',v); }
+  } catch(err) {
+    console.error("HEAD fetch failed:", err);
+  }
+
+  const audio = document.createElement('audio');
+  audio.preload = 'auto';
+  audio.crossOrigin = 'anonymous';
+  audio.src = path;
+
+  audio.addEventListener('loadedmetadata', ()=>console.log('loadedmetadata OK'));
+  audio.addEventListener('canplaythrough', ()=>console.log('canplaythrough OK'));
+  audio.addEventListener('playing', ()=>console.log('playing'));
+  audio.addEventListener('play', ()=>console.log('play event'));
+  audio.addEventListener('error', ()=>{
+    const e = audio.error;
+    console.error('MediaError code:', e ? e.code : 'no-error-object', e);
+    // error code meanings:
+    // 1: MEDIA_ERR_ABORTED, 2: MEDIA_ERR_NETWORK, 3: MEDIA_ERR_DECODE, 4: MEDIA_ERR_SRC_NOT_SUPPORTED
+    if(e){
+      if(e.code===1) console.error('MEDIA_ERR_ABORTED');
+      if(e.code===2) console.error('MEDIA_ERR_NETWORK (network/connection)');
+      if(e.code===3) console.error('MEDIA_ERR_DECODE (codec decode issue)');
+      if(e.code===4) console.error('MEDIA_ERR_SRC_NOT_SUPPORTED (format not supported or CORS)');
+    }
+  });
+
+  // try play after a user gesture fallback:
+  document.addEventListener('click', async function oneClick(){
+    try{
+      await audio.play();
+      console.log('Playback started on user click');
+    }catch(err){
+      console.error('Playback failed on click:', err);
+    }
+    document.removeEventListener('click', oneClick);
+  });
+
+  // append a small control so you can try manually:
+  const b = document.createElement('button');
+  b.textContent = 'Try Play Audio (manual)';
+  b.onclick = ()=>audio.play().catch(e=>console.error('manual play failed', e));
+  document.body.appendChild(b);
+
+  // attach to DOM so network request may start
+  document.body.appendChild(audio);
+})();
+</script>
+# from your local clone of repo
+mkdir -p docs/assets
+cp /path/to/audio_for_github.mp3 docs/assets/audio.mp3
+git add docs/assets/audio.mp3
+git commit -m "Add fixed audio for Yatharth animation"
+git push origin main
+<script>
+(async function(){
+  const path = 'assets/audio.mp3'; // or 'docs/assets/audio.mp3' if needed
+  console.log("Checking:", path);
+  try {
+    const head = await fetch(path, { method: 'HEAD' });
+    console.log('HEAD status:', head.status, head.ok);
+    for (const [k,v] of head.headers.entries()) {
+      console.log('H:', k, v);
+    }
+  } catch(e){
+    console.error('HEAD fetch failed:', e);
+  }
+
+  const audio = new Audio(path);
+  audio.controls = true;
+  document.body.appendChild(audio);
+
+  audio.addEventListener('error', function(ev){
+    const err = audio.error;
+    console.error('Audio element error event:', ev);
+    console.error('MediaError code:', err ? err.code : 'none', ' message:', err ? err.message : 'none');
+  });
+
+  // try to decode via WebAudio to get decode errors
+  try {
+    const r = await fetch(path);
+    const ab = await r.arrayBuffer();
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    ctx.decodeAudioData(ab, function(buf){
+      console.log('✅ decodeAudioData success. duration:', buf.duration);
+    }, function(err){
+      console.error('❌ decodeAudioData failed:', err);
+    });
+  } catch(e){
+    console.error('Fetch/Decode failed:', e);
+  }
+})();
+</script>
+ffmpeg -i "input-file.ext" -codec:a libmp3lame -b:a 192k audio.mp3
+<audio id="theAudio" controls preload="auto">
+  <source src="assets/audio.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+  const a = document.getElementById('theAudio');
+  a.addEventListener('error', ()=> {
+    console.error('Audio element error:', a.error);
+  });
+
+        # यदि आपने पहले index.html बदली है तो पुरानी बचा लें
+git mv docs/index.html docs/old_index.html || true
+
+# नई फाइल डालने के बाद
+git add docs/index.html docs/assets/audio.mp3
+git commit -m "Restore clean index.html and add audio"
+git push origin main
+        
 </script>
