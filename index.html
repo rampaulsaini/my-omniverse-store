@@ -1,44 +1,69 @@
-// === ꙰ AUDIO CHECK SCRIPT ===
-const audioPath = "assets/audio.mp3"; // <-- अपने MP3 का सही path रखें
-const logBox = document.createElement("pre");
-logBox.style.cssText =
-  "color:#0f0;background:#000;padding:10px;font-size:13px;overflow:auto;max-height:120px;";
-document.body.appendChild(logBox);
-function log(msg){ logBox.textContent += msg + "\n"; console.log(msg); }
-
-async function testAudio(){
-  log("🔎 Checking audio path: " + audioPath);
-  try {
-    const res = await fetch(audioPath, { method: "HEAD" });
-    if (!res.ok) throw new Error("Not found (HTTP " + res.status + ")");
-    log("✅ Audio file found on server.");
-  } catch (e) {
-    log("❌ Audio fetch failed: " + e.message);
-    return;
-  }
-
-  const audio = new Audio(audioPath);
-  audio.addEventListener("canplaythrough", () => {
-    log("✅ Audio loaded successfully, ready to play.");
-    audio.play()
-      .then(() => log("🎧 Playback started successfully!"))
-      .catch(err => log("⚠️ Playback blocked (click anywhere to allow): " + err.message));
-  });
-  audio.addEventListener("error", e => log("❌ Audio load error: " + e.message));
-}
-testAudio();
-</script>
-<!doctype html>
-<html lang="hi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>꙰ शिरोमणि Rampaul Saini — Omniverse AI Vision</title>
   <meta name="description" content="꙰ शिरोमणि Rampaul Saini — निष्पक्ष समझ, यथार्थ सिद्धांत और Omniverse AI Vision. Digital assets, 3D scenes, education products." />
   <!-- Open Graph / Social preview -->
   <meta property="og:title" content="꙰ शिरोमणि Rampaul Saini — Omniverse AI Vision" />
   <meta property="og:description" content="निष्पक्ष समझ, यथार्थ सिद्धांत और Omniverse AI — डिजिटल असेट्स व शिक्षात्मक उत्पाद।" />
-  <meta property="og:image" content="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" />
+  <meta property="og:im<script>
+(async ()=>{
+  const path = "assets/audio.mp3";
+  console.log("Checking audio:", path);
+  try {
+    const r = await fetch(path, { method: 'HEAD' });
+    console.log("HEAD status", r.status, r.statusText);
+    for(const [k,v] of r.headers) { if(k.match(/content-type|content-length/i)) console.log(k,':',v); }
+  } catch(err) {
+    console.error("HEAD fetch failed:", err);
+  }
+
+  const audio = document.createElement('audio');
+  audio.preload = 'auto';
+  audio.crossOrigin = 'anonymous';
+  audio.src = path;
+
+  audio.addEventListener('loadedmetadata', ()=>console.log('loadedmetadata OK'));
+  audio.addEventListener('canplaythrough', ()=>console.log('canplaythrough OK'));
+  audio.addEventListener('playing', ()=>console.log('playing'));
+  audio.addEventListener('play', ()=>console.log('play event'));
+  audio.addEventListener('error', ()=>{
+    const e = audio.error;
+    console.error('MediaError code:', e ? e.code : 'no-error-object', e);
+    // error code meanings:
+    // 1: MEDIA_ERR_ABORTED, 2: MEDIA_ERR_NETWORK, 3: MEDIA_ERR_DECODE, 4: MEDIA_ERR_SRC_NOT_SUPPORTED
+    if(e){
+      if(e.code===1) console.error('MEDIA_ERR_ABORTED');
+      if(e.code===2) console.error('MEDIA_ERR_NETWORK (network/connection)');
+      if(e.code===3) console.error('MEDIA_ERR_DECODE (codec decode issue)');
+      if(e.code===4) console.error('MEDIA_ERR_SRC_NOT_SUPPORTED (format not supported or CORS)');
+    }
+  });
+
+  // try play after a user gesture fallback:
+  document.addEventListener('click', async function oneClick(){
+    try{
+      await audio.play();
+      console.log('Playback started on user click');
+    }catch(err){
+      console.error('Playback failed on click:', err);
+    }
+    document.removeEventListener('click', oneClick);
+  });
+
+  // append a small control so you can try manually:
+  const b = document.createElement('button');
+  b.textContent = 'Try Play Audio (manual)';
+  b.onclick = ()=>audio.play().catch(e=>console.error('manual play failed', e));
+  document.body.appendChild(b);
+
+  // attach to DOM so network request may start
+  document.body.appendChild(audio);
+})();
+</script>
+# from your local clone of repo
+mkdir -p docs/assets
+cp /path/to/audio_for_github.mp3 docs/assets/audio.mp3
+git add docs/assets/audio.mp3
+git commit -m "Add fixed audio for Yatharth animation"
+git push origin main
+age" content="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" />
