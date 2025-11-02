@@ -3,130 +3,152 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग | शिरोमणि rampaulsaini</title>
+<title>निष्पक्ष समझ — यथार्थ सिद्धांत</title>
 <meta name="description" content="Yatharth Siddhant — The Era of Direct Truth. Support Saneha Saini's education." />
 <style>
-  :root{ --bg:#030612; --card:rgba(255,255,255,0.02); --accent:#e9c77a; --muted:#cfd8df; }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;background:linear-gradient(180deg,#000,#041029);font-family:Inter,'Noto Sans Devanagari',sans-serif;color:#fff}
-  .wrap{max-width:880px;margin:0 auto;padding:14px;display:flex;flex-direction:column;gap:12px;align-items:center}
-  header{width:100%;display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;background:var(--card);backdrop-filter:blur(6px);margin-top:8px}
-  .preview{width:100px;height:100px;border-radius:12px;object-fit:cover;border:2px solid rgba(233,199,122,0.06)}
-  .titlebox{flex:1;text-align:left}
-  h1{color:var(--accent);font-size:16px;line-height:1;margin-bottom:4px}
-  .subtitle{color:var(--muted);font-size:13px}
-  .actions{display:flex;gap:8px;align-items:center}
-  .btn{background:transparent;border:1px solid rgba(233,199,122,0.12);color:var(--accent);padding:8px 10px;border-radius:8px;text-decoration:none;font-weight:600}
-  main{width:100%;padding-top:8px;display:flex;flex-direction:column;align-items:center;gap:12px}
-  .card{width:100%;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.04));padding:14px;border-radius:12px;display:flex;flex-direction:column;gap:12px;align-items:center}
-  .big-sign{font-size:48px;color:var(--accent)}
-  .sigline{font-weight:700}
-  .textblock{color:var(--muted);text-align:center}
-  .social{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-  .social a{color:var(--accent);text-decoration:none;font-weight:600;padding:6px 8px;border-radius:8px;border:1px solid rgba(233,199,122,0.06)}
-  .payments{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
-  .qr{width:120px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6);cursor:pointer}
-  .info{font-size:14px;color:var(--muted);text-align:left;max-width:320px}
-  pre#debug{width:100%;background:rgba(0,0,0,0.5);color:#9ff;padding:8px;border-radius:8px;max-height:160px;overflow:auto;font-size:13px}
-  footer{width:100%;text-align:center;color:rgba(255,255,255,0.6);padding:10px;margin-top:6px}
-  @media(max-width:520px){ header{flex-direction:row} .preview{width:86px;height:86px} h1{font-size:15px} .big-sign{font-size:40px} .info{max-width:100%} }
+  body {
+    margin: 0;
+    font-family: "Inter", "Noto Sans Devanagari", sans-serif;
+    background: radial-gradient(circle at top, #02050e, #000);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  img.profile {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+  }
+  h1 {
+    font-size: 22px;
+    color: #eacb77;
+    margin-top: 10px;
+  }
+  h2 {
+    font-size: 14px;
+    color: #cfd8df;
+    margin-top: 4px;
+    font-weight: normal;
+  }
+  .buttons {
+    margin: 15px 0;
+  }
+  .btn {
+    display: inline-block;
+    margin: 6px;
+    padding: 8px 14px;
+    color: #eacb77;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn:hover { background: rgba(255,255,255,0.05); }
+  .section {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #cfd8df;
+  }
+  .links a {
+    display: inline-block;
+    margin: 4px 6px;
+    color: #eacb77;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 5px 9px;
+    border-radius: 8px;
+  }
+  .qr {
+    width: 110px;
+    border-radius: 10px;
+    margin: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+  }
+  pre {
+    text-align: left;
+    background: rgba(0,0,0,0.4);
+    color: #8ff;
+    padding: 8px;
+    border-radius: 6px;
+    max-width: 500px;
+    margin: 14px auto;
+    font-size: 13px;
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <!-- small preview image: upload to assets/preview-small.png -->
-    <img src="assets/preview-small.png" alt="निष्पक्ष समझ" class="preview" id="prefImg" />
-    <div class="titlebox">
-      <h1>निष्पक्ष समझ<br>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
-      <div class="subtitle">The Era of Direct Truth — Experience the Message</div>
-    </div>
 
-    <div class="actions">
-      <a id="playBtn" class="btn" href="#" role="button">Play</a>
-      <a id="pdfBtn" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read PDF</a>
-      <a class="btn" id="buyBtn" href="https://paypal.me/sainirampaul60/199INR" target="_blank">Buy ₹193</a>
-    </div>
-  </header>
+<h1>निष्पक्ष समझ</h1>
+<img class="profile" src="https://i.ibb.co/DfZJy1Z8/IMG-20251103-004246.jpg" alt="निष्पक्ष समझ">
+<h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
+<h2>The Era of Direct Truth — Experience the Message</h2>
 
-  <main>
-    <div class="card" role="main">
-      <div class="big-sign">꙰</div>
-      <div class="sigline">निष्पक्ष समझ — शिरोमणि rampaulsaini</div>
-
-      <p class="textblock">This page presents the Yatharth message — support Saneha Saini's education via the payment options below.</p>
-
-      <div class="social" aria-label="social links">
-        <a href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
-        <a href="https://chat.whatsapp.com/CxwzR0ufxdL4yAGCqifPRh?mode=wwt" target="_blank">WhatsApp</a>
-        <a href="https://www.facebook.com/share/1Bc9qeE5uB/" target="_blank">Facebook</a>
-        <a href="https://multicosmovision.blogspot.com/2025/09/2-e-h-e-c-e-e-1-d_11.html" target="_blank">Blog</a>
-        <a href="https://youtube.com/@rampaulsaini-yk4gn?si=Y1MhQB1Eg84ARD6I" target="_blank">YouTube</a>
-      </div>
-
-      <div class="payments" aria-label="payments">
-        <a href="assets/gpay-qr.png" target="_blank"><img class="qr" src="assets/gpay-qr.png" alt="GPay QR" /></a>
-        <a href="assets/paypal-qr.png" target="_blank"><img class="qr" src="assets/paypal-qr.png" alt="PayPal QR" /></a>
-
-        <div class="info">
-          <p><strong>GPay / UPI:</strong><br><a id="upiVpa" href="#">sainirampaul90-1@okhdfcbank</a></p>
-          <p><strong>PayPal:</strong><br><a href="https://paypal.me/sainirampaul60" target="_blank">paypal.me/sainirampaul60</a><br><small>or: <a href="mailto:sainirampaul60@gmail.com">sainirampaul60@gmail.com</a></small></p>
-          <p><strong>Paytm / Phone:</strong><br><a href="tel:082935186">082935186</a></p>
-        </div>
-      </div>
-
-      <pre id="debug">꙰ Page ready — tap Play to start audio</pre>
-    </div>
-  </main>
-
-  <footer>
-    ꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant
-  </footer>
+<div class="buttons">
+  <a href="#" id="playBtn" class="btn">Play</a>
+  <a href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" class="btn">Read PDF</a>
+  <a href="https://paypal.me/sainirampaul60/193INR" target="_blank" class="btn">Buy ₹193</a>
 </div>
 
-<script>
-/* Mobile-friendly JS: audio play, PDF check, clipboard copy for UPI */
-const debug = document.getElementById('debug');
-const log = (m)=>{ debug.textContent = m + '\\n' + debug.textContent; console.log(m); };
+<div class="section">
+  <strong>निष्पक्ष समझ — शिरोमणि rampaulsaini</strong><br>
+  This page presents the Yatharth message — support Saneha Saini's education via the payment options below.
+</div>
 
-// Play button
-const audioPath = 'assets/audio.mp3';
-let audio = null;
+<div class="links">
+  <a href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
+  <a href="https://chat.whatsapp.com/CxwzR0ufxdL4yAGCqifPRh?mode=wwt" target="_blank">WhatsApp</a>
+  <a href="https://www.facebook.com/share/1Bc9qeE5uB/" target="_blank">Facebook</a>
+  <a href="https://multicosmovision.blogspot.com/2025/09/2-e-h-e-c-e-e-1-d_11.html" target="_blank">Blog</a>
+  <a href="https://youtube.com/@rampaulsaini-yk4gn?si=Y1MhQB1Eg84ARD6I" target="_blank">YouTube</a>
+</div>
+
+<div class="section">
+  <img class="qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR">
+  <img class="qr" src="assets/paypal-qr.png" alt="PayPal QR"><br>
+
+  <b>GPay / UPI:</b> sainirampaul90-1@okhdfcbank<br>
+  <b>PayPal:</b> paypal.me/sainirampaul60<br>
+  <b>Email:</b> sainirampaul60@gmail.com<br>
+  <b>Paytm / Phone:</b> 082935186
+</div>
+
+<pre id="debug">꙰ Page ready — tap Play to start audio</pre>
+
+<footer>
+꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant
+</footer>
+
+<script>
+const debug = document.getElementById('debug');
+function log(t){ debug.textContent = t + "\\n" + debug.textContent; }
+const audioPath = "assets/audio.mp3";
+let audio;
 document.getElementById('playBtn').addEventListener('click', async (e)=>{
   e.preventDefault();
-  if(!audio){
-    audio = new Audio(audioPath); audio.crossOrigin='anonymous'; audio.preload='auto';
-    audio.addEventListener('error', ()=> {
-      const err = audio.error; const code = err?err.code:'no-code';
-      log('❌ Audio error code=' + code + ' — unsupported or missing file');
-    });
-    try{
-      const h = await fetch(audioPath,{method:'HEAD'}); if(!h.ok) throw new Error('HTTP '+h.status);
-      log('✅ Found audio at ' + audioPath);
-    }catch(err){ log('❌ Audio HEAD failed: ' + err.message); }
-  }
+  if(!audio){ audio = new Audio(audioPath); audio.crossOrigin='anonymous'; }
+  try {
+    if(audio.paused){ await audio.play(); e.target.textContent="Pause"; log("🎧 Playing..."); }
+    else { audio.pause(); e.target.textContent="Play"; log("⏸️ Paused"); }
+  } catch(err){ log("❌ Audio play failed: "+err.message); }
+});
+(async ()=>{
   try{
-    if(audio.paused){ await audio.play(); e.target.textContent='Pause'; log('🎧 Playing...'); }
-    else { audio.pause(); e.target.textContent='Play'; log('⏸️ Paused'); }
-  }catch(err){ log('❌ Audio play failed: ' + (err.message||err)); log('Tip: tap page once first or reupload MP3 192kbps'); }
-});
-
-// PDF HEAD check
-(async function(){
-  const pdf='assets/yatharth_siddhant_bilingual.pdf';
-  try{ const r=await fetch(pdf,{method:'HEAD'}); if(r.ok) log('✅ PDF available'); else log('❌ PDF missing (HEAD '+r.status+')'); }
-  catch(e){ log('❌ PDF HEAD error: ' + e.message); }
+    const r=await fetch("assets/yatharth_siddhant_bilingual.pdf",{method:'HEAD'});
+    if(r.ok) log("✅ PDF available");
+    else log("❌ PDF missing (HEAD "+r.status+")");
+  }catch(e){ log("❌ PDF check error: "+e.message); }
 })();
-
-// copy UPI to clipboard and try UPI intent
-const upiEl = document.getElementById('upiVpa');
-upiEl.addEventListener('click',(e)=>{ e.preventDefault();
-  const vpa='sainirampaul90-1@okhdfcbank';
-  if(navigator.clipboard) navigator.clipboard.writeText(vpa).then(()=> log('✅ UPI copied: '+vpa));
-  // try open UPI intent (works on mobile)
-  setTimeout(()=>{ window.location.href = 'upi://pay?pa=' + encodeURIComponent(vpa); }, 300);
-});
 </script>
 </body>
-                                                       </html>
+  </html>
+    </html>
   
