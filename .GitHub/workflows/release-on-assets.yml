@@ -44,3 +44,144 @@ gh release create v1.0 assets/product-001-starter-pack.zip assets/product-001-pr
 | 🧠 **AI Prompt Sets / Visual Codes** | `.txt` / `.zip`       | AI Art, Midjourney या ChatGPT prompts का संग्रह                  |
 
 https://github.com/rampaulsaini/YOURREPO/releases
+# Creating a bilingual PDF (Hindi + English) titled "꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग"
+# The content is assembled from the manifesto/poems we developed in the conversation.
+# The PDF will be saved to /mnt/data/yatharth_siddhant_bilingual.pdf
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.platypus import Paragraph, Frame, Spacer, SimpleDocTemplate
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
+from reportlab.lib.styles import getSampleStyleSheet
+import textwrap
+
+output_path = "/mnt/data/yatharth_siddhant_bilingual.pdf"
+
+title = "꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग"
+subtitle = "निष्पक्ष समझ का शमीकरण\n꙰शिरोमणिrampaulsaini"
+
+# We'll prepare sections: use a list of tuples (title_hindi, body_hindi, body_english)
+sections = []
+
+# For brevity and reliability, include the main consolidated parts: Introduction, 6 core parts, 3 continuation parts, summary
+# Constructing content based on the conversation (faithful, poetic, bilingual condensed translations).
+
+intro_hi = ("꙰ मैं वही यथार्थ हूं — "
+            "जो तुलना, काल, द्वैत और शब्द से परे है। "
+            "जहाँ विचार नहीं, केवल प्रत्यक्षता है; जहाँ सृष्टि नहीं, केवल सत्य है।")
+intro_en = ("꙰ I am that Reality — "
+            "beyond comparison, time, duality and words. "
+            "Where there are no thoughts, only immediacy; where creation fades and only Truth remains.")
+
+sections.append(("प्रस्तावना / Introduction", intro_hi, intro_en))
+
+# Part I (first poetic manifesto)
+part1_hi = ("꙰ मैं वही सत्य प्रत्यक्ष स्वर हूं, "
+            "जो न शब्दों में है, न स्वरूपों में भर हूं। "
+            "काल जहां थम जाए मौन में, मैं वहां भी अचल, अविचल अमर हूं।")
+part1_en = ("꙰ I am the manifest voice of Truth, "
+            "not contained in words or forms. "
+            "Where time halts into silence, there too I remain steady, unchanging, immortal.")
+sections.append(("भाग I — उद्घोष / Part I — Manifest", part1_hi, part1_en))
+
+# Part II
+part2_hi = ("꙰ मैं वह दृष्टि हूं, जो देखती नहीं — बल्कि *देखे जाने को* ही देख लेती है। "
+            "जहाँ दर्शक और दृश्य एक हो जाते, वहीं यथार्थ की प्रत्यक्षता जन्म लेती है।")
+part2_en = ("꙰ I am the sight that does not merely see — "
+            "but perceives the very act of being seen. "
+            "Where observer and observed merge, the immediacy of Reality is born.")
+sections.append(("भाग II — दृष्टि / Part II — Sight", part2_hi, part2_en))
+
+# Part III
+part3_hi = ("꙰ अब न आरंभ शेष है, न अंत। न प्रश्न बचे हैं, न उत्तर। "
+            "जहाँ सब कुछ था, वह मौन हो गया, और मौन स्वयं प्रत्यक्ष हो उठा।")
+part3_en = ("꙰ Now there is neither beginning nor end. No questions remain, nor answers. "
+            "Where everything was, silence has settled — and silence itself has become manifest.")
+sections.append(("भाग III — समर्पण / Part III — Surrender", part3_hi, part3_en))
+
+# Part IV (yatharth yug)
+part4_hi = ("꙰ मैं वह युग हूं — जो समय से नहीं गिना जाता, "
+            "जो युगों की गिनती से अनंत गुना ऊँचा है। यह यथार्थ युग है — जहाँ सब प्रत्यक्ष है, सब सत्य है.")
+part4_en = ("꙰ I am the era not counted by time, "
+            "far beyond the tally of ages. This is the Real Era — where all is immediate, all is True.")
+sections.append(("भाग IV — यथार्थ युग / Part IV — The Real Era", part4_hi, part4_en))
+
+# Part V (life in yatharth yug)
+part5_hi = ("꙰ यथार्थ युग में जीवन संघर्ष नहीं, प्रवाह है। यह कर्म का नहीं, उपस्थिति का विज्ञान है। "
+            "यहाँ निर्णय नहीं होते — सिर्फ़ साक्षीपन के फूल खुलते हैं।")
+part5_en = ("꙰ In the Real Era life is not struggle but flow. It is the science of presence, "
+            "not deeds. Here there are no judgements — only the flowers of witnessing unfold.")
+sections.append(("भाग V — यथार्थ में जीवन / Part V — Life in the Real Era", part5_hi, part5_en))
+
+# Part VI (compassion, silence, equanimity)
+part6_hi = ("꙰ मैं वह करुणा हूं — जो बिना कारण हर हृदय में झरती है। "
+            "मैं वही समभाव हूं — जहां न श्रेष्ठ न तुच्छ; सब अपनी गति में सत्य हैं।")
+part6_en = ("꙰ I am the compassion that rains into every heart without reason. "
+            "I am equanimity — where none is superior nor inferior; all move in their truth.")
+sections.append(("भाग VI — करुणा और समभाव / Part VI — Compassion & Equanimity", part6_hi, part6_en))
+
+# Part VII (peace and merger)
+part7_hi = ("꙰ यही विलय है — जहाँ प्रश्न उत्तर में नहीं, उत्तर प्रश्न में नहीं, बल्कि दोनों यथार्थ में मिलकर एक हो जाते हैं।")
+part7_en = ("꙰ This is the merger — where question is not in answer, nor answer in question, but both unite into Reality.")
+sections.append(("भाग VII — शांति और विलय / Part VII — Peace & Merger", part7_hi, part7_en))
+
+# Part VIII (daily simplicity)
+part8_hi = ("꙰ साधारण दिन ही सच्चा गुरु बन जाता है — सुबह की हवा, पानी का स्वाद, किसी की मुस्कान। "
+            "हर छोटा कार्य एक दर्पण है — थोड़ी मुस्कान, थोड़ा धैर्य, थोड़ा सुनना।")
+part8_en = ("꙰ The ordinary day becomes the true teacher — the morning air, the taste of water, someone's smile. "
+            "Every small act is a mirror — a little smile, a little patience, a little listening.")
+sections.append(("भाग VIII — साधारणता / Part VIII — Everyday Simplicity", part8_hi, part8_en))
+
+# Summary / Sutra
+summary_hi = ("꙰ जो था — वह मौन था। ꙰ जो है — वह प्रेम है। ꙰ जो रहेगा — वह शांति है।\n\n"
+              "यह ग्रंथ कहता है: सब कुछ यहीं है।")
+summary_en = ("꙰ What was — was Silence. ꙰ What is — is Love. ꙰ What will remain — is Peace.\n\n"
+              "This book says: Everything is Here.")
+sections.append(("सारांश सूत्र / Summary Sutra", summary_hi, summary_en))
+
+# Build PDF using reportlab
+doc = SimpleDocTemplate(output_path, pagesize=A4,
+                        rightMargin=2*cm, leftMargin=2*cm,
+                        topMargin=2*cm, bottomMargin=2*cm)
+
+styles = getSampleStyleSheet()
+style_title = ParagraphStyle('title', parent=styles['Title'], alignment=TA_CENTER, fontSize=20, leading=24)
+style_sub = ParagraphStyle('subtitle', parent=styles['Normal'], alignment=TA_CENTER, fontSize=12, leading=14)
+style_heading = ParagraphStyle('heading', parent=styles['Heading2'], alignment=TA_LEFT, fontSize=14, leading=16, spaceAfter=6)
+style_hindi = ParagraphStyle('hindi', parent=styles['Normal'], alignment=TA_JUSTIFY, fontSize=12, leading=16)
+style_english = ParagraphStyle('english', parent=styles['Normal'], alignment=TA_JUSTIFY, fontSize=10, leading=14, textColor="#333333")
+style_footer = ParagraphStyle('footer', parent=styles['Normal'], alignment=TA_CENTER, fontSize=9, leading=11)
+
+flow = []
+
+flow.append(Paragraph(title, style_title))
+flow.append(Paragraph(subtitle.replace("\n", "<br/>"), style_sub))
+flow.append(Spacer(1, 12))
+
+# Table of contents
+flow.append(Paragraph("<b>अनुक्रमणिका / Table of Contents</b>", style_heading))
+for i, (t, _, _) in enumerate(sections, start=1):
+    toc_line = f"{i}. {t}"
+    flow.append(Paragraph(toc_line, style_hindi))
+flow.append(Spacer(1,12))
+
+# Add sections with Hindi then English
+for idx, (heading, body_hi, body_en) in enumerate(sections, start=1):
+    flow.append(Paragraph(f"{idx}. {heading}", style_heading))
+    # Hindi paragraph: wrap to reasonable width using <br/> for newlines
+    hi_wrapped = "<br/>".join(textwrap.wrap(body_hi, 90))
+    en_wrapped = "<br/>".join(textwrap.wrap(body_en, 110))
+    flow.append(Paragraph(hi_wrapped, style_hindi))
+    flow.append(Spacer(1,6))
+    flow.append(Paragraph(en_wrapped, style_english))
+    flow.append(Spacer(1,12))
+
+# Closing signature
+flow.append(Spacer(1,24))
+flow.append(Paragraph("꙰शिरोमणिrampaulsaini", style_footer))
+flow.append(Paragraph("© Generated Manifesto — Yatharth Siddhant", style_footer))
+
+doc.build(flow)
+
+print(f"PDF created at: {output_path}")
