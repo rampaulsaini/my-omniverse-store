@@ -1,4 +1,53 @@
-<script>
+# I'll attempt to find uploaded audio files in /mnt/data and convert to a clean MP3 named audio_for_github.mp3
+import os, subprocess, shlex, shutil, sys, glob, pathlib, html, json
+input_patterns = [
+    "/mnt/data/*.mp3",
+    "/mnt/data/*.wav",
+    "/mnt/data/*AudioCutter*.mp3"
+]
+found = None
+for pattern in input_patterns:
+    files = glob.glob(pattern)
+    if files:
+        # pick the largest file (likely the full recording)
+        files.sort(key=lambda p: os.path.getsize(p), reverse=True)
+        found = files[0]
+        break
+
+if not found:
+    print("No uploaded audio found in /mnt/data. Please upload the MP3 or WAV file here in chat.")
+else:
+    out = "/mnt/data/audio_for_github.mp3"
+    print("Found input:", found)
+    # Try ffmpeg conversion
+    ffmpeg_cmd = f"ffmpeg -y -i {shlex.quote(found)} -codec:a libmp3lame -b:a 192k {shlex.quote(out)}"
+    try:
+        res = subprocess.run(ffmpeg_cmd, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True, timeout=120)
+        size = os.path.getsize(out)
+        print("Conversion successful. Output:", out)
+        print("Output size (bytes):", size)
+        print("\nDownload link:")
+        print("sandbox:/mnt/data/audio_for_github.mp3")
+    except subprocess.CalledProcessError as e:
+        print("ffmpeg failed. stderr (first 1000 chars):")
+        print(e.stderr[:1000])
+        # Fallback: if found is mp3, copy to out
+        if found.lower().endswith(".mp3"):
+            shutil.copy(found, out)
+            print("Copied original mp3 to:", out)
+            print("Download link:")
+            print("sandbox:/mnt/data/audio_for_github.mp3")
+        else:
+            print("Could not convert. Please convert locally or re-upload an mp3 file.")
+# कमांड लाइन में
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+mkdir -p docs/assets
+cp /path/to/audio_for_github.mp3 docs/assets/audio.mp3
+git add docs/assets/audio.mp3
+git commit -m "Add fixed audio for Yatharth animation"
+git push origin main
+  <script>
 (async function(){
   const path = 'assets/audio.mp3'; // or 'docs/assets/audio.mp3' if needed
   console.log("Checking:", path);
