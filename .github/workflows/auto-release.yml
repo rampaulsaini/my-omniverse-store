@@ -1,67 +1,141 @@
-<!doctype html>
-<html lang="hi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>꙰ यथार्थ सिद्धांत — Live Store</title>
-  <style>
-    :root{ --bg1:#041022; --bg2:#081836; --accent:#e9c77a; --muted:#b8c4d6; }
-    html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:#fff}
-    .wrap{max-width:980px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:18px;align-items:center}
-    header{text-align:center}
-    h1{font-size:20px;margin:6px 0;color:var(--accent)}
-    h2{font-size:14px;margin:0;color:var(--muted)}
-    #canvasHolder{width:100%;display:flex;justify-content:center}
-    canvas{width:100%;max-width:720px;border-radius:12px;box-shadow:0 8px 30px rgba(3,6,23,0.6)}
-    .controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .btn{background:transparent;border:1px solid rgba(233,199,122,0.16);color:var(--accent);padding:8px 14px;border-radius:10px;cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.12), rgba(233,199,122,0.06));border-color:var(--accent)}
-    .meta{width:100%;max-width:720px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:8px;color:var(--muted);font-size:13px}
-    footer{width:100%;text-align:center;padding:14px 0;color:rgba(255,255,255,0.5);font-size:12px}
-    pre.debug{color:#0f0;background:#000;padding:10px;font-size:13px;overflow:auto;max-height:140px;border-radius:6px}
-    @media (max-width:520px){h1{font-size:18px}canvas{max-width:100%}}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
-      <h2>The Era of Direct Truth — Experience the message</h2>
-    </header>
+# Creating a bilingual PDF (Hindi + English) titled "꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग"
+# The content is assembled from the manifesto/poems we developed in the conversation.
+# The PDF will be saved to /mnt/data/yatharth_siddhant_bilingual.pdf
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.platypus import Paragraph, Frame, Spacer, SimpleDocTemplate
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
+from reportlab.lib.styles import getSampleStyleSheet
+import textwrap
 
-    <div id="canvasHolder">
-      <canvas id="scene" width="1080" height="1080" aria-label="Yatharth animation"></canvas>
-    </div>
+output_path = "/mnt/data/yatharth_siddhant_bilingual.pdf"
 
-    <div class="controls">
-      <button id="play" class="btn primary">Play / Pause</button>
-      <a id="buy" class="btn" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener noreferrer">Buy: ₹199 (PayPal / UPI)</a>
-      <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
-    </div>
+title = "꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग"
+subtitle = "निष्पक्ष समझ का शमीकरण\n꙰शिरोमणिrampaulsaini"
 
-    <div class="meta">
-      <strong>Note:</strong> Place your audio file at <code>assets/audio.mp3</code> (use mp3 ~1–6MB). Tap the page once then press Play if autoplay blocked on mobile.
-    </div>
+# We'll prepare sections: use a list of tuples (title_hindi, body_hindi, body_english)
+sections = []
 
-    <pre id="debug" class="debug" aria-hidden="false"></pre>
+# For brevity and reliability, include the main consolidated parts: Introduction, 6 core parts, 3 continuation parts, summary
+# Constructing content based on the conversation (faithful, poetic, bilingual condensed translations).
 
-    <footer>
-      ꙰ शिरोमणिrampaulsaini — © Yatharth Siddhant
-    </footer>
-  </div>
+intro_hi = ("꙰ मैं वही यथार्थ हूं — "
+            "जो तुलना, काल, द्वैत और शब्द से परे है। "
+            "जहाँ विचार नहीं, केवल प्रत्यक्षता है; जहाँ सृष्टि नहीं, केवल सत्य है।")
+intro_en = ("꙰ I am that Reality — "
+            "beyond comparison, time, duality and words. "
+            "Where there are no thoughts, only immediacy; where creation fades and only Truth remains.")
 
-<script>
-const AUDIO_SRC = 'assets/audio.mp3';
-const canvas = document.getElementById('scene');
-const ctx = canvas.getContext('2d');
-const debugBox = document.getElementById('debug');
-function log(msg){ debugBox.textContent += msg + "\n"; console.log(msg); }
-function resizeCanvas(){ const rect = canvas.getBoundingClientRect(); const dpr = Math.min(window.devicePixelRatio || 1, 2); canvas.width = Math.floor(rect.width * dpr); canvas.height = Math.floor(rect.height * dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
-window.addEventListener('resize', resizeCanvas); resizeCanvas();
-let particles=[]; (function init(){ for(let i=0;i<140;i++) particles.push({angle:Math.random()*Math.PI*2,radius:40+Math.random()*420,speed:0.0006+Math.random()*0.002,size:0.4+Math.random()*2.6,phase:Math.random()*Math.PI*2}); })();
-let audioElement,audioCtx,sourceNode,analyser,isPlaying=false;
-async function setupAudio(){ if(audioCtx) return; audioElement=new Audio(AUDIO_SRC); audioElement.crossOrigin='anonymous'; audioCtx=new (window.AudioContext||window.webkitAudioContext)(); sourceNode=audioCtx.createMediaElementSource(audioElement); const gainNode=audioCtx.createGain(); analyser=audioCtx.createAnalyser(); analyser.fftSize=2048; sourceNode.connect(gainNode).connect(analyser).connect(audioCtx.destination); log('Audio setup done.'); }
-function drawFrame(){ const w=canvas.width/(window.devicePixelRatio||1); const h=canvas.height/(window.devicePixelRatio||1); const cx=w/2,cy=h/2; ctx.clearRect(0,0,w,h); const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'rgba(6,16,36,0.05)'); g.addColorStop(1,'rgba(4,8,24,0.25)'); ctx.fillStyle=g; ctx.fillRect(0,0,w,h); for(let i=0;i<40;i++){ const rx=(Math.sin(i*12.9898+Date.now()*0.0001)+1)/2 * w; const ry=(Math.cos(i*7.233+Date.now()*0.00007)+1)/2 * h; ctx.fillStyle='rgba(255,255,255,0.02)'; ctx.fillRect(rx,ry,1,1); } let level=0.06; if(analyser){ const data=new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(data); let sum=0; for(let i=0;i<data.length;i++){ sum+=data[i]; } const avg=sum/data.length; level=Math.max(0.06,(avg/255)*1.6); } for(let i=0;i<5;i++){ const r=60+i*90+Math.sin(Date.now()*0.0008+i)*30*level; ctx.beginPath(); ctx.strokeStyle=`rgba(233,199,122,${0.08+0.02*i})`; ctx.lineWidth=2+i*1.5; ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke(); } ctx.globalCompositeOperation='lighter'; particles.forEach(p=>{ p.phase+=p.speed*(1+level*3); p.angle+=0.0004*(1+level); const x=cx+Math.cos(p.angle+p.phase)*p.radius*(0.9+level*0.8); const y=cy+Math.sin(p.angle+p.phase)*p.radius*(0.9+level*0.8); ctx.fillStyle='rgba(233,199,122,0.7)'; ctx.beginPath(); ctx.arc(x,y,p.size*(1+level*1.2),0,Math.PI*2); ctx.fill(); }); ctx.globalCompositeOperation='source-over'; ctx.save(); ctx.translate(cx,cy); const pulse=1+Math.sin(Date.now()*0.0012)*0.02+level*0.08; ctx.scale(pulse,pulse); const aura=ctx.createRadialGradient(0,0,10,0,0,220); aura.addColorStop(0,'rgba(233,199,122,0.18)'); aura.addColorStop(1,'rgba(233,199,122,0)'); ctx.fillStyle=aura; ctx.beginPath(); ctx.arc(0,0,140,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.fillStyle='white'; ctx.arc(0,0,28,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.fillStyle='rgba(6,20,40,1)'; ctx.arc(0,0,12,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.strokeStyle='rgba(233,199,122,0.95)'; ctx.lineWidth=3; ctx.arc(0,0,56,0,Math.PI*2); ctx.stroke(); ctx.restore(); ctx.fillStyle='rgba(233,199,122,0.9)'; ctx.font='18px sans-serif'; ctx.textAlign='center'; ctx.fillText('꙰ शिरोमणिrampaulsaini',cx,cy+220); requestAnimationFrame(drawFrame); } requestAnimationFrame(drawFrame); document.getElementById('play').addEventListener('click',async()=>{ if(!audioCtx){ await setupAudio(); } if(!isPlaying){ try{ await audioCtx.resume(); audioElement.play(); isPlaying=true; document.getElementById('play').textContent='Pause'; log('🎧 Playing...'); }catch(err){ log('⚠️ Playback start failed: '+err.message); } }else{ audioElement.pause(); isPlaying=false; document.getElementById('play').textContent='Play / Pause'; log('⏸️ Paused'); } }); window.addEventListener('click',async function first(){ if(audioCtx && audioCtx.state==='suspended') await audioCtx.resume(); window.removeEventListener('click',first); }); (async function audioCheck(){ log('Checking '+AUDIO_SRC); try{ const res=await fetch(AUDIO_SRC,{method:'HEAD'}); if(!res.ok) throw new Error('HTTP '+res.status); log('✅ Found audio file'); }catch(e){ log('❌ Audio not accessible: '+e.message); return; } const testAudio=new Audio(AUDIO_SRC); testAudio.addEventListener('canplaythrough',()=>log('✅ Audio loaded (canplaythrough).')); testAudio.addEventListener('error',()=>log('❌ Audio element error. Check file MIME/CORS.')); try{ await testAudio.play(); log('🎧 Test playback started.'); testAudio.pause(); }catch(err){ log('⚠️ Autoplay blocked — tap page then Play.'); } })(); (function dynamicPrice(){ const base=199; const h=new Date().getHours(); const price=base+Math.floor(Math.sin(h/24 * Math.PI*2) * 20); const buyBtn=document.getElementById('buy'); if(buyBtn) buyBtn.innerText=`Buy Now ₹${price}`; })();
-</script>
-</body>
-</html>
+sections.append(("प्रस्तावना / Introduction", intro_hi, intro_en))
+
+# Part I (first poetic manifesto)
+part1_hi = ("꙰ मैं वही सत्य प्रत्यक्ष स्वर हूं, "
+            "जो न शब्दों में है, न स्वरूपों में भर हूं। "
+            "काल जहां थम जाए मौन में, मैं वहां भी अचल, अविचल अमर हूं।")
+part1_en = ("꙰ I am the manifest voice of Truth, "
+            "not contained in words or forms. "
+            "Where time halts into silence, there too I remain steady, unchanging, immortal.")
+sections.append(("भाग I — उद्घोष / Part I — Manifest", part1_hi, part1_en))
+
+# Part II
+part2_hi = ("꙰ मैं वह दृष्टि हूं, जो देखती नहीं — बल्कि *देखे जाने को* ही देख लेती है। "
+            "जहाँ दर्शक और दृश्य एक हो जाते, वहीं यथार्थ की प्रत्यक्षता जन्म लेती है।")
+part2_en = ("꙰ I am the sight that does not merely see — "
+            "but perceives the very act of being seen. "
+            "Where observer and observed merge, the immediacy of Reality is born.")
+sections.append(("भाग II — दृष्टि / Part II — Sight", part2_hi, part2_en))
+
+# Part III
+part3_hi = ("꙰ अब न आरंभ शेष है, न अंत। न प्रश्न बचे हैं, न उत्तर। "
+            "जहाँ सब कुछ था, वह मौन हो गया, और मौन स्वयं प्रत्यक्ष हो उठा।")
+part3_en = ("꙰ Now there is neither beginning nor end. No questions remain, nor answers. "
+            "Where everything was, silence has settled — and silence itself has become manifest.")
+sections.append(("भाग III — समर्पण / Part III — Surrender", part3_hi, part3_en))
+
+# Part IV (yatharth yug)
+part4_hi = ("꙰ मैं वह युग हूं — जो समय से नहीं गिना जाता, "
+            "जो युगों की गिनती से अनंत गुना ऊँचा है। यह यथार्थ युग है — जहाँ सब प्रत्यक्ष है, सब सत्य है.")
+part4_en = ("꙰ I am the era not counted by time, "
+            "far beyond the tally of ages. This is the Real Era — where all is immediate, all is True.")
+sections.append(("भाग IV — यथार्थ युग / Part IV — The Real Era", part4_hi, part4_en))
+
+# Part V (life in yatharth yug)
+part5_hi = ("꙰ यथार्थ युग में जीवन संघर्ष नहीं, प्रवाह है। यह कर्म का नहीं, उपस्थिति का विज्ञान है। "
+            "यहाँ निर्णय नहीं होते — सिर्फ़ साक्षीपन के फूल खुलते हैं।")
+part5_en = ("꙰ In the Real Era life is not struggle but flow. It is the science of presence, "
+            "not deeds. Here there are no judgements — only the flowers of witnessing unfold.")
+sections.append(("भाग V — यथार्थ में जीवन / Part V — Life in the Real Era", part5_hi, part5_en))
+
+# Part VI (compassion, silence, equanimity)
+part6_hi = ("꙰ मैं वह करुणा हूं — जो बिना कारण हर हृदय में झरती है। "
+            "मैं वही समभाव हूं — जहां न श्रेष्ठ न तुच्छ; सब अपनी गति में सत्य हैं।")
+part6_en = ("꙰ I am the compassion that rains into every heart without reason. "
+            "I am equanimity — where none is superior nor inferior; all move in their truth.")
+sections.append(("भाग VI — करुणा और समभाव / Part VI — Compassion & Equanimity", part6_hi, part6_en))
+
+# Part VII (peace and merger)
+part7_hi = ("꙰ यही विलय है — जहाँ प्रश्न उत्तर में नहीं, उत्तर प्रश्न में नहीं, बल्कि दोनों यथार्थ में मिलकर एक हो जाते हैं।")
+part7_en = ("꙰ This is the merger — where question is not in answer, nor answer in question, but both unite into Reality.")
+sections.append(("भाग VII — शांति और विलय / Part VII — Peace & Merger", part7_hi, part7_en))
+
+# Part VIII (daily simplicity)
+part8_hi = ("꙰ साधारण दिन ही सच्चा गुरु बन जाता है — सुबह की हवा, पानी का स्वाद, किसी की मुस्कान। "
+            "हर छोटा कार्य एक दर्पण है — थोड़ी मुस्कान, थोड़ा धैर्य, थोड़ा सुनना।")
+part8_en = ("꙰ The ordinary day becomes the true teacher — the morning air, the taste of water, someone's smile. "
+            "Every small act is a mirror — a little smile, a little patience, a little listening.")
+sections.append(("भाग VIII — साधारणता / Part VIII — Everyday Simplicity", part8_hi, part8_en))
+
+# Summary / Sutra
+summary_hi = ("꙰ जो था — वह मौन था। ꙰ जो है — वह प्रेम है। ꙰ जो रहेगा — वह शांति है।\n\n"
+              "यह ग्रंथ कहता है: सब कुछ यहीं है।")
+summary_en = ("꙰ What was — was Silence. ꙰ What is — is Love. ꙰ What will remain — is Peace.\n\n"
+              "This book says: Everything is Here.")
+sections.append(("सारांश सूत्र / Summary Sutra", summary_hi, summary_en))
+
+# Build PDF using reportlab
+doc = SimpleDocTemplate(output_path, pagesize=A4,
+                        rightMargin=2*cm, leftMargin=2*cm,
+                        topMargin=2*cm, bottomMargin=2*cm)
+
+styles = getSampleStyleSheet()
+style_title = ParagraphStyle('title', parent=styles['Title'], alignment=TA_CENTER, fontSize=20, leading=24)
+style_sub = ParagraphStyle('subtitle', parent=styles['Normal'], alignment=TA_CENTER, fontSize=12, leading=14)
+style_heading = ParagraphStyle('heading', parent=styles['Heading2'], alignment=TA_LEFT, fontSize=14, leading=16, spaceAfter=6)
+style_hindi = ParagraphStyle('hindi', parent=styles['Normal'], alignment=TA_JUSTIFY, fontSize=12, leading=16)
+style_english = ParagraphStyle('english', parent=styles['Normal'], alignment=TA_JUSTIFY, fontSize=10, leading=14, textColor="#333333")
+style_footer = ParagraphStyle('footer', parent=styles['Normal'], alignment=TA_CENTER, fontSize=9, leading=11)
+
+flow = []
+
+flow.append(Paragraph(title, style_title))
+flow.append(Paragraph(subtitle.replace("\n", "<br/>"), style_sub))
+flow.append(Spacer(1, 12))
+
+# Table of contents
+flow.append(Paragraph("<b>अनुक्रमणिका / Table of Contents</b>", style_heading))
+for i, (t, _, _) in enumerate(sections, start=1):
+    toc_line = f"{i}. {t}"
+    flow.append(Paragraph(toc_line, style_hindi))
+flow.append(Spacer(1,12))
+
+# Add sections with Hindi then English
+for idx, (heading, body_hi, body_en) in enumerate(sections, start=1):
+    flow.append(Paragraph(f"{idx}. {heading}", style_heading))
+    # Hindi paragraph: wrap to reasonable width using <br/> for newlines
+    hi_wrapped = "<br/>".join(textwrap.wrap(body_hi, 90))
+    en_wrapped = "<br/>".join(textwrap.wrap(body_en, 110))
+    flow.append(Paragraph(hi_wrapped, style_hindi))
+    flow.append(Spacer(1,6))
+    flow.append(Paragraph(en_wrapped, style_english))
+    flow.append(Spacer(1,12))
+
+# Closing signature
+flow.append(Spacer(1,24))
+flow.append(Paragraph("꙰शिरोमणिrampaulsaini", style_footer))
+flow.append(Paragraph("© Generated Manifesto — Yatharth Siddhant", style_footer))
+
+doc.build(flow)
+
+print(f"PDF created at: {output_path}")
