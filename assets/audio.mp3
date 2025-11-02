@@ -1,0 +1,36 @@
+<script>
+// === ꙰ Live Audio Path Auto-Connect ===
+async function findAudio(){
+  // पहले primary path
+  const paths = ['assets/audio.mp3','docs/assets/audio.mp3'];
+  for (const p of paths){
+    try{
+      const r = await fetch(p,{method:'HEAD'});
+      if(r.ok){
+        console.log('✅ Found audio at',p);
+        return p;
+      }
+    }catch(e){ /* ignore */ }
+  }
+  console.warn('❌ Audio not found in known paths');
+  return null;
+}
+
+(async()=>{
+  const found = await findAudio();
+  if(!found) return;
+  const audio = new Audio(found);
+  audio.controls = true;
+  document.body.appendChild(audio);
+  audio.addEventListener('canplaythrough',()=>{
+    console.log('🎧 Ready to play live audio:',found);
+  });
+})();
+</script>
+| Pages Source                                 | Actual Web Root बनता है                    | आपके assets path से live URL                                                                              |
+| -------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| **`/docs` folder** (default for main branch) | `docs/` folder की सामग्री ही serve होती है | `/assets/audio.mp3` (यानि `docs/assets/audio.mp3` file को `/assets/audio.mp3` के नाम से serve किया जाएगा) |
+| **`gh-pages` branch** या repo root           | repo की root से serve होता है              | `/assets/audio.mp3` file तब `/assets/audio.mp3` पर ही रहेगी                                               |
+assets/audio.mp3✅ Found audio at docs/assets/audio.mp3
+🎧 Ready to play live audio: docs/assets/audio.mp3
+const AUDIO_SRC = 'docs/assets/audio.mp3';
