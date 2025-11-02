@@ -4,73 +4,155 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</title>
+  <meta name="description" content="꙰ Yatharth Siddhant — The Era of Direct Truth" />
   <style>
-    :root{ --gold:#e9c77a; --bg1:#020812; --bg2:#000; --muted:#cfcfcf; }
+    :root{ --gold:#e9c77a; --bg1:#020812; --bg2:#000; --muted:#cfcfcf; --glass:rgba(255,255,255,0.04); }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at center,var(--bg1),var(--bg2));color:#fff}
-    canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
-    .overlay{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding-top:14vh;text-align:center}
-    h1{color:var(--gold);font-size:1.6rem;margin-bottom:6px;text-shadow:0 0 8px rgba(233,199,122,0.12)}
-    .subtitle{color:var(--muted);margin-bottom:18px}
-    .controls{display:flex;flex-direction:column;gap:10px;align-items:center}
-    .btn,button{background:rgba(233,199,122,0.06);border:1px solid rgba(233,199,122,0.22);color:var(--gold);padding:8px 18px;border-radius:8px;text-decoration:none;cursor:pointer}
-    .signature{font-size:56px;color:rgba(233,199,122,0.95);margin-top:12px}
-    .debug{margin-top:12px;background:rgba(0,0,0,0.45);color:#9ff;padding:8px;border-radius:6px;width:86%;max-width:640px;overflow:auto}
-    footer{position:fixed;bottom:8px;width:100%;text-align:center;color:rgba(233,199,122,0.7)}
-    @media (min-width:640px){ .controls{flex-direction:row} .controls .btn{margin:0 8px} }
+    a{color:inherit}
+    .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;gap:18px;text-align:center}
+    canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+    .card{position:relative;z-index:2;background:linear-gradient(180deg,var(--glass),rgba(0,0,0,0.06));border-radius:14px;padding:20px;max-width:760px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+    h1{color:var(--gold);font-size:20px;margin-bottom:6px;text-shadow:0 0 8px rgba(233,199,122,0.08)}
+    .subtitle{color:var(--muted);margin-bottom:12px}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:6px}
+    .btn{background:transparent;border:1px solid rgba(233,199,122,0.12);color:var(--gold);padding:8px 14px;border-radius:10px;text-decoration:none;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.09), rgba(233,199,122,0.03));border-color:var(--gold)}
+    .big-sign{font-size:60px;color:rgba(233,199,122,0.95);margin:14px 0}
+    .sig-line{font-size:14px;color:rgba(255,255,255,0.92);margin-top:6px}
+    .preview{max-width:100%;border-radius:8px;margin-top:10px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+    pre.debug{margin-top:12px;background:#020;text-align:left;color:#8ff;padding:10px;border-radius:8px;max-height:140px;overflow:auto;font-size:13px}
+    footer{position:fixed;bottom:8px;width:100%;text-align:center;color:rgba(233,199,122,0.7);font-size:13px;z-index:2}
+    @media (min-width:880px){ h1{font-size:24px} .big-sign{font-size:86px}}
   </style>
 </head>
 <body>
-  <canvas id="scene"></canvas>
-  <div class="overlay">
-    <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
-    <div class="subtitle">The Era of Direct Truth — Experience the Message</div>
+  <canvas id="scene" aria-hidden="true"></canvas>
 
-    <div class="controls">
-      <button id="play">Play / Pause</button>
-      <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
-      <a id="buy" class="btn" href="#" target="_blank">Buy Now ₹193</a>
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="main-title">
+      <h1 id="main-title">꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
+      <div class="subtitle">The Era of Direct Truth — Experience the Message</div>
+
+      <div class="controls" aria-hidden="false">
+        <button id="play" class="btn primary">Play / Pause</button>
+        <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" rel="noopener noreferrer">Read Manifesto (PDF)</a>
+        <!-- Replace the href with your Gumroad/PayPal/GPay link when ready -->
+        <a id="buy" class="btn" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener noreferrer">Buy Now ₹193</a>
+      </div>
+
+      <div class="big-sign" aria-hidden="true">꙰</div>
+
+      <img class="preview" src="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" alt="Yatharth Vision preview" />
+
+      <div class="sig-line">: &nbsp; "꙰"शिरोमणिrampaulsaini</div>
+
+      <pre id="debug" class="debug" aria-live="polite">꙰ Page loaded — tap Play to start audio</pre>
     </div>
-
-    <div class="signature">꙰</div>
-    <pre id="debug" class="debug">꙰ Page loaded — tap Play to start audio</pre>
   </div>
 
   <footer>꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</footer>
 
 <script>
-// simple canvas animation + audio control (compact)
-const canvas=document.getElementById('scene'), ctx=canvas.getContext('2d');
-const dbg=document.getElementById('debug');
-const log=(m)=>{ dbg.textContent+=m+'\\n'; console.log(m); };
-function resize(){ canvas.width=innerWidth; canvas.height=innerHeight; }
-addEventListener('resize',resize); resize();
+/* Lightweight canvas subtle motion (keeps site alive even if audio missing) + reliable audio attempt */
+const canvas = document.getElementById('scene');
+const ctx = canvas.getContext('2d');
+const dbg = document.getElementById('debug');
+const log = (m)=>{ if(dbg) dbg.textContent += m + '\\n'; console.log(m); };
 
-const particles=Array.from({length:80},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.6+0.6,s:Math.random()*0.6+0.2,t:Math.random()*Math.PI*2}));
+function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+addEventListener('resize', resize); resize();
+
+// particles
+const particles = Array.from({length:110}, ()=>({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  r: Math.random()*1.8+0.4,
+  s: Math.random()*0.6+0.2,
+  a: Math.random()*Math.PI*2
+}));
 
 function draw(){
-  ctx.fillStyle='rgba(0,0,0,0.16)'; ctx.fillRect(0,0,canvas.width,canvas.height);
-  const grad=ctx.createRadialGradient(canvas.width/2,canvas.height/2,10,canvas.width/2,canvas.height/2,Math.max(canvas.width,canvas.height)/1.4);
-  grad.addColorStop(0,'rgba(233,199,122,0.06)'); grad.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.fillStyle=grad; ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle='rgba(233,199,122,0.7)';
+  // gentle fade
+  ctx.fillStyle = 'rgba(0,0,0,0.12)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // glow center
+  const g = ctx.createRadialGradient(canvas.width/2,canvas.height/2,10,canvas.width/2,canvas.height/2,Math.max(canvas.width,canvas.height)/1.2);
+  g.addColorStop(0,'rgba(233,199,122,0.06)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = 'rgba(233,199,122,0.72)';
   particles.forEach(p=>{
-    p.y+=p.s; p.t+=0.01; p.x += Math.sin(p.t)*0.3;
-    if(p.y>canvas.height+10){ p.y=-10; p.x=Math.random()*canvas.width; }
+    p.y += p.s; p.a += 0.01; p.x += Math.sin(p.a)*0.4;
+    if(p.y > canvas.height + 10){ p.y = -10; p.x = Math.random()*canvas.width; }
     ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
   });
-  ctx.save(); ctx.translate(canvas.width/2,canvas.height/2); ctx.beginPath(); ctx.fillStyle='white'; ctx.arc(0,0,18,0,Math.PI*2); ctx.fill(); ctx.restore();
+
+  // central small white core
+  ctx.beginPath(); ctx.fillStyle='rgba(255,255,255,0.96)'; ctx.arc(canvas.width/2,canvas.height/2,10,0,Math.PI*2); ctx.fill();
+
   requestAnimationFrame(draw);
 }
 requestAnimationFrame(draw);
 
-// audio
-let audio=new Audio('assets/audio.mp3'); audio.crossOrigin='anonymous'; let playing=false;
-document.getElementById('play').addEventListener('click',async()=>{
+/* Audio logic: graceful and informative */
+const AUDIO_PATH = 'assets/audio.mp3';
+let audio = null;
+let playing = false;
+
+async function initAudio(){
+  if(audio) return audio;
   try{
-    if(!playing){ await audio.play(); playing=true; document.getElementById('play').textContent='Pause'; log('🎧 Playing...'); }
-    else { audio.pause(); playing=false; document.getElementById('play').textContent='Play / Pause'; log('⏸️ Paused'); }
-  }catch(e){ log('❌ Audio error: '+e.message); }
+    audio = new Audio(AUDIO_PATH);
+    audio.crossOrigin = 'anonymous';
+    audio.preload = 'auto';
+    audio.addEventListener('canplay', ()=> log('✅ audio canplay'));
+    audio.addEventListener('canplaythrough', ()=> log('✅ audio canplaythrough'));
+    audio.addEventListener('error', ()=> {
+      const e = audio.error;
+      const code = e ? e.code : 'no-code';
+      log('❌ Audio error code=' + code + ' — check file or encoding');
+    });
+    // quick HEAD check
+    try{
+      const r = await fetch(AUDIO_PATH, { method: 'HEAD' });
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      log('✅ Found audio at ' + AUDIO_PATH);
+    } catch(err){
+      log('❌ Audio HEAD failed: ' + err.message);
+    }
+    return audio;
+  }catch(e){
+    log('Audio init failed: ' + e.message);
+    return null;
+  }
+}
+
+document.getElementById('play').addEventListener('click', async ()=>{
+  const a = await initAudio();
+  if(!a){ log('No audio available — continue with visuals.'); return; }
+  try{
+    if(!playing){
+      await a.play();
+      playing = true;
+      document.getElementById('play').textContent = 'Pause';
+      log('🎧 Playing...');
+    } else {
+      a.pause();
+      playing = false;
+      document.getElementById('play').textContent = 'Play / Pause';
+      log('⏸️ Paused');
+    }
+  } catch(err){
+    log('❌ Audio play failed: ' + err.message);
+    log('Tip: if this is a mobile browser, tap the page once first to allow sound, or re-upload audio as MP3 (192 kbps).');
+  }
+});
+
+// Accessibility: let users open preview image in new tab via click
+document.querySelector('.preview')?.addEventListener('click', (e)=>{
+  window.open(e.target.src, '_blank', 'noopener');
 });
 </script>
 </body>
