@@ -1,37 +1,50 @@
-const AUDIO_SRC = 'docs/assets/audio.mp3';
-docs/assets/audio.mp3<script>
-// === ꙰ AUDIO CHECK SCRIPT ===
-const audioPath = "assets/audio.mp3"; // <-- अपने MP3 का सही path रखें
-const logBox = document.createElement("pre");
-logBox.style.cssText =
-  "color:#0f0;background:#000;padding:10px;font-size:13px;overflow:auto;max-height:120px;";
-document.body.appendChild(logBox);
-function log(msg){ logBox.textContent += msg + "\n"; console.log(msg); }
-
-async function testAudio(){
-  log("🔎 Checking audio path: " + audioPath);
+<script>
+(async function(){
+  const path = 'assets/audio.mp3'; // or 'docs/assets/audio.mp3' if needed
+  console.log("Checking:", path);
   try {
-    const res = await fetch(audioPath, { method: "HEAD" });
-    if (!res.ok) throw new Error("Not found (HTTP " + res.status + ")");
-    log("✅ Audio file found on server.");
-  } catch (e) {
-    log("❌ Audio fetch failed: " + e.message);
-    return;
+    const head = await fetch(path, { method: 'HEAD' });
+    console.log('HEAD status:', head.status, head.ok);
+    for (const [k,v] of head.headers.entries()) {
+      console.log('H:', k, v);
+    }
+  } catch(e){
+    console.error('HEAD fetch failed:', e);
   }
 
-  const audio = new Audio(audioPath);
-  audio.addEventListener("canplaythrough", () => {
-    log("✅ Audio loaded successfully, ready to play.");
-    audio.play()
-      .then(() => log("🎧 Playback started successfully!"))
-      .catch(err => log("⚠️ Playback blocked (click anywhere to allow): " + err.message));
+  const audio = new Audio(path);
+  audio.controls = true;
+  document.body.appendChild(audio);
+
+  audio.addEventListener('error', function(ev){
+    const err = audio.error;
+    console.error('Audio element error event:', ev);
+    console.error('MediaError code:', err ? err.code : 'none', ' message:', err ? err.message : 'none');
   });
-  audio.addEventListener("error", e => log("❌ Audio load error: " + e.message));
-}
-testAudio();
+
+  // try to decode via WebAudio to get decode errors
+  try {
+    const r = await fetch(path);
+    const ab = await r.arrayBuffer();
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    ctx.decodeAudioData(ab, function(buf){
+      console.log('✅ decodeAudioData success. duration:', buf.duration);
+    }, function(err){
+      console.error('❌ decodeAudioData failed:', err);
+    });
+  } catch(e){
+    console.error('Fetch/Decode failed:', e);
+  }
+})();
 </script>
-🔎 Checking audio path: assets/audio.mp3
-✅ Audio file found on server.
-✅ Audio loaded successfully, ready to play.
-🎧 Playback started successfully!
-https://rampaulsaini.github.io/my-omniverse-store/assets/audio.mp3
+ffmpeg -i "input-file.ext" -codec:a libmp3lame -b:a 192k audio.mp3
+<audio id="theAudio" controls preload="auto">
+  <source src="assets/audio.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+  const a = document.getElementById('theAudio');
+  a.addEventListener('error', ()=> {
+    console.error('Audio element error:', a.error);
+  });
+</script>
