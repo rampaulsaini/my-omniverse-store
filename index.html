@@ -590,3 +590,32 @@ requestAnimationFrame(render);
 </html>
 const AUDIO_SRC = 'assets/audio.mp3';
 
+<script>
+// === ꙰ Live Audio Path Auto-Connect ===
+async function findAudio(){
+  // पहले primary path
+  const paths = ['assets/audio.mp3','docs/assets/audio.mp3'];
+  for (const p of paths){
+    try{
+      const r = await fetch(p,{method:'HEAD'});
+      if(r.ok){
+        console.log('✅ Found audio at',p);
+        return p;
+      }
+    }catch(e){ /* ignore */ }
+  }
+  console.warn('❌ Audio not found in known paths');
+  return null;
+}
+
+(async()=>{
+  const found = await findAudio();
+  if(!found) return;
+  const audio = new Audio(found);
+  audio.controls = true;
+  document.body.appendChild(audio);
+  audio.addEventListener('canplaythrough',()=>{
+    console.log('🎧 Ready to play live audio:',found);
+  });
+})();
+</script>
