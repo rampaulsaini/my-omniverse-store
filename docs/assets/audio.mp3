@@ -1,0 +1,36 @@
+docs/assets/audio.mp3<script>
+// === ꙰ AUDIO CHECK SCRIPT ===
+const audioPath = "assets/audio.mp3"; // <-- अपने MP3 का सही path रखें
+const logBox = document.createElement("pre");
+logBox.style.cssText =
+  "color:#0f0;background:#000;padding:10px;font-size:13px;overflow:auto;max-height:120px;";
+document.body.appendChild(logBox);
+function log(msg){ logBox.textContent += msg + "\n"; console.log(msg); }
+
+async function testAudio(){
+  log("🔎 Checking audio path: " + audioPath);
+  try {
+    const res = await fetch(audioPath, { method: "HEAD" });
+    if (!res.ok) throw new Error("Not found (HTTP " + res.status + ")");
+    log("✅ Audio file found on server.");
+  } catch (e) {
+    log("❌ Audio fetch failed: " + e.message);
+    return;
+  }
+
+  const audio = new Audio(audioPath);
+  audio.addEventListener("canplaythrough", () => {
+    log("✅ Audio loaded successfully, ready to play.");
+    audio.play()
+      .then(() => log("🎧 Playback started successfully!"))
+      .catch(err => log("⚠️ Playback blocked (click anywhere to allow): " + err.message));
+  });
+  audio.addEventListener("error", e => log("❌ Audio load error: " + e.message));
+}
+testAudio();
+</script>
+🔎 Checking audio path: assets/audio.mp3
+✅ Audio file found on server.
+✅ Audio loaded successfully, ready to play.
+🎧 Playback started successfully!
+https://rampaulsaini.github.io/my-omniverse-store/assets/audio.mp3
