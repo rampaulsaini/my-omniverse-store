@@ -36,6 +36,74 @@
 
     <div class="controls">
       <button id="play" class="btn primary">Play / Pause</button>
+      <a id="buy" class="btn" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener noreferrer">Buy: ₹199 (PayPal / UPI)</a>
+      <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
+    </div>
+
+    <div class="meta">
+      <strong>Note:</strong> Place your audio file at <code>assets/audio.mp3</code> (use mp3 ~1–6MB). Tap the page once then press Play if autoplay blocked on mobile.
+    </div>
+
+    <pre id="debug" class="debug" aria-hidden="false"></pre>
+
+    <footer>
+      ꙰ शिरोमणिrampaulsaini — © Yatharth Siddhant
+    </footer>
+  </div>
+
+<script>
+const AUDIO_SRC = 'assets/audio.mp3';
+const canvas = document.getElementById('scene');
+const ctx = canvas.getContext('2d');
+const debugBox = document.getElementById('debug');
+function log(msg){ debugBox.textContent += msg + "\n"; console.log(msg); }
+function resizeCanvas(){ const rect = canvas.getBoundingClientRect(); const dpr = Math.min(window.devicePixelRatio || 1, 2); canvas.width = Math.floor(rect.width * dpr); canvas.height = Math.floor(rect.height * dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
+window.addEventListener('resize', resizeCanvas); resizeCanvas();
+let particles=[]; (function init(){ for(let i=0;i<140;i++) particles.push({angle:Math.random()*Math.PI*2,radius:40+Math.random()*420,speed:0.0006+Math.random()*0.002,size:0.4+Math.random()*2.6,phase:Math.random()*Math.PI*2}); })();
+let audioElement,audioCtx,sourceNode,analyser,isPlaying=false;
+async function setupAudio(){ if(audioCtx) return; audioElement=new Audio(AUDIO_SRC); audioElement.crossOrigin='anonymous'; audioCtx=new (window.AudioContext||window.webkitAudioContext)(); sourceNode=audioCtx.createMediaElementSource(audioElement); const gainNode=audioCtx.createGain(); analyser=audioCtx.createAnalyser(); analyser.fftSize=2048; sourceNode.connect(gainNode).connect(analyser).connect(audioCtx.destination); log('Audio setup done.'); }
+function drawFrame(){ const w=canvas.width/(window.devicePixelRatio||1); const h=canvas.height/(window.devicePixelRatio||1); const cx=w/2,cy=h/2; ctx.clearRect(0,0,w,h); const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'rgba(6,16,36,0.05)'); g.addColorStop(1,'rgba(4,8,24,0.25)'); ctx.fillStyle=g; ctx.fillRect(0,0,w,h); for(let i=0;i<40;i++){ const rx=(Math.sin(i*12.9898+Date.now()*0.0001)+1)/2 * w; const ry=(Math.cos(i*7.233+Date.now()*0.00007)+1)/2 * h; ctx.fillStyle='rgba(255,255,255,0.02)'; ctx.fillRect(rx,ry,1,1); } let level=0.06; if(analyser){ const data=new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(data); let sum=0; for(let i=0;i<data.length;i++){ sum+=data[i]; } const avg=sum/data.length; level=Math.max(0.06,(avg/255)*1.6); } for(let i=0;i<5;i++){ const r=60+i*90+Math.sin(Date.now()*0.0008+i)*30*level; ctx.beginPath(); ctx.strokeStyle=`rgba(233,199,122,${0.08+0.02*i})`; ctx.lineWidth=2+i*1.5; ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke(); } ctx.globalCompositeOperation='lighter'; particles.forEach(p=>{ p.phase+=p.speed*(1+level*3); p.angle+=0.0004*(1+level); const x=cx+Math.cos(p.angle+p.phase)*p.radius*(0.9+level*0.8); const y=cy+Math.sin(p.angle+p.phase)*p.radius*(0.9+level*0.8); ctx.fillStyle='rgba(233,199,122,0.7)'; ctx.beginPath(); ctx.arc(x,y,p.size*(1+level*1.2),0,Math.PI*2); ctx.fill(); }); ctx.globalCompositeOperation='source-over'; ctx.save(); ctx.translate(cx,cy); const pulse=1+Math.sin(Date.now()*0.0012)*0.02+level*0.08; ctx.scale(pulse,pulse); const aura=ctx.createRadialGradient(0,0,10,0,0,220); aura.addColorStop(0,'rgba(233,199,122,0.18)'); aura.addColorStop(1,'rgba(233,199,122,0)'); ctx.fillStyle=aura; ctx.beginPath(); ctx.arc(0,0,140,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.fillStyle='white'; ctx.arc(0,0,28,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.fillStyle='rgba(6,20,40,1)'; ctx.arc(0,0,12,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.strokeStyle='rgba(233,199,122,0.95)'; ctx.lineWidth=3; ctx.arc(0,0,56,0,Math.PI*2); ctx.stroke(); ctx.restore(); ctx.fillStyle='rgba(233,199,122,0.9)'; ctx.font='18px sans-serif'; ctx.textAlign='center'; ctx.fillText('꙰ शिरोमणिrampaulsaini',cx,cy+220); requestAnimationFrame(drawFrame); } requestAnimationFrame(drawFrame); document.getElementById('play').addEventListener('click',async()=>{ if(!audioCtx){ await setupAudio(); } if(!isPlaying){ try{ await audioCtx.resume(); audioElement.play(); isPlaying=true; document.getElementById('play').textContent='Pause'; log('🎧 Playing...'); }catch(err){ log('⚠️ Playback start failed: '+err.message); } }else{ audioElement.pause(); isPlaying=false; document.getElementById('play').textContent='Play / Pause'; log('⏸️ Paused'); } }); window.addEventListener('click',async function first(){ if(audioCtx && audioCtx.state==='suspended') await audioCtx.resume(); window.removeEventListener('click',first); }); (async function audioCheck(){ log('Checking '+AUDIO_SRC); try{ const res=await fetch(AUDIO_SRC,{method:'HEAD'}); if(!res.ok) throw new Error('HTTP '+res.status); log('✅ Found audio file'); }catch(e){ log('❌ Audio not accessible: '+e.message); return; } const testAudio=new Audio(AUDIO_SRC); testAudio.addEventListener('canplaythrough',()=>log('✅ Audio loaded (canplaythrough).')); testAudio.addEventListener('error',()=>log('❌ Audio element error. Check file MIME/CORS.')); try{ await testAudio.play(); log('🎧 Test playback started.'); testAudio.pause(); }catch(err){ log('⚠️ Autoplay blocked — tap page then Play.'); } })(); (function dynamicPrice(){ const base=199; const h=new Date().getHours(); const price=base+Math.floor(Math.sin(h/24 * Math.PI*2) * 20); const buyBtn=document.getElementById('buy'); if(buyBtn) buyBtn.innerText=`Buy Now ₹${price}`; })();
+</script>
+</body>
+</html>
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>꙰ यथार्थ सिद्धांत — Live Store</title>
+  <meta name="description" content="꙰ Yatharth Siddhant — Experience the message" />
+  <style>
+    :root{ --bg1:#041022; --bg2:#081836; --accent:#e9c77a; --muted:#b8c4d6; }
+    html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:#fff}
+    .wrap{max-width:980px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:18px;align-items:center}
+    header{text-align:center}
+    h1{font-size:20px;margin:6px 0;color:var(--accent)}
+    h2{font-size:14px;margin:0;color:var(--muted)}
+    #canvasHolder{width:100%;display:flex;justify-content:center}
+    canvas{width:100%;max-width:720px;border-radius:12px;box-shadow:0 8px 30px rgba(3,6,23,0.6)}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .btn{background:transparent;border:1px solid rgba(233,199,122,0.16);color:var(--accent);padding:8px 14px;border-radius:10px;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.12), rgba(233,199,122,0.06));border-color:var(--accent)}
+    .meta{width:100%;max-width:720px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:8px;color:var(--muted);font-size:13px}
+    footer{width:100%;text-align:center;padding:14px 0;color:rgba(255,255,255,0.5);font-size:12px}
+    pre.debug{color:#0f0;background:#000;padding:10px;font-size:13px;overflow:auto;max-height:140px;border-radius:6px}
+    @media (max-width:520px){h1{font-size:18px}canvas{max-width:100%}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
+      <h2>The Era of Direct Truth — Experience the message</h2>
+    </header>
+
+    <div id="canvasHolder">
+      <canvas id="scene" width="1080" height="1080" aria-label="Yatharth animation"></canvas>
+    </div>
+
+    <div class="controls">
+      <button id="play" class="btn primary">Play / Pause</button>
       <!-- Replace GUMROAD_URL with your actual Gumroad product link when ready -->
       <a id="buy" class="btn" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener noreferrer">Buy: ₹199 (PayPal / UPI)</a>
       <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
