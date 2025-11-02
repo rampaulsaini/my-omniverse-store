@@ -68,3 +68,18 @@ footer {
   color: rgba(233,199,122,0.8);
   font-size: 0.9rem;
 }
+/* css/style.css */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;background:#000;color:#fff}
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
+.overlay{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding-top:14vh;text-align:center}
+h1{color:#e9c77a;font-size:1.6rem;margin-bottom:6px;text-shadow:0 0 8px rgba(233,199,122,0.15)}
+.subtitle{color:#cfcfcf;margin-bottom:18px}
+.controls{display:flex;flex-direction:column;gap:10px;align-items:center}
+.btn,button{background:rgba(233,199,122,0.06);border:1px solid rgba(233,199,122,0.22);color:#e9c77a;padding:8px 18px;border-radius:8px;text-decoration:none;cursor:pointer}
+.btn:hover,button:hover{background:rgba(233,199,122,0.12)}
+.buy{display:inline-block}
+.signature{font-size:56px;color:rgba(233,199,122,0.95);margin-top:12px}
+.debug{margin-top:12px;background:rgba(0,0,0,0.45);color:#9ff;padding:8px;border-radius:6px;width:86%;max-width:640px;overflow:auto}
+footer{position:fixed;bottom:8px;width:100%;text-align:center;color:rgba(233,199,122,0.7)}
+@media (min-width:640px){ .controls{flex-direction:row} .controls .btn{margin:0 8px} }
