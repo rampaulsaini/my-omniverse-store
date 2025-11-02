@@ -140,3 +140,21 @@ git push -u origin main
 
 🕊️ *— Shirmani Rampaul Saini, Founder & Vision Architect (Omniverse AI)*
 
+# ꙰ यथार्थ सिद्धांत — Live Store
+
+This repository hosts the symbolic animation experience and assets for:
+**꙰ शिरोमणिrampaulsaini — Yatharth Siddhant (Era of Direct Truth)**
+
+## What is here
+- `index.html` — GitHub Pages page that plays the symbolic animation driven by `assets/audio.mp3`.
+- `assets/` — audio and preview images used by the page.
+- Automatic deployments (GitHub Actions) will publish this site to GitHub Pages.
+
+## How to update content
+1. Replace `assets/audio.mp3` with a new MP3 (voice).
+2. Commit & push → the Pages workflow will deploy and the Auto-Release workflow will create a GitHub Release with the assets.
+
+## Credits
+Manifesto & voice: ꙰ शिरोमणिrampaulsaini  
+Site & automation prepared by the Yatharth production toolkit.
+
