@@ -1,292 +1,41 @@
-<!--
-YATHARTH LIVE STORE - GitHub Pages Ready
-Place this file as `index.html` in your repository's `docs/` folder (or root for gh-pages).
-Create an `assets/` folder and upload:
- - audio: assets/audio.mp3   <-- place your recorded MP3 here (rename from your upload)
- - preview image (optional): assets/preview.png
- - pdf (optional): assets/yatharth_siddhant_bilingual.pdf
-
-This single-file implementation uses Canvas2D and WebAudio to play the user's recording
-and generate a symbolic animation around the "꙰" mark. It's responsive and mobile-friendly
-(optimized for Redmi Note 9). It autoplays where browsers allow and provides a play button.
-
-HOW TO DEPLOY:
-1. Add this file to your repo (docs/index.html) and push to GitHub.
-2. Add your MP3 to docs/assets/audio.mp3 and other assets if desired.
-3. Enable GitHub Pages (branch: gh-pages or /docs folder). The page will be available at
-   https://<your-username>.github.io/<repo>/
-
-You can later replace the placeholder buttons (Buy on Gumroad etc.) with real product links.
-
--->
-
 <!doctype html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-  <title>꙰ यथार्थ सिद्धांत — Live</title>
-  <meta name="description" content="꙰ Yatharth Siddhant — The Era of Direct Truth. Experience a symbolic animation and listen to the message." />
-  <style>
-    :root{
-      --bg1:#061024; /* deep cosmic blue */
-      --bg2:#081a40;
-      --accent:#e9c77a; /* golden */
-      --muted:#b8c4d6;
-    }
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans',sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:#fff}
-    .wrap{max-width:980px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:18px;align-items:center}
-    header{width:100%;text-align:center}
-    h1{font-size:20px;margin:6px 0;color:var(--accent)}
-    h2{font-size:14px;margin:0;color:var(--muted)}
-    #canvasHolder{width:100%;display:flex;justify-content:center}
-    canvas{width:100%;max-width:720px;border-radius:12px;box-shadow:0 8px 30px rgba(3,6,23,0.6)}
-
-    .controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-    .btn{background:transparent;border:1px solid rgba(233,199,122,0.16);color:var(--accent);padding:8px 14px;border-radius:10px;cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.12), rgba(233,199,122,0.06));border-color:var(--accent)}
-
-    .meta{width:100%;max-width:720px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:8px;color:var(--muted);font-size:13px}
-    footer{width:100%;text-align:center;padding:14px 0;color:rgba(255,255,255,0.5);font-size:12px}
-
-    @media (max-width:520px){h1{font-size:18px}canvas{max-width:100%}}
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>꙰ यथार्थ सिद्धांत — Live Store</title>
+  <meta name="description" content="꙰ Yatharth Siddhant — Experience the message" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="wrap">
-    <header>
+  <main class="wrap">
+    <header class="hdr">
       <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
-      <h2>The Era of Direct Truth — Experience the message</h2>
+      <p class="sub">The Era of Direct Truth — Experience the message</p>
     </header>
 
-    <div id="canvasHolder">
+    <section id="visual">
       <canvas id="scene" width="1080" height="1080" aria-label="Yatharth animation"></canvas>
-    </div>
+    </section>
 
-    <div class="controls">
+    <section class="controls">
       <button id="play" class="btn primary">Play / Pause</button>
-      <a id="downloadPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
-      <a id="buy" class="btn" href="#" target="_blank">Buy on Gumroad</a>
-    </div>
+      <a id="buy" class="btn" href="#" target="_blank" rel="noopener noreferrer">Buy</a>
+      <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
+    </section>
 
-    <div class="meta">
-      <strong>Note:</strong> Place your audio file at <code>assets/audio.mp3</code> (rename your uploaded MP3). The animation uses your voice as the narrative source. Optimised for mobile.
-    </div>
+    <section class="meta">
+      <p><strong>Note:</strong> Ensure `assets/audio.mp3` is present. Tap the page once and then press Play (mobile autoplay rules).</p>
+      <pre id="debug" class="debug" aria-hidden="false"></pre>
+    </section>
 
-    <footer>
+    <footer class="ftr">
       ꙰ शिरोमणिrampaulsaini — © Yatharth Siddhant
     </footer>
-  </div>
+  </main>
 
-<script>
-// Config
-const AUDIO_SRC = 'assets/audio.mp3'; // <--- Put your MP3 here
-const CANVAS_SIZE = 1080; // base logical size (will scale)
-
-// Setup canvas and devicePixelRatio handling
-const canvas = document.getElementById('scene');
-const ctx = canvas.getContext('2d');
-function resizeCanvas(){
-  const rect = canvas.getBoundingClientRect();
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = Math.floor(rect.width * dpr);
-  canvas.height = Math.floor(rect.height * dpr);
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-// Audio context
-let audioCtx, sourceNode, analyser, gainNode;
-let audioBuffer, audioElement, isPlaying=false;
-
-async function setupAudio(){
-  audioElement = new Audio(AUDIO_SRC);
-  audioElement.crossOrigin = 'anonymous';
-  audioElement.loop = false;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  sourceNode = audioCtx.createMediaElementSource(audioElement);
-  gainNode = audioCtx.createGain();
-  analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 2048;
-  sourceNode.connect(gainNode).connect(analyser).connect(audioCtx.destination);
-}
-
-// Load audio: attempt to fetch to ensure presence
-async function ensureAudio(){
-  try{
-    const res = await fetch(AUDIO_SRC, {method:'HEAD'});
-    if(!res.ok) throw new Error('audio not found');
-  }catch(e){
-    console.warn('Audio not found at',AUDIO_SRC);
-  }
-}
-ensureAudio();
-
-// Visual state
-let particles = [];
-const center = {x:0,y:0};
-
-function initParticles(){
-  particles = [];
-  for(let i=0;i<160;i++){
-    particles.push({
-      angle: Math.random()*Math.PI*2,
-      radius: 40 + Math.random()*420,
-      speed: 0.0006 + Math.random()*0.002,
-      size: 0.4 + Math.random()*2.6,
-      phase: Math.random()*Math.PI*2
-    });
-  }
-}
-initParticles();
-
-// draw loop
-function drawFrame(){
-  const w = canvas.width/ (window.devicePixelRatio||1);
-  const h = canvas.height/ (window.devicePixelRatio||1);
-  center.x = w/2; center.y = h/2;
-  ctx.clearRect(0,0,w,h);
-
-  // background radial
-  const g = ctx.createLinearGradient(0,0,0,h);
-  g.addColorStop(0,'rgba(6,16,36,0.05)');
-  g.addColorStop(1,'rgba(4,8,24,0.25)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0,0,w,h);
-
-  // subtle starfield
-  for(let i=0;i<40;i++){
-    const rx = (Math.sin(i*12.9898 + Date.now()*0.0001)+1)/2 * w;
-    const ry = (Math.cos(i*7.233 + Date.now()*0.00007)+1)/2 * h;
-    ctx.fillStyle = 'rgba(255,255,255,0.02)';
-    ctx.fillRect(rx,ry,1,1);
-  }
-
-  // pulsating rings based on audio
-  let level = 0.06;
-  if(analyser){
-    const data = new Uint8Array(analyser.frequencyBinCount);
-    analyser.getByteFrequencyData(data);
-    let sum=0; for(let i=0;i<data.length;i++){sum+=data[i];}
-    const avg = sum/data.length;
-    level = Math.max(0.06, (avg/255)*1.6);
-  }
-
-  // draw concentric glow rings
-  for(let i=0;i<5;i++){
-    const r = 60 + i*90 + Math.sin(Date.now()*0.0008 + i)*30*level;
-    ctx.beginPath();
-    ctx.strokeStyle = `rgba(233,199,122,${0.08 + 0.02*i})`;
-    ctx.lineWidth = 2 + i*1.5;
-    ctx.arc(center.x, center.y, r, 0, Math.PI*2);
-    ctx.stroke();
-  }
-
-  // draw particles
-  ctx.globalCompositeOperation = 'lighter';
-  particles.forEach(p=>{
-    p.phase += p.speed * (1 + level*3);
-    p.angle += 0.0004*(1+level);
-    const x = center.x + Math.cos(p.angle + p.phase)*p.radius*(0.9 + level*0.8);
-    const y = center.y + Math.sin(p.angle + p.phase)*p.radius*(0.9 + level*0.8);
-    ctx.fillStyle = 'rgba(233,199,122,0.7)';
-    ctx.beginPath();
-    ctx.arc(x,y,p.size*(1+level*1.2),0,Math.PI*2);
-    ctx.fill();
-  });
-  ctx.globalCompositeOperation = 'source-over';
-
-  // central ꙰ glyph (drawn as golden glyph)
-  ctx.save();
-  ctx.translate(center.x, center.y);
-  // subtle scale pulse
-  const pulse = 1 + Math.sin(Date.now()*0.0012)*0.02 + level*0.08;
-  ctx.scale(pulse,pulse);
-  // draw circular aura
-  const aura = ctx.createRadialGradient(0,0,10,0,0,220);
-  aura.addColorStop(0,'rgba(233,199,122,0.18)');
-  aura.addColorStop(1,'rgba(233,199,122,0)');
-  ctx.fillStyle = aura;
-  ctx.beginPath(); ctx.arc(0,0,140,0,Math.PI*2); ctx.fill();
-
-  // draw the glyph as a stylized circle+dot (avoid font-dependence)
-  ctx.beginPath(); ctx.fillStyle = 'rgba(255,255,255,1)'; ctx.arc(0,0,28,0,Math.PI*2); ctx.fill();
-  ctx.beginPath(); ctx.fillStyle = 'rgba(6,20,40,1)'; ctx.arc(0,0,12,0,Math.PI*2); ctx.fill();
-
-  // outer ring
-  ctx.beginPath(); ctx.strokeStyle='rgba(233,199,122,0.95)'; ctx.lineWidth=3; ctx.arc(0,0,56,0,Math.PI*2); ctx.stroke();
-  ctx.restore();
-
-  // floating title text (subtle)
-  ctx.fillStyle = 'rgba(233,199,122,0.9)';
-  ctx.font = '18px sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('꙰ शिरोमणिrampaulsaini', center.x, center.y + 220);
-
-  requestAnimationFrame(drawFrame);
-}
-
-// Play/pause controls
-const playBtn = document.getElementById('play');
-playBtn.addEventListener('click', async ()=>{
-  if(!audioCtx){
-    await setupAudio();
-    audioElement.play();
-    audioCtx.resume();
-    isPlaying=true;
-    playBtn.textContent = 'Pause';
-  } else if(!isPlaying){
-    audioElement.play();
-    isPlaying=true; playBtn.textContent='Pause';
-  } else {
-    audioElement.pause(); isPlaying=false; playBtn.textContent='Play / Pause';
-  }
-});
-
-// try autoplay: user gesture constraints
-window.addEventListener('click', async function firstInteraction(){
-  if(!audioCtx){
-    try{ await setupAudio(); }catch(e){console.warn(e)}
-  }
-  if(audioCtx && audioCtx.state === 'suspended') await audioCtx.resume();
-  window.removeEventListener('click', firstInteraction);
-});
-
-// kick off render
-requestAnimationFrame(drawFrame);
-
-</script>
+  <!-- scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/buy.js"></script>
 </body>
 </html>
-<script>
-// === ꙰ AUDIO CHECK SCRIPT ===
-const audioPath = "assets/audio.mp3"; // <-- अपने MP3 का सही path रखें
-const logBox = document.createElement("pre");
-logBox.style.cssText =
-  "color:#0f0;background:#000;padding:10px;font-size:13px;overflow:auto;max-height:120px;";
-document.body.appendChild(logBox);
-function log(msg){ logBox.textContent += msg + "\n"; console.log(msg); }
-
-async function testAudio(){
-  log("🔎 Checking audio path: " + audioPath);
-  try {
-    const res = await fetch(audioPath, { method: "HEAD" });
-    if (!res.ok) throw new Error("Not found (HTTP " + res.status + ")");
-    log("✅ Audio file found on server.");
-  } catch (e) {
-    log("❌ Audio fetch failed: " + e.message);
-    return;
-  }
-
-  const audio = new Audio(audioPath);
-  audio.addEventListener("canplaythrough", () => {
-    log("✅ Audio loaded successfully, ready to play.");
-    audio.play()
-      .then(() => log("🎧 Playback started successfully!"))
-      .catch(err => log("⚠️ Playback blocked (click anywhere to allow): " + err.message));
-  });
-  audio.addEventListener("error", e => log("❌ Audio load error: " + e.message));
-}
-testAudio();
-</script>
