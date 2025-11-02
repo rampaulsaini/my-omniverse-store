@@ -4,28 +4,93 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root {
+      --gold: #e9c77a;
+      --bg1: #000;
+      --bg2: #0a0a0a;
+      --text: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", "Noto Sans Devanagari", sans-serif;
+      background: radial-gradient(circle at center, var(--bg1), var(--bg2));
+      color: var(--text);
+      text-align: center;
+      padding: 40px 10px;
+    }
+    h1 {
+      color: var(--gold);
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(233, 199, 122, 0.3);
+    }
+    .subtitle {
+      color: #ccc;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    img {
+      width: 200px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(233,199,122,0.2);
+    }
+    button, a.btn {
+      background: rgba(233,199,122,0.1);
+      color: var(--gold);
+      border: 1px solid rgba(233,199,122,0.4);
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin: 6px;
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .symbol {
+      font-size: 60px;
+      margin-top: 15px;
+      color: var(--gold);
+    }
+    footer {
+      margin-top: 40px;
+      color: rgba(233,199,122,0.7);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
+
 <body>
-  <canvas id="scene"></canvas>
+  <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
+  <div class="subtitle">The Era of Direct Truth — Experience the Message</div>
 
-  <div class="overlay">
-    <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
-    <p class="subtitle">The Era of Direct Truth — Experience the Message</p>
+  <img src="https://i.ibb.co/x0cMXZv/IMG-20250930-211235.webp" alt="Shirmani Rampaul Saini" />
 
-    <div class="controls">
-      <button id="play">Play / Pause</button>
-      <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
-      <a id="buy" class="btn buy" href="#" target="_blank">Buy Now ₹193</a>
-    </div>
-
-    <div class="signature">꙰</div>
-
-    <pre id="debug" class="debug" aria-hidden="false"></pre>
+  <div>
+    <button id="play">Play / Pause</button>
+    <a href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" class="btn">Read Manifesto (PDF)</a>
+    <a href="#" target="_blank" class="btn">Buy Now ₹193</a>
   </div>
 
-  <footer>꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</footer>
+  <div class="symbol">꙰</div>
 
-  <script src="js/app.js"></script>
+  <footer>
+    ꙰ शिरोमणि rampaulsaini — © Yatharth Siddhant
+  </footer>
+
+  <script>
+    // Simple optional audio logic
+    const audio = new Audio('assets/audio.mp3');
+    const playBtn = document.getElementById('play');
+    let playing = false;
+    playBtn.addEventListener('click', async () => {
+      try {
+        if (!playing) { await audio.play(); playing = true; playBtn.textContent = 'Pause'; }
+        else { audio.pause(); playing = false; playBtn.textContent = 'Play / Pause'; }
+      } catch (e) {
+        alert('Audio error: ' + e.message);
+      }
+    });
+  </script>
 </body>
 </html>
