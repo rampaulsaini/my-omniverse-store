@@ -185,3 +185,37 @@ flow.append(Paragraph("© Generated Manifesto — Yatharth Siddhant", style_foot
 doc.build(flow)
 
 print(f"PDF created at: {output_path}")
+name: Auto Release on assets push
+on:
+  push:
+    paths:
+      - 'assets/**'
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  make-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "auto-${{ github.run_number }}"
+          name: "Auto release ${{ github.run_number }}"
+          body: "Auto-release of assets."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: assets/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
