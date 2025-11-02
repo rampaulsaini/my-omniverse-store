@@ -1,1 +1,259 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>꙰ यथार्थ सिद्धांत — Live</title>
+  <meta name="description" content="꙰ Yatharth Siddhant — Experience the message" />
+  <style>
+    :root{
+      --bg1:#041022;
+      --bg2:#081836;
+      --accent:#e9c77a;
+      --muted:#b8c4d6;
+    }
+    html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:#fff}
+    .wrap{max-width:960px;margin:0 auto;padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center}
+    header{text-align:center}
+    h1{font-size:20px;margin:4px 0;color:var(--accent)}
+    h2{font-size:13px;margin:0;color:var(--muted)}
+    #canvasHolder{width:100%;display:flex;justify-content:center}
+    canvas{width:100%;max-width:720px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+    .btn{background:transparent;border:1px solid rgba(233,199,122,0.12);color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.08), rgba(233,199,122,0.04));border-color:var(--accent)}
+    .meta{width:100%;max-width:720px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;color:var(--muted);font-size:13px}
+    footer{width:100%;text-align:center;padding:12px 0;color:rgba(255,255,255,0.5);font-size:12px}
+    pre.debug{color:#0f0;background:#000;padding:10px;font-size:13px;overflow:auto;max-height:140px;border-radius:6px}
+    @media (max-width:520px){h1{font-size:18px}canvas{max-width:100%}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</h1>
+      <h2>The Era of Direct Truth — Experience the message</h2>
+    </header>
+
+    <div id="canvasHolder">
+      <canvas id="scene" width="1080" height="1080" aria-label="Yatharth animation"></canvas>
+    </div>
+
+    <div class="controls">
+      <button id="play" class="btn primary">Play / Pause</button>
+      <a id="readPdf" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank">Read Manifesto (PDF)</a>
+      <a id="buy" class="btn" href="#" target="_blank">Buy</a>
+    </div>
+
+    <div class="meta">
+      <strong>Note:</strong> Place your audio file at <code>assets/audio.mp3</code>. This page uses that audio as narrative. If audio not playing, scroll down to debug box for messages.
+    </div>
+
+    <pre id="debug" class="debug" aria-hidden="false"></pre>
+
+    <footer>
+      ꙰ शिरोमणिrampaulsaini — © Yatharth Siddhant
+    </footer>
+  </div>
+
+<script>
+/* ----------------------------
+  Simple Animation + Audio Player
+  Assumes audio at: assets/audio.mp3
+-------------------------------*/
+const AUDIO_SRC = 'assets/audio.mp3';
+const canvas = document.getElementById('scene');
+const ctx = canvas.getContext('2d');
+const debugBox = document.getElementById('debug');
+function log(msg){ debugBox.textContent += msg + "\\n"; console.log(msg); }
+
+// resize canvas for device pixel ratio
+function resizeCanvas(){
+  const rect = canvas.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(rect.width * dpr);
+  canvas.height = Math.floor(rect.height * dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// visual state
+let particles = [];
+function initParticles(){
+  particles = [];
+  for(let i=0;i<120;i++){
+    particles.push({
+      angle: Math.random()*Math.PI*2,
+      radius: 60 + Math.random()*420,
+      speed: 0.0008 + Math.random()*0.0022,
+      size: 0.6 + Math.random()*2.2,
+      phase: Math.random()*Math.PI*2
+    });
+  }
+}
+initParticles();
+
+let audioCtx, audioElement, sourceNode, analyser, isPlaying=false;
+
+async function setupAudio(){
+  if(audioCtx) return;
+  audioElement = new Audio(AUDIO_SRC);
+  audioElement.crossOrigin = 'anonymous';
+  audioElement.loop = false;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  sourceNode = audioCtx.createMediaElementSource(audioElement);
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 2048;
+  sourceNode.connect(analyser);
+  analyser.connect(audioCtx.destination);
+  log('Audio context initialized.');
+}
+
+function draw(){
+  const w = canvas.width/(window.devicePixelRatio||1);
+  const h = canvas.height/(window.devicePixelRatio||1);
+  const cx = w/2, cy = h/2;
+  ctx.clearRect(0,0,w,h);
+
+  // background
+  const g = ctx.createLinearGradient(0,0,0,h);
+  g.addColorStop(0,'rgba(4,12,30,0.05)');
+  g.addColorStop(1,'rgba(3,8,20,0.2)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,w,h);
+
+  // star specks
+  for(let i=0;i<30;i++){
+    const rx = (Math.sin(i*13.1 + Date.now()*0.0001)+1)/2 * w;
+    const ry = (Math.cos(i*7.4 + Date.now()*0.00007)+1)/2 * h;
+    ctx.fillStyle = 'rgba(255,255,255,0.02)';
+    ctx.fillRect(rx,ry,1,1);
+  }
+
+  // audio level
+  let level = 0.06;
+  if(analyser){
+    const data = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(data);
+    let sum=0; for(let i=0;i<data.length;i++) sum+=data[i];
+    const avg = sum/data.length;
+    level = Math.max(0.06, (avg/255)*1.6);
+  }
+
+  // rings
+  for(let i=0;i<4;i++){
+    const r = 70 + i*80 + Math.sin(Date.now()*0.0006 + i)*22*level;
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(233,199,122,${0.08 + 0.02*i})`;
+    ctx.lineWidth = 1 + i*1.2;
+    ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.stroke();
+  }
+
+  // particles
+  ctx.globalCompositeOperation = 'lighter';
+  particles.forEach(p=>{
+    p.phase += p.speed * (1 + level*2.4);
+    p.angle += 0.00035*(1+level);
+    const x = cx + Math.cos(p.angle + p.phase)*p.radius*(0.95 + level*0.7);
+    const y = cy + Math.sin(p.angle + p.phase)*p.radius*(0.95 + level*0.7);
+    ctx.fillStyle = 'rgba(233,199,122,0.7)';
+    ctx.beginPath();
+    ctx.arc(x,y,p.size*(1+level*1.1),0,Math.PI*2);
+    ctx.fill();
+  });
+  ctx.globalCompositeOperation = 'source-over';
+
+  // central glyph
+  ctx.save();
+  ctx.translate(cx,cy);
+  const pulse = 1 + Math.sin(Date.now()*0.0012)*0.02 + level*0.06;
+  ctx.scale(pulse,pulse);
+  const aura = ctx.createRadialGradient(0,0,10,0,0,220);
+  aura.addColorStop(0,'rgba(233,199,122,0.16)');
+  aura.addColorStop(1,'rgba(233,199,122,0)');
+  ctx.fillStyle = aura;
+  ctx.beginPath(); ctx.arc(0,0,120,0,Math.PI*2); ctx.fill();
+
+  // white core
+  ctx.beginPath(); ctx.fillStyle='white'; ctx.arc(0,0,26,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.fillStyle='rgba(6,18,34,1)'; ctx.arc(0,0,10,0,Math.PI*2); ctx.fill();
+
+  ctx.beginPath(); ctx.strokeStyle='rgba(233,199,122,0.95)'; ctx.lineWidth=3; ctx.arc(0,0,52,0,Math.PI*2); ctx.stroke();
+  ctx.restore();
+
+  // signature
+  ctx.fillStyle = 'rgba(233,199,122,0.92)';
+  ctx.font = '16px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('꙰ शिरोमणिrampaulsaini', cx, cy + 220);
+
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+// Play / Pause button
+const playBtn = document.getElementById('play');
+playBtn.addEventListener('click', async ()=>{
+  if(!audioCtx){
+    try{ await setupAudio(); }catch(e){ log('Audio init failed: ' + e.message); return; }
+  }
+  if(!isPlaying){
+    try{
+      await audioCtx.resume();
+      audioElement.play();
+      isPlaying = true;
+      playBtn.textContent = 'Pause';
+      log('Playback started.');
+    }catch(err){
+      log('Playback error: ' + err.message);
+    }
+  } else {
+    audioElement.pause();
+    isPlaying = false;
+    playBtn.textContent = 'Play / Pause';
+    log('Playback paused.');
+  }
+});
+
+// Attempt autoplay on first gesture
+window.addEventListener('click', async function once(){
+  if(audioCtx && audioCtx.state === 'suspended') await audioCtx.resume();
+  window.removeEventListener('click', once);
+});
+
+// -----------------------------
+// Debug audio presence check
+// -----------------------------
+(async function audioCheck(){
+  log('🔎 Checking audio path: ' + AUDIO_SRC);
+  try{
+    const res = await fetch(AUDIO_SRC, { method: 'HEAD' });
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    log('✅ Audio file available on server.');
+  }catch(e){
+    log('❌ Audio not accessible: ' + e.message);
+    return;
+  }
+  // create a temp element to test canplay
+  const testAudio = new Audio(AUDIO_SRC);
+  testAudio.addEventListener('canplaythrough', () => {
+    log('✅ Audio loaded (canplaythrough).');
+  });
+  testAudio.addEventListener('error', (ev) => {
+    log('❌ Audio element error. Check file or CORS.');
+  });
+  // try to autoplay (may be blocked until user gesture)
+  try{
+    await testAudio.play();
+    log('🎧 Test playback started.');
+    testAudio.pause();
+  }catch(err){
+    log('⚠️ Autoplay blocked — click Play button or tap screen to enable audio.');
+  }
+})();
+</script>
+</body>
+</html>
 
