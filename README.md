@@ -1,20 +1,20 @@
 # ꙰ Yatharth — Starter Collection
 
-꙰ निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग  
+꙰ **निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग**  
 
 **Support:** Saneha Saini  
-**Published by:** ꙰ शिरोमणि rampaulsaini  
+**Published by:** ꙰ शिरोमणि Rampaul Saini  
 
 ---
 
-## About this Repository
+## 🪷 About this Repository
 
 This repository hosts **digital Omniverse assets and educational products**.  
 All proceeds support **Saneha Saini’s education and wellbeing**.
 
 ---
 
-## Pack Includes
+## 📦 Pack Includes
 - **Bilingual Manifesto (PDF)** — *Hindi + English*
 - **Meditation Audio (MP3)**
 - **Vision Wallpapers (4K)**
@@ -26,14 +26,14 @@ All proceeds support **Saneha Saini’s education and wellbeing**.
 
 ## 🔗 Download & Access Links
 
-- 📄 [Open Manifesto PDF (raw)](https://raw.githubusercontent.com/rampaulsaini/my-omniverse-store/main/assets/yatharth_siddhant_bilingual.pdf) https://raw.githubusercontent.com/rampaulsaini/my-omniverse-store/main/assets/yatharth_siddhant_bilingual.pdf?time=1
-- 🎧 Meditation Audio — `assets/audio_shiromani_073323.mp3`
-- 🌐 [View GitHub Page](https://rampaulsaini.github.io/my-omniverse-store/)
+- 📄 [Open Manifesto PDF (raw)](https://raw.githubusercontent.com/rampaulsaini/my-omniverse-store/main/assets/yatharth_siddhant_bilingual.pdf)
+- 🎧 Meditation Audio — [`assets/audio_shiromani_073323.mp3`](https://github.com/rampaulsaini/my-omniverse-store/raw/main/assets/audio_shiromani_073323.mp3)
+- 🌐 [View GitHub Page (Live Store)](https://rampaulsaini.github.io/my-omniverse-store/)
 - 💾 [View Latest Release](https://github.com/rampaulsaini/my-omniverse-store/releases)
 
-> ⚠️ If the embedded preview shows “Invalid PDF”,  
-> click **Open PDF (<iframe src="/assets/yatharth_siddhant_bilingual.pdf"></iframe>
-)** — the file will open or download properly.
+> ⚠️ **Note:**  
+> If GitHub shows “Invalid PDF” in preview, click the **Open Manifesto PDF (raw)** link above —  
+> it will open or download correctly in your browser.
 
 ---
 
@@ -45,12 +45,15 @@ All proceeds support **Saneha Saini’s education and wellbeing**.
 ---
 
 ## 🧭 Instructions for Maintainer
-1. Add files in `assets/` (PDF, audio, images).
-2. Commit to `main` branch.
-3. GitHub Actions auto-release your files.
-4. Link assets in `index.html` or README as needed.
+1. Add new files to the `assets/` folder (PDF, audio, images, etc.).
+2. Commit and push to the **main** branch.
+3. GitHub Actions will automatically:
+   - Create a new **Auto Release**
+   - Upload all assets to the release
+   - Update the live **GitHub Pages site**
+4. Update any asset links here or in `index.html` if filenames change.
 
 ---
 
-© 2025 ꙰ शिरोमणि Rampaul Saini — Omniverse AI Foundation  
+© 2025 ꙰ **शिरोमणि Rampaul Saini — Omniverse AI Foundation**  
 All Rights Reserved.
