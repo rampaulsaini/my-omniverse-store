@@ -1,4 +1,5 @@
 name: Auto Release on assets push
+
 on:
   push:
     paths:
@@ -10,23 +11,40 @@ permissions:
 jobs:
   make-release:
     runs-on: ubuntu-latest
+
     steps:
+      # 1️⃣ Checkout repo
       - uses: actions/checkout@v4
 
-      - name: Create or get release
-        id: create_release
+      # 2️⃣ Create new release tag automatically
+      - name: Create Auto Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: "auto-${{ github.run_id }}"
+        name: "Omniverse Auto Release ${{ github.run_id }}"
+        body: |
+          ꙰ **Nishpaksh Samajh — Yatharth Siddhant**
+          Auto-release of Omniverse Store assets.
+
+          🔹 Manifesto: `assets/yatharth_sidhant_bilingual.pdf`
+          🔹 Source: ${{ github.repository }}
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 3️⃣ Upload all assets (PDF, ZIP, PNG etc.)
+      - name: Upload Omniverse Store Assets
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "auto-${{ github.run_id }}"
-          name: "Auto release ${{ github.run_id }}"
-          body: "Auto-release of assets."
+          files: |
+            assets/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload assets to release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: assets/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+      # 4️⃣ Confirmation log (optional)
+      - name: Show uploaded assets
+        run: ls -lh assets/
+        
