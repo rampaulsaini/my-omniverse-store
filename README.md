@@ -26,13 +26,14 @@ All proceeds support **Saneha Saini’s education and wellbeing**.
 
 ## 🔗 Download & Access Links
 
-- 📄 [Open Manifesto PDF (raw)](https://raw.githubusercontent.com/rampaulsaini/my-omniverse-store/main/assets/yatharth_siddhant_bilingual.pdf)
+- 📄 [Open Manifesto PDF (raw)](https://raw.githubusercontent.com/rampaulsaini/my-omniverse-store/main/assets/yatharth_siddhant_bilingual.pdf) https://raw.githubusercontent.com/rampaulsaini/my-omniverse-store/main/assets/yatharth_siddhant_bilingual.pdf?time=1
 - 🎧 Meditation Audio — `assets/audio_shiromani_073323.mp3`
 - 🌐 [View GitHub Page](https://rampaulsaini.github.io/my-omniverse-store/)
 - 💾 [View Latest Release](https://github.com/rampaulsaini/my-omniverse-store/releases)
 
 > ⚠️ If the embedded preview shows “Invalid PDF”,  
-> click **Open PDF (raw)** — the file will open or download properly.
+> click **Open PDF (<iframe src="/assets/yatharth_siddhant_bilingual.pdf"></iframe>
+)** — the file will open or download properly.
 
 ---
 
