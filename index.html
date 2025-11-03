@@ -1,41 +1,39 @@
 <!doctype html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>꙰ Yatharth — Starter Collection</title>
-  <meta name="description" content="꙰ Yatharth — Starter Collection. Bilingual manifesto, meditation audio, vision wallpapers. Proceeds support Saneha Saini." />
-  <!-- Social preview (replace image if you upload one to assets/) -->
-  <meta property="og:title" content="꙰ Yatharth — Starter Collection" />
-  <meta property="og:description" content="Bilingual manifesto, meditation audio, vision wallpapers. Support Saneha Saini." />
-  <meta property="og:image" content="/assets/preview-card.png" />
+  <meta name="description" content="꙰ Yatharth — Starter Collection: bilingual manifesto, meditation audio, vision wallpapers. Proceeds support Saneha Saini.">
+  <meta property="og:title" content="꙰ Yatharth — Starter Collection">
+  <meta property="og:description" content="Bilingual manifesto, meditation audio, vision wallpapers. Support Saneha Saini.">
+  <meta property="og:image" content="/assets/preview-card.png">
   <style>
     :root{
-      --bg1:#0b1220; --card:#071022; --accent:#ffd770; --muted:#9fb8ff; --text:#e6eef8;
+      --bg:#030617; --card:#071022; --accent:#ffd770; --muted:#9fb8ff; --text:#e6eef8;
     }
-    html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at top,#0b1220,#030611 70%);color:var(--text);padding:18px;}
-    .wrap{max-width:980px;margin:20px auto;}
-    .card{background:var(--card);padding:22px;border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,0.6);}
-    h1{color:var(--accent);margin:0;font-size:28px;}
-    h2{color:var(--muted);margin:6px 0 12px 0;font-size:16px;}
-    p.lead{color:#cfe6ff;line-height:1.6;margin:8px 0;}
-    .meta{color:var(--muted);font-size:13px;margin-bottom:14px;}
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px 0;}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;border:0;cursor:pointer;}
-    .btn-upi{background:#34a853;color:#fff;}
-    .btn-paypal{background:#003087;color:#fff;}
-    .btn-gum{background:#ff6f61;color:#fff;}
-    .btn-release{background:transparent;border:1px solid rgba(159,184,255,0.08);color:var(--muted);}
-    .alt{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);}
-    iframe.viewer{width:100%;height:520px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:#fff;margin-top:12px;}
-    audio{width:100%;margin-top:12px;border-radius:8px;}
-    .qr-box{display:flex;gap:16px;align-items:center;margin-top:18px;flex-wrap:wrap;}
-    .qr-img{width:160px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.6);background:#fff;padding:8px;}
-    .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
-    .socials a{display:inline-block;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);text-decoration:none;font-weight:600;}
-    .share{margin-top:12px;color:var(--muted);font-size:13px;}
-    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px;}
-    @media(max-width:680px){ iframe.viewer{height:420px;} h1{font-size:22px;} .qr-img{width:140px;} }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 10% 10%, #071029, #02030a 70%);color:var(--text);padding:18px}
+    .wrap{max-width:980px;margin:18px auto}
+    .card{background:linear-gradient(180deg,#071022,#041021);padding:26px;border-radius:14px;box-shadow:0 14px 48px rgba(2,6,12,0.7)}
+    h1{color:var(--accent);margin:0;font-size:30px}
+    h2{color:var(--muted);margin:6px 0 14px;font-size:15px;font-weight:600}
+    p.lead{color:#cfe6ff;line-height:1.6;margin:10px 0}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:14px}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;cursor:pointer;border:0}
+    .btn-upi{background:#34a853;color:#fff} .btn-paypal{background:#003087;color:#fff}
+    .btn-paytm{background:#2b2b2b;color:#fff} .btn-gum{background:#ff6f61;color:#fff}
+    .btn-release{background:transparent;border:1px solid rgba(159,184,255,0.08);color:var(--muted);padding:10px 12px;border-radius:10px}
+    iframe.viewer{width:100%;height:560px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:#fff}
+    audio{width:100%;margin-top:12px;border-radius:8px}
+    .qr-row{display:flex;gap:18px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .qr-img{width:160px;border-radius:10px;background:#fff;padding:8px;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+    .socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .socials a{display:inline-block;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);text-decoration:none;font-weight:700}
+    footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+    .note{color:var(--muted);font-size:13px;margin-top:10px}
+    @media(max-width:760px){iframe.viewer{height:420px} .qr-img{width:130px} h1{font-size:22px}}
   </style>
 </head>
 <body>
@@ -44,8 +42,7 @@
       <h1>꙰ Yatharth — Starter Collection</h1>
       <h2>꙰ निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग</h2>
 
-      <p class="lead"><strong>Support:</strong> Saneha Saini<br/>
-      <strong>Published by:</strong> ꙰शिरोमणिrampaulsaini</p>
+      <p class="lead"><strong>Support:</strong> Saneha Saini<br><strong>Published by:</strong> ꙰शिरोमणिrampaulsaini</p>
 
       <p class="lead">
         A complete digital starter collection — bilingual manifesto (हिन्दी + English), meditation audio, vision wallpapers and symbolic assets.
@@ -53,58 +50,55 @@
       </p>
 
       <p class="meta">
-        Pack includes: PDF manifesto, meditation MP3, 4K wallpapers, and a 3D scene file.<br/>
-        Price suggestion: ₹199 (starter).
+        Pack includes: PDF manifesto, meditation MP3, 4K wallpapers, and a 3D scene file.<br>
+        <strong>Price suggestion:</strong> ₹199 (starter).
       </p>
 
-      <!-- ACTIONS: UPI / PayPal / Paytm / Gumroad / Release -->
       <div class="actions">
-        <!-- UPI intent (mobile) -->
-        <a class="btn btn-upi" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=꙰%20Yatharth%20Support&am=199&cu=INR" target="_blank">🔶 ₹199 — Pay (UPI)</a>
+        <!-- UPI intent: mobile will open payment apps. -->
+        <a class="btn btn-upi" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=꙰YatharthSupport&am=199&cu=INR" target="_blank" rel="noopener">🔶 ₹199 — Pay (UPI)</a>
 
         <!-- PayPal -->
-        <a class="btn btn-paypal" href="https://paypal.me/sainirampaul60/199INR" target="_blank">💳 PayPal — ₹199</a>
+        <a class="btn btn-paypal" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener">💳 PayPal — ₹199</a>
 
-        <!-- Paytm / Other direct (placeholder) -->
-        <a class="btn" style="background:#2b2b2b;color:#fff;" href="PAYTM_LINK" target="_blank">🏧 Paytm / Scan — Pay</a>
+        <!-- Paytm placeholder (replace with your Paytm.Me or deep link) -->
+        <a class="btn btn-paytm" href="PAYTM_LINK" target="_blank" rel="noopener">🏧 Paytm / Scan — Pay</a>
 
-        <!-- Gumroad / Payhip -->
-        <a class="btn btn-gum" href="GUMROAD_LINK" target="_blank">🛒 Buy on Gumroad / Payhip</a>
+        <!-- Gumroad / Payhip - replace GUMROAD_LINK with real product URL -->
+        <a class="btn btn-gum" href="GUMROAD_LINK" target="_blank" rel="noopener">🛒 Buy on Gumroad / Payhip</a>
 
         <!-- GitHub Release -->
-        <a class="btn btn-release" href="https://github.com/rampaulsaini/my-omniverse-store/releases/latest" target="_blank">📦 View GitHub Release</a>
+        <a class="btn btn-release" href="https://github.com/rampaulsaini/my-omniverse-store/releases/latest" target="_blank" rel="noopener">📦 View GitHub Release</a>
       </div>
 
-      <div class="small">
-        If the embedded preview shows "Invalid PDF", click <strong>Open PDF (raw)</strong> or the <strong>Raw link</strong> — the file will download or open in your browser.
-        For secure paid delivery use Gumroad/Payhip; GitHub Releases are public.
+      <div class="note">If the embedded preview shows <strong>"Invalid PDF"</strong>, click <strong>Open PDF (raw)</strong> or the Raw link — the file will download or open in your browser. For secure paid delivery use Gumroad/Payhip; GitHub Releases are public.</div>
+
+      <!-- PDF preview (ensure this file exists in assets/) -->
+      <div style="margin-top:12px">
+        <iframe class="viewer" src="/assets/yatharth_siddhant_bilingual.pdf"></iframe>
       </div>
 
-      <!-- PDF embed (ensure file exists at this path in assets/) -->
-      <iframe class="viewer" src="/assets/yatharth_siddhant_bilingual.pdf"></iframe>
-
-      <!-- Audio player (ensure file exists in assets/) -->
-      <audio controls>
-        <source src="/assets/AudioCutter_शिरोमणि रामपॉल सैनी _073323.mp3" type="audio/mpeg">
+      <!-- Embedded audio (ensure file exists in assets/) -->
+      <audio controls style="margin-top:12px">
+        <source src="/assets/AudioCutter_shiromani_073323.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
 
-      <!-- QR + Pay instructions -->
-      <div class="qr-box">
-        <!-- Replace qr-placeholder.png with your UPI QR image filename in assets/ -->
-        <img class="qr-img" src="/assets/qr-placeholder.png" alt="UPI QR for Yatharth Support">
+      <!-- QR and pay instructions -->
+      <div class="qr-row">
+        <img class="qr-img" src="/assets/qr-upi.png" alt="UPI QR (scan to pay)">
+
         <div>
-          <div style="font-weight:700;color:var(--muted);margin-bottom:6px;">UPI QR for Yatharth Support</div>
-          <div style="color:#cfe6ff;">Scan to Pay via UPI (₹199)</div>
-          <div style="margin-top:8px;color:var(--muted);font-size:13px;">Or pay to UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
+          <div style="font-weight:800;color:var(--muted);margin-bottom:6px">UPI QR for Yatharth Support</div>
+          <div style="color:#cfe6ff">Scan to Pay via UPI (₹199)</div>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">Or pay to UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
         </div>
       </div>
 
-      <!-- Social / Donation links -->
-      <div style="margin-top:18px;">
-        <div style="font-weight:700;color:var(--muted);margin-bottom:8px;">Connect / Donate (social)</div>
+      <!-- Social / donation / share -->
+      <div style="margin-top:18px">
+        <div style="font-weight:800;color:var(--muted);margin-bottom:8px">Connect / Donate (social)</div>
         <div class="socials">
-          <!-- Replace each LINK with your real profile / donation URL -->
           <a href="https://www.youtube.com/YOUR_CHANNEL" target="_blank">YouTube</a>
           <a href="https://instagram.com/YOUR_HANDLE" target="_blank">Instagram</a>
           <a href="https://t.me/YOUR_TELEGRAM" target="_blank">Telegram</a>
@@ -116,19 +110,20 @@
           <a href="https://ko-fi.com/YOUR_KOFI" target="_blank">Ko-fi / BuyMeACoffee</a>
         </div>
 
-        <div class="share">
+        <div style="margin-top:10px" class="note">
           Share this page:
           <a class="alt" href="https://t.me/share/url?url=https://rampaulsaini.github.io/my-omniverse-store/&text=꙰%20Yatharth%20—%20Starter%20Collection" target="_blank">Telegram</a>
+          <span style="margin-left:8px"></span>
           <a class="alt" href="https://wa.me/?text=꙰%20Yatharth%20—%20Starter%20Collection%20https://rampaulsaini.github.io/my-omniverse-store/" target="_blank">WhatsApp</a>
         </div>
       </div>
 
       <footer>
-        ꙰शिरोमणिrampaulsaini — All proceeds will support Saneha Saini’s education and wellbeing.<br/>
+        ꙰शिरोमणिrampaulsaini — All proceeds will support Saneha Saini’s education and wellbeing.<br>
         Thank you for supporting the Yatharth vision.
       </footer>
     </div>
   </div>
 </body>
-  </html>
-          
+          </html>
+        
