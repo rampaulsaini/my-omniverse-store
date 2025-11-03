@@ -1,177 +1,108 @@
 <!doctype html>
 <html lang="hi">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>꙰ यथार्थ सिद्धांत — निष्पक्ष समझ</title>
-<meta name="description" content="Yatharth Siddhant — The Era of Direct Truth. Support Saneha Saini's education." />
-<style>
-  :root{
-    --bg1:#020612; --gold:#e9c77a; --muted:#cfd8df; --glass: rgba(255,255,255,0.02);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;background:linear-gradient(180deg,#000,#041029);font-family:Inter,'Noto Sans Devanagari',sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
-  body{display:flex;align-items:flex-start;justify-content:center;padding:18px 12px 40px}
-
-  /* page entry animation */
-  @keyframes pageFade {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .wrap{width:100%;max-width:920px;animation: pageFade 650ms ease both;display:flex;flex-direction:column;gap:14px;align-items:center}
-
-  header{width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border-radius:12px;background:var(--glass);backdrop-filter:blur(6px)}
-  /* golden pulse for profile */
-  @keyframes glowPulse {
-    0%{ box-shadow:0 0 8px rgba(233,199,122,0.6),0 0 15px rgba(233,199,122,0.4),0 0 30px rgba(233,199,122,0.25); transform: translateY(0); }
-    50%{ box-shadow:0 0 14px rgba(233,199,122,0.9),0 0 28px rgba(233,199,122,0.6),0 0 48px rgba(233,199,122,0.4); transform: translateY(-2px); }
-    100%{ box-shadow:0 0 8px rgba(233,199,122,0.6),0 0 15px rgba(233,199,122,0.4),0 0 30px rgba(233,199,122,0.25); transform: translateY(0); }
-  }
-  .profile{
-    width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid rgba(233,199,122,0.95);
-    background: radial-gradient(circle at 30% 30%, rgba(233,199,122,0.20), transparent 70%);
-    animation: glowPulse 3.2s ease-in-out infinite; transition:transform .35s;
-  }
-  .profile:active,.profile:hover{ transform: scale(1.04); }
-
-  .main-title{color:var(--gold);font-size:18px;font-weight:700;margin-top:4px;opacity:0;animation:pageFade 700ms ease 100ms forwards}
-  .subtitle{color:var(--muted);font-size:13px;margin-top:2px;opacity:0;animation:pageFade 700ms ease 180ms forwards}
-
-  .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px;opacity:0;animation:pageFade 700ms ease 250ms forwards}
-  .btn{
-    background:transparent;border:1px solid rgba(233,199,122,0.14);color:var(--gold);padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer;
-  }
-  .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.08), rgba(233,199,122,0.03));box-shadow:0 6px 18px rgba(233,199,122,0.03)}
-
-  main{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:pageFade 700ms ease 300ms forwards}
-  .card{width:100%;max-width:820px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.04));padding:16px;border-radius:12px;display:flex;flex-direction:column;gap:12px;align-items:center}
-  .big-sign{font-size:56px;color:var(--gold);opacity:0;animation:pageFade 700ms ease 360ms forwards}
-  .sigline{font-weight:700;color:#fff;opacity:0;animation:pageFade 700ms ease 420ms forwards}
-  .desc{color:var(--muted);text-align:center;max-width:720px;opacity:0;animation:pageFade 700ms ease 480ms forwards}
-
-  .chip-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px;opacity:0;animation:pageFade 700ms ease 520ms forwards}
-  .chip{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);color:var(--gold);padding:6px 10px;border-radius:999px;font-weight:700;text-decoration:none}
-
-  .donate-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;opacity:0;animation:pageFade 700ms ease 560ms forwards}
-  .donate-btn{background:var(--gold);color:#061323;padding:8px 10px;border-radius:10px;font-weight:800;border:none;cursor:pointer}
-
-  .qr-panel{display:none;flex-direction:column;align-items:center;gap:8px;margin-top:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(233,199,122,0.03),rgba(255,255,255,0.02));box-shadow:0 10px 40px rgba(0,0,0,0.5)}
-  .qr-small{width:96px;border-radius:8px}
-  .pay-txt{color:#071226;background:#fff;padding:8px;border-radius:8px;font-weight:700;width:220px;text-align:center}
-
-  pre#debug{width:100%;max-width:820px;background:rgba(0,0,0,0.45);color:#9ff;padding:10px;border-radius:8px;max-height:160px;overflow:auto;font-size:13px;opacity:0;animation:pageFade 700ms ease 620ms forwards}
-
-  footer{width:100%;text-align:center;color:rgba(255,255,255,0.6);padding:8px;font-size:13px;margin-top:6px}
-
-  @media(max-width:520px){
-    .profile{width:110px;height:110px}
-    .big-sign{font-size:44px}
-    .pay-txt{width:180px}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>꙰ Yatharth Store — Starter Collection</title>
+  <style>
+    :root{
+      --bg:#0b1220; --card:#071022; --accent:#ffd770; --muted:#9fb8ff; --text:#e6eef8;
+    }
+    html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
+    .wrap{max-width:980px;margin:28px auto;padding:18px;}
+    .card{background:var(--card);padding:22px;border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,0.6);}
+    h1{margin:0 0 8px 0;color:var(--accent);font-size:28px;}
+    p.lead{color:#cfe6ff;line-height:1.55;margin:10px 0 16px;}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:14px;}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer;border:0;}
+    .btn-paypal{background:#003087;color:#fff;}
+    .btn-gpay{background:#34a853;color:#fff;}
+    .btn-gumroad{background:#ff6f61;color:#fff;}
+    .btn-release{background:#0f1724;color:var(--muted);border:1px solid rgba(159,184,255,0.08);}
+    .small{font-size:13px;color:var(--muted);}
+    .viewer{width:100%;height:560px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 20px rgba(0,0,0,0.5);background:#fff;}
+    footer.note{margin-top:18px;color:var(--muted);font-size:13px;text-align:center;}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,215,112,0.08);color:var(--accent);font-weight:700;}
+    @media(max-width:680px){ .viewer{height:420px;} h1{font-size:22px;} .actions{justify-content:center;} }
+  </style>
 </head>
 <body>
-  <div class="wrap" role="main" aria-labelledby="titleHeading">
-    <header>
-      <!-- profile image: replace with local asset if you upload it -->
-      <img id="profileImg" class="profile" src="https://i.ibb.co/DfZJy1Z8/IMG-20251103-004246.jpg" alt="निष्पक्ष समझ — शिरोमणि rampaulsaini">
-
-      <div id="titleHeading" class="main-title">निष्पक्ष समझ</div>
-      <div class="subtitle">꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग<br><span style="font-size:13px;color:var(--muted)">The Era of Direct Truth — Experience the Message</span></div>
-
-      <div class="actions" role="toolbar" aria-label="Main actions">
-        <button id="playBtn" class="btn">Play</button>
-        <a id="pdfBtn" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" rel="noopener">Read PDF</a>
-        <a id="buyBtn" class="btn primary" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener">Buy ₹193</a>
+  <div class="wrap">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:14px;justify-content:space-between;">
+        <div>
+          <h1>꙰ Yatharth — Starter Collection</h1>
+          <div class="small pill">꙰ निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग</div>
+        </div>
+        <div style="text-align:right;color:var(--muted);font-size:12px;">
+          <div>Support: Saneha Saini</div>
+          <div style="margin-top:6px;">Published by ꙰शिरोमणिrampaulsaini</div>
+        </div>
       </div>
-    </header>
 
-    <main>
-      <div class="card">
-        <div class="big-sign">꙰</div>
-        <div class="sigline">निष्पक्ष समझ — शिरोमणि rampaulsaini</div>
-        <div class="desc">This page presents the Yatharth message — support Saneha Saini's education via the payment options below.</div>
+      <p class="lead">
+        A complete digital starter collection — bilingual manifesto (हिन्दी + English), meditation audio, vision wallpapers and symbolic assets.
+        This page gives multiple purchase/support options — choose any. All proceeds support Saneha Saini's education and life.
+      </p>
 
-        <div class="chip-row" aria-hidden="false">
-          <a class="chip" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram</a>
-          <a class="chip" href="https://chat.whatsapp.com/CxwzR0ufxdL4yAGCqifPRh?mode=wwt" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="chip" href="https://www.facebook.com/share/1Bc9qeE5uB/" target="_blank" rel="noopener">Facebook</a>
-          <a class="chip" href="https://multicosmovision.blogspot.com/2025/09/2-e-h-e-c-e-e-1-d_11.html" target="_blank" rel="noopener">Blog</a>
-          <a class="chip" href="https://youtube.com/@rampaulsaini-yk4gn?si=Y1MhQB1Eg84ARD6I" target="_blank" rel="noopener">YouTube</a>
-        </div>
+      <div class="meta">Pack includes: <strong>PDF manifesto</strong>, meditation <strong>MP3</strong>, <strong>4K wallpapers</strong>, and a 3D scene file. Price suggestion: ₹199 (starter).</div>
 
-        <div class="donate-row">
-          <button class="donate-btn" data-method="gpay">GPay</button>
-          <button class="donate-btn" data-method="paypal">PayPal</button>
-          <button class="donate-btn" data-method="paytm">Paytm</button>
-        </div>
+      <div class="actions">
+        <!-- GPay / UPI: this opens UPI intent (mobile). Replace UPI_ID if needed -->
+        <a class="btn btn-gpay" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=꙰%20Yatharth%20Support&cu=INR" title="Pay via UPI (GPay/PhonePe)">
+          ₹199 — Pay (UPI)
+        </a>
 
-        <div id="panel-gpay" class="qr-panel" aria-hidden="true">
-          <a href="assets/gpay-qr.png" target="_blank" rel="noopener"><img class="qr-small" src="assets/gpay-qr.png" alt="GPay QR"></a>
-          <div class="pay-txt">GPay / UPI:<br><span style="color:#071226">sainirampaul90-1@okhdfcbank</span></div>
-        </div>
+        <!-- PayPal donate/link -->
+        <a class="btn btn-paypal" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener noreferrer" title="Pay via PayPal">
+          PayPal — ₹199
+        </a>
 
-        <div id="panel-paypal" class="qr-panel" aria-hidden="true">
-          <a href="assets/paypal-qr.png" target="_blank" rel="noopener"><img class="qr-small" src="assets/paypal-qr.png" alt="PayPal QR"></a>
-          <div class="pay-txt">PayPal:<br><a href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener">paypal.me/sainirampaul60</a></div>
-        </div>
+        <!-- Gumroad / Payhip / Sellfy (Paid delivery gateway) -->
+        <a class="btn btn-gumroad" href="GUMROAD_LINK" target="_blank" rel="noopener noreferrer" title="Buy via Gumroad/Payhip (delivered automatically)">
+          Buy on Gumroad / Payhip
+        </a>
 
-        <div id="panel-paytm" class="qr-panel" aria-hidden="true">
-          <a href="assets/paytm-qr.png" target="_blank" rel="noopener"><img class="qr-small" src="assets/paytm-qr.png" alt="Paytm QR"></a>
-          <div class="pay-txt">Paytm / Phone:<br><a href="tel:+918082935186">+91 8082935186</a></div>
-        </div>
-
-      <pre id="debug">꙰ Page ready — tap Play to start audio</pre>
+        <!-- GitHub Release (public download / preview) -->
+        <a class="btn btn-release" href="https://github.com/rampaulsaini/my-omniverse-store/releases/latest" target="_blank" rel="noopener noreferrer" title="Open release (may contain preview or downloadable assets)">
+          View GitHub Release
+        </a>
       </div>
-    </main>
 
-    <footer>꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</footer>
+      <div style="margin-bottom:10px;">
+        <a class="small" href="/assets/yatharth_siddhant_bilingual.pdf" target="_blank" rel="noopener noreferrer">Open PDF (raw)</a>
+        &nbsp; • &nbsp;
+        <a class="small" href="https://raw.githubusercontent.com/rampaulsaini/my-omniverse-store/main/assets/yatharth_siddhant_bilingual.pdf" target="_blank">Raw link</a>
+      </div>
+
+      <!-- Embedded PDF viewer -->
+      <div>
+        <iframe class="viewer" src="/assets/yatharth_siddhant_bilingual.pdf"></iframe>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
+        If the embedded preview shows "Invalid PDF", click <strong>Open PDF (raw)</strong> or the Raw link — the file will download or open in your browser. For secure paid delivery use Gumroad/Payhip; GitHub Releases are public.
+      </p>
+
+      <footer class="note">
+        ꙰शिरोमणिrampaulsaini — All proceeds will support Saneha Saini’s education and wellbeing. Thank you for supporting the Yatharth vision.
+      </footer>
+    </div>
   </div>
 
-<script>
-/* Toggle QR panels (only one open at a time), audio play, PDF check */
-const debug = document.getElementById('debug');
-const log = m => { debug.textContent = m + '\\n' + debug.textContent; console.log(m); };
-
-// donate panel toggles
-const panels = { gpay: 'panel-gpay', paypal: 'panel-paypal', paytm: 'panel-paytm' };
-document.querySelectorAll('.donate-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const m = btn.getAttribute('data-method');
-    Object.values(panels).forEach(id => {
-      const el = document.getElementById(id);
-      if(el) { el.style.display = 'none'; el.setAttribute('aria-hidden','true'); }
-    });
-    const panel = document.getElementById(panels[m]);
-    if(panel){ panel.style.display = 'flex'; panel.style.flexDirection='column'; panel.setAttribute('aria-hidden','false'); panel.scrollIntoView({behavior:'smooth',block:'center'}); }
-  });
-});
-
-// audio
-let audio = null;
-document.getElementById('playBtn').addEventListener('click', async (e) => {
-  e.preventDefault();
-  if(!audio){ audio = new Audio('assets/audio.mp3'); audio.crossOrigin='anonymous'; audio.preload='auto';
-    audio.addEventListener('error', ()=>{ const err=audio.error; const code=err?err.code:'no-code'; log('❌ Audio error code='+code+' — unsupported/missing'); });
-  }
-  try{
-    if(audio.paused){ await audio.play(); e.target.textContent='Pause'; log('🎧 Playing...'); }
-    else { audio.pause(); e.target.textContent='Play'; log('⏸️ Paused'); }
-  }catch(err){ log('❌ Audio play failed: ' + (err.message||err)); log('Tip: tap page once or reupload MP3 (192kbps)'); }
-});
-
-// PDF HEAD check
-(async function(){
-  const pdf='assets/yatharth_siddhant_bilingual.pdf';
-  try{
-    const r = await fetch(pdf,{method:'HEAD'});
-    if(r.ok) log('✅ PDF available');
-    else log('❌ PDF missing (HEAD '+r.status+') — upload to ' + pdf);
-  }catch(e){ log('❌ PDF HEAD check failed: ' + e.message); }
-})();
-
-// click profile opens large remote image
-document.getElementById('profileImg')?.addEventListener('click', (e) => { window.open(e.target.src,'_blank','noopener'); });
-</script>
+  <!-- Optional: small script to open UPI intent on mobile if browser supports -->
+  <script>
+    // If the UPI link doesn't automatically open in some browsers, show a friendly message.
+    (function(){
+      const upi = document.querySelector('.btn-gpay');
+      if(!upi) return;
+      upi.addEventListener('click', function(e){
+        // no-op: mobile will handle upi:// scheme. Desktop will just do nothing or show broken link.
+        // Could show fallback QR or instructions — implement later if needed.
+      });
+    })();
+  </script>
 </body>
-</html>
+          </html>
+  
