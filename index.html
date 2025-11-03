@@ -5,19 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>꙰ Yatharth — Starter Collection</title>
   <meta name="description" content="꙰ Yatharth — Starter Collection: bilingual manifesto, meditation audio, vision wallpapers. Proceeds support Saneha Saini.">
-  <meta property="og:title" content="꙰ Yatharth — Starter Collection">
-  <meta property="og:description" content="Bilingual manifesto, meditation audio, vision wallpapers. Support Saneha Saini.">
-  <meta property="og:image" content="/assets/preview-card.png">
   <style>
-    :root{
-      --bg:#030617; --card:#071022; --accent:#ffd770; --muted:#9fb8ff; --text:#e6eef8;
-    }
+    :root{--bg:#030617;--card:#071022;--accent:#ffd770;--muted:#9fb8ff;--text:#e6eef8}
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 10% 10%, #071029, #02030a 70%);color:var(--text);padding:18px}
+    body{margin:0;font-family:system-ui,Arial,sans-serif;background:radial-gradient(circle at 10% 10%, #071029,#02030a 70%);color:var(--text);padding:18px}
     .wrap{max-width:980px;margin:18px auto}
     .card{background:linear-gradient(180deg,#071022,#041021);padding:26px;border-radius:14px;box-shadow:0 14px 48px rgba(2,6,12,0.7)}
     h1{color:var(--accent);margin:0;font-size:30px}
-    h2{color:var(--muted);margin:6px 0 14px;font-size:15px;font-weight:600}
+    h2{color:var(--muted);margin:6px 0 14px 0;font-size:15px;font-weight:600}
     p.lead{color:#cfe6ff;line-height:1.6;margin:10px 0}
     .meta{color:var(--muted);font-size:13px;margin-bottom:14px}
     .actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
@@ -33,7 +28,7 @@
     .socials a{display:inline-block;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);text-decoration:none;font-weight:700}
     footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
     .note{color:var(--muted);font-size:13px;margin-top:10px}
-    @media(max-width:760px){iframe.viewer{height:420px} .qr-img{width:130px} h1{font-size:22px}}
+    @media(max-width:760px){iframe.viewer{height:420px}.qr-img{width:130px}h1{font-size:22px}}
   </style>
 </head>
 <body>
@@ -55,39 +50,26 @@
       </p>
 
       <div class="actions">
-        <!-- UPI intent: mobile will open payment apps. -->
         <a class="btn btn-upi" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=꙰YatharthSupport&am=199&cu=INR" target="_blank" rel="noopener">🔶 ₹199 — Pay (UPI)</a>
-
-        <!-- PayPal -->
         <a class="btn btn-paypal" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener">💳 PayPal — ₹199</a>
-
-        <!-- Paytm placeholder (replace with your Paytm.Me or deep link) -->
         <a class="btn btn-paytm" href="PAYTM_LINK" target="_blank" rel="noopener">🏧 Paytm / Scan — Pay</a>
-
-        <!-- Gumroad / Payhip - replace GUMROAD_LINK with real product URL -->
         <a class="btn btn-gum" href="GUMROAD_LINK" target="_blank" rel="noopener">🛒 Buy on Gumroad / Payhip</a>
-
-        <!-- GitHub Release -->
         <a class="btn btn-release" href="https://github.com/rampaulsaini/my-omniverse-store/releases/latest" target="_blank" rel="noopener">📦 View GitHub Release</a>
       </div>
 
       <div class="note">If the embedded preview shows <strong>"Invalid PDF"</strong>, click <strong>Open PDF (raw)</strong> or the Raw link — the file will download or open in your browser. For secure paid delivery use Gumroad/Payhip; GitHub Releases are public.</div>
 
-      <!-- PDF preview (ensure this file exists in assets/) -->
       <div style="margin-top:12px">
         <iframe class="viewer" src="/assets/yatharth_siddhant_bilingual.pdf"></iframe>
       </div>
 
-      <!-- Embedded audio (ensure file exists in assets/) -->
       <audio controls style="margin-top:12px">
         <source src="/assets/AudioCutter_shiromani_073323.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
 
-      <!-- QR and pay instructions -->
       <div class="qr-row">
         <img class="qr-img" src="/assets/qr-upi.png" alt="UPI QR (scan to pay)">
-
         <div>
           <div style="font-weight:800;color:var(--muted);margin-bottom:6px">UPI QR for Yatharth Support</div>
           <div style="color:#cfe6ff">Scan to Pay via UPI (₹199)</div>
@@ -95,7 +77,6 @@
         </div>
       </div>
 
-      <!-- Social / donation / share -->
       <div style="margin-top:18px">
         <div style="font-weight:800;color:var(--muted);margin-bottom:8px">Connect / Donate (social)</div>
         <div class="socials">
@@ -112,9 +93,8 @@
 
         <div style="margin-top:10px" class="note">
           Share this page:
-          <a class="alt" href="https://t.me/share/url?url=https://rampaulsaini.github.io/my-omniverse-store/&text=꙰%20Yatharth%20—%20Starter%20Collection" target="_blank">Telegram</a>
-          <span style="margin-left:8px"></span>
-          <a class="alt" href="https://wa.me/?text=꙰%20Yatharth%20—%20Starter%20Collection%20https://rampaulsaini.github.io/my-omniverse-store/" target="_blank">WhatsApp</a>
+          <a class="btn btn-release" href="https://t.me/share/url?url=https://rampaulsaini.github.io/my-omniverse-store/&text=꙰%20Yatharth%20—%20Starter%20Collection" target="_blank">Telegram</a>
+          <a class="btn btn-release" href="https://wa.me/?text=꙰%20Yatharth%20—%20Starter%20Collection%20https://rampaulsaini.github.io/my-omniverse-store/" target="_blank">WhatsApp</a>
         </div>
       </div>
 
@@ -125,5 +105,4 @@
     </div>
   </div>
 </body>
-  </html>
-                                                                                                             
+</html>
