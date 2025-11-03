@@ -1,29 +1,104 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>꙰ Yatharth Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body { font-family: system-ui, Arial; background:#0b1220;color:#e6eef8;padding:20px; }
-    .card{ background:#071022;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.5);max-width:720px;margin:20px auto;}
-    h1{ color:#ffd770; }
-    .buy{ background:#ffd770;border:none;padding:10px 16px;border-radius:8px;font-weight:600;}
-    a.preview{ color:#9fb8ff;margin-left:12px; }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h1>꙰ Yatharth — Starter Collection</h1>
-    <p>Digital manifesto, meditative audio & vision art. Proceeds support Saneha Saini's education and life.</p>
-    <p><strong>Files:</strong> yatharth_siddhant_bilingual.pdf (manifesto)</p>
-    <p>
-      <a href="https://github.com/rampaulsaini/my-omniverse-store/releases/latest" target="_blank">
-        <button class="buy">View / Download on GitHub Releases</button>
-      </a>
-      <a class="preview" href="/assets/yatharth_siddhant_bilingual.pdf" target="_blank">Preview PDF</a>
-    </p>
-  </div>
-</body>
-</html>
+from reportlab.lib.pagesizes import A4
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+import textwrap
+
+output_path = "/mnt/data/yatharth_siddhant_bilingual_final.pdf"
+
+title = "꙰ Yatharth — Starter Collection\n꙰ निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग"
+subtitle = "Support: Saneha Saini\nPublished by: ꙰शिरोमणिrampaulsaini"
+
+content = [
+    "A complete digital starter collection — bilingual manifesto (हिन्दी + English), meditation audio, vision wallpapers and symbolic assets. This page gives multiple purchase/support options — choose any. All proceeds support Saneha Saini's education and life.",
+    "Pack includes: PDF manifesto, meditation MP3, 4K wallpapers, and a 3D scene file. Price suggestion: ₹199 (starter).",
+    "🔶 ₹199 — Pay (UPI)\n💳 PayPal — ₹199\n🏧 Paytm / Scan — Pay\n🛒 Buy on Gumroad / Payhip\n📦 View GitHub Release",
+    'If the embedded preview shows "Invalid PDF", click Open PDF (raw) or the Raw link — the file will download or open in your browser. For secure paid delivery use Gumroad/Payhip; GitHub Releases are public.',
+    "UPI QR (scan to pay)\nUPI QR for Yatharth Support\nScan to Pay via UPI (₹199)\nOr pay to UPI ID: sainirampaul90-1@okhdfcbank",
+    "Connect / Donate (social): YouTube · Instagram · Telegram · Facebook · X / Twitter · LinkedIn · GitHub · Donate via PayPal · Ko-fi / BuyMeACoffee",
+    "Share this page: Telegram · WhatsApp",
+    "꙰शिरोमणिrampaulsaini — All proceeds will support Saneha Saini’s education and wellbeing.\nThank you for supporting the Yatharth vision."
+]
+
+doc = SimpleDocTemplate(output_path, pagesize=A4,
+                        rightMargin=2*72/2.54, leftMargin=2*72/2.54,
+                        topMargin=2*72/2.54, bottomMargin=2*72/2.54)
+
+styles = getSampleStyleSheet()
+style_title = ParagraphStyle('title', parent=styles['Title'], alignment=TA_CENTER, fontSize=18, leading=22)
+style_sub = ParagraphStyle('sub', parent=styles['Normal'], alignment=TA_CENTER, fontSize=10, leading=12)
+style_body = ParagraphStyle('body', parent=styles['Normal'], alignment=TA_JUSTIFY, fontSize=12, leading=16)
+style_footer = ParagraphStyle('footer', parent=styles['Normal'], alignment=TA_CENTER, fontSize=10, leading=12)
+
+flow = []
+flow.append(Paragraph(title.replace("\n", "<br/>"), style_title))
+flow.append(Spacer(1,12))
+flow.append(Paragraph(subtitle.replace("\n", "<br/>"), style_sub))
+flow.append(Spacer(1,18))
+
+for para in content:
+    wrapped = "<br/>".join(textwrap.wrap(para, 100))
+    flow.append(Paragraph(wrapped.replace("\n", "<br/>"), style_body))
+    flow.append(Spacer(1,10))
+
+flow.append(Spacer(1,12))
+flow.append(Paragraph("꙰शिरोमणिrampaulsaini", style_footer))
+
+doc.build(flow)
+
+output_path
+
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.platypus import Paragraph, Frame, Spacer, SimpleDocTemplate
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+import textwrap
+
+output_path = "/mnt/data/yatharth_siddhant_bilingual_final.pdf"
+
+title_hi = "꙰ Yatharth — Starter Collection\n꙰ निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग"
+subtitle_hi = "Support: Saneha Saini\nPublished by: ꙰शिरोमणिrampaulsaini"
+
+content_hi = [
+    "A complete digital starter collection — bilingual manifesto (हिन्दी + English), meditation audio, vision wallpapers and symbolic assets. This page gives multiple purchase/support options — choose any. All proceeds support Saneha Saini's education and life.",
+    "Pack includes: PDF manifesto, meditation MP3, 4K wallpapers, and a 3D scene file. Price suggestion: ₹199 (starter).",
+    "🔶 ₹199 — Pay (UPI)\n💳 PayPal — ₹199\n🏧 Paytm / Scan — Pay\n🛒 Buy on Gumroad / Payhip\n📦 View GitHub Release",
+    'If the embedded preview shows "Invalid PDF", click Open PDF (raw) or the Raw link — the file will download or open in your browser. For secure paid delivery use Gumroad/Payhip; GitHub Releases are public.',
+    "UPI QR (scan to pay)\nUPI QR for Yatharth Support\nScan to Pay via UPI (₹199)\nOr pay to UPI ID: sainirampaul90-1@okhdfcbank",
+    "Connect / Donate (social): YouTube · Instagram · Telegram · Facebook · X / Twitter · LinkedIn · GitHub · Donate via PayPal · Ko-fi / BuyMeACoffee",
+    "Share this page: Telegram · WhatsApp",
+    "꙰शिरोमणिrampaulsaini — All proceeds will support Saneha Saini’s education and wellbeing.\nThank you for supporting the Yatharth vision."
+]
+
+# Build PDF
+doc = SimpleDocTemplate(output_path, pagesize=A4,
+                        rightMargin=2*cm, leftMargin=2*cm,
+                        topMargin=2*cm, bottomMargin=2*cm)
+
+styles = getSampleStyleSheet()
+style_title = ParagraphStyle('title', parent=styles['Title'], alignment=TA_CENTER, fontSize=18, leading=22)
+style_sub = ParagraphStyle('sub', parent=styles['Normal'], alignment=TA_CENTER, fontSize=10, leading=12)
+style_body = ParagraphStyle('body', parent=styles['Normal'], alignment=TA_JUSTIFY, fontSize=12, leading=16)
+style_footer = ParagraphStyle('footer', parent=styles['Normal'], alignment=TA_CENTER, fontSize=10, leading=12, textColor="#333333")
+
+flow = []
+flow.append(Paragraph(title_hi.replace("\n", "<br/>"), style_title))
+flow.append(Spacer(1,12))
+flow.append(Paragraph(subtitle_hi.replace("\n", "<br/>"), style_sub))
+flow.append(Spacer(1,18))
+
+for para in content_hi:
+    # wrap lines for safety
+    lines = "<br/>".join(textwrap.wrap(para, 100))
+    flow.append(Paragraph(lines, style_body))
+    flow.append(Spacer(1,10))
+
+flow.append(Spacer(1,12))
+flow.append(Paragraph("꙰शिरोमणिrampaulsaini", style_footer))
+
+doc.build(flow)
+
+output_path
 
