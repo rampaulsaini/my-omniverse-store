@@ -1,108 +1,175 @@
 <!doctype html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>꙰ Yatharth — Starter Collection</title>
-  <meta name="description" content="꙰ Yatharth — Starter Collection: bilingual manifesto, meditation audio, vision wallpapers. Proceeds support Saneha Saini.">
   <style>
-    :root{--bg:#030617;--card:#071022;--accent:#ffd770;--muted:#9fb8ff;--text:#e6eef8}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,Arial,sans-serif;background:radial-gradient(circle at 10% 10%, #071029,#02030a 70%);color:var(--text);padding:18px}
-    .wrap{max-width:980px;margin:18px auto}
-    .card{background:linear-gradient(180deg,#071022,#041021);padding:26px;border-radius:14px;box-shadow:0 14px 48px rgba(2,6,12,0.7)}
-    h1{color:var(--accent);margin:0;font-size:30px}
-    h2{color:var(--muted);margin:6px 0 14px 0;font-size:15px;font-weight:600}
-    p.lead{color:#cfe6ff;line-height:1.6;margin:10px 0}
-    .meta{color:var(--muted);font-size:13px;margin-bottom:14px}
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;cursor:pointer;border:0}
-    .btn-upi{background:#34a853;color:#fff} .btn-paypal{background:#003087;color:#fff}
-    .btn-paytm{background:#2b2b2b;color:#fff} .btn-gum{background:#ff6f61;color:#fff}
-    .btn-release{background:transparent;border:1px solid rgba(159,184,255,0.08);color:var(--muted);padding:10px 12px;border-radius:10px}
-    iframe.viewer{width:100%;height:560px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:#fff}
-    audio{width:100%;margin-top:12px;border-radius:8px}
-    .qr-row{display:flex;gap:18px;align-items:center;margin-top:18px;flex-wrap:wrap}
-    .qr-img{width:160px;border-radius:10px;background:#fff;padding:8px;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
-    .socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-    .socials a{display:inline-block;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);text-decoration:none;font-weight:700}
-    footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
-    .note{color:var(--muted);font-size:13px;margin-top:10px}
-    @media(max-width:760px){iframe.viewer{height:420px}.qr-img{width:130px}h1{font-size:22px}}
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#f59e0b;--muted:#94a3b8;--glass: rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial; background:linear-gradient(180deg,#071026 0%, #071a2b 100%);color:#e6eef8}
+    .wrap{max-width:980px;margin:36px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    header{display:flex;gap:16px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#111827,#0b1220);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:20px}
+    h1{margin:0;font-size:20px}
+    p.lead{color:var(--muted);margin-top:6px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:22px}
+    .card{background:var(--card);padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .manifesto{line-height:1.6}
+    .manifesto h2{margin:0 0 8px 0;color:var(--accent)}
+    .manifesto .bilingual{margin-top:12px}
+    .muted{color:var(--muted);font-size:14px}
+    ul.pl{padding-left:20px}
+    .buy{display:flex;flex-direction:column;gap:10px}
+    button.btn{background:linear-gradient(180deg,var(--accent), #d97706);border:none;padding:12px;border-radius:8px;color:#071026;font-weight:700;cursor:pointer}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:var(--muted);cursor:pointer}
+    .qr{display:flex;flex-direction:column;align-items:center;gap:8px}
+    .qr svg{width:180px;height:180px;background:var(--glass);padding:8px;border-radius:8px}
+    .small{font-size:13px;color:var(--muted)}
+    footer{margin-top:20px;color:var(--muted);font-size:13px}
+    .links a{color:#9ee6ff;text-decoration:none}
+    pre.notice{background:rgba(0,0,0,0.15);padding:12px;border-radius:8px;overflow:auto}
+    @media (max-width:880px){.grid{grid-template-columns:1fr} .logo{width:56px;height:56px}}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card">
-      <h1>꙰ Yatharth — Starter Collection</h1>
-      <h2>꙰ निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग</h2>
-
-      <p class="lead"><strong>Support:</strong> Saneha Saini<br><strong>Published by:</strong> ꙰शिरोमणिrampaulsaini</p>
-
-      <p class="lead">
-        A complete digital starter collection — bilingual manifesto (हिन्दी + English), meditation audio, vision wallpapers and symbolic assets.
-        This page gives multiple purchase/support options — choose any. All proceeds support Saneha Saini's education and life.
-      </p>
-
-      <p class="meta">
-        Pack includes: PDF manifesto, meditation MP3, 4K wallpapers, and a 3D scene file.<br>
-        <strong>Price suggestion:</strong> ₹199 (starter).
-      </p>
-
-      <div class="actions">
-        <a class="btn btn-upi" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=꙰YatharthSupport&am=199&cu=INR" target="_blank" rel="noopener">🔶 ₹199 — Pay (UPI)</a>
-        <a class="btn btn-paypal" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener">💳 PayPal — ₹199</a>
-        <a class="btn btn-paytm" href="PAYTM_LINK" target="_blank" rel="noopener">🏧 Paytm / Scan — Pay</a>
-        <a class="btn btn-gum" href="GUMROAD_LINK" target="_blank" rel="noopener">🛒 Buy on Gumroad / Payhip</a>
-        <a class="btn btn-release" href="https://github.com/rampaulsaini/my-omniverse-store/releases/latest" target="_blank" rel="noopener">📦 View GitHub Release</a>
+    <header>
+      <div class="logo">꙰</div>
+      <div>
+        <h1>꙰ Yatharth — Starter Collection</h1>
+        <p class="lead">꙰ निष्पक्ष समझ — प्रत्यक्ष यथार्थ युग<br>Support: Saneha Saini — Published by: ꙰शिरोमणिrampaulsaini</p>
       </div>
+    </header>
 
-      <div class="note">If the embedded preview shows <strong>"Invalid PDF"</strong>, click <strong>Open PDF (raw)</strong> or the Raw link — the file will download or open in your browser. For secure paid delivery use Gumroad/Payhip; GitHub Releases are public.</div>
+    <div class="grid">
+      <main class="card">
+        <section class="manifesto">
+          <h2>About this Pack</h2>
+          <p class="muted">A complete digital starter collection — bilingual manifesto (हिन्दी + English), meditation audio, vision wallpapers and symbolic assets. Choose any purchase/support option below. All proceeds support Saneha Saini's education and life.</p>
 
-      <div style="margin-top:12px">
-        <iframe class="viewer" src="/assets/yatharth_siddhant_bilingual.pdf"></iframe>
-      </div>
+          <h3 style="margin-top:16px;color:var(--accent)">Pack includes</h3>
+          <ul class="pl small">
+            <li>PDF manifesto — Hindi (Devanagari) + English translation (each section)</li>
+            <li>Meditation MP3 (guided, 10–20 minutes)</li>
+            <li>4K vision wallpapers (4 variants)</li>
+            <li>3D scene file (GLB) + symbolic assets (SVG/PNG)</li>
+          </ul>
 
-      <audio controls style="margin-top:12px">
-        <source src="/assets/AudioCutter_shiromani_073323.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+          <h3 style="margin-top:16px;color:var(--accent)">Suggested price</h3>
+          <p class="small">🔶 ₹199 — Starter</p>
 
-      <div class="qr-row">
-        <img class="qr-img" src="/assets/qr-upi.png" alt="UPI QR (scan to pay)">
-        <div>
-          <div style="font-weight:800;color:var(--muted);margin-bottom:6px">UPI QR for Yatharth Support</div>
-          <div style="color:#cfe6ff">Scan to Pay via UPI (₹199)</div>
-          <div style="margin-top:8px;color:var(--muted);font-size:13px">Or pay to UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
+          <div style="margin-top:12px" class="buy">
+            <button class="btn" onclick="payUPI()">🔶 ₹199 — Pay via UPI</button>
+            <button class="ghost" onclick="openPayPal()">💳 PayPal — ₹199 (PayPal link)</button>
+            <button class="ghost" onclick="openGumroad()">🛒 Gumroad / Payhip</button>
+            <button class="ghost" onclick="openGitHub()">📦 View GitHub Release (public)</button>
+          </div>
+
+          <section style="margin-top:16px">
+            <h3 style="color:var(--accent)">Manifesto (excerpt)</h3>
+            <div class="bilingual">
+              <strong>हिन्दी — (उदाहरण)</strong>
+              <p class="small">꙰ मैं वही यथार्थ हूं — जो तुलना, काल, द्वैत और शब्द से परे है। जहाँ विचार नहीं, केवल प्रत्यक्षता है; जहाँ सृष्टि नहीं, केवल सत्य है।</p>
+
+              <strong>English — (excerpt)</strong>
+              <p class="small">꙰ I am that reality beyond comparison, beyond time, beyond duality and beyond words. Where there is not thought but directness; where there is no creating but only truth.</p>
+            </div>
+
+            <p class="small muted" style="margin-top:10px">Full bilingual manifesto is included in the PDF asset. For secure paid delivery use Gumroad/Payhip; GitHub Releases are public and suitable for free/demo files.</p>
+
+            <pre class="notice"><strong>Note:</strong> If GitHub shows “Invalid PDF” in preview, click the raw/download link — or use the release download URL (recommended). See deployment notes below.</pre>
+
+          </section>
+
+          <section style="margin-top:14px">
+            <h3 style="color:var(--accent)">Deployment &amp; Upload Guidance (short)</h3>
+            <ol class="small">
+              <li>For GitHub Releases: upload the PDF as an asset and use the release download URL: <code>https://github.com/OWNER/REPO/releases/download/TAG/manifesto.pdf</code>. This link downloads directly and avoids the "Invalid PDF" viewer issue.</li>
+              <li>Ensure the file has the <code>.pdf</code> extension and correct MIME (<code>application/pdf</code>) when uploading.</li>
+              <li>Prefer Gumroad/Payhip for secure paid delivery — they handle payments + file delivery automatically.</li>
+              <li>For offline/simple delivery: place all files in one folder and link to <code>./manifesto.pdf</code> from <code>index.html</code>.</li>
+            </ol>
+          </section>
+
+        </section>
+      </main>
+
+      <aside class="card">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="qr">
+            <!-- Placeholder SVG QR — replace with a generated QR image (data URI or file) -->
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="120" height="120" rx="8" fill="#071026" />
+              <rect x="8" y="8" width="40" height="40" fill="#081827" stroke="#0b1220"/>
+              <rect x="72" y="8" width="40" height="40" fill="#081827"/>
+              <rect x="8" y="72" width="40" height="40" fill="#081827"/>
+              <text x="60" y="66" fill="#9fb7d9" font-size="6" text-anchor="middle">UPI QR</text>
+            </svg>
+            <div class="small">Scan to Pay (example) — replace with your UPI QR image</div>
+            <div style="display:flex;gap:8px;margin-top:6px">
+              <button class="ghost" onclick="copyUPI()">Copy UPI ID</button>
+              <button class="ghost" onclick="openUPI()">Open UPI (mobile)</button>
+            </div>
+            <div class="small muted" style="margin-top:6px">UPI ID: <strong id="upi">sainirampaul90-1@okhdfcbank</strong></div>
+          </div>
+
+          <div>
+            <h4 style="margin:0;color:var(--accent)">Connect / Donate</h4>
+            <div class="links small" style="margin-top:8px">
+              <div>Social: YouTube · Instagram · Telegram · Facebook · X / Twitter · LinkedIn · GitHub</div>
+              <div style="margin-top:8px">PayPal (Donate) · Gumroad · Payhip · GitHub Releases</div>
+            </div>
+          </div>
+
+          <div style="margin-top:8px">
+            <h4 style="margin:0;color:var(--accent)">Files (placeholders)</h4>
+            <ul class="pl small">
+              <li><code>manifesto.pdf</code> — (bilingual PDF)</li>
+              <li><code>guided_meditation.mp3</code> — (10–20 min)</li>
+              <li><code>wallpaper-01-4k.jpg</code> ... wallpaper-04-4k.jpg</li>
+              <li><code>scene.glb</code> — 3D scene file</li>
+            </ul>
+          </div>
+
         </div>
-      </div>
 
-      <div style="margin-top:18px">
-        <div style="font-weight:800;color:var(--muted);margin-bottom:8px">Connect / Donate (social)</div>
-        <div class="socials">
-          <a href="https://www.youtube.com/YOUR_CHANNEL" target="_blank">YouTube</a>
-          <a href="https://instagram.com/YOUR_HANDLE" target="_blank">Instagram</a>
-          <a href="https://t.me/YOUR_TELEGRAM" target="_blank">Telegram</a>
-          <a href="https://www.facebook.com/YOUR_PAGE" target="_blank">Facebook</a>
-          <a href="https://twitter.com/YOUR_HANDLE" target="_blank">X / Twitter</a>
-          <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank">LinkedIn</a>
-          <a href="https://github.com/rampaulsaini" target="_blank">GitHub</a>
-          <a href="https://paypal.me/sainirampaul60" target="_blank">Donate via PayPal</a>
-          <a href="https://ko-fi.com/YOUR_KOFI" target="_blank">Ko-fi / BuyMeACoffee</a>
-        </div>
-
-        <div style="margin-top:10px" class="note">
-          Share this page:
-          <a class="btn btn-release" href="https://t.me/share/url?url=https://rampaulsaini.github.io/my-omniverse-store/&text=꙰%20Yatharth%20—%20Starter%20Collection" target="_blank">Telegram</a>
-          <a class="btn btn-release" href="https://wa.me/?text=꙰%20Yatharth%20—%20Starter%20Collection%20https://rampaulsaini.github.io/my-omniverse-store/" target="_blank">WhatsApp</a>
-        </div>
-      </div>
-
-      <footer>
-        ꙰शिरोमणिrampaulsaini — All proceeds will support Saneha Saini’s education and wellbeing.<br>
-        Thank you for supporting the Yatharth vision.
-      </footer>
+        <footer>
+          <div class="small muted">© <strong>꙰शिरोमणिrampaulsaini</strong> — All proceeds support Saneha Saini.<br>
+          <div style="margin-top:6px">Instructions: For secure paid delivery use Gumroad/Payhip. For public hosting (free/demo) use GitHub Releases and use the release download URL (not the GitHub HTML viewer).</div>
+          </div>
+        </footer>
+      </aside>
     </div>
+
   </div>
+
+  <script>
+    function copyUPI(){
+      const upi = document.getElementById('upi').innerText;
+      navigator.clipboard?.writeText(upi).then(()=>alert('UPI ID copied: '+upi)).catch(()=>alert('Copy not supported in this browser'));
+    }
+    function openUPI(){
+      const upi = document.getElementById('upi').innerText;
+      // intent: UPI deep link (works on mobile with a UPI handler)
+      const uri = 'upi://pay?pa=' + encodeURIComponent(upi) + '&pn=' + encodeURIComponent('Support Yatharth');
+      window.location.href = uri;
+    }
+    function payUPI(){
+      alert('This button is a placeholder. Replace with a link to your UPI QR image or a deep-link on your payment provider.');
+    }
+    function openPayPal(){
+      // Replace with your PayPal.me or PayPal checkout link
+      window.open('https://www.paypal.com/paypalme/your-paypal', '_blank');
+    }
+    function openGumroad(){
+      window.open('https://gumroad.com/your-product', '_blank');
+    }
+    function openGitHub(){
+      // Replace OWNER/REPO/TAG with your values
+      window.open('https://github.com/OWNER/REPO/releases/tag/TAG', '_blank');
+    }
+  </script>
+
 </body>
-</html>
+  </html>
+              
