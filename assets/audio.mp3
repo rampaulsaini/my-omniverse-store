@@ -1,3 +1,13 @@
+<section id="intro" class="p-6 text-center">
+  <h2 class="text-2xl font-semibold mb-4">꙰ Koyab — Omniversal Manifesto</h2>
+  <p class="text-lg mb-6">A declaration of conscious creation, balance and evolution.</p>
+  <div class="grid md:grid-cols-2 gap-4 justify-center">
+    <a href="https://drive.google.com/file/d/1DKoKEjHz7Uxz2uQlOiGO4BU2QW22mXQj/view?usp=drivesdk" class="btn">📘 Declaration (PDF)</a>
+    <a href="https://drive.google.com/file/d/1yGqO0ks5_3iNNIxiEJhIKPd3XIPJTG8G/view?usp=drivesdk" class="btn">🎥 Vision Video</a>
+    <a href="https://drive.google.com/file/d/1HCe8RizT1lrP6mmnGbiVVTTOJgQ5Tenc/view?usp=drivesdk" class="btn">🎧 Meditation Audio</a>
+    <a href="https://drive.google.com/file/d/1zMUBQiJdxyG6gT8__a1CnLsqxzImsREQ/view?usp=drivesdk" class="btn">🌌 Gallery</a>
+  </div>
+</section>
 <script>
 // === ꙰ Live Audio Path Auto-Connect ===
 async function findAudio(){
