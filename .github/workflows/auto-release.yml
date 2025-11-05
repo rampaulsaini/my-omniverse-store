@@ -24,3 +24,51 @@ All Rights Reserved. — Distributed under the **MIT License** (see `LICENSE`).
 
 Thank you — आपका सहयोग और समर्थन मायने रखता है।  
 **꙰ निष्पक्ष समझ — शिरोमणि rampaulsaini**
+name: Auto Release & Upload Assets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'assets/**'
+      - 'index.html'
+      - 'README.md'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Get version tag
+        id: tag
+        run: |
+          # Create lightweight tag with date-time if not present
+          TAG="release-$(date +'%Y%m%d%H%M')"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag.outputs.tag }}
+          name: "${{ steps.tag.outputs.tag }} - Yatharth Starter Pack"
+          body: "Auto release: Includes bilingual manifesto and assets."
+          draft: false
+          prerelease: false
+
+      - name: Upload assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            assets/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
