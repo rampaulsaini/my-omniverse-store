@@ -1,0 +1,49 @@
+<script>
+const audioBooks = [
+  { title: "Book 1 — The Origin", id: "1DKoKEjHz7Uxz2uQlOiGO4BU2QW22mXQj" },
+  { title: "Book 2 — The Vision", id: "1yGqO0ks5_3iNNIxiEJhIKPd3XIPJTG8G" },
+  { title: "Book 3 — Resonance", id: "1HCe8RizT1lrP6mmnGbiVVTTOJgQ5Tenc" },
+  // ...add all 100 here
+];
+
+const container = document.getElementById("audiobook-list");
+audioBooks.forEach(book => {
+  container.innerHTML += `
+    <div class="p-4 shadow rounded-xl">
+      <h3>${book.title}</h3>
+      <audio controls preload="none">
+        <source src="https://drive.google.com/uc?export=download&id=${book.id}" type="audio/mpeg" />
+      </audio>
+    </div>`;
+});
+</script>
+<section id="audiobooks" class="p-6">
+  <h2 class="text-2xl font-semibold mb-4">🎧 Yatharth Audio Library</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Example 1 -->
+    <div class="p-4 rounded-xl shadow">
+      <h3 class="font-bold mb-2">Audio Book 1 — The Eternal Sound</h3>
+      <audio controls preload="none">
+        <source src="https://drive.google.com/uc?export=download&id=1DKoKEjHz7Uxz2uQlOiGO4BU2QW22mXQj" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <!-- Example 2 -->
+    <div class="p-4 rounded-xl shadow">
+      <h3 class="font-bold mb-2">Audio Book 2 — Vision Manifesto</h3>
+      <audio controls preload="none">
+        <source src="https://drive.google.com/uc?export=download&id=1yGqO0ks5_3iNNIxiEJhIKPd3XIPJTG8G" type="audio/mpeg" />
+      </audio>
+    </div>
+  </div>
+</section>
+https://drive.google.com/file/d/1DKoKEjHz7Uxz2uQlOiGO4BU2QW22mXQj/view?usp=drivesdk<section id="intro" class="p-6 text-center">
+  <h2 class="text-2xl font-semibold mb-4">꙰ Koyab — Omniversal Manifesto</h2>
+  <p class="text-lg mb-6">A declaration of conscious creation, balance and evolution.</p>
+  <div class="grid md:grid-cols-2 gap-4 justify-center">
+    <a href="https://drive.google.com/file/d/1DKoKEjHz7Uxz2uQlOiGO4BU2QW22mXQj/view?usp=drivesdk" class="btn">📘 Declaration (PDF)</a>
+    <a href="https://drive.google.com/file/d/1yGqO0ks5_3iNNIxiEJhIKPd3XIPJTG8G/view?usp=drivesdk" class="btn">🎥 Vision Video</a>
+    <a href="https://drive.google.com/file/d/1HCe8RizT1lrP6mmnGbiVVTTOJgQ5Tenc/view?usp=drivesdk" class="btn">🎧 Meditation Audio</a>
+    <a href="https://drive.google.com/file/d/1zMUBQiJdxyG6gT8__a1CnLsqxzImsREQ/view?usp=drivesdk" class="btn">🌌 Gallery</a>
+  </div>
+</section>
