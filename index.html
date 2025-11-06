@@ -1,170 +1,49 @@
 <!doctype html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>꙰ यथार्थ सिद्धांत — निष्पक्ष समझ</title>
-  <meta name="description" content="꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग — निष्पक्ष समझ / शिरोमणि rampaulsaini" />
-  <style>
-    :root{
-      --bg1:#020612; --gold:#e9c77a; --muted:#cfd8df; --glass: rgba(255,255,255,0.02);
-      --max-width:920px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;background:linear-gradient(180deg,#000,#041029);font-family:"Noto Sans Devanagari",Inter,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
-    body{display:flex;align-items:flex-start;justify-content:center;padding:20px}
-    .wrap{width:100%;max-width:var(--max-width);display:flex;flex-direction:column;gap:14px;align-items:center}
-    header{width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));backdrop-filter:blur(6px)}
-    .profile{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid rgba(233,199,122,0.95);
-      background:radial-gradient(circle at 30% 30%, rgba(233,199,122,0.20), transparent 70%);
-      box-shadow:0 0 12px rgba(233,199,122,0.6), inset 0 0 8px rgba(255,255,255,0.12);
-      transition:transform .3s,box-shadow .3s; cursor:pointer;}
-    .profile:hover{ transform:scale(1.04); box-shadow:0 0 20px rgba(233,199,122,0.85); }
-
-    .main-title{color:var(--gold);font-size:18px;font-weight:700}
-    .subtitle{color:var(--muted);font-size:13px;text-align:center}
-
-    .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-    .btn{background:transparent;border:1px solid rgba(233,199,122,0.14);color:var(--gold);padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg, rgba(233,199,122,0.08), rgba(233,199,122,0.03));box-shadow:0 6px 18px rgba(233,199,122,0.03)}
-
-    main{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
-    .card{width:100%;max-width:820px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.04));padding:16px;border-radius:12px;display:flex;flex-direction:column;gap:12px;align-items:center}
-    .big-sign{font-size:56px;color:var(--gold)}
-    .sigline{font-weight:700;color:#fff}
-    .desc{color:var(--muted);text-align:center;max-width:720px}
-
-    .chip-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-    .chip{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);color:var(--gold);padding:6px 10px;border-radius:999px;font-weight:700;text-decoration:none}
-
-    .donate-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
-    .donate-btn{background:var(--gold);color:#061323;padding:8px 10px;border-radius:10px;font-weight:800;border:none;cursor:pointer}
-
-    .qr-panel{display:none;flex-direction:column;align-items:center;gap:8px;margin-top:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(233,199,122,0.03),rgba(255,255,255,0.02));box-shadow:0 10px 40px rgba(0,0,0,0.5)}
-    .qr-small{width:110px;border-radius:8px}
-    .pay-txt{color:#071226;background:#fff;padding:8px;border-radius:8px;font-weight:700;width:220px;text-align:center}
-
-    pre#debug{width:100%;max-width:820px;background:rgba(0,0,0,0.45);color:#9ff;padding:10px;border-radius:8px;max-height:140px;overflow:auto;font-size:13px}
-    footer{width:100%;text-align:center;color:rgba(255,255,255,0.6);padding:8px;font-size:13px;margin-top:6px}
-
-    @media(max-width:520px){
-      .profile{width:110px;height:110px}
-      .big-sign{font-size:44px}
-      .pay-txt{width:180px}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>꙰ Yatharth — Audio Store</title>
+<link rel="stylesheet" href="css/styles.css">
+<meta name="description" content="Yatharth audio store - preview and buy. Proceeds support Saneha Saini.">
 </head>
 <body>
-  <div class="wrap" role="main" aria-labelledby="titleHeading">
-    <header>
-      <!-- replace 'profile.jpg' in assets/ with your image if you want local hosting -->
-      <img id="profileImg" class="profile" src="https://i.ibb.co/DfZJy1Z8/IMG-20251103-004246.jpg" alt="निष्पक्ष समझ — शिरोमणि rampaulsaini" />
-
-      <div id="titleHeading" class="main-title">निष्पक्ष समझ</div>
-      <div class="subtitle">꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग<br><span style="font-size:13px;color:var(--muted)">The Era of Direct Truth — Experience the Message</span></div>
-
-      <div class="actions" role="toolbar" aria-label="Main actions">
-        <button id="playBtn" class="btn" aria-pressed="false">Play</button>
-        <a id="pdfBtn" class="btn" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" rel="noopener noreferrer">Read PDF</a>
-        <a id="buyBtn" class="btn primary" href="https://paypal.me/sainirampaul60/199INR" target="_blank" rel="noopener noreferrer">Buy ₹193</a>
+  <main class="wrap">
+    <header class="hero">
+      <div class="mark">꙰</div>
+      <div>
+        <h1>꙰ Yatharth — Audio Store</h1>
+        <p class="lead">Preview 10s • Buy links • Drive hosted (public previews)</p>
       </div>
     </header>
 
-    <main>
-      <div class="card" role="region" aria-label="Yatharth Siddhant Info">
-        <div class="big-sign" aria-hidden="true">꙰</div>
-        <div class="sigline">निष्पक्ष समझ — शिरोमणि rampaulsaini</div>
-        <div class="desc">This page presents the Yatharth message — support Saneha Saini's education via the payment options below.</div>
+    <section class="controls">
+      <input id="search" placeholder="Search title..." />
+      <select id="sort">
+        <option value="default">Sort: Default</option>
+        <option value="title">Title</option>
+        <option value="price">Price</option>
+      </select>
+    </section>
 
-        <div class="chip-row" aria-hidden="false">
-          <a class="chip" href="https://t.me/sampaulsaini" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a class="chip" href="https://chat.whatsapp.com/CxwzR0ufxdL4yAGCqifPRh" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a class="chip" href="https://www.facebook.com/share/1Bc9qeE5uB/" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a class="chip" href="https://multicosmovision.blogspot.com/2025/09/2-e-h-e-c-e-e-1-d_11.html" target="_blank" rel="noopener noreferrer">Blog</a>
-          <a class="chip" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener noreferrer">YouTube</a>
-        </div>
+    <section id="gallery" class="grid" aria-live="polite"></section>
 
-        <div class="donate-row">
-          <button class="donate-btn" data-method="gpay" aria-expanded="false">GPay</button>
-          <button class="donate-btn" data-method="paypal" aria-expanded="false">PayPal</button>
-          <button class="donate-btn" data-method="paytm" aria-expanded="false">Paytm</button>
-        </div>
-
-        <div id="panel-gpay" class="qr-panel" aria-hidden="true">
-          <a href="assets/gpay-qr.png" target="_blank" rel="noopener noreferrer"><img class="qr-small" src="assets/gpay-qr.png" alt="GPay QR"></a>
-          <div class="pay-txt">GPay / UPI:<br><strong> sainirampaul90-1@okhdfcbank </strong></div>
-        </div>
-
-        <div id="panel-paypal" class="qr-panel" aria-hidden="true">
-          <a href="assets/paypal-qr.png" target="_blank" rel="noopener noreferrer"><img class="qr-small" src="assets/paypal-qr.png" alt="PayPal QR"></a>
-          <div class="pay-txt">PayPal:<br><a href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener noreferrer">paypal.me/sainirampaul60</a></div>
-        </div>
-
-        <div id="panel-paytm" class="qr-panel" aria-hidden="true">
-          <a href="assets/paytm-qr.png" target="_blank" rel="noopener noreferrer"><img class="qr-small" src="assets/paytm-qr.png" alt="Paytm QR"></a>
-          <div class="pay-txt">Paytm / Phone:<br><a href="tel:+918082935186">+91 8082935186</a></div>
-        </div>
-
-        <pre id="debug">꙰ Page ready — tap Play to start audio</pre>
-      </div>
-    </main>
-
-    <footer>꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</footer>
-  </div>
-
-  <audio id="audio" src="assets/audio.mp3" preload="auto"></audio>
+    <footer class="footer">
+      <div>Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram/WhatsApp</div>
+    </footer>
+  </main>
 
   <script>
-    const logArea = document.getElementById('debug');
-    const log = (m) => { logArea.textContent = m + '\\n' + logArea.textContent; console.log(m); };
-
-    // Donate panel toggles (only one open at a time)
-    const panels = { gpay: 'panel-gpay', paypal: 'panel-paypal', paytm: 'panel-paytm' };
-    document.querySelectorAll('.donate-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const method = btn.getAttribute('data-method');
-        // hide all
-        Object.values(panels).forEach(id => {
-          const el = document.getElementById(id);
-          if(el){ el.style.display = 'none'; el.setAttribute('aria-hidden','true'); }
-        });
-        // show chosen
-        const panel = document.getElementById(panels[method]);
-        if(panel){ panel.style.display = 'flex'; panel.style.flexDirection = 'column'; panel.setAttribute('aria-hidden','false'); panel.scrollIntoView({behavior:'smooth',block:'center'}); }
-      });
+    // fetch items.json and then load the store.js module
+    fetch('data/items.json').then(r=>r.json()).then(items=>{
+      window.YATHARTH_ITEMS = items;
+      const s = document.createElement('script'); s.src='js/store.js'; document.body.appendChild(s);
+    }).catch(e=>{
+      console.error('Failed to load items.json', e);
+      // fallback: create empty store UI
+      const g = document.getElementById('gallery');
+      g.innerHTML = '<div class="card">Items not loaded. Check data/items.json</div>';
     });
-
-    // Audio play/pause toggle
-    let audio = document.getElementById('audio');
-    const playBtn = document.getElementById('playBtn');
-    playBtn.addEventListener('click', async (e) => {
-      try {
-        if(audio.paused){
-          await audio.play();
-          playBtn.textContent = 'Pause';
-          playBtn.setAttribute('aria-pressed','true');
-          log('🎧 Playing audio...');
-        } else {
-          audio.pause();
-          playBtn.textContent = 'Play';
-          playBtn.setAttribute('aria-pressed','false');
-          log('⏸️ Paused');
-        }
-      } catch(err) {
-        log('❌ Audio play failed: ' + (err && err.message ? err.message : err));
-        alert('Audio play blocked or missing. Upload "assets/audio.mp3" (MP3, 128–320 kbps) and tap page once.');
-      }
-    });
-
-    // Quick HEAD check for PDF (best-effort)
-    (async function(){
-      const pdf = 'assets/yatharth_siddhant_bilingual.pdf';
-      try {
-        const r = await fetch(pdf, { method: 'HEAD' });
-        if(r.ok) log('✅ PDF available at ' + pdf);
-        else log('❌ PDF not found (HEAD ' + r.status + '). Upload to ' + pdf);
-      } catch(e) { log('❌ PDF HEAD check failed: ' + e.message); }
-    })();
   </script>
 </body>
 </html>
