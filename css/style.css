@@ -1,23 +1,23 @@
-:root{
-  --bg:#fffaf8; --card:#fff; --muted:#666; --accent:#111; --accent2:#7a4fff;
-}
+:root{--bg:#fffaf8;--card:#fff;--muted:#666;--accent:#111;--accent2:#7a4fff;--maxw:980px}
 *{box-sizing:border-box}
-body{font-family:Inter, 'Noto Sans', 'Noto Sans Devanagari', sans-serif;margin:0;background:var(--bg);color:var(--accent)}
-.wrap{max-width:980px;margin:18px auto;padding:12px}
+body{font-family:Inter,'Noto Sans','Noto Sans Devanagari',sans-serif;margin:0;background:var(--bg);color:var(--accent);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:18px auto;padding:14px}
 .hero{display:flex;gap:12px;align-items:center}
 .mark{font-size:40px}
 h1{margin:0;font-size:20px}
-.lead{color:var(--muted);font-size:13px}
-.controls{display:flex;gap:8px;margin-top:12px}
+.lead{color:var(--muted);font-size:13px;margin-top:6px}
+.controls{display:flex;gap:8px;margin-top:12px;align-items:center}
 .controls input{flex:1;padding:8px;border-radius:10px;border:1px solid #eee}
 .controls select{padding:8px;border-radius:8px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:16px}
 .card{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 8px 20px rgba(18,18,18,0.06)}
 .title{font-weight:600}
-audio{width:100%;margin-top:8px}
+.audio-row{margin-top:8px}
 .controls-row{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
-.btn{background:var(--accent2);color:#fff;padding:8px 10px;border-radius:10px;text-decoration:none;border:none;cursor:pointer}
-.secondary{background:transparent;border:1px solid #eee;padding:8px;border-radius:10px}
-.small{color:var(--muted);font-size:13px;margin-top:8px}
+.btn{background:var(--accent2);color:#fff;padding:8px 10px;border-radius:10px;border:none;text-decoration:none;cursor:pointer;font-weight:600}
+.secondary{background:#fff;border:1px solid #eee;padding:8px;border-radius:10px}
+.small{font-size:13px;color:var(--muted);margin-top:8px}
 .footer{margin-top:20px;color:var(--muted);text-align:center;font-size:13px}
-@media(max-width:420px){.mark{font-size:30px}}
+.modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(12,12,12,0.45)}
+.modal .modal-box{background:#fff;padding:14px;border-radius:12px;max-width:520px;width:92%}
+@media(max-width:420px){.mark{font-size:32px}}
