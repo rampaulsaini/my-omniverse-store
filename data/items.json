@@ -3,3 +3,9 @@
   {"id":"y002","title":"Resonance Layer One","fileId":"1gAUZiyiOTr4O2LK3ETTEJ024x25rbM-u","price":193,"previewSec":10,"buyLink":"https://pay.google.com/"},
   {"id":"y003","title":"Koyab Declaration — Audio","fileId":"1DKoKEjHz7Uxz2uQlOiGO4BU2QW22mXQj","price":193,"previewSec":10,"buyLink":"https://paypal.me/yourid"}
 ]
+npm install -g firebase-tools
+firebase login
+firebase init functions
+# place above files in functions/
+firebase functions:config:set paypal.client="PAYPAL_CLIENT" paypal.secret="PAYPAL_SECRET" gcs.bucket="my-omniverse-audios"
+firebase deploy --only functions
