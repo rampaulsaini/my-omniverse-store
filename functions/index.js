@@ -1,4 +1,4 @@
-const functions = require('firebase-functions');
+const functions = require('firebase functions:config:set paypal.client="PAYPAL_CLIENT" paypal.secret="PAYPAL_SECRET" gcs.bucket="my-omniverse-audios");
 const fetch = require('node-fetch');
 const cors = require('cors')({origin:true});
 const {Storage} = require('@google-cloud/storage');
