@@ -1,0 +1,26 @@
+[
+  {
+    "id": "a001",
+    "title": "Yatharth — Intro",
+    "fileId": "17GmHKksfGNBnVlgvgj5t_nzXwSt5Ji9u",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y"
+  },
+  {
+    "id": "a002",
+    "title": "Resonance Layer One",
+    "fileId": "1gAUZiyiOTr4O2LK3ETTEJ024x25rbM-u",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://pay.google.com/"
+  },
+  {
+    "id": "a003",
+    "title": "Sample Audio 3",
+    "fileId": "17XXXXXXXexample",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://paypal.me/yourid"
+  }
+]
