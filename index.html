@@ -1,6 +1,165 @@
 <!doctype html>
 <html lang="hi">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>꙰ Yatharth — Audio Store</title>
+  <meta name="description" content="निष्पक्ष समझ — शिरोमणि rampaulsaini. Preview 10s • Buy ₹193 • Proceeds support Saneha Saini" />
+  <style>
+    :root{
+      --bg:#fffaf8; --card:#fff; --muted:#666; --accent:#111; --accent2:#7a4fff;
+      --maxw:980px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, 'Noto Sans', 'Noto Sans Devanagari', sans-serif;margin:0;background:var(--bg);color:var(--accent);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--maxw);margin:18px auto;padding:14px}
+    header.hero{display:flex;gap:12px;align-items:center}
+    .mark{font-size:40px}
+    h1{margin:0;font-size:20px}
+    .lead{color:var(--muted);font-size:13px;margin-top:6px}
+    .controls{display:flex;gap:8px;margin-top:12px}
+    .controls input{flex:1;padding:8px;border-radius:10px;border:1px solid #eee}
+    .controls select{padding:8px;border-radius:8px}
+    .featured{background:var(--card);padding:14px;border-radius:12px;margin-top:16px;box-shadow:0 8px 24px rgba(18,18,18,0.06)}
+    .meta{color:var(--muted);font-size:13px;margin-top:6px}
+    .title{font-weight:700;font-size:16px;margin:4px 0}
+    .sub{color:var(--muted);font-size:14px}
+    .buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .btn{background:var(--accent2);color:#fff;padding:8px 12px;border-radius:10px;border:none;text-decoration:none;cursor:pointer;font-weight:600}
+    .btn.secondary{background:transparent;border:1px solid #eee;color:var(--accent);font-weight:600}
+    .small{font-size:13px;color:var(--muted);margin-top:8px}
+    .store-line{margin-top:12px;white-space:pre-line}
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .link-pill{background:#fff;border:1px solid #eee;padding:6px 8px;border-radius:10px;font-size:13px;text-decoration:none;color:var(--accent)}
+    @media(max-width:420px){.mark{font-size:32px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="mark">꙰</div>
+      <div>
+        <h1>꙰ Yatharth — Audio Store</h1>
+        <p class="lead">Preview 10s • Buy links • Drive hosted (public previews)</p>
+      </div>
+    </header>
+
+    <!-- Search/Sort (visual) -->
+    <section class="controls" aria-hidden>
+      <input id="search" placeholder="Search title..." />
+      <select id="sort"><option>Sort: Default</option></select>
+    </section>
+
+    <!-- Featured item (your provided content) -->
+    <article class="featured" id="featured">
+      <div class="title">निष्पक्ष समझ — शिरोमणि rampaulsaini</div>
+      <div class="sub">निष्पक्ष समझ<br>꙰ यथार्थ सिद्धांत — प्रत्यक्ष यथार्थ युग</div>
+
+      <div class="store-line">
+        The Era of Direct Truth — Experience the Message
+      </div>
+
+      <!-- Audio player (Drive direct link via fileId) -->
+      <div style="margin-top:12px">
+        <!-- Replace FILE_ID_HERE with your drive file id for the preview (public link) -->
+        <audio id="featured-audio" preload="metadata" controls>
+          <source id="featured-src" src="https://drive.google.com/uc?export=download&id=FILE_ID_HERE" type="audio/mpeg">
+          आपका ब्राउज़र ऑडियो प्ले नहीं कर सकता।
+        </audio>
+      </div>
+
+      <div class="buttons">
+        <button id="playBtn" class="btn">Play</button>
+        <a id="pdfBtn" class="btn secondary" href="assets/yatharth_siddhant_bilingual.pdf" target="_blank" rel="noopener">Read PDF</a>
+        <a id="buyBtn" class="btn" href="#" target="_blank">Buy ₹193</a>
+      </div>
+
+      <div class="small">꙰ Page ready — tap Play to start audio</div>
+
+      <div class="links" aria-label="contact links">
+        <!-- Replace the hrefs with your actual links -->
+        <a class="link-pill" href="https://t.me/your_telegram" target="_blank">Telegram</a>
+        <a class="link-pill" href="https://wa.me/yourwhatsapp" target="_blank">WhatsApp</a>
+        <a class="link-pill" href="https://facebook.com/yourpage" target="_blank">Facebook</a>
+        <a class="link-pill" href="https://yourblog.example" target="_blank">Blog</a>
+        <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">YouTube</a>
+        <a class="link-pill" href="https://pay.google.com/" target="_blank">GPay</a>
+        <a class="link-pill" href="https://paypal.me/yourid" target="_blank">PayPal</a>
+        <a class="link-pill" href="https://p.paytm.me/example" target="_blank">Paytm</a>
+      </div>
+
+    </article>
+
+    <div class="small" style="margin-top:18px">
+      Upload to <code>assets/yatharth_siddhant_bilingual.pdf</code>
+    </div>
+
+    <footer>
+      ꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant<br>
+      Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp
+    </footer>
+  </main>
+
+  <script>
+    // === Configuration - change these to match your files / links ===
+    const CONFIG = {
+      previewFileId: 'FILE_ID_HERE', // Drive file id for preview audio (public)
+      fullBuyLink: 'https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y', // example buy link
+      priceLabel: '₹193',
+      pdfPath: 'assets/yatharth_siddhant_bilingual.pdf', // ensure this file exists in assets/
+      previewSeconds: 10
+    };
+    // =============================================================
+
+    // wire up elements
+    const audioEl = document.getElementById('featured-audio');
+    const srcEl = document.getElementById('featured-src');
+    const playBtn = document.getElementById('playBtn');
+    const pdfBtn = document.getElementById('pdfBtn');
+    const buyBtn = document.getElementById('buyBtn');
+
+    // set dynamic values
+    if(CONFIG.previewFileId){
+      srcEl.src = `https://drive.google.com/uc?export=download&id=${CONFIG.previewFileId}`;
+      audioEl.load();
+    }
+    pdfBtn.href = CONFIG.pdfPath;
+    buyBtn.href = CONFIG.fullBuyLink;
+    buyBtn.textContent = `Buy ${CONFIG.priceLabel}`;
+
+    // Play preview with auto-stop
+    let previewTimer = null;
+    async function playPreview(){
+      try{
+        // stop any playing
+        document.querySelectorAll('audio').forEach(a=>{ if(!a.paused){ a.pause(); a.currentTime=0; }});
+        await audioEl.play();
+        if(previewTimer) clearTimeout(previewTimer);
+        previewTimer = setTimeout(()=>{ audioEl.pause(); audioEl.currentTime = 0; }, CONFIG.previewSeconds*1000);
+      }catch(e){
+        console.warn('Play failed', e);
+        alert('Playback failed. If using mobile, allow audio playback for this site.');
+      }
+    }
+    playBtn.addEventListener('click', playPreview);
+
+    // Also stop when pressing the stop/pause built-in control
+    audioEl.addEventListener('pause', ()=>{ if(previewTimer) clearTimeout(previewTimer); });
+
+    // accessibility: space toggles play
+    window.addEventListener('keydown', (e)=>{
+      if(e.code === 'Space' && document.activeElement.tagName.toLowerCase() !== 'input'){
+        e.preventDefault();
+        if(audioEl.paused) playPreview(); else { audioEl.pause(); audioEl.currentTime = 0; }
+      }
+    });
+  </script>
+</body>
+                                                                                   </html>
+<!doctype html>
+<html lang="hi">
+<head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>꙰ Yatharth — Audio Store</title>
