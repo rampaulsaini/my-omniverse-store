@@ -17,13 +17,26 @@ permissions:
 
 jobs:
   build-and-deploy:
+    name: Build & Deploy (Pages)
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup GitHub Pages
+      # If you have a build step (npm run build, hugo, etc.), add it here.
+      # Example (uncomment if needed):
+      # - name: Install Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '18'
+      # - name: Install dependencies
+      #   run: |
+      #     npm ci
+      # - name: Build
+      #   run: |
+      #     npm run build
+
+      - name: Configure Pages
         uses: actions/configure-pages@v3
 
       - name: Upload artifact for Pages
