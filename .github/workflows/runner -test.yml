@@ -1,0 +1,22 @@
+# .github/workflows/runner-test.yml
+name: Runner — Site Health Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  site-check:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://rampaulsaini.github.io/my-omniverse-store/
+    steps:
+      - name: Check site reachable
+        run: |
+          echo "Checking $SITE_URL"
+          status=$(curl -sS -o /dev/null -w "%{http_code}" "$SITE_URL" || echo "000")
+          echo "HTTP status: $status"
+          if [ "$status" != "200" ]; then
+            echo "Site not returning 200. Exiting with failure."
+            exit 1
+          fi
+          echo "Site OK."
