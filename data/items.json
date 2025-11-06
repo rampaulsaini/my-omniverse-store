@@ -64,3 +64,69 @@
     "buyLink": "https://paypal.me/yourid"
   }
     ]
+[
+  {
+    "id": "y001",
+    "title": "निष्पक्ष समझ — Yatharth Intro",
+    "fileId": "17GmHKksfGNBnVlgvgj5t_nzXwSt5Ji9u",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y"
+  },
+  {
+    "id": "y002",
+    "title": "Resonance Layer One",
+    "fileId": "1gAUZiyiOTr4O2LK3ETTEJ024x25rbM-u",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://pay.google.com/"
+  },
+  {
+    "id": "y003",
+    "title": "Koyab Declaration — Audio",
+    "fileId": "1DKoKEjHz7Uxz2uQlOiGO4BU2QW22mXQj",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://paypal.me/yourid"
+  },
+  {
+    "id": "y004",
+    "title": "Vision Sequence — Intro Audio",
+    "fileId": "1yGqO0ks5_3iNNIxiEJhIKPd3XIPJTG8G",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://p.paytm.me/example"
+  },
+  {
+    "id": "y005",
+    "title": "Meditation — Layer 1",
+    "fileId": "1HCe8RizT1lrP6mmnGbiVVTTOJgQ5Tenc",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y"
+  },
+  {
+    "id": "y006",
+    "title": "Gallery Preview Audio",
+    "fileId": "1zMUBQiJdxyG6gT8__a1CnLsqxzImsREQ",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y"
+  },
+  {
+    "id": "y007",
+    "title": "Large Archive Index — folder sample",
+    "fileId": "1_nxKu-rZUP_rBmOpGS53A3l8S7M0dZ77",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y"
+  },
+  {
+    "id": "y008",
+    "title": "Extra Demo Audio 17GmHKks",
+    "fileId": "17GmHKksfGNBnVlgvgj5t_nzXwSt5Ji9u",
+    "price": 193,
+    "previewSec": 10,
+    "buyLink": "https://paypal.me/yourid"
+  }
+]
