@@ -34,104 +34,6 @@
       <div class="modal-box">
         <button id="modalClose" class="secondary">Close</button>
         <h3 id="modalTitle">Buy</h3>
-        <p id="modalBody" class="small">Choose payment method. For automated delivery enable backend (Firebase).</p>
-
-        <div id="paymentBtns" style="margin-top:12px">
-          <!-- PayPal button container injected by JS when configured -->
-          <div id="paypal-container"></div>
-
-          <!-- Manual / UPI / Paytm -->
-          <div style="margin-top:10px;">
-            <button class="btn" id="upiBtn">UPI / GPay (Manual)</button>
-            <a id="paytmLink" class="btn" target="_blank" rel="noopener">Paytm</a>
-            <a id="paypalMe" class="btn" target="_blank" rel="noopener">PayPal.me</a>
-          </div>
-
-          <div class="small" style="margin-top:10px">
-            After payment send screenshot/txn ID to Telegram/WhatsApp and you will receive download link.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="footer">
-      Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram/WhatsApp
-    </footer>
-  </main>
-
-  <script>
-    // Frontend config — update as needed
-    const CONFIG = {
-      previewTimeoutSecs: 10, // preview length
-      paypalClientId: '',     // optionally fill (or set in env via server later)
-      paytmLink: 'https://p.paytm.me/example',
-      paypalMeLink: 'https://paypal.me/yourid',
-      upiAddress: 'yourupi@bank', // used for QR or UPI deep link
-      telegramContact: 'https://t.me/your_telegram'
-    };
-    // Expose config globally for store.js
-    window.YATHARTH_CONFIG = CONFIG;
-  </script>
-
-  <script src="js/store.js"></script>
-  <!-- Load PayPal SDK dynamically only if clientId present -->
-  <script>
-    if (CONFIG.paypalClientId) {
-      const s=document.createElement('script');
-      s.src = `https://www.paypal.com/sdk/js?client-id=${CONFIG.paypalClientId}&currency=INR`;
-      s.defer = true;
-      document.head.appendChild(s);
-    }
-  </script>
-</body>
-  </html>
-  <script>
-  const CONFIG = {
-    previewTimeoutSecs: 10,
-    paypalClientId: '', // optional
-    paytmLink: 'https://p.paytm.me/example',
-    paypalMeLink: 'https://paypal.me/yourid',
-    upiAddress: 'yourupi@bank',
-    telegramContact: 'https://t.me/your_telegram'
-  };
-  window.YATHARTH_CONFIG = CONFIG;
-  </script>
-<!doctype html>
-<html lang="hi">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>꙰ Yatharth — Audio Store</title>
-<link rel="stylesheet" href="css/styles.css">
-<meta name="description" content="Yatharth audio store - preview & buy. Proceeds support Saneha Saini.">
-</head>
-<body>
-  <main class="wrap">
-    <header class="hero">
-      <div class="mark">꙰</div>
-      <div>
-        <h1>꙰ Yatharth — Audio Store</h1>
-        <p class="lead">Preview 10s • Buy links • Drive hosted (public previews)</p>
-      </div>
-    </header>
-
-    <section class="controls">
-      <input id="search" placeholder="Search title..." />
-      <select id="sort">
-        <option value="default">Sort: Default</option>
-        <option value="title">Title</option>
-        <option value="price">Price</option>
-      </select>
-      <button id="refreshBtn" class="secondary">Refresh</button>
-    </section>
-
-    <section id="gallery" class="grid" aria-live="polite"></section>
-
-    <!-- Buy modal -->
-    <div id="buyModal" class="modal" aria-hidden="true">
-      <div class="modal-box">
-        <button id="modalClose" class="secondary">Close</button>
-        <h3 id="modalTitle">Buy</h3>
         <p id="modalBody" class="small">Choose payment method. For automated delivery enable backend (Firebase + GCS).</p>
 
         <div id="paymentBtns" style="margin-top:12px">
@@ -179,5 +81,4 @@
     }
   </script>
 </body>
-            </html>
-
+</html>
