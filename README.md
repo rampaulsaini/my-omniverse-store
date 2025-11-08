@@ -40,3 +40,9 @@ Contact: Telegram (https://t.me/sampaulsaini) / WhatsApp (https://wa.me/91808293
           style="border:0; border-radius:12px; overflow:hidden;">
   </iframe>
 </p>
+<p align="center">
+  <img src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" 
+       alt="Shirōmani Rampaulsaini — निष्पक्ष समझ" 
+       width="220" 
+       style="border-radius:50%; border:4px solid #ffd966; box-shadow:0 0 20px #ffd966;">
+</p>
