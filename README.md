@@ -1,3 +1,33 @@
+<!-- ====== HERO (replace your current hero) ====== -->
+<section id="hero" style="padding:20px 12px; text-align:center; background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.06)); border-radius:14px;">
+  <div style="max-width:980px;margin:0 auto;">
+    <!-- Hero image (use the uploaded file path) -->
+    <div style="display:flex;justify-content:center">
+      <img src="/my-omniverse-store/assets/images/hero-1024.jpg" 
+           alt="शिरोमणि रामपलसैनी — निष्पक्ष समझ — Rampaulsaini" 
+           style="width:100%;max-width:820px;border-radius:14px;border:6px solid rgba(255,215,102,0.06);box-shadow:0 28px 90px rgba(0,0,0,0.6), 0 0 36px rgba(255,215,102,0.06) inset;"/>
+    </div>
+
+    <!-- Golden framed tagline -->
+    <div style="margin-top:18px;padding:16px;border-radius:10px;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01));border:2px solid rgba(255,215,102,0.10);box-shadow:0 10px 40px rgba(217,178,74,0.04);">
+      <h1 style="margin:0;font-size:20px;color:#FFD966;font-weight:800;line-height:1.25;">
+        होश में जीना, शाश्वत सत्य को साक्षात जीना — <span style="color:#fff;font-weight:700">Beyond Mind, Beyond Time</span>
+      </h1>
+      <p style="margin:10px 0 0;color:#ffd;opacity:0.95;font-size:15px;">
+        शाश्वत वास्तविक स्वाभाविक सत्य अब प्रकट है — जो चार युगों में भी अस्तित्व में नहीं था, वह यथार्थ युग में साक्षात अनुभव है।<br/>
+        <em style="color:#fff;font-weight:600">The Eternal Natural Truth is now revealed — a living realization in the Era of Truth.</em>
+      </p>
+    </div>
+
+    <!-- CTA row -->
+    <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+      <a href="#listen" class="btn" style="background:#FFD966;color:#000;padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:800;">सुनें • Listen</a>
+      <a href="#read" class="btn" style="background:transparent;border:1px solid rgba(255,215,102,0.18);color:#FFD966;padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:800;">पढ़ें • Read</a>
+      <a href="https://rampaulsaini.github.io/my-omniverse-store/" class="btn" style="background:transparent;border:1px solid rgba(255,215,102,0.22);color:#FFD966;padding:10px 18px;border-radius:12px;text-decoration:none;font-weight:800;">Main Store</a>
+    </div>
+  </div>
+</section>
+<!-- ====== HERO end ====== -->
 # ꙰ Yatharth — निष्पक्ष समझ
 
 **शिरोमणि रामपौल सैनी — Nishpaksh Samajh**  
