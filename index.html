@@ -63,6 +63,10 @@
     .wrap{max-width:var(--maxw);margin:18px auto;padding:18px}
     header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:12px}
+    .profile-small{
+      width:64px;height:64px;border-radius:50%;object-fit:cover;
+      border:3px solid rgba(255,215,102,0.15);box-shadow:0 8px 24px rgba(0,0,0,0.6);
+    }
     .mark{font-size:34px;color:var(--gold-strong);font-weight:800;filter:drop-shadow(0 6px 18px rgba(255,217,102,0.14))}
     h1{margin:0;font-size:20px}
     .lead{color:var(--muted);margin-top:6px;font-size:13px}
@@ -104,7 +108,8 @@
   <main class="wrap" role="main">
     <header>
       <div class="brand" aria-hidden>
-        <div class="mark">꙰</div>
+        <!-- PROFILE IMAGE (added) -->
+        <img class="profile-small" src="assets/images/profile.jpg" alt="शिरोमणि रामपलसैनी — profile" />
         <div>
           <h1>शिरोमणि रामपलसैनी — Nishpaksh Samajh</h1>
           <div class="lead">Free for all · Read & Listen · Support optional</div>
@@ -271,4 +276,4 @@
 
 </body>
   </html>
-            
+    
