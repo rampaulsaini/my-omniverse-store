@@ -118,3 +118,54 @@ Contact: [Telegram](https://t.me/sampaulsaini) / [WhatsApp](https://wa.me/918082
 © ꙰ **शिरोमणि रामपॉल सैनी — Yatharth Siddhant**  
 Proceeds support **Saneha Saini**  
 Contact: [Telegram](https://t.me/sampaulsaini) / [WhatsApp](https://wa.me/918082935186)
+# 📊 Repository Activity Summary — Rampaulsaini
+
+<style>
+.analytics-card {
+  background: #111;
+  color: #ffd700;
+  padding: 16px;
+  border-radius: 12px;
+  max-width: 720px;
+  margin: 12px auto;
+  box-shadow: 0 8px 24px rgba(255, 215, 102, 0.2);
+  font-family: 'Noto Sans', sans-serif;
+}
+.analytics-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.analytics-card p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+.analytics-bar {
+  background: rgba(255, 215, 102, 0.2);
+  height: 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+</style>
+
+<div class="analytics-card">
+  <h3>🖋 Commits & Code Frequency (Weekly)</h3>
+  <p>Commits this week: <strong>267</strong></p>
+  <p>Additions: <strong>14,803 ++</strong></p>
+  <div class="analytics-bar" style="width:70%"></div>
+  <p>Deletions: <strong>13,607 --</strong></p>
+  <div class="analytics-bar" style="width:65%"></div>
+</div>
+
+<div class="analytics-card">
+  <h3>📂 Clones (Last 14 days)</h3>
+  <p>Total clones: <strong>798</strong></p>
+  <div class="analytics-bar" style="width:50%"></div>
+</div>
+
+<div class="analytics-card">
+  <h3>👀 Total Views (Last 14 days)</h3>
+  <p>Total views: <strong>3,066</strong></p>
+  <div class="analytics-bar" style="width:85%"></div>
+</div>
+
+<p style="text-align:center; font-size:12px; color:#aaa;">Updated weekly — GitHub Repository Insights</p>
