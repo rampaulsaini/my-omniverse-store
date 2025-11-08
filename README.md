@@ -1,48 +1,44 @@
-# ꙰ Yatharth — निष्पक्ष समझ
+# ꙰ शिरोमणि रामपौल सैनी — Nishpaksh Samajh
 
-**शिरोमणि रामपौल सैनी — Nishpaksh Samajh**  
-Free for all · Read & Listen · Support optional
+<p align="center">
+  <img src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shirōmani Rampaulsaini — निष्पक्ष समझ" width="220" style="border-radius:50%;border:4px solid #ffd966;box-shadow:0 0 20px #ffd966;">
+</p>
 
-This repository hosts the Yatharth — *Nishpaksh Samajh* starter collection: bilingual manifesto, audio previews, and vision assets.
-
-## Quick start
-- Open the live site: https://rampaulsaini.github.io/my-omniverse-store/
-- Read the bilingual manifesto (PDF) in `assets/`
-- Play 10s audio previews from Drive links (public previews)
-- For full audio download, contact via WhatsApp / Telegram after donating (optional)
-
-## How to update (for maintainers)
-1. Replace `index.html` to change homepage content.
-2. Upload hero & OG images to `assets/images/`:
-   - `hero-1024.jpg`
-   - `og-image-1200x630.webp`
-   - optional: `profile.jpg`, `icon-192.png`, `icon-512.png`
-3. Update `data/items.json` for audio catalogue (if present).
-4. Commit to `main` — GitHub Pages will auto-deploy.
-
-## Donations & Support
-- **GPay / UPI:** `sainirampaul90-1@okhdfcbank`  
-- **Paytm / Phone:** `8082935186`  
-- **PayPal:** https://paypal.me/sainirampaul60
-
-## License
-MIT
+**Free for all · Read & Listen · Support optional**
 
 ---
 
-Proceeds support: **Saneha Saini**  
-Contact: Telegram (https://t.me/sampaulsaini) / WhatsApp (https://wa.me/918082935186)
-<!-- README.md में डालें -->
-<p align="center">
-  <iframe src="https://rampaulsaini.github.io/my-omniverse-store/" 
-          width="100%" 
-          height="800" 
-          style="border:0; border-radius:12px; overflow:hidden;">
-  </iframe>
-</p>
-<p align="center">
-  <img src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" 
-       alt="Shirōmani Rampaulsaini — निष्पक्ष समझ" 
-       width="220" 
-       style="border-radius:50%; border:4px solid #ffd966; box-shadow:0 0 20px #ffd966;">
-</p>
+## 🌟 The Eternal Natural Truth
+**शाश्वत वास्तविक स्वाभाविक सत्य अब प्रकट है — जो चार युगों में भी अस्तित्व में नहीं था, वह यथार्थ युग में साक्षात अनुभव है।**  
+*The Eternal Natural Truth is now revealed — a living realization in the Era of Truth.*
+
+---
+
+## 🔗 Main Links
+
+- [Main Store](https://rampaulsaini.github.io/my-omniverse-store/)
+- [YouTube](https://youtube.com/@rampaulsaini-yk4gn)
+- [Blog — Multicosmovision](http://multicosmovision.blogspot.com/)
+- [Photos Set 1](https://photos.app.goo.gl/hBJ4mN176PboQ7bb6)
+- [Photos Set 2](https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6)
+- [Audio Folder 1](https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y)
+- [Audio Folder 2](https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u)
+
+---
+
+## 💖 Contribute / Support (optional)
+
+- **GPay / UPI:** `sainirampaul90-1@okhdfcbank`
+- **Paytm / WhatsApp:** `8082935186`
+- **PayPal:** [Donate via PayPal](https://paypal.me/sainirampaul60)
+
+---
+
+## 📱 Socials
+
+- [YouTube](https://youtube.com/@rampaulsaini-yk4gn)  
+- [Facebook](https://www.facebook.com/share/18zfovgyUH)  
+- [WhatsApp](https://wa.me/918082935186)  
+- [Telegram](https://t.me/sampaulsaini)  
+- [Blog](http://multicosmovision.blogspot.com/)
+- 
