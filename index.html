@@ -31,7 +31,7 @@ async function addSupport(){
     email: email,
     country: country,
     message: message
-  };
+
 
   try {
     const res = await fetch(WEB_APP_URL, {
@@ -39,7 +39,7 @@ async function addSupport(){
       mode: 'cors',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(payload)
-    });
+  
     const data = await res.json();
     if(data && data.ok){
       alert('धन्यवाद — आपका संदेश सुरक्षित हो गया है।');
