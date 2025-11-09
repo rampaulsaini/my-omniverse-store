@@ -12,7 +12,55 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    gtag('js', new Date(<script>
+async function addSupport(){
+  var name = document.getElementById('sname').value.trim();
+  var email = document.getElementById('semail').value.trim();
+  var country = document.getElementById('scountry').value.trim();
+  var message = document.getElementById('smsg').value.trim();
+  if(!message){ alert('कृपया संदेश लिखें'); return; }
+
+  // Replace with your Apps Script Web App URL and secret
+  const WEB_APP_URL = "https://script.google.com/macros/s/YOUR_DEPLOY_ID/exec";
+  const SECRET_TOKEN = "REPLACE_WITH_A_LONG_RANDOM_STRING_ABC123";
+
+  // Prepare payload
+  const payload = {
+    secret: SECRET_TOKEN,
+    name: name,
+    email: email,
+    country: country,
+    message: message
+  };
+
+  try {
+    const res = await fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if(data && data.ok){
+      alert('धन्यवाद — आपका संदेश सुरक्षित हो गया है।');
+      // clear fields
+      document.getElementById('sname').value='';
+      document.getElementById('semail').value='';
+      document.getElementById('scountry').value='';
+      document.getElementById('smsg').value='';
+      // optionally reload the local display (still keep localStorage)
+      loadSupport(); // if you want to show local plus server messages
+    } else {
+      console.warn(data);
+      alert('अस्थायी समस्या — आप बाद में फिर से प्रयास करें।');
+    }
+  } catch(err){
+    console.error(err);
+    alert('Network error — check your internet and try again.');
+  }
+}
+</script>
+  ));
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
