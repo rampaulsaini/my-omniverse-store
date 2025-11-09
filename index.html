@@ -1,168 +1,107 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ===== SUPPORT WALL + FORM (ADDED) ===== -->
+<section style="margin-top:32px;padding:22px;border:1px solid rgba(255,255,255,0.06);border-radius:14px;background:rgba(255,255,255,0.015);max-width:940px;margin:auto;text-align:center;">
 
-<!-- Google site verification -->
-<meta name="google-site-verification" content="qtWXQit-jeNYH7HGOgb8FtdOKd9yCmod11A1_VFTI2U" />
+<h2 style="color:#ffd966;margin-bottom:6px;">सत्य के इस कार्य में आपका सहयोग एक प्रकाश</h2>
+<p style="font-size:14px;color:#ccc;margin-bottom:16px;">
+  इस धारा को जीवित रखने हेतु सहयोग पूर्णतः स्वैच्छिक है —<br>
+  इसे सुनना, साझा करना, अनुभव करना और समर्थन देना — सभी सत्य की सेवा हैं।
+</p>
 
-<!-- GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- FORM -->
+<div style="margin-top:18px;background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
+  <h3 style="color:#fff;font-size:16px;margin-bottom:12px;">अपना आशीर्वचन जोड़ें (Optional)</h3>
+
+  <input type="text" id="sname" placeholder="आपका नाम (public if allowed)"
+  style="width:90%;max-width:320px;padding:10px;margin:6px 0;border-radius:8px;border:none;outline:none;">
+
+  <br>
+
+  <input type="email" id="semail" placeholder="ईमेल (private, share नहीं होगा)"
+  style="width:90%;max-width:320px;padding:10px;margin:6px 0;border-radius:8px;border:none;outline:none;">
+
+  <br>
+
+  <input type="text" id="scountry" placeholder="Country (optional)"
+  style="width:90%;max-width:320px;padding:10px;margin:6px 0;border-radius:8px;border:none;outline:none;">
+
+  <br>
+
+  <textarea id="smsg" placeholder="आपका संदेश / आशीर्वचन"
+  style="width:90%;max-width:420px;height:80px;padding:10px;margin-top:8px;border-radius:8px;border:none;outline:none;"></textarea>
+
+  <br>
+
+  <button onclick="addSupport()" style="margin-top:10px;padding:12px 20px;background:#ffd966;border:none;border-radius:10px;font-weight:700;cursor:pointer;">
+    संदेश भेजें
+  </button>
+</div>
+
+<!-- SUPPORTERS LIST -->
+<h3 style="margin-top:26px;color:#ffd966;">🤝 समर्थक सूची (Supporters)</h3>
+<ul id="supList" style="list-style:none;padding:0;color:#fff;font-size:14px;max-width:600px;margin:auto;text-align:left;"></ul>
+
+<!-- BLESSING WALL -->
+<h3 style="margin-top:26px;color:#ffd966;">🕊 आशीर्वचन / संदेश</h3>
+<div id="msgWall" style="max-width:700px;margin:auto;text-align:left;color:#ddd;font-size:14px;line-height:1.6;"></div>
+
+</section>
+
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
+// Local storage based supporter system (no server, privacy safe)
+function addSupport(){
+  let n = document.getElementById("sname").value.trim();
+  let e = document.getElementById("semail").value.trim();
+  let c = document.getElementById("scountry").value.trim();
+  let m = document.getElementById("smsg").value.trim();
 
-<title>Rampaulsaini — शाश्वत वास्तविक स्वाभाविक सत्य | Yatharth</title>
-<meta name="description" content="शाश्वत वास्तविक स्वाभाविक सत्य अब प्रकट है — जो चार युगों में भी अस्तित्व में नहीं था, वह यथार्थ युग में साक्षात अनुभव है। Read & listen: Yatharth — निश्पक्ष समझ by Rampaulsaini. Support optional.">
-<meta name="keywords" content="Rampaulsaini, निष्पक्ष समझ, Nishpaksh Samajh, Khud Ka Sakshatkar, Shashwat Vastavik Satya, Yatharth, impartial understanding, direct truth, Saneha Saini support">
-<link rel="canonical" href="https://rampaulsaini.github.io/my-omniverse-store/">
+  if(!m) return alert("कृपया संदेश लिखें!");
 
-<!-- OpenGraph -->
-<meta property="og:locale" content="hi_IN" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Rampaulsaini — शाश्वत वास्तविक स्वाभाविक सत्य प्रत्यक्ष" />
-<meta property="og:description" content="The Eternal Natural Truth is now revealed — a living realization in the Era of Truth. Read & listen: Yatharth — निश्पक्ष समझ." />
-<meta property="og:url" content="https://rampaulsaini.github.io/my-omniverse-store/" />
-<meta property="og:image" content="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Rampaulsaini — निष्पक्ष समझ" />
-<meta name="twitter:description" content="Free audio & writings — impartial understanding. Support optional." />
-<meta name="theme-color" content="#000000" />
+  let supporters = JSON.parse(localStorage.getItem("spList")||"[]");
+  let messages = JSON.parse(localStorage.getItem("spMsg")||"[]");
 
-<style>
-:root{
-  --bg-dark:#000;
-  --gold:#ffd966;
-  --gold-strong:#ffd54a;
-  --muted:#cfcfcf;
-  --panel:rgba(255,255,255,0.02);
-  --maxw:980px;
-  --accent:#fff;
+  // Store supporter name + country only if name exists
+  if(n){
+    supporters.push({
+      name:n,
+      country:c || "Unknown"
+    });
+    localStorage.setItem("spList", JSON.stringify(supporters));
+  }
+
+  // Store message
+  messages.push({
+    name:n||"अनाम",
+    msg:m
+  });
+  localStorage.setItem("spMsg", JSON.stringify(messages));
+
+  // Clear text
+  document.getElementById("sname").value="";
+  document.getElementById("semail").value="";
+  document.getElementById("scountry").value="";
+  document.getElementById("smsg").value="";
+
+  loadSupport();
 }
-*{box-sizing:border-box;}
-html,body{height:100%; margin:0; font-family:"Noto Sans Devanagari","Noto Sans",Inter,sans-serif; background:var(--bg-dark); color:var(--accent);}
-.wrap{max-width:var(--maxw);margin:18px auto;padding:18px;}
-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.brand{display:flex;align-items:center;gap:12px;}
-.mark{font-size:34px;color:var(--gold-strong);font-weight:800;filter:drop-shadow(0 6px 18px rgba(255,217,102,0.14));}
-h1{margin:0;font-size:20px;}
-.lead{color:var(--muted);margin-top:6px;font-size:13px;}
-.hero{margin-top:18px;padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.03); background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));}
-.main-photo{display:block;margin:0 auto;border-radius:50%;max-width:220px;width:100%;border:4px solid var(--gold);box-shadow:0 0 20px var(--gold); animation:popIn 1.2s ease forwards;}
-@keyframes popIn{0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
-.gold-frame{margin:18px auto;padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01));border:2px solid rgba(255,215,102,0.10);max-width:920px;box-shadow:0 10px 40px rgba(217,178,74,0.04);}
-.hero-text{color:var(--gold);font-weight:700;font-size:16px;line-height:1.55;text-align:center;white-space:pre-line;margin:6px auto;}
-.hero-text .eng{display:block;color:rgba(255,255,255,0.95);font-weight:600;margin-top:10px;font-size:15px;}
-.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;justify-content:center;}
-.link-pill{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:12px;color:var(--gold);text-decoration:none;font-weight:800;transition:all .26s;box-shadow:0 6px 16px rgba(0,0,0,0.55);}
-.link-pill:hover{transform:translateY(-6px) scale(1.02); box-shadow:0 20px 50px rgba(0,0,0,0.65); background:linear-gradient(90deg, rgba(255,215,102,0.08), rgba(255,215,102,0.04)); color:black;}
-.blog-pill{position:relative;background: linear-gradient(90deg, rgba(255,215,102,0.12), rgba(255,215,102,0.06));color:#050505;padding:12px 20px;border-radius:14px;font-weight:900;text-decoration:none;box-shadow: 0 10px 40px rgba(255,200,60,0.08);transition: transform .22s ease, box-shadow .22s; border:2px solid rgba(255,215,102,0.22);animation: pulseGlow 2.6s infinite;}
-@keyframes pulseGlow{0%{box-shadow:0 0 0 0 rgba(255,215,102,0.12),0 10px 40px rgba(255,215,102,0.04);}50%{box-shadow:0 0 36px 8px rgba(255,215,102,0.08),0 18px 60px rgba(255,215,102,0.08);}100%{box-shadow:0 0 0 0 rgba(255,215,102,0.12),0 10px 40px rgba(255,215,102,0.04);}}
-.card{background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
-.donate{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin-top:14px;}
-.btn{background:var(--gold);color:#050505;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:800;display:inline-block;}
-.btn.secondary{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:10px;}
-.socials{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:10px;}
-.socials a{font-weight:800;text-decoration:none;padding:10px;border-radius:10px;color:#000;background:var(--gold);display:inline-block;min-width:48px;min-height:36px;line-height:16px;}
-footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:20px;}
-@media(max-width:520px){.hero-text{font-size:14px}.mark{font-size:28px}.main-photo{max-width:96%;}}
-</style>
-</head>
-<body>
 
-<main class="wrap">
-  <header>
-    <div class="brand">
-      <div class="mark">꙰</div>
-      <div>
-        <h1>शिरोमणि रामपसैनी — Nishpaksh Samajh</h1>
-        <div class="lead">Free for all · Read & Listen · Support optional</div>
-      </div>
-    </div>
-    <nav aria-label="top links">
-      <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
-      <a class="link-pill" href="https://wa.me/918082935186" target="_blank">WhatsApp</a>
-      <a class="link-pill" href="https://www.facebook.com/share/18zfovgyUH" target="_blank">Facebook</a>
-    </nav>
-  </header>
+function loadSupport(){
+  let supporters = JSON.parse(localStorage.getItem("spList")||"[]");
+  let messages = JSON.parse(localStorage.getItem("spMsg")||"[]");
 
-  <!-- HERO IMAGE -->
-  <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shirōmani Rampaulsaini — निष्पक्ष समझ">
+  let sHTML = "";
+  supporters.forEach(s=>{
+     sHTML += `<li>🌍 <b>${s.name}</b> — ${s.country}</li>`;
+  });
+  document.getElementById("supList").innerHTML = sHTML;
 
-  <!-- BILINGUAL HERO TEXT -->
-  <div class="gold-frame">
-    <div class="hero-text">
-      होश में जीना, शाश्वत सत्य को साक्षात जीना — <span style="color:#fff;font-weight:700">Beyond Mind, Beyond Time</span>
-      <span class="eng">The Eternal Natural Truth is now revealed — a living realization in the Era of Truth.</span>
-      <br><br>
-      सभी युगों में अद्वितीय साक्षात अनुभव — <span style="color:#fff;font-weight:700">Unique Realization in All Eras</span>
-      <span class="eng">A timeless experience that transcends the four yugas and manifests in the Era of Truth.</span>
-    </div>
-  </div>
-
-  <!-- CONTENT LINKS -->
-  <section class="links">
-    <a class="link-pill" href="https://rampaulsaini.github.io/my-omniverse-store/" target="_blank">Main Store</a>
-    <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">YouTube</a>
-    <a class="blog-pill" href="http://multicosmovision.blogspot.com/" target="_blank">Blog — Multicosmovision</a>
-    <a class="link-pill" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">Photos 1</a>
-    <a class="link-pill" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">Photos 2</a>
-    <a class="link-pill" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">Audio Folder 1</a>
-    <a class="link-pill" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">Audio Folder 2</a>
-  </section>
-
-  <!-- DONATE -->
-  <section class="donate">
-    <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" target="_blank">GPay / UPI</a>
-    <a class="btn secondary" href="https://wa.me/8082935186" target="_blank">Paytm / WhatsApp</a>
-    <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank">PayPal</a>
-  </section>
-
-  <!-- SOCIALS -->
-  <div class="socials">
-    <a href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">▶ YouTube</a>
-    <a href="https://www.facebook.com/share/18zfovgyUH" target="_blank">f Facebook</a>
-    <a href="https://wa.me/918082935186" target="_blank">🟢 WhatsApp</a>
-    <a href="https://t.me/sampaulsaini" target="_blank">✈ Telegram</a>
-    <a href="http://multicosmovision.blogspot.com/" target="_blank">✍ Blog</a>
-  </div>
-
-  <footer>
-    <div class="small muted">꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</div>
-    <div class="small muted">Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp</div>
-  </footer>
-</main>
-
-<!-- JSON-LD structured data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "url": "https://rampaulsaini.github.io/my-omniverse-store/",
-      "name": "Yatharth — निष्पक्ष समझ",
-      "description": "निष्पक्ष समझ — Shromani Rampaulsaini. Free audio, manifesto and vision assets. Support optional.",
-      "publisher": {"@type":"Person","name":"Shromani Rampaulsaini","url":"https://rampaulsaini.github.io/my-omniverse-store/"}
-    },
-    {
-      "@type":"Person",
-      "name":"Shromani Rampaulsaini",
-      "url":"https://rampaulsaini.github.io/my-omniverse-store/",
-      "sameAs":["https://youtube.com/@rampaulsaini-yk4gn","https://t.me/sampaulsaini","https://www.facebook.com/share/18zfovgyUH"],
-      "description":"Author of Yatharth — impartial understanding, direct truth manifest."
-    }
-  ]
+  let mHTML = "";
+  messages.forEach(s=>{
+     mHTML += `<p>🕊 <b>${s.name}:</b> ${s.msg}</p>`;
+  });
+  document.getElementById("msgWall").innerHTML = mHTML;
 }
+
+// Load on page start
+loadSupport();
 </script>
-
-</body>
-          </html>
-
-  
+<!-- ===== END SUPPORT WALL ===== -->
