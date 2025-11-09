@@ -1,63 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
-  <url>
-    <loc>https://rampaulsaini.github.io/my-omniverse-store/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- YouTube Link (optional for reference) -->
-  <url>
-    <loc>https://youtube.com/@rampaulsaini-yk4gn</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- Blog -->
-  <url>
-    <loc>http://multicosmovision.blogspot.com/</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Photos / Drive folders -->
-  <url>
-    <loc>https://photos.app.goo.gl/hBJ4mN176PboQ7bb6</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u</loc>
-    <lastmod>2025-11-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-</urlset>
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://rampaulsaini.github.io/my-omniverse-store/</loc>
     <lastmod>2025-11-08</lastmod>
@@ -125,4 +68,3 @@
   </url>
 
 </urlset>
-    
