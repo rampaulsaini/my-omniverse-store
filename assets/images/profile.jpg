@@ -1,6 +1,27 @@
 # शिरोमणि रामपसैनी — Nishpaksh Samajh
 
-![Hero Image](https://i.ibb.co/xqf3kTPS/enhanced-image.webp)
+![<script>
+  // simple lazy loader for elements with data-bg
+  document.addEventListener('DOMContentLoaded', function(){
+    var lazy = [].slice.call(document.querySelectorAll('[data-bg]'));
+    if('IntersectionObserver' in window){
+      let io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var el = entry.target;
+            el.style.backgroundImage = 'url('+el.getAttribute('data-bg')+')';
+            io.unobserve(el);
+          }
+        });
+      });
+      lazy.forEach(function(el){ io.observe(el); });
+    } else {
+      // fallback
+      lazy.forEach(function(el){ el.style.backgroundImage = 'url('+el.getAttribute('data-bg')+')'; });
+    }
+  });
+</script>
+](https://i.ibb.co/xqf3kTPS/enhanced-image.webp)
 
 **Free for all · Read & Listen · Support optional**
 
