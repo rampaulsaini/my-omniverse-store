@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://rampaulsaini.github.io/my-omniverse-store/sitemap.xml
-Host: rampaulsaini.github.io
