@@ -1,34 +1,25 @@
-name: Auto-generate Extended Sitemap
+name: Auto-generate Sitemap
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  sitemap:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Generate extended sitemap
-      run: node generate-extended-sitemap.js
-
-    - name: Commit and push sitemap
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "actions@github.com"
-        git add sitemap.xml
-        git commit -m "Auto-update extended sitemap.xml"
-        git push
-        
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Generate sitemap
+        run: node generate-extended-sitemap.js
+      - name: Commit sitemap
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add sitemap.xml
+          git commit -m "Auto-update sitemap.xml" || echo "no changes"
+          git push
+          
