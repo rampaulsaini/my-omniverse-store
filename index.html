@@ -3,9 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>꙰ Yatharth — निष्पक्ष समझ — Shromani Rampaulsaini</title>
-  <meta name="description" content="शाश्वत वास्तविक स्वाभाविक सत्य — Yatharth by Shromani Rampaulsaini. Free to read & listen. Support optional." />
+
+  <!-- SEO meta -->
+  <title>Yatharth — निष्पक्ष समझ | Shromani Rampaulsaini</title>
+  <meta name="description" content="Yatharth — निष्पक्ष समझ: free audio, bilingual manifestos and vision assets by Shromani Rampaulsaini. Support optional; proceeds help Saneha Saini.">
+  <meta name="keywords" content="निष्पक्ष समझ, Yatharth, Shromani Rampaulsaini, Nishpaksh Samajh, audio, manifesto">
+  <link rel="canonical" href="https://rampaulsaini.github.io/my-omniverse-store/">
+
+  <!-- Verification & OG -->
   <meta name="google-site-verification" content="qtWXQit-jeNYH7HGOgb8FtdOKd9yCmod11A1_VFTI2U">
+  <meta property="og:locale" content="hi_IN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Yatharth — निष्पक्ष समझ | Shromani Rampaulsaini" />
+  <meta property="og:description" content="Free audio, bilingual manifestos and vision assets — support optional." />
+  <meta property="og:url" content="https://rampaulsaini.github.io/my-omniverse-store/" />
+  <meta property="og:image" content="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Resource hints -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//i.ibb.co">
+
+  <!-- GA4 placeholder -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // gtag('config', 'G-XXXXXXXXXX'); // replace with your GA4 ID
+  </script>
+
   <style>
     :root{--bg:#000;--gold:#ffd966;--muted:#cfcfcf;--panel:rgba(255,255,255,0.03);--maxw:1100px}
     *{box-sizing:border-box}
@@ -60,11 +88,8 @@
       </div>
 
       <nav aria-label="top links">
-        <!-- Telegram: full https -->
         <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram</a>
-        <!-- WhatsApp (tel link already present elsewhere) -->
         <a class="link-pill" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp</a>
-        <!-- Facebook share (kept same) -->
         <a class="link-pill" href="https://www.facebook.com/share/18zfovgyUH" target="_blank" rel="noopener">Facebook</a>
       </nav>
     </header>
@@ -72,7 +97,8 @@
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-left">
-        <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini — निष्पक्ष समझ">
+        <!-- lazy loading image (webp) -->
+        <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini — निष्पक्ष समझ" loading="lazy" width="600" height="600">
 
         <div style="margin-top:18px" class="gold-frame">
           <div id="hero-title" class="hero-text">
@@ -89,21 +115,14 @@
           <div style="font-weight:700;color:var(--gold);">Contribute / Support (Optional)</div>
           <div style="margin-top:8px" class="muted">Suggested ₹193 — fully optional</div>
           <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
-            <!-- UPI link stays as before -->
             <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" target="_blank">GPay / UPI</a>
-
-            <!-- PayPal ok -->
             <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank">PayPal</a>
-
-            <!-- Paytm: instead of unreliable external link, copy phone to clipboard and show instructions -->
             <button class="btn" onclick="copyPhoneAndShow('8082935186')">Paytm / PhonePe (Copy No.)</button>
-
-            <!-- Tel quick call -->
             <a class="btn" href="tel:+918082935186">Call</a>
           </div>
 
           <div style="margin-top:12px">
-            <img src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR" style="width:160px;border-radius:8px;border:2px solid rgba(255,215,102,0.06)">
+            <img src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR" style="width:160px;border-radius:8px;border:2px solid rgba(255,215,102,0.06)" loading="lazy" width="160" height="160">
           </div>
           <div style="margin-top:10px;font-size:13px;color:var(--muted)">
             <strong>UPI:</strong> <code style="color:var(--gold)">sainirampaul90-1@okhdfcbank</code> • <strong>Phone:</strong> <a href="tel:+918082935186" style="color:var(--gold);text-decoration:none">8082935186</a> • <strong>PayPal:</strong> <a href="https://paypal.me/sainirampaul60" target="_blank" style="color:var(--gold)">paypal.me/sainirampaul60</a>
@@ -231,7 +250,6 @@
 
     // Copy phone to clipboard + show toast with clear user instructions
     function copyPhoneAndShow(phone){
-      // copy
       if(navigator.clipboard && navigator.clipboard.writeText){
         navigator.clipboard.writeText(phone).then(function(){
           showToast('Number copied: ' + phone + ' — Open Paytm/PhonePe/GPay and paste to send.');
@@ -283,5 +301,5 @@
   </script>
 
 </body>
-          </html>
-                                                                                                        
+  </html>
+  
