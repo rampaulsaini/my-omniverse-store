@@ -1,43 +1,36 @@
+// generate-extended-sitemap.js
 const fs = require('fs');
 const path = require('path');
-
-// Website base URL
 const BASE_URL = 'https://rampaulsaini.github.io/my-omniverse-store/';
-
-// Root folder
 const ROOT_DIR = './';
-
-// External links to include in sitemap
 const EXTERNAL_LINKS = [
-  'https://youtube.com/@rampaulsaini-yk4gn',
-  'http://multicosmovision.blogspot.com/',
-  'https://photos.app.goo.gl/hBJ4mN176PboQ7bb6',
-  'https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6',
   'https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y',
+  'https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC',
   'https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u',
-  'https://t.me/sampaulsaini',
-  'https://wa.me/918082935186',
-  'https://paypal.me/sainirampaul60'
+  'https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6',
+  'https://photos.app.goo.gl/hBJ4mN176PboQ7bb6',
+  'https://youtube.com/@rampaulsaini-yk4gn',
+  'http://multicosmovision.blogspot.com/'
 ];
 
-// Start XML
 let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
 
-// Recursive function to walk through HTML files
 function walkDir(dir) {
   const files = fs.readdirSync(dir);
   files.forEach(file => {
-    const fullPath = path.join(dir, file);
+    const fullPath = path.join(dir,file);
     const stats = fs.statSync(fullPath);
-    if (stats.isDirectory()) {
+    if(stats.isDirectory()) {
+      if (file === '.git' || file === '.github' || file === 'node_modules') return;
       walkDir(fullPath);
-    } else if (file.endsWith('.html')) {
-      const relPath = fullPath.replace(ROOT_DIR, '').replace(/\\/g, '/');
+    }
+    else if(file.endsWith('.html')) {
+      const rel = fullPath.replace(ROOT_DIR,'').replace(/\\/g,'/');
       sitemap += `
   <url>
-    <loc>${BASE_URL}${relPath}</loc>
+    <loc>${BASE_URL}${rel}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -47,29 +40,22 @@ function walkDir(dir) {
   });
 }
 
-// Add external links
-function addExternalLinks() {
+function addExternal(){
   EXTERNAL_LINKS.forEach(link => {
     sitemap += `
   <url>
     <loc>${link}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 `;
   });
 }
 
-// Generate sitemap
 walkDir(ROOT_DIR);
-addExternalLinks();
-
-// Close XML
+addExternal();
 sitemap += '</urlset>';
-
-// Write file
-fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), sitemap);
-
-console.log('✅ Extended sitemap.xml generated successfully!');
-  
+fs.writeFileSync(path.join(ROOT_DIR,'sitemap.xml'), sitemap);
+console.log('sitemap.xml generated');
+                                                        
