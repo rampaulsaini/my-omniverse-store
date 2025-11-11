@@ -10,10 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* -------------------------
-       Design system (measured)
-       Change these to scale layout
-       ------------------------- */
     :root{
       --bg: #000;
       --gold: #FFD700;          /* primary gold */
@@ -22,61 +18,63 @@
       --panel: rgba(255,255,255,0.03);
       --glass: rgba(255,255,255,0.02);
 
-      /* spacing scale (rem units) */
-      --space-xxs: 0.25rem;   /* 4px */
-      --space-xs: 0.5rem;     /* 8px */
-      --space-sm: 0.75rem;    /* 12px */
-      --space-md: 1rem;       /* 16px */
-      --space-lg: 1.5rem;     /* 24px */
-      --space-xl: 2rem;       /* 32px */
+      --space-xxs: 0.25rem;
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
 
       --maxw: 1200px;
 
-      /* component sizing */
-      --hero-photo: 16rem;    /* 256px */
+      --hero-photo: 18rem;    /* 288px - now larger and on top */
       --qr-size: 8.75rem;     /* 140px */
       --btn-height: 2.75rem;  /* ~44px */
       --border-radius: 12px;
       --card-gap: 1rem;
 
-      /* typography scale */
       --fs-h1: clamp(1.15rem, 1.8vw, 1.25rem);
       --fs-lead: 0.88rem;
     }
 
-    /* Reset + base */
     * { box-sizing: border-box; }
-    html,body { height:100%; margin:0; background:var(--bg); color:#fff; font-family: Inter, "Noto Sans Devanagari", system-ui, -apple-system, "Segoe UI"; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-    a { color: var(--gold); text-decoration: none; }
-    img { display: block; max-width: 100%; height: auto; }
+    html,body { height:100%; margin:0; background:var(--bg); color:#fff; font-family: Inter, "Noto Sans Devanagari", system-ui; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    a { text-decoration:none; color:inherit; } /* remove default blue color */
 
-    /* Layout */
     .wrap { max-width: var(--maxw); margin: 1.125rem auto; padding: calc(var(--space-lg)); gap: var(--space-lg); }
-    header { display:flex; justify-content:space-between; align-items:center; gap: var(--space-md); flex-wrap:wrap; }
+
+    /* Top photo (user photo very top) */
+    .top-photo { display:flex; justify-content:center; align-items:center; margin-bottom: var(--space-md); }
+    .top-photo img { width: var(--hero-photo); height: calc(var(--hero-photo) * 0.95); object-fit:cover; border-radius: 14px; border:6px solid rgba(255,215,102,0.06); box-shadow:0 30px 80px rgba(0,0,0,0.6); }
+
+    header { display:flex; justify-content:space-between; align-items:center; gap: var(--space-md); flex-wrap:wrap; margin-bottom: var(--space-md); }
     .brand { display:flex; gap: var(--space-md); align-items:center; }
-    .mark { width: 56px; height:56px; border-radius:12px; background: linear-gradient(180deg, rgba(255,215,102,0.12), rgba(255,215,102,0.04)); display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:900; font-size:1.4rem; }
-    h1 { margin:0; font-size: var(--fs-h1); font-weight:700; letter-spacing:0.2px; }
+    .mark { width:56px; height:56px; border-radius:12px; background: linear-gradient(180deg, rgba(255,215,102,0.12), rgba(255,215,102,0.04)); display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:900; font-size:1.4rem; }
+    h1 { margin:0; font-size: var(--fs-h1); font-weight:700; }
     .lead { color: var(--muted); font-size: var(--fs-lead); margin-top: 0.15rem; }
 
+    /* Nav: Wiki at end, all pills gold to remove blue boxes */
     nav { display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; }
-    .link-pill { background: var(--gold); color:#000; padding: 0.45rem 0.8rem; border-radius: 10px; font-weight:700; font-size:0.92rem; border:none; display:inline-flex; align-items:center; gap:0.5rem; cursor:pointer; transition: transform .12s ease, background .12s ease; }
+    .link-pill { background: var(--gold); color:#000; padding: 0.45rem 0.8rem; border-radius: 10px; font-weight:700; font-size:0.92rem; border:none; display:inline-flex; align-items:center; gap:0.4rem; cursor:pointer; transition: transform .12s ease, background .12s; box-shadow: 0 6px 18px rgba(255,215,102,0.06); }
     .link-pill:hover { background: var(--gold-600); transform: translateY(-2px); }
+    .link-pill:focus { outline: 3px solid rgba(255,215,0,0.18); outline-offset: 2px; }
 
-    /* Hero */
+    /* Hero & layout */
     .hero { display:grid; grid-template-columns: 1fr 420px; gap: 1.75rem; margin-top: var(--space-lg); align-items:start; }
     @media (max-width: 920px){ .hero { grid-template-columns: 1fr; } .hero-right { order: -1; } }
-    .main-photo { width: var(--hero-photo); height: calc(var(--hero-photo) * 0.94); object-fit: cover; border-radius: var(--border-radius); border: 6px solid rgba(255,215,102,0.06); box-shadow: 0 20px 60px rgba(0,0,0,0.6); margin: 0 auto; display:block; }
+    .main-photo { width: var(--hero-photo); height: calc(var(--hero-photo) * 0.94); object-fit: cover; border-radius: var(--border-radius); /* used earlier but main photo is now top image */ }
 
     .gold-frame { padding: calc(var(--space-sm)); border-radius: var(--border-radius); background: linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.008)); border: 2px solid rgba(255,215,102,0.06); }
     .hero-text { color:var(--gold); font-weight:700; font-size: 1rem; line-height:1.6; white-space:pre-line; }
     .hero-text .eng { color:#fff; display:block; margin-top:0.6rem; font-weight:600; font-size:0.95rem; }
 
-    /* Payments grid (measured) */
+    /* Payments grid */
     .payments { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--card-gap); align-items:start; margin-top: var(--space-md); }
-    .pay-card { padding: var(--space-md); border-radius: 12px; background: linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01)); border:1px solid rgba(255,215,102,0.06); text-align:center; display:flex; flex-direction:column; align-items:center; gap: 0.6rem; min-height: 18.5rem; /* measured card height */ }
-    .pay-card h4 { margin: 0; font-size:1rem; font-weight:700; color: #222; }
+    .pay-card { padding: var(--space-md); border-radius: 12px; background: linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01)); border:1px solid rgba(255,215,102,0.06); text-align:center; display:flex; flex-direction:column; align-items:center; gap: 0.6rem; min-height: 18.5rem; }
+    .pay-card h4 { margin: 0; font-size:1rem; font-weight:700; color:#222; }
     .pay-qr { width: var(--qr-size); height: var(--qr-size); object-fit:cover; border-radius:8px; border:4px solid rgba(255,255,255,0.03); box-shadow: 0 8px 18px rgba(0,0,0,0.45); }
 
+    /* Buttons (gold, with check) */
     .btn {
       height: var(--btn-height);
       min-width: 10rem;
@@ -96,35 +94,32 @@
     }
     .btn svg { width: 1rem; height:1rem; flex-shrink:0; }
     .btn:hover { background: var(--gold-600); transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
     .btn:focus { outline: 3px solid rgba(255,215,0,0.18); outline-offset: 2px; }
 
-    /* Cards and layout */
     .card { background: var(--panel); padding: var(--space-md); border-radius: var(--border-radius); border: 1px solid rgba(255,255,255,0.03); }
     .grid-3 { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
 
-    /* Support form */
     .form-row { display:flex; gap: var(--space-sm); flex-wrap:wrap; justify-content:center; }
     input, textarea { background: rgba(255,255,255,0.03); color:#fff; border:none; padding: 0.6rem; border-radius:8px; font-size: 0.95rem; width: 100%; }
     textarea { min-height: 5.75rem; resize: vertical; }
-    .support-grid { display:grid; grid-template-columns: 1fr 520px; gap: var(--space-lg); align-items:start; }
-    @media (max-width: 920px) { .support-grid { grid-template-columns: 1fr; } }
-
-    footer { margin-top: var(--space-xl); color: var(--muted); font-size: 0.92rem; text-align:center; padding-bottom: 1.25rem; }
-
-    /* small text */
     .muted { color: var(--muted); font-size: 0.92rem; }
     .small { font-size: 0.82rem; color: var(--muted); }
 
-    /* subtle responsive tweaks */
     @media (max-width: 520px){
-      :root{ --hero-photo: 10.5rem; --qr-size: 6.25rem; --btn-height: 2.4rem; }
+      :root{ --hero-photo: 11rem; --qr-size: 6.25rem; --btn-height: 2.4rem; }
       .pay-card { min-height: 14.5rem; }
     }
   </style>
 </head>
 <body>
   <main class="wrap" role="main" aria-labelledby="pageTitle">
+
+    <!-- TOP PHOTO (user's photo on top) -->
+    <div class="top-photo" aria-hidden="false">
+      <img src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini — portrait">
+    </div>
+
+    <!-- Header -->
     <header>
       <div class="brand" aria-hidden="true">
         <div class="mark">꙰</div>
@@ -134,21 +129,21 @@
         </div>
       </div>
 
+      <!-- Nav: Wikipedia placed at the end in order -->
       <nav aria-label="top links">
         <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram ✅</a>
         <a class="link-pill" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp ✅</a>
         <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener">YouTube ✅</a>
         <a class="link-pill" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog ✅</a>
         <a class="link-pill" href="https://www.facebook.com/share/1HH53GxpAo/" target="_blank" rel="noopener">Facebook ✅</a>
+        <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank" rel="noopener">Wikipedia ✅</a>
       </nav>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO (text + payments) -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-left">
-        <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini" width="420" height="400" loading="lazy">
-
-        <div style="margin-top: var(--space-md)" class="gold-frame">
+        <div class="gold-frame" aria-hidden="false">
           <div id="hero-title" class="hero-text">
             जिस स्थायी सत्य से मानव सभ्यता अब तक अपरिचित रही — वही सत्य अब प्रत्यक्ष है।
             यह कोई मान्यता नहीं, कोई मत नहीं — यह जीवित अनुभव है।
@@ -158,57 +153,55 @@
           </div>
         </div>
 
-        <!-- Payments block (measured grid) -->
+        <!-- Payments -->
         <div style="margin-top: var(--space-md)" class="card" aria-labelledby="paymentsTitle">
           <div id="paymentsTitle" style="font-weight:700;color:var(--gold);text-align:center">Contribute — Payments ✅</div>
 
-          <div class="payments" style="margin-top: var(--space-sm)" role="list">
+          <div class="payments" role="list" style="margin-top: var(--space-sm)">
+            <!-- UPI -->
             <div class="pay-card" role="listitem" aria-labelledby="upi-title">
               <h4 id="upi-title">UPI / GPay</h4>
               <img class="pay-qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR">
               <div class="small">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
               <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" aria-label="Pay via UPI">
-                <!-- inline SVG check -->
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Pay via UPI
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pay via UPI ✅
               </a>
             </div>
 
+            <!-- Paytm / PhonePe -->
             <div class="pay-card" role="listitem" aria-labelledby="paytm-title">
               <h4 id="paytm-title">Paytm / PhonePe</h4>
               <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR">
               <div class="small">Phone: <strong>8082935186</strong></div>
-              <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank" aria-label="Pay PhonePe or Paytm">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Pay via UPI
+              <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank" aria-label="Pay via Paytm or PhonePe">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pay via UPI ✅
               </a>
             </div>
 
+            <!-- PayPal -->
             <div class="pay-card" role="listitem" aria-labelledby="paypal-title">
               <h4 id="paypal-title">PayPal / Card</h4>
               <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
               <div class="small">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
               <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener" aria-label="Open PayPal">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Open PayPal
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Open PayPal ✅
               </a>
             </div>
 
+            <!-- Bank -->
             <div class="pay-card" role="listitem" aria-labelledby="bank-title">
               <h4 id="bank-title">Bank Transfer</h4>
               <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
               <div class="small">Account: <strong>Rampaul Saini</strong><br>IFSC: <strong>HDFC0001234</strong></div>
               <a class="btn" href="#" id="bankDetailsBtn" aria-label="View bank details">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Bank Details
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Bank Details ✅
               </a>
             </div>
           </div>
         </div>
-
       </div>
 
-      <!-- Right column: Media + Links -->
+      <!-- Right column -->
       <aside class="hero-right fade-up" aria-labelledby="mediaTitle">
         <div id="mediaTitle" style="font-weight:700;color:var(--muted);margin-bottom:6px">All content — Free to Read & Listen</div>
         <div class="muted" style="margin-bottom:12px">Audio, manifesto, photos & vision assets — proceeds support Saneha Saini</div>
@@ -226,7 +219,7 @@
       </aside>
     </section>
 
-    <!-- Support Form & Messages (measured layout) -->
+    <!-- Support Form & Messages -->
     <section id="supportSection" style="margin-top: var(--space-xl)">
       <div class="gold-frame card" style="padding: calc(var(--space-md) + 0.25rem)">
         <h2 style="margin:0;color:var(--gold);text-align:center">सत्य के इस कार्य में आपका सहयोग ✅</h2>
@@ -248,7 +241,7 @@
               <div style="margin-top: var(--space-sm); text-align:center;">
                 <button type="submit" id="sendBtn" class="btn" aria-live="polite">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  संदेश भेजें
+                  संदेश भेजें ✅
                 </button>
               </div>
             </form>
@@ -263,7 +256,7 @@
             <div style="width:520px">
               <h3 style="color:var(--gold);font-size:1rem;margin:6px 0">🕊 आशीर्वचन / संदेश ✅</h3>
               <div id="msgWall" style="min-height:6rem;color:#ddd;text-align:left"></div>
-              <div style="margin-top:0.5rem;text-align:right"><button id="exportBtn" class="btn"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Export Messages</button></div>
+              <div style="margin-top:0.5rem;text-align:right"><button id="exportBtn" class="btn"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Export Messages ✅</button></div>
             </div>
           </div>
         </div>
@@ -280,9 +273,9 @@
           </div>
 
           <div style="display:flex;gap:0.5rem">
-            <a class="btn" href="#supportSection">Support</a>
-            <a class="btn" href="mailto:research@rampaulsaini.github.io">Contact Research Team</a>
-            <a class="btn" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia Profile</a>
+            <a class="btn" href="#supportSection">Support ✅</a>
+            <a class="btn" href="mailto:research@rampaulsaini.github.io">Contact Research Team ✅</a>
+            <a class="btn" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia Profile ✅</a>
           </div>
         </div>
 
@@ -318,12 +311,17 @@
         UPI / GPay: <code style="color:var(--gold)">sainirampaul90-1@okhdfcbank</code> • Paytm / Phone: <code style="color:var(--gold)">8082935186</code> • PayPal: <a href="https://paypal.me/sainirampaul60" target="_blank" style="color:var(--gold)">paypal.me/sainirampaul60</a>
       </div>
     </footer>
+
   </main>
 
-  <!-- Scripts (unchanged functionality; slightly improved UX) -->
+  <!-- Scripts -->
   <script>
-  // CONFIG: Apps Script URL already embedded for you
+  // CONFIG
   const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
   const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
 
-  function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;'
+  function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function qs(id){ return document.getElementById(id); }
+
+  function saveLocal(name,email,country,message){
+    const supporters = JSON.parse(localStorage.get
