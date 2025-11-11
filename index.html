@@ -6,21 +6,21 @@
   <title>꙰ Yatharth — निष्पक्ष समझ — Shromani Rampaulsaini</title>
   <meta name="description" content="Yatharth — शिरोमणि रामपुलसैनी — Free to read & listen. Support optional. Proceeds support Saneha Saini.">
 
-  <!-- Optional font (fast CDN) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg: #000;
-      --gold: #D4AF37;         /* refined golden color requested */
-      --gold-600: #c9982e;     /* hover */
+      --gold: #D4AF37;
+      --gold-600: #c9982e;
       --muted: #cfcfcf;
       --panel: rgba(255,255,255,0.03);
 
-      --space-md: 1rem;
       --maxw: 1100px;
-      --hero-photo: 16.5rem;   /* 264px */
-      --qr-size: 7.5rem;       /* 120px */
+      /* reduced photo size per request */
+      --hero-photo-w: 14.5rem;   /* ~232px (smaller) */
+      --hero-photo-h-mult: 0.9;  /* height = width * mult */
+      --qr-size: 7.2rem;
       --btn-height: 2rem;
       --btn-font: 0.88rem;
     }
@@ -31,29 +31,60 @@
     img{display:block;max-width:100%}
     .wrap{max-width:var(--maxw);margin:18px auto;padding:20px}
 
-    /* Top portrait with overlay */
-    .top-photo-wrap{position:relative;display:flex;justify-content:center;margin-bottom:var(--space-md)}
-    .top-photo{width:var(--hero-photo);height:calc(var(--hero-photo)*0.92);object-fit:cover;border-radius:14px;border:5px solid rgba(212,175,55,0.06);box-shadow:0 24px 56px rgba(0,0,0,0.6)}
+    /* Top portrait with overlay + soft forehead light */
+    .top-photo-wrap{position:relative;display:flex;justify-content:center;margin-bottom:16px}
+    .top-photo{
+      width:var(--hero-photo-w);
+      height:calc(var(--hero-photo-w) * var(--hero-photo-h-mult));
+      object-fit:cover;
+      border-radius:12px;
+      border:4px solid rgba(212,175,55,0.06);
+      box-shadow:0 20px 44px rgba(0,0,0,0.65);
+      position:relative;
+      z-index:1;
+    }
+
+    /* subtle natural light (above forehead) */
+    .forehead-light{
+      position:absolute;
+      left:50%;
+      top:6%;
+      transform:translateX(-50%);
+      width:58%;
+      height:28%;
+      border-radius:50%;
+      z-index:2;
+      pointer-events:none;
+      /* soft golden glow */
+      background: radial-gradient(closest-side, rgba(212,175,55,0.26), rgba(212,175,55,0.12) 35%, rgba(212,175,55,0.06) 55%, transparent 70%);
+      filter: blur(6px);
+      mix-blend-mode:screen;
+    }
+
+    /* overlay text moved slightly higher (above center), but not covering face */
     .photo-overlay{
       position:absolute;
       left:50%;
-      top:12%;
+      top:8%;              /* moved up to be higher over photo */
       transform:translateX(-50%);
       width:92%;
       text-align:center;
-      pointer-events:none;
+      z-index:3;
+      pointer-events:auto;
     }
     .overlay-text{
       color:var(--gold);
       font-weight:800;
-      font-size:0.85rem;
-      line-height:1.2;
-      text-shadow:0 6px 18px rgba(0,0,0,0.7);
-      background:linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.12));
-      padding:10px 12px;
+      font-size:0.78rem;   /* slightly smaller to fit */
+      line-height:1.18;
+      text-shadow:0 8px 20px rgba(0,0,0,0.75);
+      background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.09));
+      padding:8px 10px;
       border-radius:10px;
       border:1px solid rgba(212,175,55,0.08);
-      pointer-events:auto;
+      display:inline-block;
+      backdrop-filter: blur(2px);
+      cursor:copy;
     }
 
     header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
@@ -116,11 +147,13 @@
 <body>
   <main class="wrap" role="main" aria-labelledby="pageTitle">
 
-    <!-- top portrait with golden overlay text -->
+    <!-- top portrait with golden forehead light and overlay text slightly higher -->
     <div class="top-photo-wrap" role="img" aria-label="Shromani Rampaulsaini portrait">
       <img class="top-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini">
+      <div class="forehead-light" aria-hidden="true"></div>
+
       <div class="photo-overlay" aria-hidden="false">
-        <div class="overlay-text" id="overlayText">
+        <div class="overlay-text" id="overlayText" title="Click to copy declaration">
           मैं शिरोमणि रामपुलसैनी तुलनातीत कालातीत द्वैततीत शब्दातीत प्रेमतित सम्पन्नता संपूर्णता समग्रता संतुष्टि सत्य प्रत्यक्ष शाश्वत वास्तविक स्भाविक सत्य में हूं, "<strong>खुद का साक्षत्कार हूं</strong>"
         </div>
       </div>
@@ -136,13 +169,11 @@
         </div>
       </div>
 
-      <!-- nav: Wikipedia direct & social -->
       <nav aria-label="top links">
         <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram ✅</a>
         <a class="link-pill" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp ✅</a>
         <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener">YouTube ✅</a>
         <a class="link-pill" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog ✅</a>
-        <!-- Replace the Facebook URL below with your actual profile/page if you like -->
         <a class="link-pill" href="https://facebook.com/your-profile" target="_blank" rel="noopener">Facebook ✅</a>
         <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank" rel="noopener">Wikipedia ✅</a>
       </nav>
@@ -172,10 +203,7 @@
               <img class="pay-qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR">
               <div class="small">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
-                <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" aria-label="Pay via UPI">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false" style="width:14px;height:14px"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Pay
-                </a>
+                <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" aria-label="Pay via UPI">Pay</a>
                 <button class="social-small" onclick="copyText('sainirampaul90-1@okhdfcbank')" title="Copy UPI ID">Copy</button>
               </div>
             </div>
@@ -251,10 +279,7 @@
               <textarea id="smsg" name="message" placeholder="आपका संदेश / आशीर्वचन" required></textarea>
             </div>
             <div style="text-align:center">
-              <button type="submit" id="sendBtn" class="btn" style="min-width:9rem">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false" style="width:14px;height:14px"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                भेजें
-              </button>
+              <button type="submit" id="sendBtn" class="btn" style="min-width:9rem">भेजें</button>
             </div>
           </form>
         </div>
@@ -306,7 +331,6 @@
   </main>
 
   <script>
-    // Config
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
     const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
 
@@ -340,10 +364,4 @@
       }catch(err){ return {ok:false, err: String(err)}; }
     }
 
-    function clearForm(){ if(qs('sname')) qs('sname').value=''; if(qs('semail')) qs('semail').value=''; if(qs('scountry')) qs('scountry').value=''; if(qs('smsg')) qs('smsg').value=''; }
-
-    async function submitSupport(ev){
-      ev && ev.preventDefault();
-      const name = qs('sname').value.trim();
-      const email = qs('semail').value.trim();
-      const country = q
+    function clearForm(){ if(qs('sname')) qs('sname').value=''; if(qs('sema
