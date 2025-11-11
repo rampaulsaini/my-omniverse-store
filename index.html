@@ -111,7 +111,20 @@
             <h4 id="bank-title">Bank Transfer</h4>
             <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
             <div style="margin-top:8px;" class="small">Account: <strong>Rampaul Saini</strong><br>IFSC: <strong>HDFC0001234</strong></div>
-            <a class="btn" href="#bank-details" id="bankDetailsBtn">Bank Details</a>
+            <a class="btn" href="#bank-details" id="bankDetailsBtn">Bank Details
+
+<!-- 6 FOLDERS BUTTON BLOCK START -->
+<div style="margin:20px 0;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;">
+  <a class="link-pill" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple Account</a>
+  <a class="link-pill" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ शिरोमणि रामपुलसैनी MP3</a>
+  <a class="link-pill" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ शिरोमणि रामपुलसैनी प्रमाण पत्र</a>
+  <a class="link-pill" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ शिरोमणि रामपुलसैनी Short Audios</a>
+  <a class="link-pill" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ शिरोमणि रामपुलसैनी Videos Album</a>
+  <a class="link-pill" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ शिरोमणि रामपुलसैनी Album 1</a>
+</div>
+<!-- 6 FOLDERS BUTTON BLOCK END -->
+
+सत्य के इस कार्य में आपका सहयोग</a>
           </div>
         </div>
 
@@ -293,24 +306,4 @@
       }
 
       function exportMessages(){
-        const data = { supporters: JSON.parse(localStorage.getItem('spList')||'[]'), messages: JSON.parse(localStorage.getItem('spMsg')||'[]') };
-        const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a'); a.href = url; a.download = 'yatharth-messages.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-      }
-
-      // DOM ready
-      document.addEventListener('DOMContentLoaded', function(){
-        // Attach handlers
-        const form = $( 'supportForm' );
-        form.addEventListener('submit', submitSupport);
-
-        $( 'exportBtn' ).addEventListener('click', exportMessages);
-
-        // Bank details button example (shows modal or alert)
-        $( 'bankDetailsBtn' ).addEventListener('click', function(e){ e.preventDefault(); alert('Account: Rampaul Saini\nA/C No: 1234567890\nIFSC: HDFC0001234\nBranch: Example Branch'); });
-
-        // Render from localStorage
-        renderSupport();
-
-        //
+        const da
