@@ -5,50 +5,92 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>꙰ Yatharth — शिरोमणि रामपुलसैनी</title>
   <meta name="description" content="Yatharth — Free to read & listen. Support optional. Proceeds support Saneha Saini.">
+  <meta name="keywords" content="Yatharth, Shromani Rampaulsaini, Nishpaksh Samajh, audio, manifesto, photos, donations">
   <style>
-    /* ---------------- Common ---------------- */
+    /* ---------------- Theme & Base ---------------- */
     :root{
-      --gold:#ffd966; --muted:#cfcfcf; --panel:rgba(255,255,255,0.03);
-      --bg-dark:#070707; --bg-light:#f5f2ed; --maxw:1100px;
+      --bg-dark:#070707;
+      --bg-light:#f6f4f1;
+      --gold:#ffd966;
+      --muted:#cfcfcf;
+      --panel:rgba(255,255,255,0.03);
       --card-radius:14px;
+      --maxw:1180px;
+      --ui-gap:14px;
+      --pill-radius:14px;
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:Inter,'Noto Sans Devanagari','Noto Sans',system-ui;-webkit-font-smoothing:antialiased}
     a{color:var(--gold);text-decoration:none}
-    .wrap{max-width:var(--maxw);margin:20px auto;padding:20px}
+    .wrap{max-width:var(--maxw);margin:18px auto;padding:28px}
     header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:12px}
-    .mark{font-size:36px;color:var(--gold);font-weight:900}
+    .mark{font-size:40px;color:var(--gold);font-weight:900}
+    h1{margin:0;font-size:20px}
+    .lead{color:var(--muted);font-size:13px}
     nav{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    .link-pill{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:999px;color:var(--gold);font-weight:700;transition:.18s}
+    .link-pill{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);
+      padding:8px 12px;border-radius:999px;color:var(--gold);font-weight:700;display:inline-flex;align-items:center;gap:8px;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .link-pill:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,0,0,0.6); background: linear-gradient(180deg, rgba(255,215,102,0.03), rgba(255,215,102,0.01)); color:#050505}
     .toggle-btn{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--gold);padding:8px 12px;border-radius:8px;cursor:pointer}
-    .card{background:var(--panel);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .small{font-size:13px;color:var(--muted)}
-    input,textarea,button{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:10px;border-radius:8px;font-size:14px}
-    textarea{min-height:96px;resize:vertical;max-width:760px}
-    .folders{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
-    .folder-pill{background:transparent;border:1px solid rgba(255,255,255,0.05);padding:10px 14px;border-radius:12px;color:var(--gold);font-weight:800}
-    /* ---------------- Polished (default dark) ---------------- */
-    body {background:var(--bg-dark);color:#fff}
-    header, footer{color:var(--muted)}
+
+    /* ---------------- Dark (default) ---------------- */
+    body{background:var(--bg-dark);color:#fff}
+    .card{background:var(--panel);padding:14px;border-radius:var(--card-radius);border:1px solid rgba(255,255,255,0.03)}
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:18px;align-items:start}
     .main-photo{width:260px;border-radius:14px;border:6px solid rgba(255,215,102,0.06);box-shadow:0 30px 80px rgba(0,0,0,0.6);display:block;margin:0 auto;transition:transform .36s}
-    .gold-caption{margin-top:12px;text-align:center;color:var(--gold);font-weight:800;font-size:15px;line-height:1.4}
+    .main-photo:hover{transform:scale(1.03)}
     .gold-frame{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.008));border:2px solid rgba(255,215,102,0.08)}
+    .gold-caption{margin-top:12px;text-align:center;color:var(--gold);font-weight:800;font-size:15px;line-height:1.4;text-shadow:0 2px 14px rgba(255,215,102,0.08);transition:letter-spacing .5s ease, transform .3s ease}
+    .gold-caption:hover{letter-spacing:.4px; transform:translateY(-2px)}
+
     .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:center;margin-top:16px}
-    .pay-card{background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,215,102,0.06);text-align:center}
+    .pay-card{background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,215,102,0.06);text-align:center;transition:transform .18s, box-shadow .18s}
+    .pay-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,0.6)}
     .pay-qr{width:140px;height:140px;object-fit:cover;border-radius:8px;border:4px solid rgba(255,255,255,0.03)}
-    .btn{background:var(--gold);color:#050505;padding:10px 14px;border-radius:12px;font-weight:800;display:inline-block;cursor:pointer}
-    /* ---------------- Simple (light) overrides when .simple on body) ---------------- */
+    .btn{background:var(--gold);color:#050505;padding:10px 14px;border-radius:12px;font-weight:800;display:inline-block;cursor:pointer;transition:transform .12s, box-shadow .12s}
+    .btn:hover{transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,0.5)}
+
+    .folders{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+    .folder-pill{background:transparent;border:1px solid rgba(255,255,255,0.05);padding:12px 18px;border-radius:var(--pill-radius);color:var(--gold);font-weight:800;display:inline-flex;align-items:center;gap:8px;transition:transform .12s, box-shadow .12s, background .12s}
+    .folder-pill:hover{transform:translateY(-6px); box-shadow:0 20px 36px rgba(0,0,0,0.55); background:linear-gradient(180deg, rgba(255,215,102,0.035), rgba(255,215,102,0.01)); color:#050505}
+
+    .form-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    input,textarea,button{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:10px;border-radius:8px;font-size:14px}
+    textarea{min-height:96px;resize:vertical;max-width:760px}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:20px}
+
+    /* ---------------- Simple (light) mode overrides ---------------- */
     body.simple{background:var(--bg-light);color:#222}
-    body.simple header, body.simple footer{color:#222}
     body.simple .card{background:#fff;border:1px solid #eee;color:#222}
-    body.simple .link-pill{border:1px solid #ddd;color:#222;background:transparent}
-    body.simple .folder-pill{border:1px solid #ddd;color:#222}
+    body.simple .link-pill{border:1px solid #ddd;color:#222}
+    body.simple .folder-pill{border:1px solid #ddd;color:#222;background:transparent}
     body.simple .gold-caption{color:#b36b00}
-    body.simple .pay-card{background:#fff;border:1px solid #eee;color:#222}
     body.simple input, body.simple textarea{background:#fff;color:#222;border:1px solid #eee}
-    /* responsiveness */
+
+    /* ---------------- Super-mint micro-tuning ---------------- */
+    .wrap{padding:32px}
+    .card{padding:18px}
+    .payments .pay-card{padding:18px}
+    .gold-caption{letter-spacing:0.3px}
+    a:focus, button:focus, .folder-pill:focus, .link-pill:focus { outline:3px solid rgba(255,215,102,0.18); outline-offset:3px; border-radius:12px; }
+
+    /* ripple support */
+    .ripple{position:relative;overflow:hidden}
+    .ripple::after{content:"";position:absolute;left:50%;top:50%;width:0;height:0;background:rgba(255,255,255,0.12);border-radius:50%;transform:translate(-50%,-50%);transition:width .38s ease, height .38s ease, opacity .4s;opacity:0}
+    .ripple.rip::after{width:200%;height:200%;opacity:1;transition:opacity .4s ease}
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .btn, .folder-pill, .link-pill, .pay-card { transition:none !important; transform:none !important; }
+    }
+
+    /* responsive */
     @media(max-width:980px){.hero{grid-template-columns:1fr}.main-photo{width:160px}}
   </style>
 </head>
@@ -59,21 +101,20 @@
         <div class="mark">꙰</div>
         <div>
           <h1>शिरोमणि रामपुलसैनी — Nishpaksh Samajh</h1>
-          <div class="small">Free for all · Read & Listen · Support optional</div>
+          <div class="lead small">Free for all · Read & Listen · Support optional</div>
         </div>
       </div>
 
       <nav aria-label="social links">
-        <a class="link-pill" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
-        <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank" rel="noopener">Wikipedia</a>
-        <a class="link-pill" href="https://twitter.com/" target="_blank" rel="noopener">X / Twitter</a>
-        <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram</a>
-        <a class="link-pill" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener">YouTube</a>
-        <a class="link-pill" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog</a>
-        <a class="link-pill" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link-pill ripple" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+        <a class="link-pill ripple" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank" rel="noopener">Wikipedia</a>
+        <a class="link-pill ripple" href="https://twitter.com/" target="_blank" rel="noopener">X / Twitter</a>
+        <a class="link-pill ripple" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram</a>
+        <a class="link-pill ripple" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="link-pill ripple" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener">YouTube</a>
+        <a class="link-pill ripple" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog</a>
+        <a class="link-pill ripple" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
 
-        <!-- View toggle -->
         <button id="viewToggle" class="toggle-btn" title="Toggle Simple / Supreme view">Simple View</button>
       </nav>
     </header>
@@ -89,7 +130,7 @@
         <div style="margin-top:18px" class="gold-frame card" aria-labelledby="hero-title">
           <div id="hero-title" class="hero-text" style="color:var(--gold);font-weight:700;font-size:16px;line-height:1.6">
             जिस स्थायी सत्य से मानव सभ्यता अब तक अपरिचित रही — वही सत्य अब प्रत्यक्ष है।
-            यह कोई मान्यता नहीं, कोई मत नहीं — यह जीवित अनुभव है।
+            यह कोई मान्यता नहीं, कोई मत नहीं — यह जीवित अनुभव है.
             <div class="eng" style="color:inherit;margin-top:10px;font-weight:600;font-size:15px">The permanent truth unknown to humanity is now realized — not as a belief, but as a living experience.</div>
           </div>
         </div>
@@ -100,28 +141,28 @@
             <h4 id="upi-title">UPI / GPay</h4>
             <img class="pay-qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR">
             <div style="margin-top:8px;" class="small">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
-            <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini">Pay via UPI</a>
+            <a class="btn ripple" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini">Pay via UPI</a>
           </div>
 
           <div class="pay-card" role="group" aria-labelledby="paytm-title">
             <h4 id="paytm-title">Paytm / PhonePe</h4>
             <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR">
             <div style="margin-top:8px;" class="small">Phone: <strong>8082935186</strong></div>
-            <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Pay via UPI</a>
+            <a class="btn ripple" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Pay via UPI</a>
           </div>
 
           <div class="pay-card" role="group" aria-labelledby="paypal-title">
             <h4 id="paypal-title">PayPal / Card</h4>
             <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
             <div style="margin-top:8px;" class="small">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
-            <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener">Open PayPal</a>
+            <a class="btn ripple" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener">Open PayPal</a>
           </div>
 
           <div class="pay-card" role="group" aria-labelledby="bank-title">
             <h4 id="bank-title">Bank Transfer</h4>
             <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
             <div style="margin-top:8px;" class="small">Account: <strong>Rampaul Saini</strong><br>IFSC: <strong>HDFC0001234</strong></div>
-            <a class="btn" href="#bank-details" id="bankDetailsBtn">Bank Details</a>
+            <a class="btn ripple" href="#bank-details" id="bankDetailsBtn">Bank Details</a>
           </div>
         </div>
 
@@ -134,17 +175,17 @@
         </div>
 
         <div class="folders" role="list">
-          <a class="folder-pill" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple Account</a>
-          <a class="folder-pill" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ शिरोमणि रामपुलसैनी MP3</a>
-          <a class="folder-pill" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ शिरोमणि रामपुलसैनी प्रमाण पत्र</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ शिरोमणि रामपुलसैनी Short Audios</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ शिरोमणि रामपुलसैनी Videos Album</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ शिरोमणि रामपुलसैनी Album 1</a>
+          <a class="folder-pill ripple" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple Account</a>
+          <a class="folder-pill ripple" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ शिरोमणि रामपुलेसैनी MP3</a>
+          <a class="folder-pill ripple" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ शिरोमणि रामपलसैनी प्रमाण पत्र</a>
+          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ शिरोमणि रामपुलसैनी Short Audios</a>
+          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ शिरोमणि रामपुलसैनी Videos Album</a>
+          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ शिरोमणि रामपुलसैनी Album 1</a>
         </div>
 
         <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <a class="btn" href="#supportSection">Support</a>
-          <a class="btn" href="mailto:research@rampaulsaini.github.io">Contact Research Team</a>
+          <a class="btn ripple" href="#supportSection">Support</a>
+          <a class="btn ripple" href="mailto:research@rampaulsaini.github.io">Contact Research Team</a>
         </div>
       </aside>
     </section>
@@ -158,7 +199,7 @@
         <div style="margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto">
           <div class="card" style="background:rgba(0,0,0,0.45);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)">
             <form id="supportForm" novalidate>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+              <div class="form-row" style="justify-content:center">
                 <input id="sname" name="name" aria-label="name" placeholder="आपका नाम (public if allowed)" style="width:240px">
                 <input id="semail" name="email" aria-label="email" placeholder="ईमेल (private)" style="width:240px">
                 <input id="scountry" name="country" aria-label="country" placeholder="Country (optional)" style="width:240px">
@@ -167,7 +208,7 @@
                 <textarea id="smsg" name="message" aria-label="message" placeholder="आपका संदेश / आशीर्वचन" required></textarea>
               </div>
               <div style="margin-top:10px;text-align:center">
-                <button type="submit" id="sendBtn" class="btn" aria-live="polite">संदेश भेजें</button>
+                <button type="submit" id="sendBtn" class="btn ripple" aria-live="polite">संदेश भेजें</button>
               </div>
             </form>
           </div>
@@ -180,7 +221,7 @@
             <div style="width:520px">
               <h3 style="color:var(--gold);font-size:16px;margin:6px 0">🕊 आशीर्वचन / संदेश</h3>
               <div id="msgWall" style="min-height:60px;color:#ddd;text-align:left"></div>
-              <div style="margin-top:8px;text-align:right"><button id="exportBtn" class="btn">Export Messages</button></div>
+              <div style="margin-top:8px;text-align:right"><button id="exportBtn" class="btn ripple">Export Messages</button></div>
             </div>
           </div>
         </div>
@@ -201,7 +242,7 @@
       </div>
     </section>
 
-    <footer style="margin-top:28px">
+    <footer>
       <div style="margin-bottom:8px">꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</div>
       <div style="color:var(--muted)">Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp</div>
       <div style="margin-top:10px;color:var(--muted);font-size:13px">
@@ -211,18 +252,18 @@
     </footer>
   </main>
 
-  <!-- Script: view toggle + local storage + Apps Script POST + helpers -->
+  <!-- Script: view toggle + ripple + local storage + Apps Script POST + helpers -->
   <script>
     (function(){
       // CONFIG
       const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
       const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
 
-      // Utility
-      function $(id){return document.getElementById(id);}
+      // Helpers
+      function $(id){ return document.getElementById(id); }
       function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-      // View toggle (mix of both designs)
+      // View toggle between Simple / Supreme
       const viewBtn = $('viewToggle');
       viewBtn.addEventListener('click', ()=>{
         document.body.classList.toggle('simple');
@@ -230,7 +271,18 @@
         viewBtn.textContent = isSimple ? 'Supreme View' : 'Simple View';
       });
 
-      // Local storage helpers for support form
+      // Ripple effect (simple)
+      document.addEventListener('click', function(e){
+        const el = e.target.closest('.ripple');
+        if(!el) return;
+        el.classList.remove('rip');
+        // force reflow
+        void el.offsetWidth;
+        el.classList.add('rip');
+        setTimeout(()=> el.classList.remove('rip'), 420);
+      });
+
+      // Local storage helpers
       function saveLocal(name,email,country,message){
         const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
         const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
@@ -245,6 +297,7 @@
         $('supList').innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)} <span class="small" style="float:right">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style="color:var(--muted)">कोई समर्थक नहीं मिला</li>';
         $('msgWall').innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:6px 0">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)} <span class="small" style="display:block">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style="color:var(--muted)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
       }
+
       async function postToServer(payload){
         if(!WEB_APP_URL || WEB_APP_URL.length<10) return {ok:false, err:'no-endpoint'};
         try{
@@ -255,47 +308,4 @@
         }catch(err){ return {ok:false, err: String(err)}; }
       }
 
-      function clearForm(){ $('sname').value=''; $('semail').value=''; $('scountry').value=''; $('smsg').value=''; }
-
-      async function submitSupport(ev){
-        ev && ev.preventDefault();
-        const name = $('sname').value.trim();
-        const email = $('semail').value.trim();
-        const country = $('scountry').value.trim();
-        const message = $('smsg').value.trim();
-        if(!message){ alert('कृपया संदेश लिखें'); $('smsg').focus(); return; }
-        const btn = $('sendBtn');
-        btn.disabled = true; const prev = btn.textContent; btn.textContent = 'सहेजा जा रहा...';
-        // Save locally
-        saveLocal(name,email,country,message);
-        renderSupport();
-        // Try server POST (optional)
-        const payload = { secret: SECRET_TOKEN, name: name, email: email, country: country, message: message, ts: new Date().toISOString() };
-        const serverRes = await postToServer(payload);
-        if(!serverRes.ok){ console.warn('Server POST failed', serverRes.err); }
-        clearForm(); btn.textContent = 'सहेजा गया ✓';
-        setTimeout(()=>{ btn.textContent = prev; btn.disabled = false; }, 1400);
-      }
-
-      function exportMessages(){
-        const data = { supporters: JSON.parse(localStorage.getItem('spList')||'[]'), messages: JSON.parse(localStorage.getItem('spMsg')||'[]') };
-        const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a'); a.href = url; a.download = 'yatharth-messages.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-      }
-
-      // DOM ready wiring
-      document.addEventListener('DOMContentLoaded', function(){
-        $('supportForm').addEventListener('submit', submitSupport);
-        $('exportBtn').addEventListener('click', exportMessages);
-        $('bankDetailsBtn').addEventListener('click', function(e){ e.preventDefault(); alert('Account: Rampaul Saini\\nA/C No: 1234567890\\nIFSC: HDFC0001234\\nBranch: Example Branch'); });
-        renderSupport();
-      });
-
-      // expose for dev
-      window.__exportMessages = function(){ return { supporters: JSON.parse(localStorage.getItem('spList')||'[]'), messages: JSON.parse(localStorage.getItem('spMsg')||'[]') }; };
-    })();
-  </script>
-</body>
-          </html>
-  
+      function clearForm(){ $('sname').value=''; 
