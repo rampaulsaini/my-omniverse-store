@@ -6,86 +6,35 @@
   <title>꙰ Yatharth — निष्पक्ष समझ — Shromani Rampaulsaini</title>
   <meta name="description" content="Yatharth — शिरोमणि रामपुलसैनी — Free to read & listen. Support optional. Proceeds support Saneha Saini.">
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #000;
-      --gold: #D4AF37;
-      --gold-600: #c9982e;
-      --muted: #cfcfcf;
-      --panel: rgba(255,255,255,0.03);
+      --bg:#000;
+      --gold:#D4AF37;
+      --gold-600:#c9982e;
+      --muted:#cfcfcf;
+      --panel:rgba(255,255,255,0.03);
 
-      --maxw: 1100px;
-      /* reduced photo size per request */
-      --hero-photo-w: 14.5rem;   /* ~232px (smaller) */
-      --hero-photo-h-mult: 0.9;  /* height = width * mult */
-      --qr-size: 7.2rem;
-      --btn-height: 2rem;
-      --btn-font: 0.88rem;
+      --maxw:1100px;
+
+      /* tuned sizes per request */
+      --hero-w:12.8rem;          /* ~205px */
+      --hero-h-mult:0.95;       /* portrait taller */
+      --overlay-top:6%;         /* how high overlay is placed */
+      --forehead-width:56%;
+      --forehead-height:28%;
+      --overlay-fs:0.78rem;
+      --qr-size:7rem;
+      --btn-h:2rem;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter, 'Noto Sans Devanagari', system-ui;-webkit-font-smoothing:antialiased}
+    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter,'Noto Sans Devanagari',system-ui;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
-    .wrap{max-width:var(--maxw);margin:18px auto;padding:20px}
-
-    /* Top portrait with overlay + soft forehead light */
-    .top-photo-wrap{position:relative;display:flex;justify-content:center;margin-bottom:16px}
-    .top-photo{
-      width:var(--hero-photo-w);
-      height:calc(var(--hero-photo-w) * var(--hero-photo-h-mult));
-      object-fit:cover;
-      border-radius:12px;
-      border:4px solid rgba(212,175,55,0.06);
-      box-shadow:0 20px 44px rgba(0,0,0,0.65);
-      position:relative;
-      z-index:1;
-    }
-
-    /* subtle natural light (above forehead) */
-    .forehead-light{
-      position:absolute;
-      left:50%;
-      top:6%;
-      transform:translateX(-50%);
-      width:58%;
-      height:28%;
-      border-radius:50%;
-      z-index:2;
-      pointer-events:none;
-      /* soft golden glow */
-      background: radial-gradient(closest-side, rgba(212,175,55,0.26), rgba(212,175,55,0.12) 35%, rgba(212,175,55,0.06) 55%, transparent 70%);
-      filter: blur(6px);
-      mix-blend-mode:screen;
-    }
-
-    /* overlay text moved slightly higher (above center), but not covering face */
-    .photo-overlay{
-      position:absolute;
-      left:50%;
-      top:8%;              /* moved up to be higher over photo */
-      transform:translateX(-50%);
-      width:92%;
-      text-align:center;
-      z-index:3;
-      pointer-events:auto;
-    }
-    .overlay-text{
-      color:var(--gold);
-      font-weight:800;
-      font-size:0.78rem;   /* slightly smaller to fit */
-      line-height:1.18;
-      text-shadow:0 8px 20px rgba(0,0,0,0.75);
-      background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.09));
-      padding:8px 10px;
-      border-radius:10px;
-      border:1px solid rgba(212,175,55,0.08);
-      display:inline-block;
-      backdrop-filter: blur(2px);
-      cursor:copy;
-    }
+    .wrap{max-width:var(--maxw);margin:18px auto;padding:18px}
 
     header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
     .brand{display:flex;align-items:center;gap:12px}
@@ -97,40 +46,76 @@
     .link-pill{background:var(--gold);color:#000;padding:0.36rem 0.6rem;border-radius:8px;font-weight:700;font-size:0.86rem;display:inline-flex;align-items:center;gap:0.4rem;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(212,175,55,0.06);transition:transform .12s,background .12s}
     .link-pill:hover{background:var(--gold-600);transform:translateY(-2px)}
 
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+    /* Top portrait container */
+    .top-photo-wrap{position:relative;display:flex;justify-content:center;margin-bottom:14px}
+    .top-photo{
+      width:var(--hero-w);
+      height:calc(var(--hero-w) * var(--hero-h-mult));
+      object-fit:cover;
+      border-radius:12px;
+      border:4px solid rgba(212,175,55,0.06);
+      box-shadow:0 18px 44px rgba(0,0,0,0.65);
+      position:relative;
+      z-index:1;
+    }
+
+    /* forehead soft natural light */
+    .forehead-light{
+      position:absolute;
+      left:50%;
+      top:4%;
+      transform:translateX(-50%);
+      width:var(--forehead-width);
+      height:var(--forehead-height);
+      border-radius:50%;
+      z-index:2;
+      pointer-events:none;
+      background: radial-gradient(closest-side, rgba(212,175,55,0.30), rgba(212,175,55,0.14) 32%, rgba(212,175,55,0.06) 55%, transparent 72%);
+      filter: blur(5px);
+      mix-blend-mode:screen;
+    }
+
+    /* overlay text placed a bit higher than center (above eyes) */
+    .photo-overlay{
+      position:absolute;
+      left:50%;
+      top:var(--overlay-top);  /* moved higher */
+      transform:translateX(-50%);
+      width:94%;
+      text-align:center;
+      z-index:3;
+      pointer-events:auto;
+    }
+    .overlay-text{
+      display:inline-block;
+      color:var(--gold);
+      font-weight:800;
+      font-size:var(--overlay-fs);
+      line-height:1.16;
+      text-shadow:0 8px 20px rgba(0,0,0,0.75);
+      background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.08));
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid rgba(212,175,55,0.08);
+      backdrop-filter: blur(2px);
+      cursor:copy;
+      max-width:100%;
+    }
+
+    /* hero layout */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
     @media(max-width:880px){.hero{grid-template-columns:1fr} .hero-right{order:-1}}
     .gold-frame{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(212,175,55,0.02), rgba(212,175,55,0.008));border:1px solid rgba(212,175,55,0.06)}
-    .hero-text{color:var(--gold);font-weight:700;font-size:0.96rem;line-height:1.5;white-space:pre-line}
-    .hero-text .eng{display:block;color:#fff;font-weight:600;margin-top:8px;font-size:0.9rem}
+    .hero-text{color:var(--gold);font-weight:700;font-size:0.95rem;line-height:1.45;white-space:pre-line}
+    .hero-text .eng{display:block;color:#fff;font-weight:600;margin-top:8px;font-size:0.88rem}
 
     .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
-    .pay-card{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:14.5rem}
+    .pay-card{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:14rem}
     .pay-card h4{margin:0;font-size:0.98rem;color:#111}
     .pay-qr{width:var(--qr-size);height:var(--qr-size);border-radius:8px;border:3px solid rgba(255,255,255,0.03);object-fit:cover;box-shadow:0 8px 18px rgba(0,0,0,0.45)}
 
-    .btn{
-      height:var(--btn-height);
-      min-width:7.5rem;
-      padding:0 0.6rem;
-      font-size:var(--btn-font);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      background:var(--gold);
-      color:#000;
-      border-radius:8px;
-      border:none;
-      font-weight:800;
-      cursor:pointer;
-      box-shadow:0 6px 14px rgba(212,175,55,0.06);
-      transition:transform .12s,background .12s;
-    }
+    .btn{height:var(--btn-h);min-width:7.5rem;padding:0 0.6rem;font-size:0.88rem;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--gold);color:#000;border-radius:8px;border:none;font-weight:800;cursor:pointer;box-shadow:0 6px 14px rgba(212,175,55,0.06);transition:transform .12s,background .12s}
     .btn:hover{background:var(--gold-600);transform:translateY(-2px)}
-
-    .social-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-    .social-small{background:var(--gold);color:#000;padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.86rem;border:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
-    .social-small:hover{background:var(--gold-600)}
 
     .card{background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
@@ -147,7 +132,7 @@
 <body>
   <main class="wrap" role="main" aria-labelledby="pageTitle">
 
-    <!-- top portrait with golden forehead light and overlay text slightly higher -->
+    <!-- top portrait with forehead glow and overlay moved up -->
     <div class="top-photo-wrap" role="img" aria-label="Shromani Rampaulsaini portrait">
       <img class="top-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini">
       <div class="forehead-light" aria-hidden="true"></div>
@@ -179,7 +164,7 @@
       </nav>
     </header>
 
-    <!-- HERO: text + payments -->
+    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-left">
         <div class="gold-frame">
@@ -204,7 +189,7 @@
               <div class="small">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
                 <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" aria-label="Pay via UPI">Pay</a>
-                <button class="social-small" onclick="copyText('sainirampaul90-1@okhdfcbank')" title="Copy UPI ID">Copy</button>
+                <button class="btn" style="background:transparent;border:1px solid var(--gold);color:var(--gold)" onclick="copyText('sainirampaul90-1@okhdfcbank')">Copy</button>
               </div>
             </div>
 
@@ -215,7 +200,7 @@
               <div class="small">Phone: <strong>8082935186</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
                 <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank" aria-label="Pay via Paytm/PhonePe">Pay</a>
-                <button class="social-small" onclick="copyText('8082935186')" title="Copy phone">Copy</button>
+                <button class="btn" style="background:transparent;border:1px solid var(--gold);color:var(--gold)" onclick="copyText('8082935186')">Copy</button>
               </div>
             </div>
 
@@ -226,7 +211,7 @@
               <div class="small">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
                 <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener" aria-label="Open PayPal">Pay</a>
-                <button class="social-small" onclick="copyText('paypal.me/sainirampaul60')" title="Copy PayPal">Copy</button>
+                <button class="btn" style="background:transparent;border:1px solid var(--gold);color:var(--gold)" onclick="copyText('paypal.me/sainirampaul60')">Copy</button>
               </div>
             </div>
 
@@ -236,8 +221,8 @@
               <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
               <div class="small">Account: <strong>Rampaul Saini</strong><br>IFSC: <strong>HDFC0001234</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
-                <button class="btn" id="bankDetailsBtn" aria-label="View bank details">Details</button>
-                <button class="social-small" onclick="copyText('A/C: 1234567890 | IFSC: HDFC0001234')" title="Copy bank">Copy</button>
+                <button class="btn" id="bankDetailsBtn">Details</button>
+                <button class="btn" style="background:transparent;border:1px solid var(--gold);color:var(--gold)" onclick="copyText('A/C: 1234567890 | IFSC: HDFC0001234')">Copy</button>
               </div>
             </div>
           </div>
@@ -250,19 +235,19 @@
         <div class="muted" style="margin-bottom:10px">Audio, manifesto, photos & vision assets — proceeds support Saneha Saini</div>
 
         <div class="card" style="padding:12px">
-          <div class="social-row">
-            <a class="social-small" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">Audio</a>
-            <a class="social-small" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">Certificates</a>
-            <a class="social-small" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">Shorts</a>
-            <a class="social-small" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">Videos</a>
-            <a class="social-small" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">Photos</a>
-            <a class="social-small" href="http://multicosmovision.blogspot.com/" target="_blank">Blog</a>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+            <a class="btn" style="background:var(--gold);color:#000" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank" rel="noopener">Audio</a>
+            <a class="btn" style="background:var(--gold);color:#000" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank" rel="noopener">Certificates</a>
+            <a class="btn" style="background:var(--gold);color:#000" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank" rel="noopener">Shorts</a>
+            <a class="btn" style="background:var(--gold);color:#000" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank" rel="noopener">Videos</a>
+            <a class="btn" style="background:var(--gold);color:#000" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank" rel="noopener">Photos</a>
+            <a class="btn" style="background:var(--gold);color:#000" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog</a>
           </div>
         </div>
       </aside>
     </section>
 
-    <!-- Support form & messages -->
+    <!-- Support form (unchanged) -->
     <section id="supportSection" style="margin-top:16px">
       <div class="card" style="padding:12px;border-radius:12px">
         <h3 style="color:var(--gold);margin:0 0 8px 0">सत्य के इस कार्य में आपका सहयोग</h3>
@@ -301,7 +286,7 @@
       </div>
     </section>
 
-    <!-- outreach -->
+    <!-- outreach & footer (unchanged) -->
     <section style="margin-top:14px">
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
@@ -331,7 +316,7 @@
   </main>
 
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
+    const WEB_APP_URL = ""; // keep blank if you don't want server forwarding
     const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
 
     function qs(id){ return document.getElementById(id); }
@@ -364,4 +349,4 @@
       }catch(err){ return {ok:false, err: String(err)}; }
     }
 
-    function clearForm(){ if(qs('sname')) qs('sname').value=''; if(qs('sema
+    function clearForm(){ if(qs('sname')) qs('sname').val
