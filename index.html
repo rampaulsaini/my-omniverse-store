@@ -17,35 +17,44 @@
       --muted: #cfcfcf;
       --panel: rgba(255,255,255,0.03);
 
-      /* spacing scale */
-      --space-xs: 0.4rem; /* ~6px */
-      --space-sm: 0.75rem; /* ~12px */
-      --space-md: 1rem; /* 16px */
-      --space-lg: 1.5rem; /* 24px */
-
+      --space-md: 1rem;
       --maxw: 1100px;
-
-      /* component sizing (smaller buttons) */
       --hero-photo: 16.5rem;   /* 264px */
-      --qr-size: 7.5rem;       /* 120px (smaller, balanced) */
-      --btn-height: 2rem;      /* compact */
+      --qr-size: 7.5rem;       /* 120px */
+      --btn-height: 2rem;
       --btn-font: 0.88rem;
-      --pill-font: 0.86rem;
-      --border-radius: 10px;
-      --card-gap: 0.9rem;
     }
 
-    /* Reset & base */
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter, 'Noto Sans Devanagari', system-ui;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
-
     .wrap{max-width:var(--maxw);margin:18px auto;padding:20px}
 
-    /* Top photo */
-    .top-photo{display:flex;justify-content:center;margin-bottom:var(--space-md)}
-    .top-photo img{width:var(--hero-photo);height:calc(var(--hero-photo)*0.92);object-fit:cover;border-radius:14px;border:5px solid rgba(212,175,55,0.06);box-shadow:0 24px 56px rgba(0,0,0,0.6)}
+    /* Top portrait with overlay */
+    .top-photo-wrap{position:relative;display:flex;justify-content:center;margin-bottom:var(--space-md)}
+    .top-photo{width:var(--hero-photo);height:calc(var(--hero-photo)*0.92);object-fit:cover;border-radius:14px;border:5px solid rgba(212,175,55,0.06);box-shadow:0 24px 56px rgba(0,0,0,0.6)}
+    .photo-overlay{
+      position:absolute;
+      left:50%;
+      top:12%;
+      transform:translateX(-50%);
+      width:92%;
+      text-align:center;
+      pointer-events:none;
+    }
+    .overlay-text{
+      color:var(--gold);
+      font-weight:800;
+      font-size:0.85rem;
+      line-height:1.2;
+      text-shadow:0 6px 18px rgba(0,0,0,0.7);
+      background:linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.12));
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(212,175,55,0.08);
+      pointer-events:auto;
+    }
 
     header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
     .brand{display:flex;align-items:center;gap:12px}
@@ -53,26 +62,21 @@
     h1{margin:0;font-size:1.05rem}
     .lead{color:var(--muted);font-size:0.85rem}
 
-    /* Nav: small pills (compact) */
     nav{display:flex;gap:0.45rem;flex-wrap:wrap;align-items:center}
-    .link-pill{background:var(--gold);color:#000;padding:0.36rem 0.6rem;border-radius:8px;font-weight:700;font-size:var(--pill-font);display:inline-flex;align-items:center;gap:0.4rem;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(212,175,55,0.06);transition:transform .12s,background .12s}
+    .link-pill{background:var(--gold);color:#000;padding:0.36rem 0.6rem;border-radius:8px;font-weight:700;font-size:0.86rem;display:inline-flex;align-items:center;gap:0.4rem;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(212,175,55,0.06);transition:transform .12s,background .12s}
     .link-pill:hover{background:var(--gold-600);transform:translateY(-2px)}
-    .link-pill:focus{outline:3px solid rgba(212,175,55,0.15);outline-offset:2px}
 
-    /* Page layout */
     .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
     @media(max-width:880px){.hero{grid-template-columns:1fr} .hero-right{order:-1}}
     .gold-frame{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(212,175,55,0.02), rgba(212,175,55,0.008));border:1px solid rgba(212,175,55,0.06)}
     .hero-text{color:var(--gold);font-weight:700;font-size:0.96rem;line-height:1.5;white-space:pre-line}
     .hero-text .eng{display:block;color:#fff;font-weight:600;margin-top:8px;font-size:0.9rem}
 
-    /* Payments: compact measured grid */
-    .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--card-gap);margin-top:12px}
+    .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px}
     .pay-card{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:14.5rem}
     .pay-card h4{margin:0;font-size:0.98rem;color:#111}
     .pay-qr{width:var(--qr-size);height:var(--qr-size);border-radius:8px;border:3px solid rgba(255,255,255,0.03);object-fit:cover;box-shadow:0 8px 18px rgba(0,0,0,0.45)}
 
-    /* Small golden buttons (compact) */
     .btn{
       height:var(--btn-height);
       min-width:7.5rem;
@@ -91,11 +95,8 @@
       box-shadow:0 6px 14px rgba(212,175,55,0.06);
       transition:transform .12s,background .12s;
     }
-    .btn svg{width:0.92rem;height:0.92rem}
     .btn:hover{background:var(--gold-600);transform:translateY(-2px)}
-    .btn:focus{outline:3px solid rgba(212,175,55,0.14);outline-offset:2px}
 
-    /* compact link style for social rows */
     .social-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
     .social-small{background:var(--gold);color:#000;padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.86rem;border:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
     .social-small:hover{background:var(--gold-600)}
@@ -103,7 +104,6 @@
     .card{background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
 
-    /* Support form small */
     .form-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
     input,textarea{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:8px;border-radius:8px;font-size:0.92rem}
     textarea{min-height:88px;resize:vertical}
@@ -116,9 +116,14 @@
 <body>
   <main class="wrap" role="main" aria-labelledby="pageTitle">
 
-    <!-- top portrait -->
-    <div class="top-photo" role="img" aria-label="Shromani Rampaulsaini portrait">
-      <img src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini">
+    <!-- top portrait with golden overlay text -->
+    <div class="top-photo-wrap" role="img" aria-label="Shromani Rampaulsaini portrait">
+      <img class="top-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini">
+      <div class="photo-overlay" aria-hidden="false">
+        <div class="overlay-text" id="overlayText">
+          मैं शिरोमणि रामपुलसैनी तुलनातीत कालातीत द्वैततीत शब्दातीत प्रेमतित सम्पन्नता संपूर्णता समग्रता संतुष्टि सत्य प्रत्यक्ष शाश्वत वास्तविक स्भाविक सत्य में हूं, "<strong>खुद का साक्षत्कार हूं</strong>"
+        </div>
+      </div>
     </div>
 
     <!-- header -->
@@ -137,8 +142,8 @@
         <a class="link-pill" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp ✅</a>
         <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener">YouTube ✅</a>
         <a class="link-pill" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog ✅</a>
-        <a class="link-pill" href="https://www.facebook.com/share/1HH53GxpAo/" target="_blank" rel="noopener">Facebook ✅</a>
-        <!-- Wikipedia direct (as requested) -->
+        <!-- Replace the Facebook URL below with your actual profile/page if you like -->
+        <a class="link-pill" href="https://facebook.com/your-profile" target="_blank" rel="noopener">Facebook ✅</a>
         <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank" rel="noopener">Wikipedia ✅</a>
       </nav>
     </header>
@@ -168,8 +173,8 @@
               <div class="small">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
                 <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" aria-label="Pay via UPI">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Pay ✅
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false" style="width:14px;height:14px"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Pay
                 </a>
                 <button class="social-small" onclick="copyText('sainirampaul90-1@okhdfcbank')" title="Copy UPI ID">Copy</button>
               </div>
@@ -181,7 +186,7 @@
               <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR">
               <div class="small">Phone: <strong>8082935186</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
-                <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank" aria-label="Pay via Paytm/PhonePe">Pay ✅</a>
+                <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank" aria-label="Pay via Paytm/PhonePe">Pay</a>
                 <button class="social-small" onclick="copyText('8082935186')" title="Copy phone">Copy</button>
               </div>
             </div>
@@ -192,7 +197,7 @@
               <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
               <div class="small">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
-                <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener" aria-label="Open PayPal">Pay ✅</a>
+                <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener" aria-label="Open PayPal">Pay</a>
                 <button class="social-small" onclick="copyText('paypal.me/sainirampaul60')" title="Copy PayPal">Copy</button>
               </div>
             </div>
@@ -203,7 +208,7 @@
               <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
               <div class="small">Account: <strong>Rampaul Saini</strong><br>IFSC: <strong>HDFC0001234</strong></div>
               <div style="display:flex;gap:10px;align-items:center">
-                <button class="btn" id="bankDetailsBtn" aria-label="View bank details">Details ✅</button>
+                <button class="btn" id="bankDetailsBtn" aria-label="View bank details">Details</button>
                 <button class="social-small" onclick="copyText('A/C: 1234567890 | IFSC: HDFC0001234')" title="Copy bank">Copy</button>
               </div>
             </div>
@@ -218,12 +223,12 @@
 
         <div class="card" style="padding:12px">
           <div class="social-row">
-            <a class="social-small" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">Audio ✅</a>
-            <a class="social-small" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">Certificates ✅</a>
-            <a class="social-small" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">Shorts ✅</a>
-            <a class="social-small" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">Videos ✅</a>
-            <a class="social-small" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">Photos ✅</a>
-            <a class="social-small" href="http://multicosmovision.blogspot.com/" target="_blank">Blog ✅</a>
+            <a class="social-small" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">Audio</a>
+            <a class="social-small" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">Certificates</a>
+            <a class="social-small" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">Shorts</a>
+            <a class="social-small" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">Videos</a>
+            <a class="social-small" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">Photos</a>
+            <a class="social-small" href="http://multicosmovision.blogspot.com/" target="_blank">Blog</a>
           </div>
         </div>
       </aside>
@@ -232,7 +237,7 @@
     <!-- Support form & messages -->
     <section id="supportSection" style="margin-top:16px">
       <div class="card" style="padding:12px;border-radius:12px">
-        <h3 style="color:var(--gold);margin:0 0 8px 0">सत्य के इस कार्य में आपका सहयोग ✅</h3>
+        <h3 style="color:var(--gold);margin:0 0 8px 0">सत्य के इस कार्य में आपका सहयोग</h3>
         <p class="muted" style="margin:0 0 10px 0">यह सहयोग पूर्णतः स्वैच्छिक है — साझा करना और समर्थन देना — सभी सत्य की सेवा हैं।</p>
 
         <div style="background:rgba(255,255,255,0.02);padding:10px;border-radius:10px">
@@ -247,7 +252,7 @@
             </div>
             <div style="text-align:center">
               <button type="submit" id="sendBtn" class="btn" style="min-width:9rem">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false" style="width:14px;height:14px"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 भेजें
               </button>
             </div>
@@ -329,7 +334,7 @@
       if(!WEB_APP_URL || WEB_APP_URL.length<10) return {ok:false, err:'no-endpoint'};
       try{
         const res = await fetch(WEB_APP_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
-        if(!res.ok) return {ok:false, err:'http-'+res.status};
+        if(!res.ok) return {ok:false, err: 'http-'+res.status};
         let json=null; try{ json = await res.json(); }catch(e){ json=null; }
         return {ok:true, data: json};
       }catch(err){ return {ok:false, err: String(err)}; }
@@ -341,8 +346,4 @@
       ev && ev.preventDefault();
       const name = qs('sname').value.trim();
       const email = qs('semail').value.trim();
-      const country = qs('scountry').value.trim();
-      const message = qs('smsg').value.trim();
-      if(!message){ alert('कृपया संदेश लिखें'); qs('smsg').focus(); return; }
-
-      const btn = qs('sendBtn'); if(btn){ btn.disabled = true; const prev = btn.innerHTML; btn.innerHTML = 'सहेजा जा र
+      const country = q
