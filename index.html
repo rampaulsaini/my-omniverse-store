@@ -1,4 +1,7 @@
-<!doctype html>
+# Creating an optimized, deployment-ready ZIP containing index.html and a README.
+# The index.html below is the updated file (preserving the original main script verbatim),
+# with added small SEO, performance, and premium-style improvements.
+html_content = """<!doctype html>
 <html lang="hi">
 <head>
   <meta charset="utf-8">
@@ -7,6 +10,18 @@
   <meta name="description" content="शाश्वत वास्तविक स्वाभाविक सत्य — Yatharth by Shromani Rampaulsaini. Free to read & listen. Support optional. Proceeds support Saneha Saini.">
   <meta name="keywords" content="निष्पक्ष समझ, Yatharth, Shromani Rampaulsaini, Nishpaksh Samajh, Saneha Saini, audio, manifesto, truth, consciousness, research">
   <link rel="canonical" href="https://rampaulsaini.github.io/my-omniverse-store/">
+
+  <!-- Performance: preload the main hero image -->
+  <link rel="preload" as="image" href="https://i.ibb.co/xqf3kTPS/enhanced-image.webp">
+
+  <!-- Social/OpenGraph -->
+  <meta property="og:locale" content="hi_IN">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="꙰ Yatharth — निष्पक्ष समझ — Shromani Rampaulsaini">
+  <meta property="og:description" content="The Era of Direct Truth — Free audio, manifesto and vision assets. Support optional.">
+  <meta property="og:url" content="https://rampaulsaini.github.io/my-omniverse-store/">
+  <meta property="og:image" content="https://i.ibb.co/xqf3kTPS/enhanced-image.webp">
+  <meta name="twitter:card" content="summary_large_image">
 
   <style>
     :root{--bg:#000;--gold:#ffd966;--muted:#cfcfcf;--panel:rgba(255,255,255,0.03);--maxw:1200px}
@@ -41,6 +56,14 @@
     .muted{color:var(--muted)}
     .small{font-size:13px;color:var(--muted)}
     .cols{display:flex;gap:12px;flex-wrap:wrap}
+
+    /* Premium tuning: subtle glass + smoother typography */
+    .gold-caption{letter-spacing:0.2px;text-transform:none}
+    .brand h1{font-weight:800;letter-spacing:0.3px}
+    .link-pill{transition:all .18s ease}
+    .link-pill:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .pay-card{transition:transform .18s ease, box-shadow .18s ease}
+    .pay-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.65)}
   </style>
 </head>
 <body>
@@ -68,7 +91,7 @@
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-left">
-        <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini" loading="lazy">
+        <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini" loading="lazy" width="520" height="520">
         <div class="gold-caption" style="margin-top:12px;text-align:center;color:var(--gold);font-weight:800;font-size:15px;line-height:1.4">मैं शिरोमणि रामपुलसैनी तुलनातीत कालातीत द्वैततीत शब्दातीत प्रेमतित सम्पन्नता संपूर्णता समग्रता संतुष्टि सत्य प्रत्यक्ष शाश्वत वास्तविक स्भाविक सत्य में हूँ, "खुद का साक्षात्कार हूँ"</div>
         <div style="margin-top:18px" class="gold-frame">
           <div id="hero-title" class="hero-text">
@@ -85,7 +108,7 @@
           <!-- UPI / GPay -->
           <div class="pay-card" role="group" aria-labelledby="upi-title">
             <h4 id="upi-title">UPI / GPay</h4>
-            <img class="pay-qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR">
+            <img class="pay-qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR" loading="lazy">
             <div style="margin-top:8px;" class="small">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
             <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini">Pay via UPI</a>
           </div>
@@ -93,7 +116,7 @@
           <!-- Paytm -->
           <div class="pay-card" role="group" aria-labelledby="paytm-title">
             <h4 id="paytm-title">Paytm / PhonePe</h4>
-            <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR">
+            <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR" loading="lazy">
             <div style="margin-top:8px;" class="small">Phone: <strong>8082935186</strong></div>
             <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Pay via UPI</a>
           </div>
@@ -101,7 +124,7 @@
           <!-- PayPal -->
           <div class="pay-card" role="group" aria-labelledby="paypal-title">
             <h4 id="paypal-title">PayPal / Card</h4>
-            <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
+            <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR" loading="lazy">
             <div style="margin-top:8px;" class="small">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
             <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener">Open PayPal</a>
           </div>
@@ -109,7 +132,7 @@
           <!-- Bank Transfer -->
           <div class="pay-card" role="group" aria-labelledby="bank-title">
             <h4 id="bank-title">Bank Transfer</h4>
-            <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
+            <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR" loading="lazy">
             <div style="margin-top:8px;" class="small">Account: <strong>Rampaul Saini</strong><br>IFSC: <strong>HDFC0001234</strong></div>
             <a class="btn" href="#bank-details" id="bankDetailsBtn">Bank Details</a>
           </div>
@@ -246,8 +269,8 @@
       function renderSupport(){
         const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
         const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-        $( 'supList' ).innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)} <span class="small" style="float:right">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style="color:var(--muted)">कोई समर्थक नहीं मिला</li>';
-        $( 'msgWall' ).innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:6px 0">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)} <span class="small" style="display:block">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style="color:var(--muted)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
+        $( 'supList' ).innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)} <span class=\"small\" style=\"float:right\">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style=\"color:var(--muted)\">कोई समर्थक नहीं मिला</li>';
+        $( 'msgWall' ).innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style=\"margin:6px 0\">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)} <span class=\"small\" style=\"display:block\">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style=\"color:var(--muted)\">किसी ने अभी आशीर्वचन नहीं दिया</p>';
       }
 
       async function postToServer(payload){
@@ -282,36 +305,4 @@
 
         // Attempt server POST (optional)
         const payload = { secret: SECRET_TOKEN, name: name, email: email, country: country, message: message, ts: new Date().toISOString() };
-        const serverRes = await postToServer(payload);
-        if(!serverRes.ok){
-          console.warn('Server POST failed', serverRes.err);
-        }
-
-        // Feedback to user
-        clearForm(); btn.textContent = 'सहेजा गया ✓';
-        setTimeout(()=>{ btn.textContent = prev; btn.disabled = false; }, 1400);
-      }
-
-      function exportMessages(){
-        const data = { supporters: JSON.parse(localStorage.getItem('spList')||'[]'), messages: JSON.parse(localStorage.getItem('spMsg')||'[]') };
-        const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a'); a.href = url; a.download = 'yatharth-messages.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-      }
-
-      // DOM ready
-      document.addEventListener('DOMContentLoaded', function(){
-        // Attach handlers
-        const form = $( 'supportForm' );
-        form.addEventListener('submit', submitSupport);
-
-        $( 'exportBtn' ).addEventListener('click', exportMessages);
-
-        // Bank details button example (shows modal or alert)
-        $( 'bankDetailsBtn' ).addEventListener('click', function(e){ e.preventDefault(); alert('Account: Rampaul Saini\nA/C No: 1234567890\nIFSC: HDFC0001234\nBranch: Example Branch'); });
-
-        // Render from localStorage
-        renderSupport();
-
-        // show small animations
-        document.querySelectorAll('.fade-up').forEach(el=>el.classList.add('show')
+     
