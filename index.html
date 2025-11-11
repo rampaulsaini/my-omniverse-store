@@ -128,7 +128,7 @@
           </h2>
         </div>
 
-        <!-- Payments -->
+        <!-- Payments Section -->
         <div class="card">
           <div style="font-weight:700;color:var(--gold);text-align:center">Contribute — Payments</div>
           <div class="payments">
@@ -174,9 +174,9 @@
       </aside>
     </section>
 
-    <!-- Support Form -->
+    <!-- Support Form Section -->
     <section id="supportSection" style="margin-top:28px">
-      <div class="gold-frame" style="padding:18px">
+      <div class="gold-frame">
         <h2 style="margin:0;color:var(--gold);text-align:center">सत्य के इस कार्य में आपका सहयोग</h2>
         <p style="text-align:center;color:#ddd;margin-top:8px;max-width:780px;margin:auto">यह सहयोग पूर्णतः स्वैच्छिक है — इसे सुनना, साझा करना, अनुभव करना और समर्थन देना — सभी सत्य की सेवा हैं।</p>
 
@@ -207,7 +207,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer>
       <div>꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</div>
       <div style="color:var(--muted)">Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp</div>
@@ -216,22 +216,21 @@
         UPI / GPay: <code style="color:var(--gold)">sainirampaul90-1@okhdfcbank</code> • Paytm / Phone: <code style="color:var(--gold)">8082935186</code> • PayPal: <a href="https://paypal.me/sainirampaul60" target="_blank" style="color:var(--gold)">paypal.me/sainirampaul60</a>
       </div>
     </footer>
-
   </main>
 
-  <!-- JS -->
+  <!-- JavaScript Section -->
   <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
     const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
 
-    function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
     function qs(id){ return document.getElementById(id); }
+    function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
     function saveLocal(name,email,country,message){
       const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
       const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
       if(name) supporters.push({name:name,country:country||'Unknown',ts:new Date().toISOString()});
-      msgs.push({name: name||'अनाम', msg: message, ts: new Date().toISOString()});
+      msgs.push({name: name||'अनाम', msg: message, ts:new Date().toISOString()});
       localStorage.setItem('spList', JSON.stringify(supporters));
       localStorage.setItem('spMsg', JSON.stringify(msgs));
     }
@@ -255,7 +254,7 @@
 
       if(WEB_APP_URL){
         try{
-          await fetch(WEB_APP_URL, {
+          await fetch(WEB_APP_URL,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({ secret: SECRET_TOKEN, name, email, country, message })
@@ -264,7 +263,7 @@
       }
 
       qs('sname').value=''; qs('semail').value=''; qs('scountry').value=''; qs('smsg').value='';
-      const btn = qs('sendBtn'); const old = btn.textContent; btn.textContent = 'सहेजा गया ✓'; setTimeout(()=> btn.textContent = old, 1400);
+      const btn = qs('sendBtn'); const old = btn.textContent; btn.textContent = 'सहेजा गया ✓'; setTimeout(()=> btn.textContent = old,1400);
     }
 
     qs('sendBtn').addEventListener('click', submitSupport);
@@ -272,5 +271,4 @@
     window.addEventListener('load', ()=> document.querySelectorAll('.fade-up').forEach(el=>el.classList.add('show')));
   </script>
 </body>
-          </html>
-                
+</html>
