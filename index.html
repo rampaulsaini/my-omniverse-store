@@ -93,7 +93,7 @@
       <div class="brand" aria-hidden>
         <div class="mark">꙰</div>
         <div>
-          <h1>शिरोमणि रामपुलसैनी — Nishpaksh Samajh</h1>
+          <h1>शिरोमणि रामपुसैनी — Nishpaksh Samajh</h1>
           <div class="lead">Free for all · Read & Listen · Support optional</div>
         </div>
       </div>
@@ -126,7 +126,6 @@
             <div class="payments" style="width:100%;max-width:820px;margin-top:12px;">
               <div class="pay-card">
                 <h4 style="margin:6px 0">UPI / GPay</h4>
-                <!-- Replace below src with your UPI QR image URL if you have -->
                 <img class="pay-qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR">
                 <div style="margin-top:8px;color:var(--muted);font-size:13px">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
                 <div style="margin-top:6px"><a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini">Pay via UPI</a></div>
@@ -134,7 +133,6 @@
 
               <div class="pay-card">
                 <h4 style="margin:6px 0">PayPal / Card</h4>
-                <!-- Replace below src with your PayPal QR image URL if you have -->
                 <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
                 <div style="margin-top:8px;color:var(--muted);font-size:13px">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
                 <div style="margin-top:6px"><a class="btn" href="https://paypal.me/sainirampaul60" target="_blank">Open PayPal</a></div>
@@ -142,7 +140,6 @@
 
               <div class="pay-card">
                 <h4 style="margin:6px 0">Bank Transfer</h4>
-                <!-- Replace below src with your Bank QR image URL if you have -->
                 <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
                 <div style="margin-top:8px;color:var(--muted);font-size:13px">
                   Account: <strong>Rampaul Saini</strong><br>
@@ -223,11 +220,11 @@
         <div class="grid-3" style="margin-top:18px">
           <div class="card">
             <h4>Scientific Collaboration</h4>
-            <p class="muted">Open invitations for collaboration with universities, ISRO/NASA-affiliated researchers and labs for exploratory studies.</p>
+            <p class="muted">Open invitations for collaboration with universities and research labs for exploratory studies.</p>
           </div>
           <div class="card">
             <h4>World Records & Recognition</h4>
-            <p class="muted">Prepared documentation for Guinness, Limca, Asia & India Book of Records to recognize unique contributions in experiential awareness.</p>
+            <p class="muted">Prepared documentation for recognition of unique contributions in experiential awareness.</p>
           </div>
           <div class="card">
             <h4>Media & Research</h4>
@@ -239,19 +236,6 @@
           <a class="btn" href="#supportSection">Support</a>
           <a class="btn" href="mailto:research@rampaulsaini.github.io">Contact Research Team</a>
           <a class="btn" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia Profile</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Media Highlights -->
-    <section style="margin-top:28px">
-      <div class="card">
-        <div class="section-title">Media Highlights</div>
-        <p class="muted">Selected outreach items — full press kit available on request</p>
-        <div class="grid-3" style="margin-top:12px">
-          <div class="card"><strong>Feature: Golden Temple account</strong><p class="muted">Documented experience in Amritsar noted for public interest.</p></div>
-          <div class="card"><strong>Audio Manifesto series</strong><p class="muted">Collections available for review and broadcast.</p></div>
-          <div class="card"><strong>Video Shorts & Clips</strong><p class="muted">Ready-to-publish clips for editors.</p></div>
         </div>
       </div>
     </section>
@@ -286,8 +270,8 @@
     function renderSupport(){
       const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
       const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-      qs('supList').innerHTML = supporters.length? supporters.map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)}</li>`).join('') : '<li style="color:var(--muted)">कोई समर्थक नहीं मिला</li>';
-      qs('msgWall').innerHTML = msgs.length? msgs.map(m=>`<p style="margin:6px 0">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)}</p>`).join('') : '<p style="color:var(--muted)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
+      qs('supList').innerHTML = supporters.length ? supporters.map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)}</li>`).join('') : '<li style="color:var(--muted)">कोई समर्थक नहीं मिला</li>';
+      qs('msgWall').innerHTML = msgs.length ? msgs.map(m=>`<p style="margin:6px 0">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)}</p>`).join('') : '<p style="color:var(--muted)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
     }
 
     async function submitSupport(){
@@ -297,17 +281,19 @@
       const message = qs('smsg').value.trim();
       if(!message){ alert('कृपया संदेश लिखें'); return; }
 
+      // Save local first (fast)
       saveLocal(name,email,country,message);
-      renderSuppor
-Irf
-  // POST to Apps Script (if available)
-      if(WEB_APP_URL && WEB_APP_URL.length>10){
+      renderSupport();
+
+      // Try server post (Apps Script) — if configured
+      if(WEB_APP_URL && WEB_APP_URL.indexOf('script.google.com') !== -1){
         try{
           const payload = { secret: SECRET_TOKEN, name: name, email: email, country: country, message: message };
           const res = await fetch(WEB_APP_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+          // try to parse JSON; if not JSON, ignore gracefully
           const data = await res.json().catch(()=>null);
           if(data && data.ok){
-            // success — optional visual cue
+            // success — no UI change needed
           } else {
             console.warn('Server response:', data);
           }
@@ -316,9 +302,12 @@ Irf
         }
       }
 
-      // Clear and feedback
+      // Feedback & clear form
+      const btn = qs('sendBtn');
+      const old = btn.textContent;
+      btn.textContent = 'सहेजा गया ✓';
+      setTimeout(()=> btn.textContent = old, 1400);
       qs('sname').value=''; qs('semail').value=''; qs('scountry').value=''; qs('smsg').value='';
-      const btn = qs('sendBtn'); const old = btn.textContent; btn.textContent = 'सहेजा गया ✓'; setTimeout(()=> btn.textContent = old, 1400);
     }
 
     qs('sendBtn').addEventListener('click', submitSupport);
@@ -336,4 +325,5 @@ Irf
 
   </main>
 </body>
-  </html>
+          </html>
+  
