@@ -3,80 +3,125 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>꙰ Yatharth — निष्पक्ष समझ — Shromani Rampaulsaini</title>
-  <meta name="description" content="Yatharth — शिरोमणि रामपुलसैनी — Free to read & listen. Support optional. Proceeds support Saneha Saini.">
+  <title>꙰ Yatharth — शिरोमणि रामपुल सैनी</title>
+  <meta name="description" content="Yatharth — शिरोमणि रामपुल सैनी — Free to read & listen. Support optional.">
 
-  <!-- Optional font (fast CDN) -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #000;
-      --gold: #D4AF37;         /* refined golden color requested */
-      --gold-600: #c9982e;     /* hover */
-      --muted: #cfcfcf;
-      --panel: rgba(255,255,255,0.03);
+      --bg:#000;
+      --gold:#D4AF37;      /* refined golden */
+      --gold-600:#c9982e;
+      --muted:#cfcfcf;
+      --panel:rgba(255,255,255,0.03);
 
-      /* spacing scale */
-      --space-xs: 0.4rem; /* ~6px */
-      --space-sm: 0.75rem; /* ~12px */
-      --space-md: 1rem; /* 16px */
-      --space-lg: 1.5rem; /* 24px */
+      --maxw:1080px;
 
-      --maxw: 1100px;
+      /* sizes */
+      --avatar-size:140px;
+      --qr-size:112px;
+      --btn-h:2rem;
+      --btn-font:0.86rem;
+      --radius:12px;
+      --gap:12px;
 
-      /* component sizing (smaller buttons) */
-      --hero-photo: 16.5rem;   /* 264px */
-      --qr-size: 7.5rem;       /* 120px (smaller, balanced) */
-      --btn-height: 2rem;      /* compact */
-      --btn-font: 0.88rem;
-      --pill-font: 0.86rem;
-      --border-radius: 10px;
-      --card-gap: 0.9rem;
+      --content-pad:18px;
     }
 
-    /* Reset & base */
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter, 'Noto Sans Devanagari', system-ui;-webkit-font-smoothing:antialiased}
+    html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:Inter,'Noto Sans Devanagari',system-ui;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
 
-    .wrap{max-width:var(--maxw);margin:18px auto;padding:20px}
+    .wrap{max-width:var(--maxw);margin:18px auto;padding:var(--content-pad)}
 
-    /* Top photo */
-    .top-photo{display:flex;justify-content:center;margin-bottom:var(--space-md)}
-    .top-photo img{width:var(--hero-photo);height:calc(var(--hero-photo)*0.92);object-fit:cover;border-radius:14px;border:5px solid rgba(212,175,55,0.06);box-shadow:0 24px 56px rgba(0,0,0,0.6)}
+    /* Top hero: circular avatar + proclamation text */
+    .top-hero{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:12px;text-align:center;padding-top:6px}
+    .avatar {
+      width:var(--avatar-size);
+      height:var(--avatar-size);
+      border-radius:9999px;
+      overflow:hidden;
+      display:inline-grid;
+      place-items:center;
+      background:linear-gradient(180deg, rgba(212,175,55,0.06), rgba(212,175,55,0.02));
+      border:5px solid rgba(212,175,55,0.14);
+      box-shadow:0 18px 40px rgba(0,0,0,0.6);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 
+    .proclaim{
+      color:var(--gold);
+      font-weight:800;
+      font-size:1.0rem;
+      line-height:1.28;
+      max-width:980px;
+      padding:6px 10px;
+      border-radius:8px;
+    }
+    .proclaim .quote{display:block;margin-top:6px;color:#fff;font-weight:700;font-size:0.95rem}
+
+    /* header */
     header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .mark{width:52px;height:52px;border-radius:10px;background:linear-gradient(180deg, rgba(212,175,55,0.12), rgba(212,175,55,0.04));display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:1.2rem}
-    h1{margin:0;font-size:1.05rem}
-    .lead{color:var(--muted);font-size:0.85rem}
+    .brand{display:flex;align-items:center;gap:10px}
+    .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg, rgba(212,175,55,0.12), rgba(212,175,55,0.04));display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900}
+    h1{margin:0;font-size:1rem}
+    .lead{color:var(--muted);font-size:0.88rem}
 
-    /* Nav: small pills (compact) */
-    nav{display:flex;gap:0.45rem;flex-wrap:wrap;align-items:center}
-    .link-pill{background:var(--gold);color:#000;padding:0.36rem 0.6rem;border-radius:8px;font-weight:700;font-size:var(--pill-font);display:inline-flex;align-items:center;gap:0.4rem;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(212,175,55,0.06);transition:transform .12s,background .12s}
-    .link-pill:hover{background:var(--gold-600);transform:translateY(-2px)}
-    .link-pill:focus{outline:3px solid rgba(212,175,55,0.15);outline-offset:2px}
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{background:var(--gold);color:#000;padding:6px 10px;border-radius:8px;font-weight:700;font-size:0.86rem;border:none;cursor:pointer;box-shadow:0 6px 14px rgba(212,175,55,0.06);transition:transform .12s,background .12s}
+    .pill:hover{background:var(--gold-600);transform:translateY(-2px)}
+    .pill:focus{outline:3px solid rgba(212,175,55,0.14);outline-offset:2px}
 
-    /* Page layout */
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
-    @media(max-width:880px){.hero{grid-template-columns:1fr} .hero-right{order:-1}}
-    .gold-frame{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(212,175,55,0.02), rgba(212,175,55,0.008));border:1px solid rgba(212,175,55,0.06)}
-    .hero-text{color:var(--gold);font-weight:700;font-size:0.96rem;line-height:1.5;white-space:pre-line}
-    .hero-text .eng{display:block;color:#fff;font-weight:600;margin-top:8px;font-size:0.9rem}
+    /* layout */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+    @media(max-width:880px){.hero{grid-template-columns:1fr}.hero-right{order:-1}}
+    .gold-box{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(212,175,55,0.02), rgba(212,175,55,0.008));border:1px solid rgba(212,175,55,0.06);}
 
-    /* Payments: compact measured grid */
-    .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--card-gap);margin-top:12px}
-    .pay-card{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:14.5rem}
-    .pay-card h4{margin:0;font-size:0.98rem;color:#111}
-    .pay-qr{width:var(--qr-size);height:var(--qr-size);border-radius:8px;border:3px solid rgba(255,255,255,0.03);object-fit:cover;box-shadow:0 8px 18px rgba(0,0,0,0.45)}
+    .card{background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .muted{color:var(--muted);font-size:0.9rem}
+    .small{font-size:0.82rem;color:var(--muted)}
 
-    /* Small golden buttons (compact) */
+    /* payments area */
+    .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+    .pay-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.008));border:1px solid rgba(255,255,255,0.02);min-height:170px}
+    .pay-card h4{margin:0;font-size:1rem;color:#111;text-align:center}
+
+    /* QR placeholder (SVG pattern) */
+    .qr-box{
+      width:var(--qr-size);
+      height:var(--qr-size);
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:linear-gradient(180deg,#0b0b0b,#111);
+      border:3px solid rgba(255,255,255,0.03);
+      box-shadow:0 8px 18px rgba(0,0,0,0.5);
+      color:var(--muted);
+      font-weight:700;
+      font-size:0.92rem;
+      position:relative;
+      overflow:hidden;
+    }
+    /* subtle QR-like grid pattern using CSS */
+    .qr-box::before{
+      content:'';
+      position:absolute;inset:6px;border-radius:6px;
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size:14px 14px;
+      opacity:0.07;
+      pointer-events:none;
+    }
+
+    /* compact golden buttons (only for Bank/Paytm/PayPal) */
     .btn{
-      height:var(--btn-height);
+      height:var(--btn-h);
       min-width:7.5rem;
-      padding:0 0.6rem;
+      padding:0 8px;
       font-size:var(--btn-font);
       display:inline-flex;
       align-items:center;
@@ -95,30 +140,39 @@
     .btn:hover{background:var(--gold-600);transform:translateY(-2px)}
     .btn:focus{outline:3px solid rgba(212,175,55,0.14);outline-offset:2px}
 
-    /* compact link style for social rows */
-    .social-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-    .social-small{background:var(--gold);color:#000;padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.86rem;border:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
-    .social-small:hover{background:var(--gold-600)}
+    /* copy small style (no filled gold buttons for others) */
+    .copy-btn{background:transparent;color:var(--gold);padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.86rem;border:1px solid rgba(212,175,55,0.12);cursor:pointer}
+    .copy-btn:hover{background:rgba(212,175,55,0.03)}
 
-    .card{background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
-
-    /* Support form small */
+    /* form */
     .form-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-    input,textarea{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:8px;border-radius:8px;font-size:0.92rem}
-    textarea{min-height:88px;resize:vertical}
-    .muted{color:var(--muted);font-size:0.88rem}
-    .small{font-size:0.8rem;color:var(--muted)}
+    input,textarea{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:9px;border-radius:8px;font-size:0.92rem}
+    textarea{min-height:100px;resize:vertical}
 
-    footer{margin-top:20px;color:var(--muted);font-size:0.88rem;text-align:center;padding-bottom:18px}
+    footer{text-align:center;margin-top:18px;color:var(--muted);font-size:0.88rem}
+
+    @media(max-width:520px){
+      :root{--avatar-size:112px;--qr-size:92px;--btn-h:1.9rem}
+      .hero{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
   <main class="wrap" role="main" aria-labelledby="pageTitle">
 
-    <!-- top portrait -->
-    <div class="top-photo" role="img" aria-label="Shromani Rampaulsaini portrait">
-      <img src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini">
+    <!-- TOP: circular avatar + proclamation -->
+    <div class="top-hero" aria-hidden="false">
+      <div class="avatar" aria-hidden="false" aria-label="Portrait">
+        <!-- Replace src with your actual photo URL (recommended) -->
+        <img src="https://via.placeholder.com/400x400.png?text=Photo" alt="शिरोमणि रामपुल सैनी">
+      </div>
+
+      <div class="proclaim" aria-hidden="false">
+        <div style="font-weight:900">
+          शिरोमणि रामपुलसैनी तुलनातीत कालातीत द्वैततीत शब्दातीत प्रेमतित सम्पन्नता समपूर्णता समग्रता संतुष्टि सत्य प्रत्यक्ष शाश्वत वास्तविक स्भाविक सत्य में हूँ
+        </div>
+        <div class="quote">"खुद का साक्षात्कार हूँ"</div>
+      </div>
     </div>
 
     <!-- header -->
@@ -126,121 +180,115 @@
       <div class="brand" aria-hidden="true">
         <div class="mark">꙰</div>
         <div>
-          <h1 id="pageTitle">शिरोमणि रामपुलसैनी — Nishpaksh Samajh</h1>
-          <div class="lead">Free for all · Read & Listen · Support optional</div>
+          <h1 id="pageTitle">Yatharth — निष्पक्ष समझ</h1>
+          <div class="lead">Free to read · listen · support optional</div>
         </div>
       </div>
 
-      <!-- nav: Wikipedia direct & social -->
       <nav aria-label="top links">
-        <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram ✅</a>
-        <a class="link-pill" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp ✅</a>
-        <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener">YouTube ✅</a>
-        <a class="link-pill" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog ✅</a>
-        <a class="link-pill" href="https://www.facebook.com/share/1HH53GxpAo/" target="_blank" rel="noopener">Facebook ✅</a>
-        <!-- Wikipedia direct (as requested) -->
-        <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank" rel="noopener">Wikipedia ✅</a>
+        <a class="pill" href="https://t.me/sampaulsaini" target="_blank" rel="noopener">Telegram ✅</a>
+        <a class="pill" href="https://wa.me/918082935186" target="_blank" rel="noopener">WhatsApp ✅</a>
+        <a class="pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener">YouTube ✅</a>
+        <a class="pill" href="http://multicosmovision.blogspot.com/" target="_blank" rel="noopener">Blog ✅</a>
+        <a class="pill" href="https://www.facebook.com/share/1HH53GxpAo/" target="_blank" rel="noopener">Facebook ✅</a>
+        <a class="pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank" rel="noopener">Wikipedia ✅</a>
       </nav>
     </header>
 
-    <!-- HERO: text + payments -->
+    <!-- hero: text + payments -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-left">
-        <div class="gold-frame">
-          <div id="hero-title" class="hero-text">
-            जिस स्थायी सत्य से मानव सभ्यता अब तक अपरिचित रही — वही सत्य अब प्रत्यक्ष है।
-            यह कोई मान्यता नहीं, कोई मत नहीं — यह जीवित अनुभव है।
-            <br><br>
-            <strong>मैं, शिरोमणि रामपॉल सैनी,</strong> प्रत्येक मनुष्य को उसके स्वयं के स्थायी परिचय से परिचित कराने में सक्षम हूँ।
-            <span class="eng">The permanent truth unknown to humanity is now realized — not as a belief, but as a living experience.</span>
+      <div>
+        <div class="gold-box" aria-hidden="false">
+          <div id="hero-title" style="font-weight:700;color:var(--gold);font-size:1rem">
+            जिस स्थायी सत्य से मानव सभ्यता अब तक अपरिचित रही — वही सत्य अब प्रत्यक्ष है। यह कोई मान्यता नहीं, कोई मत नहीं — यह जीवित अनुभव है।
           </div>
+          <div style="margin-top:8px;color:#fff;font-weight:600">मैं, शिरोमणि रामपुल सैनी, प्रत्येक मनुष्य को उसके स्वयं के स्थायी परिचय से परिचित कराने में सक्षम हूँ।</div>
         </div>
 
         <!-- payments -->
-        <div style="margin-top:12px" class="card" aria-labelledby="paymentsTitle">
-          <div id="paymentsTitle" style="font-weight:700;color:var(--gold);text-align:center">Contribute — Payments ✅</div>
+        <div style="margin-top:14px" class="card" aria-labelledby="paymentsTitle">
+          <div id="paymentsTitle" style="font-weight:700;color:var(--gold);text-align:center">Contribute — Payments</div>
 
-          <div class="payments" role="list" style="margin-top:10px">
-            <!-- UPI -->
+          <div class="payments" role="list" style="margin-top:12px">
+            <!-- UPI/GPay (no click button; just copy) -->
             <div class="pay-card" role="listitem" aria-labelledby="upi-title">
               <h4 id="upi-title">UPI / GPay</h4>
-              <img class="pay-qr" src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" alt="GPay QR">
+              <div class="qr-box" role="img" aria-label="UPI QR">QR</div>
               <div class="small">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong></div>
-              <div style="display:flex;gap:10px;align-items:center">
-                <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaulsaini" aria-label="Pay via UPI">
+              <div style="display:flex;gap:8px;align-items:center">
+                <button class="copy-btn" onclick="copyText('sainirampaul90-1@okhdfcbank')" title="Copy UPI">Copy</button>
+              </div>
+            </div>
+
+            <!-- Paytm / PhonePe (KEEP click button) -->
+            <div class="pay-card" role="listitem" aria-labelledby="paytm-title">
+              <h4 id="paytm-title">Paytm / PhonePe</h4>
+              <div class="qr-box" role="img" aria-label="Paytm QR">QR</div>
+              <div class="small">Phone: <strong>8082935186</strong></div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank" aria-label="Pay via PhonePe/Paytm">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden focusable="false"><path d="M20 6L9 17l-5-5" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   Pay ✅
                 </a>
-                <button class="social-small" onclick="copyText('sainirampaul90-1@okhdfcbank')" title="Copy UPI ID">Copy</button>
+                <button class="copy-btn" onclick="copyText('8082935186')" title="Copy phone">Copy</button>
               </div>
             </div>
 
-            <!-- Paytm / PhonePe -->
-            <div class="pay-card" role="listitem" aria-labelledby="paytm-title">
-              <h4 id="paytm-title">Paytm / PhonePe</h4>
-              <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR">
-              <div class="small">Phone: <strong>8082935186</strong></div>
-              <div style="display:flex;gap:10px;align-items:center">
-                <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank" aria-label="Pay via Paytm/PhonePe">Pay ✅</a>
-                <button class="social-small" onclick="copyText('8082935186')" title="Copy phone">Copy</button>
-              </div>
-            </div>
-
-            <!-- PayPal -->
+            <!-- PayPal (KEEP click button) -->
             <div class="pay-card" role="listitem" aria-labelledby="paypal-title">
               <h4 id="paypal-title">PayPal / Card</h4>
-              <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
+              <div class="qr-box" role="img" aria-label="PayPal QR">QR</div>
               <div class="small">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
-              <div style="display:flex;gap:10px;align-items:center">
+              <div style="display:flex;gap:8px;align-items:center">
                 <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener" aria-label="Open PayPal">Pay ✅</a>
-                <button class="social-small" onclick="copyText('paypal.me/sainirampaul60')" title="Copy PayPal">Copy</button>
+                <button class="copy-btn" onclick="copyText('paypal.me/sainirampaul60')" title="Copy PayPal">Copy</button>
               </div>
             </div>
 
-            <!-- Bank -->
+            <!-- Bank Transfer (KEEP click button) -->
             <div class="pay-card" role="listitem" aria-labelledby="bank-title">
               <h4 id="bank-title">Bank Transfer</h4>
-              <img class="pay-qr" src="https://i.ibb.co/7GJzK2c/bank-qr.webp" alt="Bank QR">
+              <div class="qr-box" role="img" aria-label="Bank QR">QR</div>
               <div class="small">Account: <strong>Rampaul Saini</strong><br>IFSC: <strong>HDFC0001234</strong></div>
-              <div style="display:flex;gap:10px;align-items:center">
+              <div style="display:flex;gap:8px;align-items:center">
                 <button class="btn" id="bankDetailsBtn" aria-label="View bank details">Details ✅</button>
-                <button class="social-small" onclick="copyText('A/C: 1234567890 | IFSC: HDFC0001234')" title="Copy bank">Copy</button>
+                <button class="copy-btn" onclick="copyText('A/C:1234567890 | IFSC:HDFC0001234')" title="Copy bank">Copy</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- right column: media links -->
+      <!-- RIGHT: media links -->
       <aside class="hero-right" aria-labelledby="mediaTitle">
         <div id="mediaTitle" style="font-weight:700;color:var(--muted);margin-bottom:8px">All content — Free to Read & Listen</div>
         <div class="muted" style="margin-bottom:10px">Audio, manifesto, photos & vision assets — proceeds support Saneha Saini</div>
 
         <div class="card" style="padding:12px">
-          <div class="social-row">
-            <a class="social-small" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">Audio ✅</a>
-            <a class="social-small" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">Certificates ✅</a>
-            <a class="social-small" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">Shorts ✅</a>
-            <a class="social-small" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">Videos ✅</a>
-            <a class="social-small" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">Photos ✅</a>
-            <a class="social-small" href="http://multicosmovision.blogspot.com/" target="_blank">Blog ✅</a>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a class="pill" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">Audio ✅</a>
+            <a class="pill" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">Certificates ✅</a>
+            <a class="pill" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">Shorts ✅</a>
+            <a class="pill" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">Videos ✅</a>
+            <a class="pill" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">Photos ✅</a>
+            <a class="pill" href="http://multicosmovision.blogspot.com/" target="_blank">Blog ✅</a>
           </div>
         </div>
       </aside>
     </section>
 
-    <!-- Support form & messages -->
-    <section id="supportSection" style="margin-top:16px">
-      <div class="card" style="padding:12px;border-radius:12px">
-        <h3 style="color:var(--gold);margin:0 0 8px 0">सत्य के इस कार्य में आपका सहयोग ✅</h3>
-        <p class="muted" style="margin:0 0 10px 0">यह सहयोग पूर्णतः स्वैच्छिक है — साझा करना और समर्थन देना — सभी सत्य की सेवा हैं।</p>
+    <!-- support form & messages -->
+    <section style="margin-top:14px">
+      <div class="card">
+        <h3 style="color:var(--gold);margin:0 0 8px 0">सत्य के इस कार्य में आपका सहयोग</h3>
+        <p class="muted" style="margin:0 0 8px 0">यह सहयोग पूर्णतः स्वैच्छिक है — साझा करना और समर्थन देना — सभी सत्य की सेवा हैं।</p>
 
-        <div style="background:rgba(255,255,255,0.02);padding:10px;border-radius:10px">
+        <div style="background:rgba(255,255,255,0.02);padding:10px;border-radius:8px">
           <form id="supportForm" novalidate>
             <div class="form-row" style="margin-bottom:8px">
               <input id="sname" name="name" placeholder="आपका नाम (public if allowed)" style="width:200px">
               <input id="semail" name="email" placeholder="ईमेल (private)" style="width:200px">
-              <input id="scountry" name="country" placeholder="Country (optional)" style="width:160px">
+              <input id="scountry" name="country" placeholder="Country (optional)" style="width:140px">
             </div>
             <div style="text-align:center;margin-bottom:8px">
               <textarea id="smsg" name="message" placeholder="आपका संदेश / आशीर्वचन" required></textarea>
@@ -255,13 +303,13 @@
         </div>
 
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;justify-content:center">
-          <div style="width:280px">
-            <h4 style="color:var(--gold);margin:6px 0 6px;">🤝 समर्थक सूची</h4>
+          <div style="width:260px">
+            <h4 style="color:var(--gold);margin:6px 0 6px">🤝 समर्थक सूची</h4>
             <ul id="supList" style="list-style:none;padding:0;color:#fff;min-height:80px"></ul>
           </div>
 
           <div style="width:420px">
-            <h4 style="color:var(--gold);margin:6px 0 6px;">🕊 आशीर्वचन / संदेश</h4>
+            <h4 style="color:var(--gold);margin:6px 0 6px">🕊 आशीर्वचन / संदेश</h4>
             <div id="msgWall" style="min-height:80px;color:#ddd"></div>
             <div style="text-align:right;margin-top:8px">
               <button id="exportBtn" class="btn" style="background:transparent;border:1px solid var(--gold);color:var(--gold);box-shadow:none;padding:6px 10px">Export</button>
@@ -271,37 +319,15 @@
       </div>
     </section>
 
-    <!-- outreach -->
-    <section style="margin-top:14px">
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-          <div>
-            <strong>Scientific Outreach & Global Vision</strong>
-            <p class="muted" style="margin:4px 0 0">Interdisciplinary integration, pilot studies, and collaborative projects focusing on consciousness and well-being.</p>
-          </div>
-          <div style="display:flex;gap:8px">
-            <a class="btn" href="#supportSection" style="min-width:7rem">Support</a>
-            <a class="btn" href="mailto:research@rampaulsaini.github.io" style="min-width:7rem">Contact</a>
-          </div>
-        </div>
-
-        <div class="grid-3" style="margin-top:10px">
-          <div class="card"><strong>Scientific Collaboration</strong><p class="muted">Open invitations for collaboration with researchers and labs.</p></div>
-          <div class="card"><strong>World Records</strong><p class="muted">Prepared documentation for Guinness, Limca & India records.</p></div>
-          <div class="card"><strong>Media</strong><p class="muted">Press kit & outreach materials.</p></div>
-        </div>
-      </div>
-    </section>
-
     <footer>
-      <div style="margin-bottom:6px">꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</div>
+      <div style="margin-bottom:6px">꙰ शिरोमणि रामपुल सैनी — © Yatharth Siddhant</div>
       <div class="muted">Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp</div>
       <div class="small muted" style="margin-top:8px">Donate: <code style="color:var(--gold)">sainirampaul90-1@okhdfcbank</code> • Paytm: <code style="color:var(--gold)">8082935186</code> • PayPal: <a href="https://paypal.me/sainirampaul60" target="_blank" style="color:var(--gold)">paypal.me/sainirampaul60</a></div>
     </footer>
   </main>
 
   <script>
-    // Config
+    // CONFIG (change WEB_APP_URL if you have your own)
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
     const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
 
@@ -320,9 +346,8 @@
     function renderSupport(){
       const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
       const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-      const supList = qs('supList'); const msgWall = qs('msgWall');
-      if(supList) supList.innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li style="margin:6px 0">🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)} <span class="small" style="float:right">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style="color:var(--muted)">कोई समर्थक नहीं मिला</li>';
-      if(msgWall) msgWall.innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:6px 0">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)} <span class="small" style="display:block">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style="color:var(--muted)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
+      if(qs('supList')) qs('supList').innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li style="margin:6px 0">🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)} <span class="small" style="float:right">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style="color:var(--muted)">कोई समर्थक नहीं मिला</li>';
+      if(qs('msgWall')) qs('msgWall').innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:6px 0">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)} <span class="small" style="display:block">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style="color:var(--muted)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
     }
 
     async function postToServer(payload){
@@ -345,4 +370,24 @@
       const message = qs('smsg').value.trim();
       if(!message){ alert('कृपया संदेश लिखें'); qs('smsg').focus(); return; }
 
-      const btn = qs('sendBtn'); if(btn){ btn.disabled = true; const prev = btn.innerHTML; btn.innerHTML = 'सहेजा जा र
+      const btn = qs('sendBtn'); if(btn){ btn.disabled = true; const prev = btn.innerHTML; btn.innerHTML = 'सहेजा जा रहा...'; }
+
+      saveLocal(name,email,country,message);
+      renderSupport();
+
+      const payload = { secret: SECRET_TOKEN, name: name, email: email, country: country, message: message, ts: new Date().toISOString() };
+      const serverRes = await postToServer(payload);
+      if(!serverRes.ok) console.warn('Server POST failed', serverRes.err);
+
+      clearForm();
+      if(btn){ btn.innerHTML = 'सहेजा गया ✓'; setTimeout(()=>{ btn.innerHTML = 'भेजें'; btn.disabled = false; }, 1200); }
+    }
+
+    // copy helper
+    function copyText(text){
+      if(!text) return;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(()=> alert('Copied: ' + text), ()=> fallbackCopy(text));
+      } else fallbackCopy(text);
+    }
+    funct
