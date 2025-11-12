@@ -51,3 +51,7 @@ Suggested: **₹193** — fully optional and with gratitude.
 
 © Yatharth — Shromani Rampaulsaini  
 Contact: Telegram / WhatsApp
+# Yatharth — शिरोमणि रामपुलसैनी
+Official page — audio, photos, manifesto. Support optional. Proceeds support Saneha Saini.
+
+Publish instructions: Use GitHub Pages (see repo settings -> Pages -> main -> root).
