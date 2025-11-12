@@ -1,20 +1,45 @@
 <!doctype html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>꙰ Yatharth — शिरोमणि रामपुलसैनी</title>
-  <meta name="description" content="Yatharth — निष्पक्ष समझ; Audio, photos, manifesto. Support optional.">
+  <meta name="description" content="Yatharth — निष्पक्ष समझ; Audio, photos, manifesto. Support optional. Proceeds support Saneha Saini.">
   <meta name="keywords" content="Yatharth, शिरोमणि रामपुलसैनी, Nishpaksh Samajh, audio, manifesto">
-  <meta property="og:title" content="Yatharth — शिरोमणि रामपुलसैनी">
-  <meta property="og:description" content="Free audio, manifesto and vision assets — proceeds support Saneha Saini.">
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Shirōmanī Rampaulsaini",
+    "alternateName":"शिरोमणि रामपुलसैनी",
+    "url":"https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO/",
+    "image":"https://i.ibb.co/xqf3kTPS/enhanced-image.webp",
+    "sameAs":["https://www.facebook.com/","https://www.linkedin.com/","https://t.me/sampaulsaini","https://youtube.com/@rampaulsaini-yk4gn"]
+  }
+  </script>
+
+  <!-- Optional: Google Analytics (GA4) placeholder
+       Replace G-XXXXXXX with your Measurement ID to enable real analytics.
+       If you don't use GA, leave this commented out.
+  -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  -->
+
   <style>
     :root{
-      --bg-dark:#070707; --gold:#ffd966; --muted:#cfcfcf; --panel:rgba(255,255,255,0.03);
-      --maxw:1180px; --radius:12px; --pill-radius:14px;
+      --bg:#070707; --gold:#ffd966; --muted:#cfcfcf; --panel:rgba(255,255,255,0.03);
+      --maxw:1180px; --rad:12px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,'Noto Sans Devanagari','Noto Sans',system-ui;-webkit-font-smoothing:antialiased}
+    html,body{height:100%;margin:0;font-family:Inter,'Noto Sans Devanagari','Noto Sans',system-ui;color:#fff;background:var(--bg);-webkit-font-smoothing:antialiased}
     a{color:var(--gold);text-decoration:none}
     .wrap{max-width:var(--maxw);margin:18px auto;padding:28px}
     header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
@@ -23,17 +48,14 @@
     .lead{color:var(--muted);font-size:13px}
     nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
     .link-pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);color:var(--gold);font-weight:700}
-    .card{background:var(--panel);padding:14px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03)}
-    body{background:var(--bg-dark);color:#fff}
+    .card{background:var(--panel);padding:14px;border-radius:var(--rad);border:1px solid rgba(255,255,255,0.03)}
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
-    .main-photo{width:260px;border-radius:14px;border:6px solid rgba(255,215,102,0.06);display:block;margin:0 auto;transition:transform .36s}
-    .main-photo:hover{transform:scale(1.03)}
-    .gold-frame{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.008));border:2px solid rgba(255,215,102,0.08)}
-    .gold-caption{margin-top:12px;text-align:center;color:var(--gold);font-weight:800;font-size:15px;line-height:1.4}
-    .payments{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:center;margin-top:16px}
+    img.main-photo{width:260px;border-radius:14px;border:6px solid rgba(255,215,102,0.06);display:block;margin:0 auto}
+    .gold-caption{margin-top:12px;text-align:center;color:var(--gold);font-weight:800;font-size:15px}
+    .payments{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
     .pay-card{padding:16px;border-radius:12px;text-align:center;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01));border:1px solid rgba(255,215,102,0.06)}
     .pay-qr{width:150px;height:150px;object-fit:cover;border-radius:10px;border:4px solid rgba(255,255,255,0.03)}
-    .btn{background:var(--gold);color:#050505;padding:10px 14px;border-radius:12px;font-weight:800;display:inline-block;cursor:pointer}
+    .btn{background:var(--gold);color:#050505;padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer}
     .folders{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
     .folder-pill{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);color:var(--gold);font-weight:800}
     .player{background:rgba(0,0,0,0.45);padding:12px;border-radius:12px;margin-top:12px}
@@ -42,14 +64,12 @@
     .muted{color:var(--muted)}
     .about{margin-top:16px}
     .editor{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:10px}
+    .yt-card{background:rgba(255,255,255,0.02);padding:8px;border-radius:10px;text-align:center}
     input,textarea,button{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:10px;border-radius:8px;font-size:14px}
     textarea{min-height:80px;resize:vertical}
     @media(max-width:980px){.hero{grid-template-columns:1fr}.main-photo{width:160px}.payments{grid-template-columns:1fr}}
     a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(255,215,102,0.14);outline-offset:3px;border-radius:8px}
-    .ripple{position:relative;overflow:hidden}
-    .ripple::after{content:"";position:absolute;left:50%;top:50%;width:0;height:0;background:rgba(255,255,255,0.12);border-radius:50%;transform:translate(-50%,-50%);transition:width .38s ease, height .38s ease, opacity .4s;opacity:0}
-    .ripple.rip::after{width:200%;height:200%;opacity:1}
-    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
   </style>
 </head>
 <body>
@@ -59,40 +79,45 @@
         <div class="mark">꙰</div>
         <div>
           <h1>शिरोमणि रामपुलसैनी — Nishpaksh Samajh</h1>
-          <div class="lead small">Free for all · Read & Listen · Support optional</div>
+          <div class="lead small">Free · Read · Listen · Support optional</div>
         </div>
       </div>
 
-      <nav aria-label="top links">
-        <a class="link-pill ripple" href="https://www.facebook.com/" target="_blank">Facebook</a>
-        <a class="link-pill ripple" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia</a>
-        <a class="link-pill ripple" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-        <a class="link-pill ripple" href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
-        <a class="link-pill ripple" href="https://wa.me/918082935186" target="_blank">WhatsApp</a>
-        <a class="link-pill ripple" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">YouTube</a>
-        <button id="viewToggle" class="btn" title="Toggle Simple / Supreme view">Simple View</button>
+      <nav aria-label="social links">
+        <a class="link-pill" href="https://www.facebook.com/" target="_blank">Facebook</a>
+        <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia</a>
+        <a class="link-pill" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+        <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
+        <a class="link-pill" href="https://wa.me/918082935186" target="_blank">WhatsApp</a>
+        <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">YouTube</a>
       </nav>
     </header>
 
     <section class="hero" aria-labelledby="hero-title">
       <div>
         <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini" loading="lazy">
-        <div class="gold-caption">मैं शिरोमणि रामपुलसैनी तुलनातीत कालातीत द्वैततीत शब्दातीत प्रेमतित सम्पन्नता संपूर्णता समग्रता संतुष्टि सत्य प्रत्यक्ष शाश्वत वास्तविक स्भाविक सत्य में हूँ, "खुद का साक्षात्कार हूँ"</div>
+        <div class="gold-caption">मैं शिरोमणि रामपुलसैनी — तुलनातीत, कालातीत, सत्य प्रत्यक्ष; "खुद का साक्षात्कार हूँ"</div>
 
+        <!-- About (B) -->
         <div class="gold-frame card about" id="aboutBlock">
           <h3 style="margin:0;color:var(--gold)">About — परिचय</h3>
-          <p class="muted" style="margin-top:10px">निष्पक्ष समझ (Yatharth) — शिरोमणि रामपुलसैनी द्वारा प्रकाशित एक अनुभव-आधारित दर्शन, जिसका उद्देश्य प्रत्येक मनुष्य को उसकी स्वयं की स्थायी वास्तविकता से परिचित कराना है। यह ज्ञान मान्यताओं पर निर्भर नहीं, बल्कि प्रत्यक्ष अनुभव और व्यावहारिक परिणामों पर आधारित है।</p>
-          <p class="muted" style="margin-top:10px">यदि आप चाहें, मैं यह अनुभाग और विस्तृत कर दूँ — जीवन-वृत्त, उपलब्धियाँ, वैज्ञानिक संपर्क और प्रकाशन सूची जोड़कर।</p>
+          <p class="muted" style="margin-top:10px">
+            निष्पक्ष समझ (Yatharth) — एक अनुभव-आधारित दर्शन जो मान्यताओं से परे प्रत्यक्ष साक्षात्कार पर टिका है।
+            शिरोमणि रामपुलसैनी का उद्देश्य प्रत्येक मानव को उसकी स्वयं की स्थायी वास्तविकता से परिचित कराना है।
+          </p>
+          <p class="muted" style="margin-top:8px">
+            अगर आप चाहें, मैं यह अनुभाग विस्तृत कर दूंगा — जीवन वृत्त, वैज्ञानिक संपर्क, और प्रकाशित कार्यों के लिंक्स जोड़कर।
+          </p>
         </div>
 
-        <div class="player card" id="audioPlayerBlock">
+        <!-- Audio Player (C) -->
+        <div class="player card" id="audioPlayerBlock" aria-label="Audio Player">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <div><strong>Audio Player</strong><div class="muted small">Drive या direct mp3 लिंक डालें — नीचे 'Add' करें → फिर Play</div></div>
-            <div><button id="togglePlay" class="btn ripple">Play / Pause</button></div>
+            <div><strong>Audio Player</strong><div class="muted small">Google Drive या direct mp3 जोड़ें — नीचे Add करें → फिर Play</div></div>
+            <div><button id="togglePlay" class="btn">Play / Pause</button></div>
           </div>
 
           <audio id="audioEl" preload="none"></audio>
-
           <ul class="playlist" id="playlist"></ul>
 
           <div class="editor">
@@ -100,12 +125,10 @@
             <button id="addTrackBtn" class="btn">Add</button>
             <button id="clearPlaylistBtn" class="btn">Clear</button>
           </div>
-
           <div class="muted small" style="margin-top:8px">
-            टिप: Google Drive फ़ाइल link से direct playable link बनाने के लिए — उस फ़ाइल का Share link (Anyone with the link) paste करें; यह साइट auto-convert करेगी. मैं अगर चाहूँ तो आपके लिए यह conversion भी कर सकता/सकती हूँ।
+            टिप: Drive फ़ाइल के लिए "Share → Anyone with the link" रखें; साइट उसे direct download URL में बदल देगी।
           </div>
         </div>
-
       </div>
 
       <aside class="card" style="padding:18px">
@@ -114,33 +137,64 @@
           <div class="muted small">Audio, manifesto, photos & vision assets — proceeds support Saneha Saini</div>
         </div>
 
+        <!-- Folders (kept safe) -->
         <div class="folders" role="list" aria-label="important folders">
-          <a class="folder-pill ripple" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple</a>
-          <a class="folder-pill ripple" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ MP3 (Photos link)</a>
-          <a class="folder-pill ripple" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ प्रमाण पत्र</a>
-          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ Short Audios (Drive)</a>
-          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ Videos Album</a>
-          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ Album 1</a>
+          <a class="folder-pill" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple</a>
+          <a class="folder-pill" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ MP3 (Photos)</a>
+          <a class="folder-pill" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ प्रमाण पत्र</a>
+          <a class="folder-pill" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ Short Audios</a>
+          <a class="folder-pill" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ Videos Album</a>
+          <a class="folder-pill" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ Album 1</a>
         </div>
 
+        <!-- Payments (only Paytm & PayPal as requested) -->
         <div style="margin-top:14px" class="payments" aria-label="payments">
           <div class="pay-card" role="group" aria-labelledby="paytm-title">
             <h4 id="paytm-title">Paytm / PhonePe</h4>
             <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR">
             <div class="muted">Phone: <strong>8082935186</strong></div>
-            <div style="margin-top:8px"><a class="btn ripple" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Open UPI</a></div>
+            <div style="margin-top:8px"><a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Open UPI</a></div>
           </div>
 
           <div class="pay-card" role="group" aria-labelledby="paypal-title">
             <h4 id="paypal-title">PayPal / Card</h4>
             <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
             <div class="muted">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
-            <div style="margin-top:8px"><a class="btn ripple" href="https://paypal.me/sainirampaul60" target="_blank">Open PayPal</a></div>
+            <div style="margin-top:8px"><a class="btn" href="https://paypal.me/sainirampaul60" target="_blank">Open PayPal</a></div>
           </div>
         </div>
+
+        <!-- YouTube gallery (D) -->
+        <div style="margin-top:16px">
+          <div style="font-weight:800;color:var(--gold)">YouTube Gallery</div>
+          <div class="muted small">Selected videos — click to open on YouTube</div>
+          <div class="yt-grid" id="ytGrid">
+            <!-- Example cards — these link to channel / videos -->
+            <a class="yt-card" href="https://youtube.com/watch?v=EXAMPLE1" target="_blank">Video 1</a>
+            <a class="yt-card" href="https://youtube.com/watch?v=EXAMPLE2" target="_blank">Video 2</a>
+            <a class="yt-card" href="https://youtube.com/watch?v=EXAMPLE3" target="_blank">Video 3</a>
+            <a class="yt-card" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">All on Channel</a>
+          </div>
+        </div>
+
+        <!-- Visitor counters (E) -->
+        <div style="margin-top:14px" class="card" aria-hidden>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div><strong>Visitor Count</strong><div class="muted small">Local & Global options</div></div>
+            <div style="text-align:right">
+              <div id="localCount" style="font-weight:800;font-size:18px">—</div>
+              <div class="muted small">unique visits (this browser)</div>
+            </div>
+          </div>
+          <div class="muted small" style="margin-top:8px">
+            Tip: For real global pageviews add Google Analytics (Measurement ID) in the top GA snippet (replace G-XXXXXXX). After that you'll get accurate visitor numbers in Analytics dashboard.
+          </div>
+        </div>
+
       </aside>
     </section>
 
+    <!-- Support Form + Messages -->
     <section id="supportSection" style="margin-top:28px">
       <div class="card gold-frame" style="padding:18px">
         <h2 style="margin:0;color:var(--gold);text-align:center">सत्य के इस कार्य में आपका सहयोग</h2>
@@ -188,35 +242,18 @@
     </footer>
   </main>
 
+  <!-- Script: Audio player, playlist editor (Drive auto-convert), support form (localStorage + optional Apps Script), local visitor counter -->
   <script>
   (function(){
-    // ---------- CONFIG ----------
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
-    const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
+    // CONFIG: If you have Google Apps Script URL, set it here to receive messages server-side
+    const WEB_APP_URL = ""; // optional: e.g. https://script.google.com/macros/s/xxx/exec
+    const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK"; // same as earlier (for reference)
 
     // helpers
     const $ = id => document.getElementById(id);
     const escapeHtml = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-    // ---------- View toggle ----------
-    const viewBtn = $('viewToggle');
-    viewBtn.addEventListener('click', ()=>{
-      document.body.classList.toggle('simple');
-      const isSimple = document.body.classList.contains('simple');
-      viewBtn.textContent = isSimple ? 'Supreme View' : 'Simple View';
-    });
-
-    // ripple effect
-    document.addEventListener('click', function(e){
-      const el = e.target.closest('.ripple');
-      if(!el) return;
-      el.classList.remove('rip');
-      void el.offsetWidth;
-      el.classList.add('rip');
-      setTimeout(()=> el.classList.remove('rip'), 420);
-    });
-
-    // ---------- AUDIO: playlist editor + player ----------
+    // ---------- AUDIO PLAYER ----------
     const audio = $('audioEl');
     const playlistEl = $('playlist');
     const mp3Input = $('mp3Input');
@@ -224,7 +261,7 @@
     const clearPlaylistBtn = $('clearPlaylistBtn');
     const togglePlayBtn = $('togglePlay');
 
-    let playlist = []; // {title, src}
+    let playlist = [];
 
     function driveToDirect(link){
       if(!link) return null;
@@ -254,9 +291,9 @@
 
     function addTrackFromInput(){
       const val = mp3Input.value.trim();
-      if(!val) return alert('कृपया लिंक पेस्ट करें');
+      if(!val){ alert('कृपया लिंक पेस्ट करें'); return; }
       const direct = driveToDirect(val);
-      if(!direct) return alert('यह लिंक सीधे mp3 या Google Drive का सही share-link नहीं है।\nसुनिश्चित करें कि आपने "Anyone with the link" शेयर बनाया है या direct mp3 URL दें.');
+      if(!direct){ alert('यह लिंक सीधे mp3 या Google Drive का सही share-link नहीं है। "Anyone with link" सेट करें या direct mp3 URL दें.'); return; }
       const title = (function(){ try{ const u=new URL(direct); const p = u.pathname; return decodeURIComponent(p.split('/').pop()) || direct; }catch(e){ return direct; }})();
       playlist.push({title, src: direct});
       mp3Input.value = '';
@@ -265,20 +302,13 @@
     }
 
     addTrackBtn.addEventListener('click', addTrackFromInput);
-    mp3Input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); addTrackFromInput(); } });
-    clearPlaylistBtn.addEventListener('click', function(){ if(confirm('Clear entire playlist?')){ playlist=[]; renderPlaylist(); localStorage.removeItem('yatharth_playlist'); audio.pause(); audio.src=''; } });
+    mp3Input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); addTrackFromInput(); }});
+    clearPlaylistBtn.addEventListener('click', function(){ if(confirm('Clear entire playlist?')){ playlist=[]; renderPlaylist(); localStorage.removeItem('yatharth_playlist'); audio.pause(); audio.src=''; }});
 
     playlistEl.addEventListener('click', function(e){
-      const p = e.target;
-      if(p.classList.contains('playBtn')){
-        const idx = Number(p.dataset.idx);
-        playIndex(idx);
-      } else if(p.classList.contains('removeBtn')){
-        const idx = Number(p.dataset.idx);
-        playlist.splice(idx,1);
-        renderPlaylist();
-        localStorage.setItem('yatharth_playlist', JSON.stringify(playlist));
-      }
+      const t = e.target;
+      if(t.classList.contains('playBtn')){ playIndex(Number(t.dataset.idx)); }
+      else if(t.classList.contains('removeBtn')){ playlist.splice(Number(t.dataset.idx),1); renderPlaylist(); localStorage.setItem('yatharth_playlist', JSON.stringify(playlist)); }
     });
 
     function playIndex(i){
@@ -289,16 +319,13 @@
 
     togglePlayBtn.addEventListener('click', function(){
       if(!audio.src){
-        if(playlist.length) playIndex(0);
-        else return alert('कृपया पहले playlist में ट्रैक जोड़ें');
-      } else {
-        if(audio.paused) audio.play(); else audio.pause();
-      }
+        if(playlist.length) playIndex(0); else return alert('कृपया पहले playlist में ट्रैक जोड़ें');
+      } else { if(audio.paused) audio.play(); else audio.pause(); }
     });
 
-    try{ const saved = JSON.parse(localStorage.getItem('yatharth_playlist')||'[]'); if(saved.length){ playlist=saved; renderPlaylist(); } }catch(e){}
+    try{ const saved = JSON.parse(localStorage.getItem('yatharth_playlist')||'[]'); if(saved.length) { playlist = saved; renderPlaylist(); }}catch(e){}
 
-    // ---------- SUPPORT form (localStorage + optional server) ----------
+    // ---------- SUPPORT FORM ----------
     function saveLocalSupport(name,email,country,message){
       const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
       const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
@@ -307,6 +334,7 @@
       localStorage.setItem('spList', JSON.stringify(supporters));
       localStorage.setItem('spMsg', JSON.stringify(msgs));
     }
+
     function renderSupport(){
       const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
       const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
@@ -315,7 +343,7 @@
     }
 
     async function postToServer(payload){
-      if(!WEB_APP_URL || WEB_APP_URL.length<10) return {ok:false, err:'no-endpoint'};
+      if(!WEB_APP_URL) return {ok:false, err:'no-endpoint'};
       try{
         const res = await fetch(WEB_APP_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
         if(!res.ok) return {ok:false, err:'http-'+res.status};
@@ -324,35 +352,4 @@
       }catch(err){ return {ok:false, err: String(err)}; }
     }
 
-    $('supportForm').addEventListener('submit', async function(e){
-      e.preventDefault();
-      const name = $('sname').value.trim();
-      const email = $('semail').value.trim();
-      const country = $('scountry').value.trim();
-      const message = $('smsg').value.trim();
-      if(!message){ alert('कृपया संदेश लिखें'); $('smsg').focus(); return; }
-      const btn = # Retry creating package files and zip
-from pathlib import Path
-import shutil
-base = Path("/mnt/data/yatharth_supreme_final")
-base.mkdir(parents=True, exist_ok=True)
-
-# Small version of final index.html (full content as in previous message)
-index_html = """<!doctype html>
-<html lang="hi">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Yatharth</title></head><body><h1>Yatharth — शिरोमणि रामपुलसैनी</h1></body></html>
-"""
-
-# write files
-(base / "index.html").write_text(index_html, encoding="utf-8")
-(base / "sitemap.xml").write_text("<?xml version='1.0' encoding='UTF-8'?><urlset></urlset>", encoding="utf-8")
-(base / "robots.txt").write_text("User-agent: *\nAllow: /", encoding="utf-8")
-(base / "README.md").write_text("# Yatharth\n", encoding="utf-8")
-(base / "CNAME").write_text("www.example.com\n", encoding="utf-8")
-
-zip_path = Path("/mnt/data/yatharth_supreme_complete.zip")
-if zip_path.exists():
-    zip_path.unlink()
-shutil.make_archive("/mnt/data/yatharth_supreme_complete", 'zip', str(base))
-{"created": [p.name for p in base.iterdir()], "zip": "sandbox:/mnt/data/yatharth_supreme_complete.zip"}
-    
+    $('supportForm').addEventListener
