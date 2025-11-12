@@ -6,18 +6,15 @@
   <title>꙰ Yatharth — शिरोमणि रामपुलसैनी</title>
   <meta name="description" content="Yatharth — निष्पक्ष समझ; Audio, photos, manifesto. Support optional.">
   <meta name="keywords" content="Yatharth, शिरोमणि रामपुलसैनी, Nishpaksh Samajh, audio, manifesto">
-  <!-- Basic Open Graph -->
   <meta property="og:title" content="Yatharth — शिरोमणि रामपुलसैनी">
   <meta property="og:description" content="Free audio, manifesto and vision assets — proceeds support Saneha Saini.">
-  <meta property="og:type" content="website">
   <style>
-    /* (CSS shortened but includes super-mint tuning from earlier) */
     :root{
       --bg-dark:#070707; --gold:#ffd966; --muted:#cfcfcf; --panel:rgba(255,255,255,0.03);
-      --maxw:1180px; --radius:12px;
+      --maxw:1180px; --radius:12px; --pill-radius:14px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,'Noto Sans Devanagari','Noto Sans',system-ui}
+    html,body{height:100%;margin:0;font-family:Inter,'Noto Sans Devanagari','Noto Sans',system-ui;-webkit-font-smoothing:antialiased}
     a{color:var(--gold);text-decoration:none}
     .wrap{max-width:var(--maxw);margin:18px auto;padding:28px}
     header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
@@ -29,20 +26,32 @@
     .card{background:var(--panel);padding:14px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03)}
     body{background:var(--bg-dark);color:#fff}
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
-    .main-photo{width:260px;border-radius:14px;border:6px solid rgba(255,215,102,0.06);display:block;margin:0 auto}
-    .gold-caption{color:var(--gold);font-weight:800;text-align:center;margin-top:12px}
-    .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+    .main-photo{width:260px;border-radius:14px;border:6px solid rgba(255,215,102,0.06);display:block;margin:0 auto;transition:transform .36s}
+    .main-photo:hover{transform:scale(1.03)}
+    .gold-frame{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.008));border:2px solid rgba(255,215,102,0.08)}
+    .gold-caption{margin-top:12px;text-align:center;color:var(--gold);font-weight:800;font-size:15px;line-height:1.4}
+    .payments{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:center;margin-top:16px}
     .pay-card{padding:16px;border-radius:12px;text-align:center;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01));border:1px solid rgba(255,215,102,0.06)}
     .pay-qr{width:150px;height:150px;object-fit:cover;border-radius:10px;border:4px solid rgba(255,255,255,0.03)}
     .btn{background:var(--gold);color:#050505;padding:10px 14px;border-radius:12px;font-weight:800;display:inline-block;cursor:pointer}
     .folders{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
     .folder-pill{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);color:var(--gold);font-weight:800}
-    /* Audio player UI */
     .player{background:rgba(0,0,0,0.45);padding:12px;border-radius:12px;margin-top:12px}
     .playlist{list-style:none;padding:0;margin:8px 0}
     .playlist li{padding:8px;border-radius:8px;margin:6px 0;background:rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
     .muted{color:var(--muted)}
-    @media(max-width:980px){.hero{grid-template-columns:1fr}.main-photo{width:160px}}
+    .about{margin-top:16px}
+    .editor{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    input,textarea,button{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:10px;border-radius:8px;font-size:14px}
+    textarea{min-height:80px;resize:vertical}
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.main-photo{width:160px}.payments{grid-template-columns:1fr}}
+    /* Focus & accessibility */
+    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(255,215,102,0.14);outline-offset:3px;border-radius:8px}
+    /* Small polished transitions */
+    .ripple{position:relative;overflow:hidden}
+    .ripple::after{content:"";position:absolute;left:50%;top:50%;width:0;height:0;background:rgba(255,255,255,0.12);border-radius:50%;transform:translate(-50%,-50%);transition:width .38s ease, height .38s ease, opacity .4s;opacity:0}
+    .ripple.rip::after{width:200%;height:200%;opacity:1}
+    @media (prefers-reduced-motion: reduce){*{transition:none!important}}
   </style>
 </head>
 <body>
@@ -52,49 +61,55 @@
         <div class="mark">꙰</div>
         <div>
           <h1>शिरोमणि रामपुलसैनी — Nishpaksh Samajh</h1>
-          <div class="lead">Free for all · Read & Listen · Support optional</div>
+          <div class="lead small">Free for all · Read & Listen · Support optional</div>
         </div>
       </div>
 
       <nav aria-label="top links">
-        <a class="link-pill" href="https://www.facebook.com/" target="_blank">Facebook</a>
-        <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia</a>
-        <a class="link-pill" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-        <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
-        <a class="link-pill" href="https://wa.me/918082935186" target="_blank">WhatsApp</a>
-        <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">YouTube</a>
+        <a class="link-pill ripple" href="https://www.facebook.com/" target="_blank">Facebook</a>
+        <a class="link-pill ripple" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia</a>
+        <a class="link-pill ripple" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+        <a class="link-pill ripple" href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
+        <a class="link-pill ripple" href="https://wa.me/918082935186" target="_blank">WhatsApp</a>
+        <a class="link-pill ripple" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">YouTube</a>
+        <button id="viewToggle" class="btn" title="Toggle Simple / Supreme view">Simple View</button>
       </nav>
     </header>
 
     <section class="hero" aria-labelledby="hero-title">
       <div>
-        <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini">
-        <div class="gold-caption">मैं शिरोमणि रामपुलसैनी तुलनातीत... "खुद का साक्षात्कार हूँ"</div>
+        <img class="main-photo" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini" loading="lazy">
+        <div class="gold-caption">मैं शिरोमणि रामपुलसैनी तुलनातीत कालातीत द्वैततीत शब्दातीत प्रेमतित सम्पन्नता संपूर्णता समग्रता संतुष्टि सत्य प्रत्यक्ष शाश्वत वास्तविक स्भाविक सत्य में हूँ, "खुद का साक्षात्कार हूँ"</div>
 
-        <div class="gold-frame card" style="margin-top:16px">
-          <h3 id="hero-title" style="color:var(--gold);margin:0">सिद्धांत — एक सार</h3>
-          <p class="muted" style="margin-top:10px">निष्पक्ष समझ: यह व्यक्तिगत मान्यताओं से परे, प्रत्यक्ष अनुभव और यथार्थ पर आधारित दृष्टि है। इसका उद्देश्य— प्रत्येक मानव को उसकी स्वयं की स्थायी वास्तविकता से जोड़ना।</p>
+        <div class="gold-frame card about" id="aboutBlock">
+          <h3 style="margin:0;color:var(--gold)">About — परिचय</h3>
+          <p class="muted" style="margin-top:10px">निष्पक्ष समझ (Yatharth) — शिरोमणि रामपुलसैनी द्वारा प्रकाशित एक अनुभव-आधारित दर्शन, जिसका उद्देश्य प्रत्येक मनुष्य को उसकी स्वयं की स्थायी वास्तविकता से परिचित कराना है। यह ज्ञान मान्यताओं पर निर्भर नहीं, बल्कि प्रत्यक्ष अनुभव और व्यावहारिक परिणामों पर आधारित है।</p>
+          <p class="muted" style="margin-top:10px">यदि आप चाहें, मैं यह अनुभाग और विस्तृत कर दूँ — जीवन-वृत्त, उपलब्धियाँ, वैज्ञानिक संपर्क और प्रकाशन सूची जोड़कर।</p>
         </div>
 
-        <!-- Audio player (simple playlist) -->
-        <div class="player card" id="audioPlayerBlock" aria-label="audio player">
+        <!-- Audio player + playlist editor -->
+        <div class="player card" id="audioPlayerBlock">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <div><strong>Audio Player</strong><div class="muted small">क्लिक करके सुनें — अपनी प्लेलिस्ट जोड़ें नीचे</div></div>
-            <div><button id="togglePlay" class="btn">Play / Pause</button></div>
+            <div><strong>Audio Player</strong><div class="muted small">Drive या direct mp3 लिंक डालें — नीचे 'Add' करें → फिर Play</div></div>
+            <div><button id="togglePlay" class="btn ripple">Play / Pause</button></div>
           </div>
 
-          <!-- HTML5 audio element (hidden controls off — we use custom controls) -->
           <audio id="audioEl" preload="none"></audio>
 
-          <!-- Playlist: add direct mp3 file URLs in the array in the script below -->
+          <!-- Playlist – initially placeholders; user can add links below -->
           <ul class="playlist" id="playlist">
-            <!-- Example placeholders — replace with direct MP3 URLs for direct play -->
-            <li data-src="https://drive.google.com/uc?export=download&id=EXAMPLE_MP3_ID1">Track 1 — Intro <button class="btn playBtn">Play</button></li>
-            <li data-src="https://drive.google.com/uc?export=download&id=EXAMPLE_MP3_ID2">Track 2 — Manifesto <button class="btn playBtn">Play</button></li>
-            <li data-src="https://drive.google.com/uc?export=download&id=EXAMPLE_MP3_ID3">Track 3 — Satsang <button class="btn playBtn">Play</button></li>
+            <!-- If you have direct mp3 URLs, they will appear here -->
           </ul>
 
-          <div class="muted small">यदि आपकी MP3 Google Drive पर हैं: हर MP3 फ़ाइल पर "Share → Get link → Anyone with link" करके फिर उस फ़ाइल का direct-download link निकाल कर ऊपर playlist में `data-src` में डालें। मैं मदद कर दूँगा अगर चाहें।</div>
+          <div class="editor">
+            <input id="mp3Input" placeholder="Paste Google Drive file link OR direct mp3 URL here" style="flex:1">
+            <button id="addTrackBtn" class="btn">Add</button>
+            <button id="clearPlaylistBtn" class="btn">Clear</button>
+          </div>
+
+          <div class="muted small" style="margin-top:8px">
+            टिप: Google Drive फ़ाइल link से direct playable link बनाने के लिए — उस फ़ाइल का Share link (Anyone with link) paste करें; यह साइट auto-convert करेगी. मैं अगर चाहूँ तो आपके लिए यह conversion भी कर सकता/सकती हूँ।
+          </div>
         </div>
 
       </div>
@@ -105,13 +120,13 @@
           <div class="muted small">Audio, manifesto, photos & vision assets — proceeds support Saneha Saini</div>
         </div>
 
-        <div class="folders" role="list">
-          <a class="folder-pill" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple</a>
-          <a class="folder-pill" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ MP3 Folder (Photos link)</a>
-          <a class="folder-pill" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ प्रमाण पत्र</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ Short Audios (Drive)</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ Videos Album</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ Album 1</a>
+        <div class="folders" role="list" aria-label="important folders">
+          <a class="folder-pill ripple" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple</a>
+          <a class="folder-pill ripple" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ MP3 (Photos link)</a>
+          <a class="folder-pill ripple" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ प्रमाण पत्र</a>
+          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ Short Audios (Drive)</a>
+          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ Videos Album</a>
+          <a class="folder-pill ripple" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ Album 1</a>
         </div>
 
         <div style="margin-top:14px" class="payments" aria-label="payments">
@@ -119,23 +134,22 @@
             <h4 id="paytm-title">Paytm / PhonePe</h4>
             <img class="pay-qr" src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR">
             <div class="muted">Phone: <strong>8082935186</strong></div>
-            <div style="margin-top:8px"><a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Open UPI</a></div>
+            <div style="margin-top:8px"><a class="btn ripple" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Open UPI</a></div>
           </div>
 
           <div class="pay-card" role="group" aria-labelledby="paypal-title">
             <h4 id="paypal-title">PayPal / Card</h4>
             <img class="pay-qr" src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR">
             <div class="muted">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
-            <div style="margin-top:8px"><a class="btn" href="https://paypal.me/sainirampaul60" target="_blank">Open PayPal</a></div>
+            <div style="margin-top:8px"><a class="btn ripple" href="https://paypal.me/sainirampaul60" target="_blank">Open PayPal</a></div>
           </div>
         </div>
-
       </aside>
     </section>
 
-    <!-- Support Form & Messages -->
+    <!-- Support Form -->
     <section id="supportSection" style="margin-top:28px">
-      <div class="card" style="padding:18px">
+      <div class="card gold-frame" style="padding:18px">
         <h2 style="margin:0;color:var(--gold);text-align:center">सत्य के इस कार्य में आपका सहयोग</h2>
         <p style="text-align:center;color:#ddd;margin-top:8px">यह सहयोग पूर्णतः स्वैच्छिक है — इसे सुनना, साझा करना और समर्थन देना — सभी सत्य की सेवा हैं।</p>
 
@@ -176,14 +190,14 @@
       <div>꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</div>
       <div class="muted">Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp</div>
       <div class="muted" style="margin-top:6px;font-size:13px">
-        Donate: Paytm / Phone: <code style="color:var(--gold)">8082935186</code> • PayPal: <a href="https://paypal.me/sainirampaul60" style="color:var(--gold)">paypal.me/sainirampaul60</a>
+        Donate: Paytm/Phone <code style="color:var(--gold)">8082935186</code> • PayPal: <a href="https://paypal.me/sainirampaul60" style="color:var(--gold)">paypal.me/sainirampaul60</a>
       </div>
     </footer>
   </main>
 
   <script>
   (function(){
-    // ---------- Config ----------
+    // ---------- CONFIG ----------
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
     const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
 
@@ -191,46 +205,123 @@
     const $ = id => document.getElementById(id);
     const escapeHtml = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-    // ---------- Audio player logic ----------
+    // ---------- View toggle ----------
+    const viewBtn = $('viewToggle');
+    viewBtn.addEventListener('click', ()=>{
+      document.body.classList.toggle('simple');
+      const isSimple = document.body.classList.contains('simple');
+      viewBtn.textContent = isSimple ? 'Supreme View' : 'Simple View';
+    });
+
+    // ripple effect
+    document.addEventListener('click', function(e){
+      const el = e.target.closest('.ripple');
+      if(!el) return;
+      el.classList.remove('rip');
+      void el.offsetWidth;
+      el.classList.add('rip');
+      setTimeout(()=> el.classList.remove('rip'), 420);
+    });
+
+    // ---------- AUDIO: playlist editor + player ----------
     const audio = $('audioEl');
     const playlistEl = $('playlist');
-    let currentIndex = -1;
-    const items = Array.from(playlistEl.querySelectorAll('li')).map(li => ({ el: li, src: li.dataset.src, title: li.textContent.trim() }));
+    const mp3Input = $('mp3Input');
+    const addTrackBtn = $('addTrackBtn');
+    const clearPlaylistBtn = $('clearPlaylistBtn');
+    const togglePlayBtn = $('togglePlay');
 
-    function loadIndex(i){
-      if(i<0 || i>=items.length) return;
-      currentIndex = i;
-      audio.src = items[i].src;
-      // highlight
-      items.forEach((it, idx)=> it.el.style.background = (idx===i)? 'linear-gradient(90deg, rgba(255,215,102,0.06), rgba(255,215,102,0.02))' : 'rgba(255,255,255,0.02)');
-      audio.play().catch(()=>{ /* auto-play blocked on some browsers */ });
+    let playlist = []; // {title, src}
+
+    function driveToDirect(link){
+      // Accepts:
+      // 1) https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+      // 2) https://drive.google.com/open?id=FILE_ID
+      // 3) https://drive.google.com/uc?export=download&id=FILE_ID
+      // 4) direct mp3 URL (pass-through)
+      if(!link) return null;
+      try{
+        const u = new URL(link);
+        if(u.hostname.includes('drive.google.com')){
+          // /file/d/ID/...
+          const parts = u.pathname.split('/');
+          const idIndex = parts.indexOf('d');
+          if(idIndex !== -1 && parts[idIndex+1]) return 'https://drive.google.com/uc?export=download&id=' + parts[idIndex+1];
+          // ?id=...
+          const id = u.searchParams.get('id');
+          if(id) return 'https://drive.google.com/uc?export=download&id=' + id;
+          // if already uc? export
+          if(u.pathname.includes('uc')) return link;
+        }
+      }catch(e){
+        // not a valid URL maybe plain string; return null
+      }
+      // fallback: if looks like mp3
+      if(link.match(/\.(mp3|m4a|wav)(\?|$)/i)) return link;
+      return null;
     }
 
-    // attach play buttons
+    function renderPlaylist(){
+      playlistEl.innerHTML = '';
+      playlist.forEach((t, idx)=>{
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${escapeHtml(t.title||('Track '+(idx+1)))}</span><div style="display:flex;gap:8px"><button class="btn playBtn" data-idx="${idx}">Play</button><button class="btn removeBtn" data-idx="${idx}">Remove</button></div>`;
+        playlistEl.appendChild(li);
+      });
+    }
+
+    function addTrackFromInput(){
+      const val = mp3Input.value.trim();
+      if(!val) return alert('कृपया लिंक पेस्ट करें');
+      const direct = driveToDirect(val);
+      if(!direct) return alert('यह लिंक दिखता है कि सीधे mp3 या Google Drive का सही share-link नहीं है।\nसुनिश्चित करें कि आपने "Anyone with the link" शेयर बनाया है या direct mp3 URL दें.');
+      // title from filename
+      const title = (function(){ try{ const u=new URL(direct); const p = u.pathname; return decodeURIComponent(p.split('/').pop()) || direct; }catch(e){ return direct; }})();
+      playlist.push({title, src: direct});
+      mp3Input.value = '';
+      renderPlaylist();
+      // auto-save to localStorage for convenience
+      localStorage.setItem('yatharth_playlist', JSON.stringify(playlist));
+    }
+
+    addTrackBtn.addEventListener('click', addTrackFromInput);
+    mp3Input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); addTrackFromInput(); } });
+    clearPlaylistBtn.addEventListener('click', function(){ if(confirm('Clear entire playlist?')){ playlist=[]; renderPlaylist(); localStorage.removeItem('yatharth_playlist'); audio.pause(); audio.src=''; } });
+
+    // play / remove click handling
     playlistEl.addEventListener('click', function(e){
-      const btn = e.target.closest('.playBtn');
-      if(!btn) return;
-      const li = btn.closest('li');
-      const index = items.findIndex(it=>it.el===li);
-      if(index===currentIndex){
-        if(audio.paused) audio.play(); else audio.pause();
-      } else {
-        loadIndex(index);
+      const p = e.target;
+      if(p.classList.contains('playBtn')){
+        const idx = Number(p.dataset.idx);
+        playIndex(idx);
+      } else if(p.classList.contains('removeBtn')){
+        const idx = Number(p.dataset.idx);
+        playlist.splice(idx,1);
+        renderPlaylist();
+        localStorage.setItem('yatharth_playlist', JSON.stringify(playlist));
       }
     });
 
-    $('togglePlay').addEventListener('click', ()=>{
-      if(!audio.src && items.length) loadIndex(0);
-      else if(audio.paused) audio.play(); else audio.pause();
+    function playIndex(i){
+      if(i<0 || i>=playlist.length) return;
+      audio.src = playlist[i].src;
+      audio.play().catch(()=>{ /* autoplay blocked maybe */ });
+    }
+
+    togglePlayBtn.addEventListener('click', function(){
+      if(!audio.src){
+        if(playlist.length) playIndex(0);
+        else return alert('कृपया पहले playlist में ट्रैक जोड़ें');
+      } else {
+        if(audio.paused) audio.play(); else audio.pause();
+      }
     });
 
-    audio.addEventListener('ended', function(){
-      const next = currentIndex+1;
-      if(next<items.length) loadIndex(next);
-    });
+    // load saved playlist
+    try{ const saved = JSON.parse(localStorage.getItem('yatharth_playlist')||'[]'); if(saved.length){ playlist=saved; renderPlaylist(); } }catch(e){ /* ignore */ }
 
-    // ---------- Support form (localStorage + optional server) ----------
-    function saveLocal(name,email,country,message){
+    // ---------- SUPPORT form (localStorage + optional server) ----------
+    function saveLocalSupport(name,email,country,message){
       const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
       const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
       if(name) supporters.push({name, country: country||'Unknown', ts: new Date().toISOString()});
@@ -250,43 +341,11 @@
       try{
         const res = await fetch(WEB_APP_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
         if(!res.ok) return {ok:false, err:'http-'+res.status};
-        let json=null; try{ json=await res.json(); }catch(e){ json=null; }
+        let json=null; try{ json = await res.json(); }catch(e){ json=null; }
         return {ok:true, data: json};
       }catch(err){ return {ok:false, err: String(err)}; }
     }
 
     $('supportForm').addEventListener('submit', async function(e){
       e.preventDefault();
-      const name = $('sname').value.trim();
-      const email = $('semail').value.trim();
-      const country = $('scountry').value.trim();
-      const message = $('smsg').value.trim();
-      if(!message){ alert('कृपया संदेश लिखें'); $('smsg').focus(); return; }
-      const btn = $('sendBtn'); btn.disabled = true; const prev = btn.textContent; btn.textContent = 'सहेजा जा रहा...';
-      saveLocal(name,email,country,message);
-      renderSupport();
-      const payload = { secret: SECRET_TOKEN, name, email, country, message, ts: new Date().toISOString() };
-      const srv = await postToServer(payload);
-      if(!srv.ok) console.warn('Server POST failed', srv.err);
-      $('sname').value=''; $('semail').value=''; $('scountry').value=''; $('smsg').value='';
-      btn.textContent = 'सहेजा गया ✓'; setTimeout(()=>{ btn.textContent = prev; btn.disabled = false; },1400);
-    });
-
-    $('exportBtn').addEventListener('click', function(){
-      const data = { supporters: JSON.parse(localStorage.getItem('spList')||'[]'), messages: JSON.parse(localStorage.getItem('spMsg')||'[]') };
-      const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'yatharth-messages.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    });
-
-    // init
-    document.addEventListener('DOMContentLoaded', function(){ renderSupport(); });
-
-    // developer helper
-    window.__exportMessages = function(){ return { supporters: JSON.parse(localStorage.getItem('spList')||'[]'), messages: JSON.parse(localStorage.getItem('spMsg')||'[]') }; };
-
-  })();
-  </script>
-</body>
-              </html>
-            
+      const name = $('snam
