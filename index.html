@@ -1,283 +1,200 @@
-<!doctype html>
-<html lang="hi">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>꙰ Yatharth — शिरोमणि रामपुलसैनी — निष्पक्ष समझ, यथार्थ सिद्धांत</title>
+# Creating package with sitemap.xml, google verification HTML, press-kit (HTML + PDF fallback), publications JSON-LD, and README
+from pathlib import Path
+from datetime import datetime
+import shutil, json, io, sys
 
-  <!-- GOOGLE TAG -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BSLBQVK4N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8BSLBQVK4N');
-  </script>
+out_dir = Path("/mnt/data/yatharth_assets")
+out_dir.mkdir(parents=True, exist_ok=True)
 
-  <meta name="description" content="शाश्वत वास्तविक स्वाभाविक सत्य — Yatharth by Shromani Rampaulsaini. Free to read & listen. Research collaborations, world-record invitations, donations (Paytm / PayPal).">
-  <meta name="keywords" content="Yatharth, निष्पक्ष समझ, Shromani Rampaulsaini, consciousness, phenomenology, ISRO, NASA, world record, Paytm, PayPal">
-  <link rel="canonical" href="https://rampaulsaini.github.io/my-omniverse-store/">
-  <meta name="robots" content="index,follow">
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+# 1) sitemap.xml
+sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rampaulsaini.github.io/my-omniverse-store/</loc>
+    <lastmod>{datetime.utcnow().date().isoformat()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://photos.app.goo.gl/4MP8THuxhei9NuxR6</loc>
+    <lastmod>{datetime.utcnow().date().isoformat()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6</loc>
+    <lastmod>{datetime.utcnow().date().isoformat()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y</loc>
+    <lastmod>{datetime.utcnow().date().isoformat()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC</loc>
+    <lastmod>{datetime.utcnow().date().isoformat()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u</loc>
+    <lastmod>{datetime.utcnow().date().isoformat()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
+"""
+(out_dir / "sitemap.xml").write_text(sitemap, encoding="utf-8")
 
-  <!-- OpenGraph -->
-  <meta property="og:locale" content="hi_IN">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="꙰ Yatharth — शिरोमणि रामपुलसैनी">
-  <meta property="og:description" content="The Era of Direct Truth — Free audio, manifesto and vision assets. Research collaborations invited.">
-  <meta property="og:url" content="https://rampaulsaini.github.io/my-omniverse-store/">
-  <meta property="og:image" content="https://i.ibb.co/xqf3kTPS/enhanced-image.webp">
-  <meta name="twitter:card" content="summary_large_image">
+# 2) Google verification HTML sample
+google_html = """<!doctype html>
+<html><head><meta charset="utf-8"><title>google-site-verification</title></head><body>
+Google site verification file - place this in your repo root to verify in Search Console.<br>
+Example verification token (replace with the token provided by GSC):<br>
+<pre>google-site-verification: google1234567890abcdef.html</pre>
+</body></html>
+"""
+# write a sample filename similar to what GSC might give
+(out_dir / "google1234567890abcdef.html").write_text(google_html, encoding="utf-8")
 
-  <!-- JSON-LD (Organization, Person, WebSite, ResearchProject, ScholarlyArticle, Dataset) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {"@type":"Organization","@id":"https://rampaulsaini.github.io/my-omniverse-store/#org","name":"Yatharth — Shromani Rampaulsaini","url":"https://rampaulsaini.github.io/my-omniverse-store/","logo":"https://i.ibb.co/xqf3kTPS/enhanced-image.webp","sameAs":["https://youtube.com/@rampaulsaini-yk4gn","http://multicosmovision.blogspot.com/"],"description":"Yatharth — निष्पक्ष समझ: experiential truth, research outreach, public audio & manifesto."},
-      {"@type":"Person","@id":"https://rampaulsaini.github.io/my-omniverse-store/#person","name":"Shromani Rampaulsaini","url":"https://rampaulsaini.github.io/my-omniverse-store/","sameAs":["https://youtube.com/@rampaulsaini-yk4gn","http://multicosmovision.blogspot.com/"],"description":"Proponent of Yatharth — experiential realization of permanent truth; open to scientific collaboration."},
-
-      {"@type":"WebSite","url":"https://rampaulsaini.github.io/my-omniverse-store/","name":"Yatharth — My Omniverse Store","publisher":{"@id":"https://rampaulsaini.github.io/my-omniverse-store/#org"},"potentialAction":{"@type":"SearchAction","target":"https://rampaulsaini.github.io/my-omniverse-store/?s={search_term_string}","query-input":"required name=search_term_string"}},
-
-      {"@type":"ResearchProject","@id":"https://rampaulsaini.github.io/my-omniverse-store/#project-yatharth","name":"Yatharth — Experiential Truth & Consciousness Correlates","url":"https://rampaulsaini.github.io/my-omniverse-store/","description":"Interdisciplinary pilot studies exploring phenomenology and measurable correlates; open to ISRO/NASA/university collaboration.","startDate":"2024-01-01","keywords":["consciousness","phenomenology","physiological correlates"]},
-
-      {"@type":"ScholarlyArticle","@id":"https://rampaulsaini.github.io/my-omniverse-store/#article-1","headline":"Experiential Realization and Behavioral Correlates — Yatharth Reports","author":{"@type":"Person","name":"Shromani Rampaulsaini"},"datePublished":"2024-06-01","publisher":{"@type":"Organization","name":"Yatharth Publications"},"isAccessibleForFree":true,"url":"https://rampaulsaini.github.io/my-omniverse-store/","keywords":["yatharth","consciousness","case study"],"description":"Placeholder observational reports — replace with DOI/URL when available."},
-
-      {"@type":"Dataset","@id":"https://rampaulsaini.github.io/my-omniverse-store/#dataset-1","name":"Yatharth Pilot Observational Data (anonymized)","description":"Anonymized pilot datasets of behavioral and physiological measurements.","url":"https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y","distribution":{"@type":"DataDownload","contentUrl":"https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y"}}
-    ]
-  }
-  </script>
-
-  <!-- Styles (kept Supreme Omniverse tuned) -->
-  <style>
-    :root{--bg-dark:#070707;--gold:#ffd966;--muted:#cfcfcf;--panel:rgba(255,255,255,0.03);--card-radius:14px;--maxw:1180px;--pill-radius:14px}
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,'Noto Sans Devanagari','Noto Sans',system-ui}
-    a{color:var(--gold);text-decoration:none}
-    .wrap{max-width:var(--maxw);margin:18px auto;padding:28px}
-    header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:12px}
-    .mark{font-size:40px;color:var(--gold);font-weight:900}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:18px;align-items:start}
-    .main-photo{width:260px;border-radius:14px;border:6px solid rgba(255,215,102,0.06);display:block;margin:0 auto}
-    .gold-caption{margin-top:12px;text-align:center;color:var(--gold);font-weight:800;font-size:15px;line-height:1.4}
-    .card{background:var(--panel);padding:14px;border-radius:var(--card-radius);border:1px solid rgba(255,255,255,0.03)}
-    .payments{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
-    .pay-card{padding:16px;border-radius:12px;text-align:center;background:linear-gradient(180deg, rgba(255,215,102,0.02), rgba(255,215,102,0.01));border:1px solid rgba(255,215,102,0.06)}
-    .folder-pill{padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,0.05);color:var(--gold);font-weight:800}
-    .btn{background:var(--gold);color:#050505;padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer}
-    .small{font-size:13px;color:var(--muted)}
-    footer{margin-top:36px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:20px}
-    @media(max-width:980px){.hero{grid-template-columns:1fr}.main-photo{width:160px}}
-  </style>
+# 3) Press-kit HTML (and try to create a simple PDF fallback)
+press_html = """<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Press Kit — Yatharth</title>
+<style>body{font-family:Arial,Helvetica,sans-serif;color:#222;background:#fff;padding:24px} h1{color:#b76f00} .muted{color:#666}</style>
 </head>
 <body>
-  <main class="wrap" role="main">
-    <header>
-      <div class="brand" aria-hidden>
-        <div class="mark">꙰</div>
-        <div>
-          <h1>शिरोमणि रामपुलसैनी — Nishpaksh Samajh</h1>
-          <div class="lead small">Free for all · Read & Listen · Support optional</div>
-        </div>
-      </div>
+<h1>Press Kit — Shromani Rampaulsaini (Yatharth)</h1>
+<p class="muted">Download & use for media / researchers. Replace placeholders with final assets.</p>
 
-      <nav aria-label="social links">
-        <a class="link-pill" href="https://www.facebook.com/" target="_blank">Facebook</a>
-        <a class="link-pill" href="https://en.wikipedia.org/wiki/User:Shiromni_Rampaulsaini" target="_blank">Wikipedia</a>
-        <a class="link-pill" href="https://twitter.com/" target="_blank">X / Twitter</a>
-        <a class="link-pill" href="https://t.me/sampaulsaini" target="_blank">Telegram</a>
-        <a class="link-pill" href="https://wa.me/918082935186" target="_blank">WhatsApp</a>
-        <a class="link-pill" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">YouTube</a>
-        <a class="link-pill" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-        <button id="viewToggle" class="toggle-btn">Simple View</button>
-      </nav>
-    </header>
+<h2>About</h2>
+<p>शिरोमणि रामपुलसैनी — Proponent of Yatharth (निष्पक्ष समझ). Short bio / mission statement here.</p>
 
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-left">
-        <img class="main-photo" id="mainPhoto" src="https://i.ibb.co/xqf3kTPS/enhanced-image.webp" alt="Shromani Rampaulsaini" loading="lazy">
+<h2>Contact</h2>
+<ul>
+<li>Email: research@rampaulsaini.github.io</li>
+<li>Telegram: https://t.me/sampaulsaini</li>
+<li>Phone / Paytm: 8082935186</li>
+</ul>
 
-        <div class="gold-caption" aria-hidden>
-          मैं शिरोमणि रामपुलसैनी तुलनातीत कालातीत द्वैततीत शब्दातीत प्रेमतित सम्पन्नता संपूर्णता समग्रता संतुष्टि सत्य प्रत्यक्ष शाश्वत वास्तविक स्भाविक सत्य में हूँ, "खुद का साक्षात्कार हूँ"
-        </div>
+<h2>Key Assets</h2>
+<ul>
+<li>Portrait photo (high-res): https://i.ibb.co/xqf3kTPS/enhanced-image.webp</li>
+<li>Audio MP3 folder: https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6</li>
+<li>Videos folder: https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC</li>
+<li>Certificates: https://photos.app.goo.gl/hBJ4mN176PboQ7bb6</li>
+</ul>
 
-        <div style="margin-top:18px" class="gold-frame card" aria-labelledby="hero-title">
-          <div id="hero-title" style="color:var(--gold);font-weight:700;font-size:16px;line-height:1.6">
-            जिस स्थायी सत्य से मानव सभ्यता अब तक अपरिचित रही — वही सत्य अब प्रत्यक्ष है।
-            यह कोई मान्यता नहीं, कोई मत नहीं — यह जीवित अनुभव है।
-            <div class="eng" style="margin-top:10px;font-weight:600;font-size:15px;color:#fff">The permanent truth unknown to humanity is now realized — not as a belief, but as a living experience.</div>
-          </div>
-        </div>
+<h2>Claims & Evidence</h2>
+<p>Short bullets summarizing claims, available evidence, and steps to request detailed data or collaboration.</p>
 
-        <!-- Payments (Paytm + PayPal only) -->
-        <div class="payments" aria-label="payments">
-          <div class="pay-card" role="group" aria-labelledby="paytm-title">
-            <h4 id="paytm-title">Paytm / PhonePe</h4>
-            <img src="https://i.ibb.co/PRtY7bL/alt-upi-qr.webp" alt="Paytm QR" style="width:150px;height:150px;border-radius:10px;">
-            <div class="small">Phone / Paytm: <strong>8082935186</strong></div>
-            <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank">Pay via UPI</a>
-          </div>
+<h2>How to Request Collaboration / Verification</h2>
+<ol>
+<li>Contact via research@rampaulsaini.github.io</li>
+<li>Provide institutional credentials and scope of collaboration</li>
+<li>Requests for datasets / observational logs will be responded to with access protocols</li>
+</ol>
 
-          <div class="pay-card" role="group" aria-labelledby="paypal-title">
-            <h4 id="paypal-title">PayPal / Card</h4>
-            <img src="https://i.ibb.co/8jvTQ7p/paypal-qr.webp" alt="PayPal QR" style="width:150px;height:150px;border-radius:10px;">
-            <div class="small">PayPal: <strong>paypal.me/sainirampaul60</strong></div>
-            <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener">Open PayPal</a>
-          </div>
-        </div>
-      </div>
+<p style="margin-top:24px" class="muted">Generated: {date}</p>
+</body></html>
+""".format(date=datetime.utcnow().date().isoformat())
 
-      <aside class="card" aria-labelledby="media-title" style="padding:18px">
-        <div style="margin-bottom:12px">
-          <div id="media-title" style="font-weight:800;color:var(--gold)">All content — Free to Read & Listen</div>
-          <div class="small" style="color:var(--muted)">Audio, manifesto, photos & vision assets — proceeds support Saneha Saini</div>
-        </div>
+(out_dir / "press-kit.html").write_text(press_html, encoding="utf-8")
 
-        <div class="folders" role="list">
-          <a class="folder-pill" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">✅ Golden Temple Account</a>
-          <a class="folder-pill" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">✅ MP3</a>
-          <a class="folder-pill" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">✅ प्रमाण पत्र</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">✅ Short Audios</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">✅ Videos Album</a>
-          <a class="folder-pill" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">✅ Album 1</a>
-        </div>
+# Try to create a simple PDF using reportlab if available; otherwise create a TXT fallback
+pdf_path = out_dir / "press-kit.pdf"
+pdf_created = False
+try:
+    from reportlab.lib.pagesizes import A4
+    from reportlab.pdfgen import canvas
+    c = canvas.Canvas(str(pdf_path), pagesize=A4)
+    width, height = A4
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(40, height - 60, "Press Kit — Shromani Rampaulsaini (Yatharth)")
+    c.setFont("Helvetica", 10)
+    lines = [
+        "About: शिरोमणि रामपुलसैनी — Proponent of Yatharth (निष्पक्ष समझ).",
+        "Contact: research@rampaulsaini.github.io | Telegram: https://t.me/sampaulsaini | Phone: 8082935186",
+        "",
+        "Assets:",
+        "- Portrait: https://i.ibb.co/xqf3kTPS/enhanced-image.webp",
+        "- Audio MP3: https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6",
+        "- Videos: https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC",
+        "- Certificates: https://photos.app.goo.gl/hBJ4mN176PboQ7bb6",
+        "",
+        "Claims & Evidence: Short bullets summarizing claims, available evidence, and steps to request detailed data or collaboration.",
+        "",
+        "How to Request Collaboration: Contact via research@rampaulsaini.github.io",
+        "",
+        f"Generated: {datetime.utcnow().date().isoformat()}"
+    ]
+    y = height - 90
+    for ln in lines:
+        c.drawString(40, y, ln)
+        y -= 14
+        if y < 80:
+            c.showPage()
+            y = height - 60
+    c.save()
+    pdf_created = True
+except Exception as e:
+    # fallback: create a txt file with press content
+    (out_dir / "press-kit.txt").write_text("Press kit fallback\n\n" + press_html, encoding="utf-8")
+    pdf_created = False
 
-        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <a class="btn" href="#supportSection">Support</a>
-          <a class="btn" href="mailto:research@rampaulsaini.github.io">Contact Research Team</a>
-        </div>
+# 4) publications.jsonld example
+publications = {
+    "@context": "https://schema.org",
+    "@graph":[
+        {
+            "@type":"ScholarlyArticle",
+            "@id":"https://rampaulsaini.github.io/my-omniverse-store/#article-example",
+            "headline":"Experiential Realization — Pilot Observational Report (Example)",
+            "author":{"@type":"Person","name":"Shromani Rampaulsaini"},
+            "datePublished":"2025-06-01",
+            "publisher":{"@type":"Organization","name":"Yatharth Publications"},
+            "isAccessibleForFree":True,
+            "url":"https://rampaulsaini.github.io/my-omniverse-store/observational-report",
+            "identifier":[{"@type":"PropertyValue","propertyID":"DOI","value":"10.0000/example-doi"}],
+            "description":"Example placeholder. Replace with your real paper DOI and abstract."
+        }
+    ]
+}
+(out_dir / "publications.jsonld").write_text(json.dumps(publications, indent=2, ensure_ascii=False), encoding="utf-8")
 
-        <!-- Press Kit -->
-        <div style="margin-top:18px;border-top:1px solid rgba(255,255,255,0.03);padding-top:12px;text-align:center">
-          <div style="font-weight:700;color:var(--gold)">Press Kit</div>
-          <p class="small" style="color:var(--muted);margin:8px 0">Download the press kit (bio, photos, media assets, contact)</p>
-          <!-- Replace /press/press-kit.pdf with real uploaded path -->
-          <a class="btn" href="/press/press-kit.pdf" download>Download Press Kit (PDF)</a>
-        </div>
-      </aside>
-    </section>
+# 5) README with step-by-step instructions for GSC verification and how to use files
+readme = f"""Yatharth — SEO & Assets package
+Files in this package (path: {out_dir}):
+- sitemap.xml                 (place in repo root, submit to Google Search Console)
+- google1234567890abcdef.html (sample verification HTML file — replace token filename with the one Search Console provides)
+- press-kit.html              (press kit HTML, edit and upload or convert to PDF)
+- press-kit.pdf              (PDF generated if environment supports reportlab) {'(created)' if pdf_created else '(not created; press-kit.txt fallback)'} 
+- press-kit.txt              (fallback text version of press kit if PDF not generated)
+- publications.jsonld         (example JSON-LD for scholarly articles — edit with real DOIs)
+- README.txt                  (this file)
 
-    <!-- Invitations & Collaborations -->
-    <section style="margin-top:28px">
-      <div class="card">
-        <h2 style="margin:0;color:var(--gold)">Invitations & Collaborations</h2>
-        <p class="small" style="margin-top:8px;color:var(--muted)">शिरोमणि रामपुलसैनी open invites for research, ISRO/NASA collaboration, world record recognition and NGO partnerships.</p>
-        <ul style="margin-top:10px;color:#fff">
-          <li><strong>ISRO / NASA:</strong> scientific collaboration invitations for exploratory experiments / observations.</li>
-          <li><strong>World Record Organizations:</strong> documentation & submission readiness (Guinness / Limca / national records).</li>
-          <li><strong>Academic / Lab Collaborations:</strong> pilot studies, physiological correlates, wearable sensors, behavioural metrics.</li>
-        </ul>
-        <p class="small" style="margin-top:10px;color:var(--muted)">Contact: <a href="mailto:research@rampaulsaini.github.io" style="color:var(--gold)">research@rampaulsaini.github.io</a></p>
-      </div>
-    </section>
+Instructions — quick:
+1) Copy sitemap.xml to repo root and commit (https://rampaulsaini.github.io/my-omniverse-store/sitemap.xml).
+2) In Google Search Console add property with URL prefix: https://rampaulsaini.github.io/my-omniverse-store/
+   - Use the provided verification method (HTML file or meta tag). If using HTML file, upload google<token>.html (we provided a sample google1234567890abcdef.html).
+   - Or paste the meta tag into <head> of index.html and commit.
+3) Submit sitemap in GSC: Use the URL /sitemap.xml
+4) Edit press-kit.html (or press-kit.pdf) with final bio and assets. Upload to /press/press-kit.pdf on your repo.
+5) If you have real DOIs/publication links, replace placeholders in publications.jsonld and merge into the JSON-LD block in index.html.
 
-    <!-- Support Form -->
-    <section id="supportSection" style="margin-top:28px">
-      <div class="card" style="padding:18px">
-        <h2 style="margin:0;color:var(--gold);text-align:center">सत्य के इस कार्य में आपका सहयोग</h2>
-        <p style="text-align:center;color:#ddd;margin-top:8px;max-width:780px;margin-left:auto;margin-right:auto">यह सहयोग पूर्णतः स्वैच्छिक है — इसे सुनना, साझा करना, अनुभव करना और समर्थन देना — सभी सत्य की सेवा हैं।</p>
+Generated: {datetime.utcnow().isoformat()}
+"""
+(out_dir / "README.txt").write_text(readme, encoding="utf-8")
 
-        <div style="margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto">
-          <div class="card" style="background:rgba(0,0,0,0.45);padding:14px;border-radius:10px;">
-            <form id="supportForm" novalidate>
-              <div class="form-row" style="justify-content:center">
-                <input id="sname" name="name" placeholder="आपका नाम (public if allowed)" style="width:240px">
-                <input id="semail" name="email" placeholder="ईमेल (private)" style="width:240px">
-                <input id="scountry" name="country" placeholder="Country (optional)" style="width:240px">
-              </div>
-              <div style="margin-top:10px;text-align:center">
-                <textarea id="smsg" name="message" placeholder="आपका संदेश / आशीर्वचन" required></textarea>
-              </div>
-              <div style="margin-top:10px;text-align:center">
-                <button type="submit" id="sendBtn" class="btn">संदेश भेजें</button>
-              </div>
-            </form>
-          </div>
+# Create ZIP
+zip_path = Path("/mnt/data/yatharth_assets_bundle.zip")
+if zip_path.exists():
+    zip_path.unlink()
+shutil.make_archive("/mnt/data/yatharth_assets_bundle", 'zip', str(out_dir))
 
-          <div style="margin-top:18px;display:flex;gap:22px;flex-wrap:wrap;justify-content:center">
-            <div style="width:320px">
-              <h3 style="color:var(--gold);font-size:16px;margin:6px 0">🤝 समर्थक सूची</h3>
-              <ul id="supList" style="list-style:none;padding:0;color:#fff;text-align:left;min-height:60px"></ul>
-            </div>
-            <div style="width:520px">
-              <h3 style="color:var(--gold);font-size:16px;margin:6px 0">🕊 आशीर्वचन / संदेश</h3>
-              <div id="msgWall" style="min-height:60px;color:#ddd;text-align:left"></div>
-              <div style="margin-top:8px;text-align:right"><button id="exportBtn" class="btn">Export Messages</button></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Outreach & Highlights -->
-    <section style="margin-top:36px">
-      <div class="card">
-        <div style="font-weight:800;color:var(--gold)">Scientific Outreach & Global Vision</div>
-        <p class="small" style="margin-top:8px">Interdisciplinary integration of experiential reports, observational methods, phenomenology, and measurable correlates; open invitations for pilot studies and collaborations.</p>
-
-        <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
-          <div class="card"><h4>Scientific Collaboration</h4><p class="small">Open invitations for collaboration with universities and labs for exploratory studies.</p></div>
-          <div class="card"><h4>World Records & Recognition</h4><p class="small">Prepared documentation for Guinness, Limca, Asia & India Book of Records.</p></div>
-          <div class="card"><h4>Media & Research</h4><p class="small">Press kits and outreach for journalists and research partners.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div style="margin-bottom:8px">꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant</div>
-      <div style="color:var(--muted)">Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp</div>
-      <div style="margin-top:10px;color:var(--muted);font-size:13px">
-        <strong>Donate (optional):</strong><br>
-        Paytm / Phone: <code style="color:var(--gold)">8082935186</code> • PayPal: <a href="https://paypal.me/sainirampaul60" target="_blank" style="color:var(--gold)">paypal.me/sainirampaul60</a>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Scripts: support form, localStorage, sitemap helper -->
-  <script>
-    (function(){
-      const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyLw3pepZQ6SrS8oOKSCzeI3ZsU4dqbng-vKBA42HRSnRo8-N1ggWsg3S00l3oGDDJi/exec";
-      const SECRET_TOKEN = "Y4h9r7PqZ2uA8xVbL0cM3sK";
-
-      function $(id){ return document.getElementById(id); }
-      function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-      // View toggle (simple)
-      const viewBtn = $('viewToggle');
-      if(viewBtn) viewBtn.addEventListener('click', ()=>{ document.body.classList.toggle('simple'); viewBtn.textContent = document.body.classList.contains('simple') ? 'Supreme View' : 'Simple View'; });
-
-      // Support localStorage
-      function saveLocal(name,email,country,message){
-        const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
-        const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-        if(name) supporters.push({name:name||'अनाम',country:country||'Unknown',ts:new Date().toISOString()});
-        msgs.push({name: name||'अनाम', email: email||'', country: country||'', msg: message, ts: new Date().toISOString()});
-        localStorage.setItem('spList', JSON.stringify(supporters));
-        localStorage.setItem('spMsg', JSON.stringify(msgs));
-      }
-      function renderSupport(){
-        const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
-        const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-        if($('supList')) $('supList').innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)} <span class="small" style="float:right">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style="color:var(--muted)">कोई समर्थक नहीं मिला</li>';
-        if($('msgWall')) $('msgWall').innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:6px 0">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)} <span class="small" style="display:block">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style="color:var(--muted)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
-      }
-
-      async function postToServer(payload){
-        if(!WEB_APP_URL || WEB_APP_URL.length<10) return {ok:false, err:'no-endpoint'};
-        try{
-          const res = await fetch(WEB_APP_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
-          if(!res.ok) return {ok:false, err: 'http-'+res.status};
-          let json=null; try{ json = await res.json(); }catch(e){ json=null; }
-          return {ok:true, data: json};
-        }catch(err){ return {ok:false, err: String(err)}; }
-      }
-
-      function clearForm(){ if($('sname')) $('sname').value=''; if($('semail')) $('semail').value=''; if($('scountry')) $('scountry').value=''; if($('smsg')) $('smsg').value=''; }
-
-      async function submitSupport(ev){
-        ev && ev.preventDefault();
-        const name = $('sname').value.trim();
-        const email = $('semail').value.trim();
-        const country = $('scountry').value.trim();
-        const message = $('smsg').va
+# List files and output zip path
+{"files": [p.name for p in sorted(out_dir.iterdir())], "zip": "sandbox:/mnt/data/yatharth_assets_bundle.zip"}
+  
