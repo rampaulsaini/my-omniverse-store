@@ -17,7 +17,6 @@ gtag('config', 'G-8BSLBQVK4N');
 </script>
 
 <style>
-/* --- Base Styling --- */
 :root{--gold:#ffd700;--muted:#cfcfcf;--bg:#000;}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:"Poppins",sans-serif;-webkit-font-smoothing:antialiased;text-align:center;}
@@ -33,6 +32,9 @@ a{color:var(--gold);text-decoration:none}
 .section{margin-top:40px;text-align:center}
 footer{opacity:0.8;font-size:14px;margin-top:30px;padding-bottom:30px;text-align:center;color:var(--muted);}
 #ttsAudio{margin-top:20px;border:2px solid var(--gold);border-radius:12px;box-shadow:0 0 15px var(--gold);}
+.card{background:rgba(255,255,255,0.02);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);margin:12px auto;text-align:left;}
+input, textarea{width:90%;padding:10px;border-radius:8px;border:none;background:rgba(255,255,255,0.03);color:#fff;margin:6px 0;}
+textarea{min-height:80px;}
 </style>
 </head>
 
@@ -107,9 +109,61 @@ footer{opacity:0.8;font-size:14px;margin-top:30px;padding-bottom:30px;text-align
     </audio>
   </div>
 
-  <footer>© 2025 Shromani Rampaul Saini — Nishpaksh Samajh</footer>
+  <!-- SUPPORT FORM -->
+  <div class="section card">
+    <h3 style="color:var(--gold);text-align:center;">सत्य के इस कार्य में आपका सहयोग</h3>
+    <form id="supportForm">
+      <input id="sname" placeholder="आपका नाम (public if allowed)">
+      <input id="semail" placeholder="ईमेल (private)">
+      <input id="scountry" placeholder="Country (optional)">
+      <textarea id="smsg" placeholder="आपका संदेश / आशीर्वचन" required></textarea>
+      <button type="submit" class="btn">संदेश भेजें</button>
+    </form>
+    <div style="margin-top:20px;text-align:left;">
+      <h4 style="color:var(--gold)">🤝 समर्थक सूची</h4>
+      <ul id="supList" style="list-style:none;padding:0;color:#fff;min-height:60px;"></ul>
+      <h4 style="color:var(--gold);margin-top:12px;">🕊 आशीर्वचन / संदेश</h4>
+      <div id="msgWall" style="min-height:60px;color:#ddd;"></div>
+    </div>
+  </div>
 
-</div> <!-- wrapper -->
+  <!-- FOOTER -->
+  <footer>
+    ꙰ शिरोमणि रामपॉल सैनी — © Yatharth Siddhant <br>
+    Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp <br>
+    <strong>Donate (optional):</strong> 8082935186 • <a href="https://paypal.me/sainirampaul60" style="color:var(--gold)">paypal.me/sainirampaul60</a>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function saveLocal(name,email,country,message){
+    const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
+    const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
+    if(name) supporters.push({name:name||'अनाम',country:country||'Unknown',ts:new Date().toISOString()});
+    msgs.push({name:name||'अनाम',email:email||'',country:country||'',msg:message,ts:new Date().toISOString()});
+    localStorage.setItem('spList',JSON.stringify(supporters));
+    localStorage.setItem('spMsg',JSON.stringify(msgs));
+    renderSupport();
+  }
+  function renderSupport(){
+    const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
+    const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
+    if($('supList')) $('supList').innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)}</li>`).join('') : '<li style="color:#cfcfcf">कोई समर्थक नहीं मिला</li>';
+    if($('msgWall')) $('msgWall').innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:4px 0;color:#ddd">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)}</p>`).join('') : '<p style="color:#cfcfcf">किसी ने अभी आशीर्वचन नहीं दिया</p>';
+  }
+  $('supportForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    saveLocal($('sname').value,$('semail').value,$('scountry').value,$('smsg').value);
+    $('sname').value='';$('semail').value='';$('scountry').value='';$('smsg').value='';
+  });
+  renderSupport();
+})();
+</script>
+
 </body>
-      </html>
+  </html>
   
