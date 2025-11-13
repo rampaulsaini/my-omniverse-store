@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://rampaulsaini.github.io/my-omniverse-store/</loc><lastmod>2025-11-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://photos.app.goo.gl/4MP8THuxhei9NuxR6</loc><lastmod>2025-11-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6</loc><lastmod>2025-11-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y</loc><lastmod>2025-11-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC</loc><lastmod>2025-11-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u</loc><lastmod>2025-11-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO/</loc></url>
   <!-- add other pages if you create them -->
 </urlset>
