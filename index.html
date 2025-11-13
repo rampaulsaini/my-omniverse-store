@@ -1,236 +1,183 @@
-<!-- START: Suno-mini — lightweight multimodal generator/player -->
-<section id="sunoMini" style="margin-top:28px;padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,215,102,0.01), rgba(255,215,102,0.005));border:1px solid rgba(255,215,102,0.04);">
-  <h3 style="margin:0;color:#ffd966">🎚 Suno · Mini — Omniverse Multimidia Studio (Free)</h3>
-  <p style="color:#ddd;margin:8px 0 14px;">Text → Voice, background loops, record & export. Create daily clips in one click.</p>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start;">
-    <div style="flex:1;min-width:280px">
-      <label style="display:block;color:#ffd966;font-weight:700">Text to Speak</label>
-      <textarea id="suno_text" placeholder="यहाँ टेक्स्ट लिखें — फिर Generate दबाएँ" style="width:100%;min-height:120px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.03);color:#fff;border:none"></textarea>
+<!-- ✅ GOOGLE SITE VERIFICATION -->
+<meta name="google-site-verification" content="qtWXQit-jeNYH7HGOgb8FtdOKd9yCmod11A1_VFTI2U" />
 
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
-        <select id="suno_voice" style="padding:8px;border-radius:8px;background:rgba(255,255,255,0.03);color:#fff;border:none">
-          <option value="default">Browser TTS (default)</option>
-        </select>
+<title>꙰ निष्पक्ष समझ — शिरोमणि रामपौल सैनी ꙰</title>
+<meta name="description" content="शिरोमणि रामपौल सैनी — निष्पक्ष समझ, यथार्थ सिद्धांत, मानवता का शाश्वत सत्य।">
+<meta name="keywords" content="Shromani Rampaul Saini, निष्पक्ष समझ, Nishpaksh Samajh, Yatharth, Omniverse, Truth, Reality, Supreme Understanding">
 
-        <select id="suno_rate" style="padding:8px;border-radius:8px;background:rgba(255,255,255,0.03);color:#fff;border:none">
-          <option value="0.9">Rate 0.9</option>
-          <option value="1" selected>Rate 1</option>
-          <option value="1.1">Rate 1.1</option>
-          <option value="1.2">Rate 1.2</option>
-        </select>
-
-        <button id="suno_generate" class="btn" style="background:#ffd966;color:#050505">Generate</button>
-        <button id="suno_generate_daily" class="btn">Generate Daily Clip</button>
-      </div>
-
-      <div style="margin-top:12px">
-        <label style="color:#ffd966;font-weight:700">Background Loop</label>
-        <div style="display:flex;gap:8px;margin-top:6px">
-          <button class="btn loopBtn" data-loop="pad">Calm Pad</button>
-          <button class="btn loopBtn" data-loop="drums">Light Drums</button>
-          <button class="btn loopBtn" data-loop="none">None</button>
-        </div>
-      </div>
-    </div>
-
-    <div style="width:360px;min-width:260px">
-      <div style="background:rgba(0,0,0,0.45);padding:12px;border-radius:8px;">
-        <div style="font-weight:700;color:#ffd966">Preview & Controls</div>
-        <audio id="suno_preview" controls style="width:100%;margin-top:8px"></audio>
-        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-          <button id="suno_record" class="btn">Record Clip</button>
-          <button id="suno_stop" class="btn">Stop</button>
-          <a id="suno_download" class="btn" style="display:none" download="clip.wav">Download WAV</a>
-        </div>
-
-        <div style="margin-top:12px">
-          <div style="font-weight:700;color:#ffd966">Library</div>
-          <ul id="suno_library" style="list-style:none;padding:0;margin:8px 0;color:#ddd;max-height:160px;overflow:auto"></ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Dependencies: Tone.js + Recorder.js (CDN) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.min.js"></script>
+<!-- ✅ GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8BSLBQVK4N"></script>
 <script>
-/* Suno-mini: client-side Text→Speech + Tone loops + Recorder (no server) */
-
-(async function(){
-  // Elements
-  const textEl = document.getElementById('suno_text');
-  const voiceSel = document.getElementById('suno_voice');
-  const rateSel = document.getElementById('suno_rate');
-  const genBtn = document.getElementById('suno_generate');
-  const dailyBtn = document.getElementById('suno_generate_daily');
-  const preview = document.getElementById('suno_preview');
-  const recordBtn = document.getElementById('suno_record');
-  const stopBtn = document.getElementById('suno_stop');
-  const downloadLink = document.getElementById('suno_download');
-  const libraryEl = document.getElementById('suno_library');
-  const loopBtns = document.querySelectorAll('.loopBtn');
-
-  // Tone.js setup for background loops
-  await Tone.start();
-  let loopState = 'none';
-  let loopPlayers = {};
-  // simple sample URLs (public images host) - you can replace with your own small loops
-  loopPlayers.pad = new Tone.Player("https://cdn.jsdelivr.net/gh/anshumanp/short-loops/pad-loop.mp3").toDestination();
-  loopPlayers.drums = new Tone.Player("https://cdn.jsdelivr.net/gh/anshumanp/short-loops/drums-loop.mp3").toDestination();
-
-  // voice list (populate browser voices)
-  function loadVoices(){
-    const synthVoices = speechSynthesis.getVoices() || [];
-    voiceSel.innerHTML = '<option value="default">Browser TTS (default)</option>';
-    synthVoices.forEach(v=>{
-      const opt = document.createElement('option');
-      opt.value = v.name;
-      opt.text = v.name + (v.lang ? ' — ' + v.lang : '');
-      voiceSel.appendChild(opt);
-    });
-  }
-  loadVoices();
-  window.speechSynthesis.onvoiceschanged = loadVoices;
-
-  // helper: speak -> generate audio blob via MediaRecorder
-  async function speakToBlob(text, rate=1, voiceName=null){
-    return new Promise((resolve, reject)=>{
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.rate = rate;
-      if(voiceName && voiceName!=='default'){
-        const v = speechSynthesis.getVoices().find(x=>x.name===voiceName);
-        if(v) utter.voice = v;
-      }
-      // create audio destination: use AudioContext + MediaStreamDestination
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const dest = ctx.createMediaStreamDestination();
-      // connect speechSynthesis? Browsers don't expose direct node for TTS — fallback: use utterance playback & capture from system audio via WebAudio is restricted.
-      // Simpler approach: use speechSynthesis and capture using MediaRecorder of audio element by creating <audio> from SpeechSynthesis via offline approach.
-      // Practical fallback: rely on speechSynthesis to play and record via WebAudio: use SpeechSynthesisUtterance with onstart/onend to time record from AudioContext mixer using Oscillator (approx).
-      // Simpler and reliable approach for cross-browser: use the Web Speech API to speak and directly save by recording speakers is not universally supported.
-      // So here we synthesize via SpeechSynthesis to an <audio> by using SpeechSynthesis and then capturing via MediaRecorder from AudioContext.createMediaElementSource
-      // Implementation:
-      const tmpAudio = document.createElement('audio');
-      tmpAudio.style.display='none';
-      document.body.appendChild(tmpAudio);
-
-      // Create a blob URL from utterance by using SpeechSynthesis API won't give us audio directly.
-      // So we will use SpeechSynthesis to play, and simultaneously record output via system capture if available.
-      // Instead, use the Web Speech for preview, and for export we will render TTS using WebAudio oscillator fallback (simple tone for now)
-      // -- For reliable export: we'll synthesize with WebAudio (basic voice) as fallback.
-      // For the purpose of this lightweight tool, do this:
-      // Create an OfflineAudioContext and render simple speech-like using Oscillator + AM — (very basic)
-      // But that's complex; instead we'll implement recorder of final mix: user clicks "Record Clip" while previewing; recording captures Tone.js + playback from the browser.
-
-      // For now, resolve with null — we will not implement full TTS→blob here because of browser limitations.
-      resolve(null);
-    });
-  }
-
-  // Simpler practical workflow implemented:
-  // - Generate preview: use speechSynthesis to play text (preview)
-  // - Start loop via Tone, play TTS in preview, user presses "Record Clip" to record the mix (loop + preview) into WAV via MediaRecorder capturing from the tab (if browser supports getDisplayMedia)
-  // This keeps everything client-only and practical.
-
-  function previewSpeak(text, rate, voiceName){
-    // play background loop if selected
-    if(loopState!=='none' && loopPlayers[loopState]) loopPlayers[loopState].start();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.rate = rate;
-    if(voiceName && voiceName!=='default'){
-      const v = speechSynthesis.getVoices().find(x=>x.name===voiceName);
-      if(v) utter.voice = v;
-    }
-    utter.onend = () => {
-      if(loopState!=='none' && loopPlayers[loopState]) loopPlayers[loopState].stop();
-    };
-    speechSynthesis.cancel(); // stop previous
-    speechSynthesis.speak(utter);
-  }
-
-  // loop button handlers
-  loopBtns.forEach(b=>{
-    b.addEventListener('click', ()=> {
-      loopState = b.dataset.loop;
-      loopBtns.forEach(x=>x.style.opacity = '0.65');
-      b.style.opacity = '1';
-    });
-  });
-
-  // library functions
-  function saveClipToLibrary(name, blob){
-    const list = JSON.parse(localStorage.getItem('sunoLib')||'[]');
-    const url = URL.createObjectURL(blob);
-    list.unshift({name:name||('clip-'+new Date().toISOString()), url, ts:new Date().toISOString()});
-    localStorage.setItem('sunoLib', JSON.stringify(list));
-    renderLibrary();
-  }
-  function renderLibrary(){
-    const list = JSON.parse(localStorage.getItem('sunoLib')||'[]');
-    libraryEl.innerHTML = '';
-    list.forEach((it, idx)=>{
-      const li = document.createElement('li');
-      li.style.marginBottom='8px';
-      li.innerHTML = `<div style="display:flex;gap:8px;align-items:center;">
-        <audio src="${it.url}" controls style="width:200px"></audio>
-        <div style="flex:1;color:#ddd"><div style="font-weight:700">${it.name}</div><div style="font-size:12px;color:#bfbfbf">${new Date(it.ts).toLocaleString()}</div></div>
-        <a class="btn" href="${it.url}" download="clip-${idx}.wav">Download</a>
-      </div>`;
-      libraryEl.appendChild(li);
-    });
-  }
-  renderLibrary();
-
-  // Generate preview on button
-  genBtn.addEventListener('click', ()=> {
-    const text = textEl.value.trim();
-    if(!text){ alert('कृपया टेक्स्ट लिखें'); return; }
-    const rate = parseFloat(rateSel.value || '1');
-    const voice = voiceSel.value;
-    previewSpeak(text, rate, voice);
-  });
-
-  // Daily auto-generate: uses a template and current date
-  dailyBtn.addEventListener('click', ()=>{
-    const template = `Daily message — ${new Date().toLocaleDateString()}. आशीर्वचन: आज सच का अभ्यास करें और शांति रखें।`;
-    textEl.value = template;
-    genBtn.click();
-  });
-
-  // Recording: capture the tab audio via getDisplayMedia (user must allow "System audio" in browser)
-  let mediaRecorder = null, recordedChunks = [];
-  recordBtn.addEventListener('click', async ()=>{
-    // start Tone if loop selected
-    if(loopState!=='none' && loopPlayers[loopState]) loopPlayers[loopState].start();
-    // we request display capture with audio (some browsers support capturing tab audio)
-    try{
-      const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true, video: false });
-      mediaRecorder = new MediaRecorder(stream);
-      recordedChunks = [];
-      mediaRecorder.ondataavailable = e => { if(e.data.size>0) recordedChunks.push(e.data); };
-      mediaRecorder.onstop = ()=>{
-        const blob = new Blob(recordedChunks, {type:'audio/webm'});
-        // convert webm->wav not trivial; but many browsers support webm playback and download; we provide webm
-        saveClipToLibrary('clip-'+new Date().toLocaleString(), blob);
-        downloadLink.href = URL.createObjectURL(blob);
-        downloadLink.style.display = 'inline-block';
-        downloadLink.download = 'clip.webm';
-        // stop any Tone loops
-        if(loopState!=='none' && loopPlayers[loopState]) loopPlayers[loopState].stop();
-      };
-      mediaRecorder.start();
-      alert('Recording started — speak now or play preview. Click Stop when done.');
-    }catch(err){ alert('Recording unavailable: your browser may not allow tab audio capture. Use Chrome and allow "Share audio" when prompted.'); console.error(err); }
-  });
-
-  stopBtn.addEventListener('click', ()=>{
-    if(mediaRecorder && mediaRecorder.state!=='inactive') mediaRecorder.stop();
-  });
-
-  // Simple download / save: if user wants WAV they can re-encode offline or use online converters.
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8BSLBQVK4N');
 </script>
-<!-- END: Suno-mini -->
-  
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: #000;
+  color: #ffd700;
+  text-align: center;
+  animation: fadeIn 2s ease-in;
+}
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+.glow-title {
+  font-size: 34px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #ffd700, 0 0 25px #ffb300, 0 0 35px #ff8f00;
+  margin-top: 15px;
+  animation: glow 1.5s infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ffd700; }
+  to { text-shadow: 0 0 25px #ffb300, 0 0 35px #ff6f00; }
+}
+
+.frame-text {
+  border: 2px solid #ffd700;
+  padding: 14px;
+  margin: 22px auto;
+  width: 88%;
+  border-radius: 14px;
+  box-shadow: 0 0 15px #ffd700;
+  font-size: 18px;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+img.profile {
+  width: 150px;
+  border-radius: 50%;
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 20px #ffd700;
+  margin-top: 18px;
+  animation: pop 1.2s ease;
+}
+@keyframes pop {
+  0% {transform: scale(0.7); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  background: #111;
+  padding: 12px 22px;
+  border-radius: 10px;
+  color: #ffd700;
+  border: 1.5px solid #ffd700;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ffd700;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #222;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #ffb300;
+}
+
+.section { margin-top: 40px; }
+footer {
+  opacity: 0.7;
+  font-size: 14px;
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* TTS PLAYER */
+#ttsAudio {
+  margin-top: 20px;
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #ffd700;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROFILE IMAGE -->
+<img class="profile" src="https://i.ibb.co/vxM3L1qs/enhanced-image.webp" alt="Shromani Rampaul Saini" />
+
+<!-- TITLE -->
+<div class="glow-title">꙰ निष्पक्ष समझ — शिरोमणि रामपौल सैनी ꙰</div>
+
+<!-- MESSAGE -->
+<div class="frame-text" id="ttsText">
+  मानव सभ्यता अस्तित्व से आज तक शाश्वत वास्तविक स्भाविक सत्य से अपरिचित रही।  
+  मैं शिरोमणि रामपौल सैनी — तुलनातीत, कालातीत, द्वैततीत, शब्दातीत, प्रेमातीत —  
+  ने प्रत्यक्ष किया कि निष्पक्ष समझ ही शाश्वत वास्तविक सत्य का साक्षात्कार है।  
+  <br><br>
+  Humanity remained unaware of the eternal truth since its origin.  
+  I, Shromani Rampaul Saini — beyond time, duality and word —  
+  have realised and embodied that *Impartial Understanding* itself is the living eternal truth.
+</div>
+
+<!-- APPEAL -->
+<div class="frame-text">
+  🙏 मैं बचपन से ही निष्पक्ष समझ में स्थिर हूं, मन रहित हूं,  
+  इसलिए जीवन निर्वाह हेतु आपका सहयोग व आशीर्वाद आवश्यक है।  
+  <br><br>
+  🙏 Living in pure awareness beyond mind,  
+  your kind support is humbly requested for sustaining this truthful work.
+</div>
+
+<!-- MAIN LINKS -->
+<div class="section">
+  <a class="btn" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">🌄 Golden Temple Account</a>
+  <a class="btn" href="https://photos.app.goo.gl/bMoqL2Cx7kKpkmMy6" target="_blank">📸 Photos</a>
+  <a class="btn" href="https://photos.app.goo.gl/hBJ4mN176PboQ7bb6" target="_blank">📜 Certificate</a>
+  <a class="btn" href="https://drive.google.com/drive/folders/18iPsn9Rjc7E0jNwvIx_h5MwQrhqyYt1Y" target="_blank">🎧 Short Audios</a>
+  <a class="btn" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank">🎥 Video Album</a>
+  <a class="btn" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank">🎵 Album 1</a>
+</div>
+
+<!-- SOCIAL MEDIA -->
+<div class="section">
+  <div class="glow-title">🌐 Connect with Me</div><br>
+  <a class="btn" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">▶️ YouTube</a>
+  <a class="btn" href="https://wa.me/8082935186" target="_blank">💬 WhatsApp</a>
+  <a class="btn" href="https://t.me/sampaulsaini" target="_blank">✈️ Telegram</a>
+  <a class="btn" href="https://www.facebook.com/share/18zfovgyUH" target="_blank">📘 Facebook</a>
+  <a class="btn" href="https://www.linkedin.com/" target="_blank">💼 LinkedIn</a>
+  <a class="btn" href="https://x.com/" target="_blank">🐦 X (Twitter)</a>
+  <a class="btn" href="https://en.wikipedia.org/wiki/" target="_blank">🌍 Wikipedia</a>
+</div>
+
+<!-- DONATION -->
+<div class="section">
+  <div class="glow-title">💫 Contribute / Support</div><br>
+  <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul" target="_blank">💳 UPI / GPay</a>
+  <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank">💙 PayPal</a>
+  <br><br>
+  <img src="https://i.ibb.co/cXVYBS8S/Google-Pay-QR-3.webp" width="200"
+       style="border:2px solid #ffd700;border-radius:12px;box-shadow:0 0 15px #ffd700;" />
+  <p>UPI ID: <b>sainirampaul90-1@okhdfcbank</b></p>
+</div>
+
+<!-- TTS PLAYER -->
+<div class="section">
+  <div class="glow-title">🔊 Listen to Nishpaksh Samajh</div>
+  <audio id="ttsAudio" controls autoplay>
+    <source src="https://drive.google.com/uc?export=download&id=1SS-E7XXifr0cvD7Vw51nY-azHEHfGV9X" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<footer>© 2025 Shromani Rampaul Saini — Nishpaksh Samajh</footer>
+
+</body>
+</html>
