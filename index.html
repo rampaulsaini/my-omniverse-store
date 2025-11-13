@@ -27,12 +27,11 @@ html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:"Popp
 a{color:var(--gold);text-decoration:none}
 .wrapper{max-width:1180px;margin:18px auto;padding:22px;text-align:center}
 
+/* Profile & title */
 .profile{width:150px;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 20px var(--gold);display:block;margin:18px auto;animation:pop 1.2s ease;}
 @keyframes pop {0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
-
 .glow-title{font-size:34px;font-weight:800;text-shadow:0 0 10px var(--gold),0 0 25px #ffb300,0 0 35px #ff8f00;margin-top:6px;text-align:center;animation:glow 1.5s infinite alternate;}
 @keyframes glow {from{text-shadow:0 0 10px var(--gold);} to{text-shadow:0 0 25px #ffb300,0 0 35px #ff6f00;}}
-
 .frame-text{border:2px solid var(--gold);padding:14px;margin:22px auto;width:88%;border-radius:14px;box-shadow:0 0 15px rgba(255,215,102,0.08);font-size:18px;line-height:1.6;background:rgba(0,0,0,0.32)}
 .btn{display:inline-block;margin:10px;background:#111;padding:12px 22px;border-radius:10px;color:var(--gold);border:1.5px solid var(--gold);font-size:16px;font-weight:700;text-decoration:none;transition:transform .14s,box-shadow .14s}
 .btn:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,0.6);background:rgba(255,215,102,0.02);color:#050505}
@@ -79,6 +78,18 @@ form textarea{min-height:80px}
     your kind support is humbly requested for sustaining this truthful work.
   </div>
 
+  <!-- SOCIAL MEDIA -->
+  <div class="section">
+    <div class="glow-title">🌐 Connect with Me</div>
+    <a class="btn" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank">▶️ YouTube</a>
+    <a class="btn" href="https://wa.me/8082935186" target="_blank">💬 WhatsApp</a>
+    <a class="btn" href="https://t.me/sampaulsaini" target="_blank">✈️ Telegram</a>
+    <a class="btn" href="https://www.facebook.com/share/18zfovgyUH" target="_blank">📘 Facebook</a>
+    <a class="btn" href="https://www.linkedin.com/" target="_blank">💼 LinkedIn</a>
+    <a class="btn" href="https://x.com/" target="_blank">🐦 X (Twitter)</a>
+    <a class="btn" href="https://en.wikipedia.org/wiki/" target="_blank">🌍 Wikipedia</a>
+  </div>
+
   <!-- MAIN LINKS -->
   <div class="section">
     <a class="btn" href="https://photos.app.goo.gl/4MP8THuxhei9NuxR6" target="_blank">🌄 Golden Temple Account</a>
@@ -92,7 +103,6 @@ form textarea{min-height:80px}
   <!-- DONATION -->
   <div class="section">
     <div class="glow-title">💫 Contribute / Support</div>
-    <br>
     <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul" target="_blank">💳 UPI / GPay</a>
     <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank">💙 PayPal</a>
     <br><br>
@@ -136,13 +146,13 @@ form textarea{min-height:80px}
     </div>
   </section>
 
-  <!-- SCIENTIFIC RESEARCH & MEDIA -->
+  <!-- SCIENTIFIC RESEARCH & PRESS -->
   <section class="section">
     <div class="card">
       <h3 style="color:var(--gold)">🔬 Scientific Research & Global Invitation</h3>
       <p class="small" style="color:var(--muted);margin-top:6px;">
         मैं शिरोमणि रामपौल सैनी अपनी निष्पक्ष समझ की हर चीज़ को तर्क, तथ्य और अनुभव के आधार पर सिद्ध करने का इच्छुक हूँ।  
-        Open invitations for universities, NASA, ISRO, Guinness Book verification, and global press.
+        Open invitations for universities, NASA, ISRO, Guinness Book verification, and international press.
       </p>
       <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
         <a class="btn" href="/press/press-kit.pdf" target="_blank" rel="noopener">📄 Press Kit (PDF)</a>
@@ -159,7 +169,6 @@ form textarea{min-height:80px}
   </footer>
 </div>
 
-<!-- JS for support form -->
 <script>
 const supList = document.getElementById('supList');
 const msgWall = document.getElementById('msgWall');
@@ -204,5 +213,5 @@ exportBtn.addEventListener('click', function(){
 renderSupport();
 </script>
 </body>
-          </html>
-          
+  </html>
+  
