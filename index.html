@@ -111,7 +111,7 @@ form textarea{min-height:80px}
     <p>UPI ID: <b>sainirampaul90-1@okhdfcbank</b></p>
   </div>
 
-  <!-- TTS AUDIO -->
+  <!-- LISTEN TO YOUR VOICE -->
   <div class="section">
     <div class="glow-title">🔊 Listen to Nishpaksh Samajh</div>
     <audio id="ttsAudio" controls autoplay>
@@ -146,22 +146,18 @@ form textarea{min-height:80px}
     </div>
   </section>
 
-  <!-- OMNIVERSE DAILY CLIP GENERATOR -->
+  <!-- SCIENTIFIC RESEARCH & PRESS -->
   <section class="section">
     <div class="card">
-      <h3 style="color:var(--gold);text-align:center">🎚 Omniverse Daily Clip Generator</h3>
-      <p class="small">Type text below and generate your daily audio clip with background loops. Fully free, browser-based.</p>
-      <textarea id="clipText" placeholder="यहाँ टेक्स्ट लिखें"></textarea><br>
-      <label>Background Loop:</label>
-      <select id="bgLoop">
-        <option value="none">None</option>
-        <option value="calm">Calm Pad</option>
-        <option value="drums">Light Drums</option>
-      </select><br><br>
-      <button id="generateClip" class="btn">Generate Clip</button>
-      <button id="playClip" class="btn">Play</button>
-      <button id="downloadClip" class="btn">Download</button>
-      <audio id="clipAudio" controls style="margin-top:12px;width:100%;display:none"></audio>
+      <h3 style="color:var(--gold)">🔬 Scientific Research & Global Invitation</h3>
+      <p class="small" style="color:var(--muted);margin-top:6px;">
+        मैं शिरोमणि रामपौल सैनी अपनी निष्पक्ष समझ की हर चीज़ को तर्क, तथ्य और अनुभव के आधार पर सिद्ध करने का इच्छुक हूँ।  
+        Open invitations for universities, NASA, ISRO, Guinness Book verification, and international press.
+      </p>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+        <a class="btn" href="/press/press-kit.pdf" target="_blank" rel="noopener">📄 Press Kit (PDF)</a>
+        <a class="btn" href="mailto:research@rampaulsaini.github.io">✉️ Contact Research Team</a>
+      </div>
     </div>
   </section>
 
@@ -171,21 +167,24 @@ form textarea{min-height:80px}
     Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp<br>
     Donate: Paytm 8082935186 • PayPal: <a href="https://paypal.me/sainirampaul60" style="color:var(--gold)">paypal.me/sainirampaul60</a>
   </footer>
+
 </div>
 
 <script>
-// Support Form
 const supList = document.getElementById('supList');
 const msgWall = document.getElementById('msgWall');
 const form = document.getElementById('supportForm');
 const exportBtn = document.getElementById('exportBtn');
+
 function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
 function renderSupport(){
   const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
   const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
   supList.innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li>🌍 <strong>${escapeHtml(s.name)}</strong> — ${escapeHtml(s.country)} <span style="float:right;color:#cfcfcf;font-size:12px">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style="color:#cfcfcf">कोई समर्थक नहीं मिला</li>';
   msgWall.innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:6px 0;color:#ddd">🕊 <strong>${escapeHtml(m.name)}:</strong> ${escapeHtml(m.msg)} <span style="display:block;color:#bfbfbf;font-size:12px">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style="color:#cfcfcf">किसी ने अभी आशीर्वचन नहीं दिया</p>';
 }
+
 form.addEventListener('submit', function(e){
   e.preventDefault();
   const name = document.getElementById('sname').value.trim()||'अनाम';
@@ -202,6 +201,7 @@ form.addEventListener('submit', function(e){
   renderSupport();
   form.reset();
 });
+
 exportBtn.addEventListener('click', function(){
   const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
   const blob = new Blob([JSON.stringify(msgs,null,2)], {type:'application/json'});
@@ -210,39 +210,9 @@ exportBtn.addEventListener('click', function(){
   a.href = url; a.download = 'support_messages.json'; a.click();
   URL.revokeObjectURL(url);
 });
-renderSupport();
 
-// Omniverse Daily Clip Generator
-const generateClip = document.getElementById('generateClip');
-const playClip = document.getElementById('playClip');
-const downloadClip = document.getElementById('downloadClip');
-const clipAudio = document.getElementById('clipAudio');
-const bgLoop = document.getElementById('bgLoop');
-generateClip.addEventListener('click', async ()=>{
-  const text = document.getElementById('clipText').value.trim();
-  if(!text) return alert('Text required');
-  // Browser TTS
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'hi-IN';
-  speechSynthesis.speak(utter);
-  // Create audio for download / preview
-  clipAudio.style.display='block';
-  clipAudio.src = '';
-  const blob = await new Promise(resolve=>{
-    const synth = new SpeechSynthesisUtterance(text);
-    synth.lang='hi-IN';
-    const stream = new MediaStream();
-    resolve(new Blob([text],{type:'text/plain'})); // placeholder; actual TTS save needs server or WebAudio API advanced
-  });
-});
-playClip.addEventListener('click', ()=>{ clipAudio.play(); });
-downloadClip.addEventListener('click', ()=>{
-  const blob = new Blob([document.getElementById('clipText').value],{type:'text/plain'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href=url; a.download='daily_clip.txt'; a.click();
-  URL.revokeObjectURL(url);
-});
+renderSupport();
 </script>
 </body>
-  </html>
-        
+    </html>
+                                                                                                                                  
