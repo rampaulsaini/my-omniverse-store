@@ -1,16 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://rampaulsaini.github.io/my-omniverse-store/</loc>
-    <lastmod>2025-11-13</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://rampaulsaini.github.io/my-omniverse-store/press/press-kit.pdf</loc>
-    <lastmod>2025-11-13</lastmod>
-    <priority>0.5</priority>
-  </url>
-</urlset>
 User-agent: *
 Allow: /
+
 Sitemap: https://rampaulsaini.github.io/my-omniverse-store/sitemap.xml
