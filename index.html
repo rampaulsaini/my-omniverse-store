@@ -215,6 +215,51 @@ textarea{min-height:120px}
   </div>
 
   <!-- Footer -->
+  <!-- Social & Payments (upgraded for SEO and safety) -->
+  <div class="section card" style="text-align:center">
+    <div style="font-weight:800;color:var(--gold);font-size:18px">🌐 Social & Support</div>
+    <p class="small" style="margin-top:8px;color:var(--muted)">Connect on social networks and support directly — links open in a new tab and use <code>rel="noopener noreferrer"</code> for safety.</p>
+
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <a class="btn" href="https://youtube.com/@rampaulsaini-yk4gn" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
+      <a class="btn" href="https://wa.me/8082935186" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+      <a class="btn" href="https://t.me/sampaulsaini" target="_blank" rel="noopener noreferrer">✈️ Telegram</a>
+      <a class="btn" href="https://www.facebook.com/share/18zfovgyUH" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+      <a class="btn" href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+      <a class="btn" href="https://x.com/" target="_blank" rel="noopener noreferrer">🐦 X (Twitter)</a>
+      <a class="btn" href="https://en.wikipedia.org/wiki/Shromani_Rampaul_Saini" target="_blank" rel="noopener noreferrer">🌍 Wikipedia</a>
+    </div>
+
+    <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <a class="btn" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul" target="_blank" rel="noopener noreferrer">💳 Pay via UPI</a>
+      <a class="btn" href="https://paytm.me/sainirampaul" target="_blank" rel="noopener noreferrer">🧾 Paytm</a>
+      <a class="btn" href="https://paypal.me/sainirampaul60" target="_blank" rel="noopener noreferrer">💙 PayPal</a>
+    </div>
+
+    <p class="small" style="margin-top:10px;color:var(--muted)">UPI ID: <strong>sainirampaul90-1@okhdfcbank</strong> • Paytm/Phone: <code style="color:var(--gold)">8082935186</code></p>
+  </div>
+
+  <!-- Structured Data (update person sameAs with social links + donation info for crawlers) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shromani Rampaul Saini",
+    "alternateName": "शिरोमणि रामपौल सैनी",
+    "url": "https://your-domain.example/",
+    "image": "https://your-domain.example/path/to/og-image.webp",
+    "sameAs": [
+      "https://youtube.com/@rampaulsaini-yk4gn",
+      "https://t.me/sampaulsaini",
+      "https://www.facebook.com/share/18zfovgyUH",
+      "https://en.wikipedia.org/wiki/Shromani_Rampaul_Saini",
+      "https://paypal.me/sainirampaul60"
+    ],
+    "description": "निष्पक्ष समझ — Yatharth Siddhant, experiential consciousness research and public outreach.",
+    "knowsAbout": ["consciousness","spirituality","research","Omniverse Projects"]
+  }
+  </script>
+
   <footer class="footer">
     ꙰ शिरोमणि रामपौल सैनी — © Yatharth Siddhant<br>
     Proceeds support <strong>Saneha Saini</strong> • Contact: Telegram / WhatsApp<br>
@@ -232,54 +277,4 @@ textarea{min-height:120px}
 
   function load(){
     const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
-    const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-    if($('supList')) $('supList').innerHTML = supporters.length ? supporters.slice().reverse().map(s=>`<li>🌍 <strong>${esc(s.name)}</strong> — ${esc(s.country)} <span style="float:right;color:rgba(255,215,102,0.5);font-size:12px">${new Date(s.ts).toLocaleString()}</span></li>`).join('') : '<li style="color:rgba(255,215,102,0.5)">कोई समर्थक नहीं मिला</li>';
-    if($('msgWall')) $('msgWall').innerHTML = msgs.length ? msgs.slice().reverse().map(m=>`<p style="margin:6px 0;">🕊 <strong>${esc(m.name)}:</strong> ${esc(m.msg)} <br><span style="color:rgba(255,215,102,0.5);font-size:12px">${new Date(m.ts).toLocaleString()}</span></p>`).join('') : '<p style="color:rgba(255,215,102,0.5)">किसी ने अभी आशीर्वचन नहीं दिया</p>';
-  }
-
-  function save(name,email,country,msg){
-    const supporters = JSON.parse(localStorage.getItem('spList')||'[]');
-    const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-    if(name) supporters.push({name:name||'अनाम',country:country||'Unknown',ts:new Date().toISOString()});
-    msgs.push({name:name||'अनाम',email:email||'',country:country||'',msg:msg||'',ts:new Date().toISOString()});
-    localStorage.setItem('spList',JSON.stringify(supporters));
-    localStorage.setItem('spMsg',JSON.stringify(msgs));
-    load();
-  }
-
-  if($('supportForm')){
-    $('supportForm').addEventListener('submit',function(e){
-      e.preventDefault();
-      const name=$('sname').value.trim();
-      const email=$('semail').value.trim();
-      const country=$('scountry').value.trim();
-      const msg=$('smsg').value.trim();
-      if(!msg){ alert('कृपया संदेश लिखें'); return; }
-      save(name,email,country,msg);
-      $('sname').value=''; $('semail').value=''; $('scountry').value=''; $('smsg').value='';
-      alert('धन्यवाद — आपका संदेश सुरक्षित किया गया।');
-    });
-  }
-
-  if($('exportBtn')){
-    $('exportBtn').addEventListener('click',function(){
-      const msgs = JSON.parse(localStorage.getItem('spMsg')||'[]');
-      if(!msgs.length){ alert('कोई संदेश उपलब्ध नहीं'); return; }
-      const csv = ['Name,Email,Country,Message,Timestamp', ...msgs.map(m=>`"${(m.name||'').replace(/"/g,'""')}","${(m.email||'').replace(/"/g,'""')}","${(m.country||'').replace(/"/g,'""')}","${(m.msg||'').replace(/"/g,'""')}","${m.ts}"`) ].join('\n');
-      const blob = new Blob([csv],{type:'text/csv'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'support_messages.csv'; a.click(); URL.revokeObjectURL(url);
-    });
-  }
-
-  load();
-})();
-
-/* ----------------- Audio fetch helper (Drive-aware) ----------------- */
-(function(){
-  const audio = document.getElementById('ttsAudio');
-  const driveSrc = document.getElementById('driveSrc');
-  const fetchBtn = document.getElementById('fetchBtn');
-  const playBtn = document.getElementById('playBtn');
-  const downloadBtn = document.getElementById('downloadBtn');
-  const help = 
+    const msgs = JSON.parse(localStorage.getItem('s
