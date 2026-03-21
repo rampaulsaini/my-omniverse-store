@@ -1,6 +1,6 @@
 # Yatharth — The Living Truth of Humanity
 ![Profile](https://i.ibb.co/xqf3kTPS/enhanced-image.webp)
-शिरोमणि अंनत असीम इश्क़ की क्षमता MP3 <a href="https://drive.google.com/drive/folders/1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc/view?usp=class=">gallery </a >
+
   </div>
 **Shromani Rampaulsaini — निष्पक्ष समझ / Yatharth**  
 Free to read & listen · Support optional · Proceeds support **Saneha Saini**
