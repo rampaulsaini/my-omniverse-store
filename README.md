@@ -13,7 +13,7 @@ Yatharth presents an experiential path â€” a direct, living realization of oneâ€
 ---
 
 ## Live site (embed)
-<iframe src="https://rampaulsaini.github.io/my-omniverse-store/" width="100%" height="900" style="border:2px solid #ffd966;border-radius:8px;"></iframe>
+"https://rampaulsaini.github.io/my-omniverse-store/" 
 
 ---
 
