@@ -24,7 +24,7 @@ Yatharth presents an experiential path — a direct, living realization of one�
 - 📸 Photo album 1: https://photos.app.goo.gl/hBJ4mN176PboQ7bb6  
 - 🛒 Main Store: https://rampaulsaini.github.io/my-omniverse-store/  
 - ✍ Blog: http://multicosmovision.blogspot.com/  
-- ▶ YouTube: https://youtube.com/@rampaulsaini-yk4gn  
+- ▶ YouTube: # Ya://youtube.com/@rampaulsaini-yk4gn  
 - ✈ Telegram: https://t.me/sampaulsaini  
 - 💬 WhatsApp: https://wa.me/918082935186
 
