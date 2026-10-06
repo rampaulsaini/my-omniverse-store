@@ -3,14 +3,14 @@
   "purpose": "production-first showroom heartbeat",
   "source": "https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json",
   "product_count": 1016,
-  "family_count": 24,
+  "family_count": 25,
   "engine_count": 25,
   "status_counts": {
-    "RUNNABLE_STATIC_MVP": 1016
+    "READY_FOR_QC": 1016
   },
   "commercial_status_counts": {
-    "NOT_SOLD": 1016
+    "CATALOG_READY": 1016
   },
   "showroom_route": "production-catalog.html",
-  "updated_at_utc": "2026-10-06T06:20:04.971Z"
+  "updated_at_utc": "2026-10-06T13:28:40.386101+00:00"
 }
