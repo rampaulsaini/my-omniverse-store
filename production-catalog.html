@@ -130,7 +130,8 @@ async function load(){
     document.getElementById("heartbeatTime").textContent="Production heartbeat: "+(hb.updated_at_utc||"available");
   }
   if(q && q.next_action) document.getElementById("stateInstitute").textContent="Queue active · next: "+q.next_action;
-  C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());\n  published=(C.products||[]).map(p=>({id:p.id,cat:p.family,title:p.name,price:p.offer_price_inr??p.price_inr,price_inr:p.price_inr,offer_price_inr:p.offer_price_inr,offer:p.offer,description:p.description,artifact_url:p.artifact_url,qc_code:p.qc_code,gate_no:p.gate_no,dispatch_no:p.dispatch_no}));
+  C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());
+  published=(C.products||[]).map(p=>({id:p.id,cat:p.family,title:p.name,price:p.offer_price_inr??p.price_inr,price_inr:p.price_inr,offer_price_inr:p.offer_price_inr,offer:p.offer,description:p.description,artifact_url:p.artifact_url,qc_code:p.qc_code,gate_no:p.gate_no,dispatch_no:p.dispatch_no}));
   const f=document.getElementById("family");
   C.families.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;f.appendChild(o)});
  }catch(e){document.getElementById("factory").innerHTML='<div class="empty">Factory catalog अभी load नहीं हुआ। Published products फिर भी उपलब्ध हैं।</div>'}
