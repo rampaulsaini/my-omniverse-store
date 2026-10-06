@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>꙰ SHIRMANI Digital Product Factory</title>
+<style>
+:root{--bg:#050403;--p:#110c07;--gold:#f1d27a;--amber:#e8934a;--text:#fff8ed;--muted:#b9a991;--green:#78e0a2;--blue:#9ec8ff;--line:rgba(241,210,122,.2)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#4b2d10 0,#090604 42%,#050403 100%);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;line-height:1.6}.wrap{max-width:1050px;margin:auto;padding:18px 14px 70px}.hero,.panel{background:linear-gradient(145deg,rgba(24,17,8,.97),rgba(8,6,4,.97));border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 18px 70px rgba(0,0,0,.3)}.hero{text-align:center}.ey{color:var(--amber);letter-spacing:3px;font-size:.72rem}.hero h1{font-size:clamp(2rem,6vw,4rem);line-height:1.05;color:var(--gold);margin:10px 0}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px}.stat{padding:15px;border:1px solid var(--line);border-radius:13px}.stat b{display:block;color:var(--gold);font-size:.72rem;letter-spacing:1px}.stat span{color:var(--amber);font-size:1.1rem;font-weight:800}.code{font:700 .78rem ui-monospace,monospace;color:var(--blue)}.btn{display:inline-block;text-decoration:none;padding:11px 16px;border-radius:10px;border:1px solid var(--line);color:var(--text);font-weight:800;margin:4px}.run{color:var(--green);border-color:rgba(120,224,162,.35)}.qc{padding:13px;border:1px dashed var(--line);margin:15px 0;color:var(--muted)}.badge{display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:99px;font-size:.7rem;margin:3px;color:var(--muted)}.error{color:#ffb4a8}.big{font-size:1.7rem;color:var(--gold);font-weight:900}
+</style></head>
+<body><main class="wrap">
+<section class="hero"><div class="ey">꙰ SHIRMANI · FACTORY PRODUCTION</div><h1 id="title">Product Factory</h1><p id="intro" class="muted">Loading real factory product data…</p><div><a class="btn" href="../production-catalog.html">← Production Catalog</a><a class="btn" href="../supreme-marking-hub.html">Showroom</a></div></section>
+<section id="app" class="panel" style="margin-top:18px"><p class="muted">Factory source loading…</p></section>
+</main>
+<script>
+const RAW="https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json";
+const id=new URLSearchParams(location.search).get("id");
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+const app=document.getElementById("app");
+async function load(){
+ try{
+  const data=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());
+  const p=(data.products||[]).find(x=>String(x.id)===String(id));
+  if(!p){app.innerHTML='<p class="error">Product ID नहीं मिला। <a href="../production-catalog.html">Catalog पर लौटें</a></p>';return}
+  document.title="꙰ "+p.name+" — SHIRMANI Factory";
+  document.getElementById("title").textContent=p.name;
+  document.getElementById("intro").textContent="Real factory candidate · "+(p.family||"Digital Product")+" · "+(p.engine||"browser")+" engine";
+  const access=p.access||"";
+  const runnable=access ? '<a class="btn run" href="'+esc(access)+'" target="_blank" rel="noopener">▶ Source / Run Route</a>' : '<span class="badge">No external access route yet</span>';
+  app.innerHTML='<div class="grid"><div class="stat"><b>PRODUCT ID</b><span>'+esc(p.id)+'</span></div><div class="stat"><b>FAMILY</b><span>'+esc(p.family)+'</span></div><div class="stat"><b>ENGINE</b><span>'+esc(p.engine)+'</span></div><div class="stat"><b>STATUS</b><span>'+esc(p.status||"FACTORY_READY")+'</span></div></div><div style="margin-top:20px"><div class="big">Production Package</div><p class="muted">यह factory surface candidate की वास्तविक metadata दिखाता है। Commercial publication के लिए product को real access/preview, customer-facing description, price/offer और dispatch route के साथ package किया जाएगा।</p><div class="qc"><strong>QC / Release gate</strong><br>Product: '+esc(p.id)+'<br>Factory stage: '+esc(p.status||"FACTORY_READY")+'<br>Commercial state: '+esc(p.commercial_status||"CATALOG_READY")+'<br>Dispatch: release only after the commercial package is ready.</div>'+runnable+'</div>';
+ }catch(e){app.innerHTML='<p class="error">Factory data अभी उपलब्ध नहीं है। बाद में पुनः प्रयास करें।</p>'}
+}
+load();
+</script></body></html>
