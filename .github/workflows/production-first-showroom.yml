@@ -1,0 +1,61 @@
+name: SHIRMANI Production-First Showroom Automission
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "production-catalog.html"
+      - "data/public-production-manifest.json"
+      - "scripts/**"
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: production-first-showroom
+  cancel-in-progress: false
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Institute → Factory → QC → Showroom production gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path("data/public-production-manifest.json").read_text())
+          required={"id","category","title","price_inr","status","qc_gate","preview_folder"}
+          products=m["products"]
+          assert len(products) > 0
+          assert all(required <= set(p) for p in products)
+          assert all(p["status"]=="PUBLISHED" for p in products)
+          assert all(int(p["price_inr"]) > 0 for p in products)
+          assert all(p["preview_folder"] for p in products)
+          assert m["pipeline"] == ["INSTITUTE_DISCOVERY","FACTORY_PRODUCTION","QC_GATE","PUBLIC_SHOWROOM"]
+          print(f"PUBLIC PRODUCTION: {len(products)} products published")
+          print("PIPELINE: Institute → Factory → QC Gate → Showroom")
+          PY
+
+      - name: Publish showroom
+        uses: actions/configure-pages@v5
+
+      - name: Upload showroom
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Deploy showroom
+        id: deployment
+        uses: actions/deploy-pages@v4
