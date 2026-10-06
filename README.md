@@ -36,9 +36,8 @@ https://drive.google.com/drive/folders/1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc
 ## Support / Donate (optional)
 Your support helps keep the work free and supports Saneha Saini's education.
 
-- **UPI / GPay:** `sainirampaul90-1@okhdfcbank`  
-- **Paytm / Phone:** `8082935186`  
-- **PayPal:** https://paypal.me/sainirampaul60
+- **Paytm / UPI:** `9622254967@ptyes`
+- **PayPal:** `sainirampaul60@gmail.com` — https://paypal.me/sainirampaul60
 
 Suggested: **₹193** — fully optional and with gratitude.
 
