@@ -1,0 +1,40 @@
+name: Product Review / Rating
+description: Public customer review and quality-improvement feedback for a real showroom product
+title: "[REVIEW] "
+labels:
+  - product-review
+body:
+  - type: input
+    id: product_id
+    attributes:
+      label: Product ID
+      description: Enter the published product code, for example SV1001.
+      placeholder: SV1001
+    validations:
+      required: true
+  - type: dropdown
+    id: rating
+    attributes:
+      label: Rating
+      options:
+        - "5"
+        - "4"
+        - "3"
+        - "2"
+        - "1"
+    validations:
+      required: true
+  - type: textarea
+    id: review
+    attributes:
+      label: Public review
+      description: What did you like, use or experience?
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Quality improvement
+      description: What should be improved next?
+    validations:
+      required: false
