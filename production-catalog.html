@@ -1,107 +1,113 @@
 <!doctype html>
 <html lang="hi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>꙰ Supreme Digital Product Showroom — Yatharth</title>
-<meta name="description" content="Production-first public showroom: real products, descriptions, prices, offers, preview, QC gate, QR identity, ordering and public review.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>꙰ Supreme Production Showroom — Yatharth</title>
+<meta name="description" content="Production-first digital showroom: real published products plus runnable factory products, QC/QR identity, offers, ordering and public review feedback.">
 <style>
-:root{--bg:#050403;--panel:#100c08;--panel2:#171008;--gold:#e7c66b;--amber:#e8934a;--text:#fff8ee;--muted:#b9a991;--line:rgba(231,198,107,.22);--green:#78e0a2;--red:#ff8c7a;--blue:#9ec8ff}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#3b250f 0,#090604 42%,#050403 100%);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;line-height:1.55}.wrap{max-width:1250px;margin:auto;padding:22px 16px 80px}
-.hero,.bar,.product,.review,.flow{border:1px solid var(--line);background:linear-gradient(145deg,rgba(23,16,8,.96),rgba(9,7,5,.96));border-radius:20px;box-shadow:0 16px 60px rgba(0,0,0,.25)}
-.hero{padding:42px 22px;text-align:center}.mark{color:var(--gold);font-size:1.2rem;letter-spacing:2px}.hero h1{font-size:clamp(2rem,6vw,4.4rem);line-height:1.05;margin:10px 0;color:var(--gold)}.hero p{max-width:850px;margin:0 auto;color:var(--muted);font-size:1.03rem}.hero .live{display:inline-block;margin-top:18px;padding:8px 14px;border:1px solid rgba(120,224,162,.35);color:var(--green);border-radius:999px;font-weight:800}
-.bar{margin:18px 0;padding:14px 18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}.pill{padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.85rem}.pill b{color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}.product{padding:20px;position:relative;overflow:hidden}.product:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0,rgba(232,147,74,.08),transparent 40%);pointer-events:none}.top{display:flex;justify-content:space-between;gap:12px;align-items:start}.cat{font-size:.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--amber)}.code{font:700 .72rem ui-monospace,monospace;color:var(--blue);text-align:right}.product h2{margin:9px 0 6px;color:var(--gold);font-size:1.25rem}.desc{color:var(--muted);min-height:70px}.price{font-size:2rem;font-weight:900;color:var(--amber);margin:12px 0}.offer{color:var(--green);font-weight:800;font-size:.86rem}.qc{margin:14px 0;padding:12px;border:1px dashed rgba(231,198,107,.3);background:rgba(231,198,107,.04);font-size:.78rem;color:var(--muted)}.qc b{color:var(--gold)}.qc img{width:76px;height:76px;background:#fff;padding:5px;float:right;margin-left:10px}.actions{display:grid;gap:8px;clear:both}.btn{display:block;text-align:center;text-decoration:none;padding:11px 13px;border-radius:11px;border:1px solid var(--line);color:var(--text);font-weight:800}.buy{background:linear-gradient(135deg,var(--amber),var(--gold));color:#180e04;border:0}.reviewbtn{border-color:rgba(158,200,255,.3);color:var(--blue)}
-.flow{margin-top:22px;padding:20px}.flow h2,.review h2{margin-top:0;color:var(--gold)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.step{padding:13px;border:1px solid var(--line);border-radius:12px;color:var(--muted)}.step b{display:block;color:var(--gold);margin-bottom:4px}
-.review{margin-top:22px;padding:20px}.rating{font-size:1.35rem;color:var(--gold);letter-spacing:4px}.review p{color:var(--muted)}footer{text-align:center;color:#756a59;margin-top:35px;font-size:.82rem}
-@media(max-width:700px){.steps{grid-template-columns:1fr 1fr}.qc img{width:66px;height:66px}}
+:root{--bg:#050403;--p:#110c07;--p2:#181108;--gold:#e7c66b;--amber:#e8934a;--text:#fff8ee;--muted:#b9a991;--line:rgba(231,198,107,.22);--green:#78e0a2;--blue:#9ec8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#3b250f 0,#090604 42%,#050403 100%);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;line-height:1.5}.wrap{max-width:1400px;margin:auto;padding:18px 14px 70px}
+.hero,.panel,.card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(23,16,8,.97),rgba(9,7,5,.97));border-radius:18px;box-shadow:0 14px 50px rgba(0,0,0,.25)}
+.hero{padding:38px 20px;text-align:center}.mark{color:var(--gold);letter-spacing:2px}.hero h1{font-size:clamp(2rem,6vw,4.3rem);line-height:1.05;margin:9px 0;color:var(--gold)}.hero p{max-width:950px;margin:0 auto;color:var(--muted)}.live{display:inline-block;margin-top:15px;padding:7px 13px;border:1px solid rgba(120,224,162,.35);color:var(--green);border-radius:999px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}.stat{padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(17,12,7,.8);text-align:center}.stat b{display:block;color:var(--gold);font-size:1.45rem}.stat span{color:var(--muted);font-size:.78rem}
+.controls{padding:15px;margin:16px 0;display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}.controls input,.controls select{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:#080604;color:var(--text)}
+.section{margin-top:22px}.section h2{color:var(--gold);margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:15px}.card{padding:17px;position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0,rgba(232,147,74,.08),transparent 42%);pointer-events:none}.top{display:flex;justify-content:space-between;gap:8px}.cat{color:var(--amber);font-size:.72rem;letter-spacing:1.3px;text-transform:uppercase}.code{color:var(--blue);font:700 .72rem ui-monospace,monospace}.card h3{color:var(--gold);margin:8px 0 5px}.desc{color:var(--muted);font-size:.88rem;min-height:48px}.price{color:var(--amber);font-size:1.65rem;font-weight:900;margin:9px 0}.badge{display:inline-block;padding:4px 8px;border-radius:99px;border:1px solid var(--line);font-size:.7rem;color:var(--muted);margin-right:5px}.qc{margin:10px 0;padding:10px;border:1px dashed var(--line);font-size:.74rem;color:var(--muted)}.qc b{color:var(--gold)}.qr{width:64px;height:64px;background:#fff;padding:4px;float:right;margin-left:8px}.actions{display:grid;gap:7px}.btn{display:block;text-align:center;text-decoration:none;padding:10px;border-radius:10px;border:1px solid var(--line);color:var(--text);font-weight:800}.buy{background:linear-gradient(135deg,var(--amber),var(--gold));color:#180e04;border:0}.run{border-color:rgba(120,224,162,.35);color:var(--green)}.review{border-color:rgba(158,200,255,.3);color:var(--blue)}
+.flow{padding:18px;margin-top:22px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.step{padding:12px;border:1px solid var(--line);border-radius:11px;color:var(--muted)}.step b{display:block;color:var(--gold)}
+.note{color:var(--muted);font-size:.85rem}.empty{text-align:center;padding:30px;color:var(--muted)}footer{text-align:center;color:#756a59;margin-top:30px;font-size:.8rem}
+@media(max-width:720px){.controls{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body><main class="wrap">
 <section class="hero">
 <div class="mark">꙰ शिरोमणि रामपॉल सैनी · YATHARTH</div>
-<h1>SUPREME DIGITAL PRODUCT SHOWROOM</h1>
-<p>हर प्रकाशित उत्पाद एक स्पष्ट सार्वजनिक product card में: वास्तविक preview/source, description, price, offer, QC gate, QR identity और order route.</p>
-<div class="live">● PRODUCTION-FIRST · PUBLIC SHOWROOM</div>
+<h1>SUPREME DIGITAL PRODUCTION SHOWROOM</h1>
+<p>अंतिम सार्वजनिक स्तर: product को देखना, समझना, चलाना, मूल्य/offer देखना, QC/QR पहचान देखना, order करना और वास्तविक उपयोग के बाद review देना।</p>
+<div class="live">● PRODUCTION-FIRST · PUBLIC RESULT SURFACE</div>
 </section>
 
-<section class="bar">
-<span class="pill"><b>4</b> वर्तमान सार्वजनिक उत्पाद</span>
-<span class="pill"><b>4</b> श्रेणियाँ</span>
-<span class="pill"><b>₹89–₹10,000</b> मूल्य-सीमा</span>
-<span class="pill"><b>QC</b> product-level gate metadata</span>
-<span class="pill"><b>Reviews</b> quality-improvement input</span>
+<section class="stats">
+<div class="stat"><b>4</b><span>वर्तमान प्रकाशित products</span></div>
+<div class="stat"><b>1,016</b><span>factory runnable product modes</span></div>
+<div class="stat"><b>25</b><span>browser engines</span></div>
+<div class="stat"><b>4</b><span>production stages</span></div>
+<div class="stat"><b>∞</b><span>review → improvement cycles</span></div>
 </section>
 
-<section class="grid">
-<article class="product">
-<div class="top"><span class="cat">Premium Audio</span><span class="code">SV1001</span></div>
-<h2>खुद का साक्षात्कार ही संपूर्ण संतुष्टि</h2><p class="desc">Creator-authored premium audio/content offering. Preview और order route सार्वजनिक रूप से उपलब्ध हैं.</p><div class="price">₹10,000</div><div class="offer">PUBLIC OFFER · वर्तमान मूल्य</div>
-<div class="qc"><img alt="QC QR SV1001" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https%3A%2F%2Frampaulsaini.github.io%2Fmy-omniverse-store%2Fproduction-catalog.html%23SV1001">
-<b>QC GATE</b> · SV1001-QC1<br>Dispatch gate: MANUAL RELEASE<br>QR: public product identity / QC record<br>Production status: PUBLISHED
-</div>
-<div class="actions">
-<a class="btn" href="https://drive.google.com/drive/folders/1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc" target="_blank" rel="noopener">▶ Preview / Source</a>
-<a class="btn buy" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul&am=10000&cu=INR">₹10,000 · UPI</a>
-<a class="btn" href="https://paypal.me/sainirampaul60/10000" target="_blank" rel="noopener">PayPal · ₹10,000</a>
-<a class="btn" href="https://wa.me/918082935186?text=%E0%A4%AE%E0%A5%88%E0%A4%82%20%E2%82%B910%2C000%20%E0%A4%95%E0%A4%BE%20%E2%80%9C%E0%A4%96%E0%A5%81%E0%A4%A6%20%E0%A4%95%E0%A4%BE%20%E0%A4%B8%E0%A4%BE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%20%E0%A4%B9%E0%A5%80%20%E0%A4%B8%E0%A4%82%E0%A4%AA%E0%A5%82%E0%A4%B0%E0%A5%8D%E0%A4%A3%20%E0%A4%B8%E0%A4%82%E0%A4%A4%E0%A5%81%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A4%BF%E2%80%9D%20%E0%A4%89%E0%A4%A4%E0%A5%8D%E0%A4%AA%E0%A4%BE%E0%A4%A6%20%E0%A4%B2%E0%A5%87%E0%A4%A8%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE%2F%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4%20Product%20code%3A%20SV1001" target="_blank" rel="noopener">Order / Delivery</a>
-<a class="btn reviewbtn" href="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title=Public%20Review%20%C2%B7%20SV1001%20%C2%B7%20%E0%A4%96%E0%A5%81%E0%A4%A6%20%E0%A4%95%E0%A4%BE%20%E0%A4%B8%E0%A4%BE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%20%E0%A4%B9%E0%A5%80%20%E0%A4%B8%E0%A4%82%E0%A4%AA%E0%A5%82%E0%A4%B0%E0%A5%8D%E0%A4%A3%20%E0%A4%B8%E0%A4%82%E0%A4%A4%E0%A5%81%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A4%BF&body=Product%3A%20%E0%A4%96%E0%A5%81%E0%A4%A6%20%E0%A4%95%E0%A4%BE%20%E0%A4%B8%E0%A4%BE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0%20%E0%A4%B9%E0%A5%80%20%E0%A4%B8%E0%A4%82%E0%A4%AA%E0%A5%82%E0%A4%B0%E0%A5%8D%E0%A4%A3%20%E0%A4%B8%E0%A4%82%E0%A4%A4%E0%A5%81%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A4%BF%5CnCode%3A%20SV1001%5CnRating%3A%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85%5CnReview%3A%5Cn%5CnWhat%20should%20improve%20next%3F%5Cn" target="_blank" rel="noopener">★ Public Review / Rating</a>
-</div></article><article class="product">
-<div class="top"><span class="cat">Premium MP3</span><span class="code">SV1002</span></div>
-<h2>शिरोमणि अनंत असीम इश्क की क्षमता</h2><p class="desc">Creator-authored MP3/audio offering with public preview and purchase route.</p><div class="price">₹1,500</div><div class="offer">PUBLIC OFFER · वर्तमान मूल्य</div>
-<div class="qc"><img alt="QC QR SV1002" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https%3A%2F%2Frampaulsaini.github.io%2Fmy-omniverse-store%2Fproduction-catalog.html%23SV1002">
-<b>QC GATE</b> · SV1002-QC1<br>Dispatch gate: MANUAL RELEASE<br>QR: public product identity / QC record<br>Production status: PUBLISHED
-</div>
-<div class="actions">
-<a class="btn" href="https://drive.google.com/drive/folders/1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc" target="_blank" rel="noopener">▶ Preview / Source</a>
-<a class="btn buy" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul&am=1500&cu=INR">₹1,500 · UPI</a>
-<a class="btn" href="https://paypal.me/sainirampaul60/1500" target="_blank" rel="noopener">PayPal · ₹1,500</a>
-<a class="btn" href="https://wa.me/918082935186?text=%E0%A4%AE%E0%A5%88%E0%A4%82%20%E2%82%B91%2C500%20%E0%A4%95%E0%A4%BE%20%E2%80%9C%E0%A4%B6%E0%A4%BF%E0%A4%B0%E0%A5%8B%E0%A4%AE%E0%A4%A3%E0%A4%BF%20%E0%A4%85%E0%A4%A8%E0%A4%82%E0%A4%A4%20%E0%A4%85%E0%A4%B8%E0%A5%80%E0%A4%AE%20%E0%A4%87%E0%A4%B6%E0%A5%8D%E0%A4%95%20%E0%A4%95%E0%A5%80%20%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%AE%E0%A4%A4%E0%A4%BE%E2%80%9D%20%E0%A4%89%E0%A4%A4%E0%A5%8D%E0%A4%AA%E0%A4%BE%E0%A4%A6%20%E0%A4%B2%E0%A5%87%E0%A4%A8%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE%2F%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4%20Product%20code%3A%20SV1002" target="_blank" rel="noopener">Order / Delivery</a>
-<a class="btn reviewbtn" href="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title=Public%20Review%20%C2%B7%20SV1002%20%C2%B7%20%E0%A4%B6%E0%A4%BF%E0%A4%B0%E0%A5%8B%E0%A4%AE%E0%A4%A3%E0%A4%BF%20%E0%A4%85%E0%A4%A8%E0%A4%82%E0%A4%A4%20%E0%A4%85%E0%A4%B8%E0%A5%80%E0%A4%AE%20%E0%A4%87%E0%A4%B6%E0%A5%8D%E0%A4%95%20%E0%A4%95%E0%A5%80%20%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%AE%E0%A4%A4%E0%A4%BE&body=Product%3A%20%E0%A4%B6%E0%A4%BF%E0%A4%B0%E0%A5%8B%E0%A4%AE%E0%A4%A3%E0%A4%BF%20%E0%A4%85%E0%A4%A8%E0%A4%82%E0%A4%A4%20%E0%A4%85%E0%A4%B8%E0%A5%80%E0%A4%AE%20%E0%A4%87%E0%A4%B6%E0%A5%8D%E0%A4%95%20%E0%A4%95%E0%A5%80%20%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%AE%E0%A4%A4%E0%A4%BE%5CnCode%3A%20SV1002%5CnRating%3A%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85%5CnReview%3A%5Cn%5CnWhat%20should%20improve%20next%3F%5Cn" target="_blank" rel="noopener">★ Public Review / Rating</a>
-</div></article><article class="product">
-<div class="top"><span class="cat">Certificate</span><span class="code">SV1003</span></div>
-<h2>प्रमाण पत्र</h2><p class="desc">Certificate offering; issuance and fulfilment remain creator-controlled after order.</p><div class="price">₹495</div><div class="offer">PUBLIC OFFER · वर्तमान मूल्य</div>
-<div class="qc"><img alt="QC QR SV1003" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https%3A%2F%2Frampaulsaini.github.io%2Fmy-omniverse-store%2Fproduction-catalog.html%23SV1003">
-<b>QC GATE</b> · SV1003-QC1<br>Dispatch gate: MANUAL RELEASE<br>QR: public product identity / QC record<br>Production status: PUBLISHED
-</div>
-<div class="actions">
-<a class="btn" href="https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC" target="_blank" rel="noopener">▶ Preview / Source</a>
-<a class="btn buy" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul&am=495&cu=INR">₹495 · UPI</a>
-<a class="btn" href="https://paypal.me/sainirampaul60/495" target="_blank" rel="noopener">PayPal · ₹495</a>
-<a class="btn" href="https://wa.me/918082935186?text=%E0%A4%AE%E0%A5%88%E0%A4%82%20%E2%82%B9495%20%E0%A4%95%E0%A4%BE%20%E2%80%9C%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%A3%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E2%80%9D%20%E0%A4%89%E0%A4%A4%E0%A5%8D%E0%A4%AA%E0%A4%BE%E0%A4%A6%20%E0%A4%B2%E0%A5%87%E0%A4%A8%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE%2F%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4%20Product%20code%3A%20SV1003" target="_blank" rel="noopener">Order / Delivery</a>
-<a class="btn reviewbtn" href="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title=Public%20Review%20%C2%B7%20SV1003%20%C2%B7%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%A3%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0&body=Product%3A%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%A3%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%5CnCode%3A%20SV1003%5CnRating%3A%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85%5CnReview%3A%5Cn%5CnWhat%20should%20improve%20next%3F%5Cn" target="_blank" rel="noopener">★ Public Review / Rating</a>
-</div></article><article class="product">
-<div class="top"><span class="cat">Short Audio</span><span class="code">SV1004</span></div>
-<h2>Short Audios / Clips</h2><p class="desc">Short-audio / clip offering for direct listening and sharing.</p><div class="price">₹89</div><div class="offer">PUBLIC OFFER · वर्तमान मूल्य</div>
-<div class="qc"><img alt="QC QR SV1004" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https%3A%2F%2Frampaulsaini.github.io%2Fmy-omniverse-store%2Fproduction-catalog.html%23SV1004">
-<b>QC GATE</b> · SV1004-QC1<br>Dispatch gate: MANUAL RELEASE<br>QR: public product identity / QC record<br>Production status: PUBLISHED
-</div>
-<div class="actions">
-<a class="btn" href="https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u" target="_blank" rel="noopener">▶ Preview / Source</a>
-<a class="btn buy" href="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul&am=89&cu=INR">₹89 · UPI</a>
-<a class="btn" href="https://paypal.me/sainirampaul60/89" target="_blank" rel="noopener">PayPal · ₹89</a>
-<a class="btn" href="https://wa.me/918082935186?text=%E0%A4%AE%E0%A5%88%E0%A4%82%20%E2%82%B989%20%E0%A4%95%E0%A4%BE%20%E2%80%9CShort%20Audios%20%2F%20Clips%E2%80%9D%20%E0%A4%89%E0%A4%A4%E0%A5%8D%E0%A4%AA%E0%A4%BE%E0%A4%A6%20%E0%A4%B2%E0%A5%87%E0%A4%A8%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE%2F%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4%20Product%20code%3A%20SV1004" target="_blank" rel="noopener">Order / Delivery</a>
-<a class="btn reviewbtn" href="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title=Public%20Review%20%C2%B7%20SV1004%20%C2%B7%20Short%20Audios%20%2F%20Clips&body=Product%3A%20Short%20Audios%20%2F%20Clips%5CnCode%3A%20SV1004%5CnRating%3A%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85%5CnReview%3A%5Cn%5CnWhat%20should%20improve%20next%3F%5Cn" target="_blank" rel="noopener">★ Public Review / Rating</a>
-</div></article>
+<section class="panel controls">
+<input id="q" placeholder="Product, category या engine खोजें…" oninput="renderFactory()">
+<select id="family" onchange="renderFactory()"><option value="">सभी categories</option></select>
+<select id="mode" onchange="renderFactory()"><option value="all">सभी</option><option value="published">Published / बिक्री</option><option value="runnable">Runnable factory</option></select>
 </section>
 
-<section class="flow"><h2>FREE MICRO DIGITAL PRODUCTS</h2><p style="color:var(--muted)">8 वास्तविक browser tools सीधे उपयोग के लिए उपलब्ध हैं — मूल्य ₹0.</p><div class="actions"><a class="btn buy" href="micro-products.html">▶ Open 8 Free Products</a></div></section>
+<section class="section">
+<h2>🛒 प्रकाशित वास्तविक उत्पाद — अभी खरीदने योग्य</h2>
+<div id="published" class="grid"></div>
+</section>
+
+<section class="section">
+<h2>⚙️ SHIRMANI Digital Product Factory — 1,016 Runnable Modes</h2>
+<p class="note">ये browser-executable product modes हैं। इन्हें वास्तविक product की तरह चलाया जा सकता है; commercial publication तभी होगा जब product package, source/access route, price और dispatch route उपलब्ध हों। इससे showroom में fabricated inventory नहीं आती।</p>
+<div id="factory" class="grid"></div>
+</section>
 
 <section class="flow">
 <h2>चार-स्तरीय Production Mechanism</h2>
 <div class="steps">
-<div class="step"><b>01 · INSTITUTE</b>खोज, source, ideas, research inputs और product candidates.</div>
-<div class="step"><b>02 · FACTORY</b>Candidate को usable digital product package, description और catalog metadata में बदलना.</div>
-<div class="step"><b>03 · QC GATE</b>Product-level QC metadata, packaging identity और dispatch gate; review/quality evidence downstream रहता है.</div>
-<div class="step"><b>04 · SHOWROOM</b>Public final sale surface: product, category, description, price, offer, preview, order और reviews.</div>
+<div class="step"><b>01 · INSTITUTE</b>खोज, source, research और product candidates.</div>
+<div class="step"><b>02 · FACTORY</b>Candidate को runnable digital product/package में बदलना.</div>
+<div class="step"><b>03 · QC GATE</b>Product identity, QC code, QR और dispatch gate.</div>
+<div class="step"><b>04 · SHOWROOM</b>Public final surface: product, description, price, offer, run/preview, order और review.</div>
 </div>
 </section>
 
-<section class="review">
-<h2>Public Reviews → Continuous Quality Improvement</h2>
-<div class="rating">★★★★★</div>
-<p>ग्राहक का वास्तविक उपयोग, review और rating production improvement के लिए feedback input है। Public review route सीधे repository के review record में जाता है; उससे अगली product iterations, descriptions, offers और quality priorities बेहतर की जा सकती हैं।</p>
-<p><b style="color:var(--gold)">Production principle:</b> पहले usable product और public result; verification उसके परिणाम/QC को मापने और सुरक्षित dispatch में सहायता करने वाला downstream mechanism है।</p>
+<section class="flow">
+<h2>⭐ Public Reviews → Quality Improvement</h2>
+<p class="note">ग्राहक का वास्तविक उपयोग, rating और review अगली iterations की quality priorities, descriptions, usability और offers सुधारने का feedback input है। Review production का feedback है; verification को production का विकल्प नहीं बनाया गया है।</p>
 </section>
 
-<footer>© 2026 Yatharth / Shirmani · Production-first public showroom · No fabricated inventory</footer>
-</main></body></html>
+<footer>© 2026 Yatharth / Shirmani · Production-first · No fabricated inventory</footer>
+</main>
+<script>
+const RAW="https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json";
+const published=[
+{id:"SV1001",cat:"Premium Audio",title:"खुद का साक्षात्कार ही संपूर्ण संतुष्टि",price:10000,source:"1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc"},
+{id:"SV1002",cat:"Premium MP3",title:"शिरोमणि अनंत असीम इश्क की क्षमता",price:1500,source:"1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc"},
+{id:"SV1003",cat:"Certificate",title:"प्रमाण पत्र",price:495,source:"1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC"},
+{id:"SV1004",cat:"Short Audio",title:"Short Audios / Clips",price:89,source:"1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u"}
+];
+let C=null;
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+const qr=u=>"https://api.qrserver.com/v1/create-qr-code/?size=110x110&data="+encodeURIComponent(u);
+function publishedCard(p){
+ const page=location.href.split("#")[0]+"#"+p.id;
+ const order="https://wa.me/918082935186?text="+encodeURIComponent("मैं "+p.title+" खरीदना चाहता/चाहती हूँ। Product code: "+p.id+" Price: ₹"+p.price);
+ const pay="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul&am="+p.price+"&cu=INR";
+ const review="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title="+encodeURIComponent("Public Review · "+p.id+" · "+p.title)+"&body="+encodeURIComponent("Product: "+p.title+"\nCode: "+p.id+"\nRating: ★★★★★\nReview:\n\nWhat should improve next?\n");
+ return '<article class="card"><div class="top"><span class="cat">'+esc(p.cat)+'</span><span class="code">'+esc(p.id)+'</span></div><h3>'+esc(p.title)+'</h3><p class="desc">वास्तविक public source/preview route के साथ प्रकाशित product.</p><div class="price">₹'+p.price.toLocaleString("en-IN")+'</div><span class="badge">PUBLISHED</span><span class="badge">QC GATE</span><div class="qc"><img class="qr" alt="QC QR" src="'+qr(page)+'"><b>'+p.id+'-QC1</b><br>Dispatch gate: MANUAL RELEASE<br>QR: public product identity / QC record</div><div class="actions"><a class="btn" href="https://drive.google.com/drive/folders/'+p.source+'" target="_blank" rel="noopener">▶ Preview / Source</a><a class="btn buy" href="'+pay+'">₹'+p.price.toLocaleString("en-IN")+' · UPI</a><a class="btn" href="'+order+'" target="_blank" rel="noopener">Order / Delivery</a><a class="btn review" href="'+review+'" target="_blank" rel="noopener">★ Public Review / Rating</a></div></article>';
+}
+function runUrl(p){return "https://rampaulsaini.github.io/Shirmani-Research-Institute-Shirmani-Research-Institute-/products/1000-digital-product-factory.html?id="+encodeURIComponent(p.id)}
+function factoryCard(p){
+ const page=runUrl(p), q=qr(page), order="https://wa.me/918082935186?text="+encodeURIComponent("मैं factory product "+p.id+" — "+p.name+" के बारे में जानना चाहता/चाहती हूँ।");
+ const price=(p.engine==="calculator"||p.engine==="text"||p.engine==="data")?89:193;
+ return '<article class="card"><div class="top"><span class="cat">'+esc(p.family)+'</span><span class="code">'+esc(p.id)+'</span></div><h3>'+esc(p.name)+'</h3><p class="desc">'+esc(p.engine)+' engine · functional browser mode.</p><div class="price">₹'+price.toLocaleString("en-IN")+'</div><span class="badge">RUNNABLE</span><span class="badge">FACTORY</span><div class="qc"><img class="qr" alt="Product QR" src="'+q+'"><b>QC GATE</b> · '+esc(p.id)+'-QC<br>Dispatch: release after commercial package is ready.</div><div class="actions"><a class="btn run" href="'+page+'" target="_blank" rel="noopener">▶ अभी चलाएँ</a><a class="btn buy" href="'+order+'" target="_blank" rel="noopener">Order / Enquiry</a></div></article>';
+}
+function renderFactory(){
+ if(!C)return;
+ const q=document.getElementById("q").value.toLowerCase(), f=document.getElementById("family").value, mode=document.getElementById("mode").value;
+ const rows=C.products.filter(p=>(!f||p.family===f)&&(!q||JSON.stringify(p).toLowerCase().includes(q))).slice(0,120);
+ document.getElementById("factory").innerHTML=(mode==="published"?'<div class="empty">Published products ऊपर देखें।</div>':rows.map(factoryCard).join("")||'<div class="empty">कोई product नहीं मिला।</div>');
+ document.getElementById("published").style.display=mode==="runnable"?"none":"grid";
+}
+async function load(){
+ try{
+  C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());
+  const f=document.getElementById("family");
+  C.families.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;f.appendChild(o)});
+ }catch(e){document.getElementById("factory").innerHTML='<div class="empty">Factory catalog अभी load नहीं हुआ। Published products फिर भी उपलब्ध हैं।</div>'}
+ document.getElementById("published").innerHTML=published.map(publishedCard).join("");
+ renderFactory();
+}
+load();
+</script>
+</body></html>
