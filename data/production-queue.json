@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "2.1",
   "generated_at_utc": "2026-10-06T15:29:59.584140+00:00",
   "principle": "production-first",
   "pipeline": [
@@ -85,7 +85,7 @@
     "SV1003",
     "SV1004"
   ],
-  "next_action": "Convert highest-value runnable modes into complete product packages with real preview/access, description, price, offer, QC/QR and dispatch route; do not fabricate inventory.",
+  "next_action": "Production-first: convert factory-ready modules into complete sale-ready packages in batches; each package needs real preview/access, approved price, QC/QR identity, dispatch route and public showroom route.",
   "queue_sample": [
     {
       "id": "SP-0001",
@@ -1287,5 +1287,9 @@
       "commercial_status": "NOT_SOLD",
       "public_route": null
     }
-  ]
+  ],
+  "sale_ready_count": 4,
+  "factory_ready_count": 1016,
+  "public_interface_rule": "Never label factory-ready modules as sale-ready inventory.",
+  "updated_at_utc": "2026-10-06T18:33:09.907Z"
 }
