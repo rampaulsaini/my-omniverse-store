@@ -95,7 +95,7 @@ function publishedCard(p){
  const cat=p.cat||p.category||p.family||"Digital Product";
  const price=Number(p.price??p.offer_price_inr??p.price_inr??0);
  const base=Number(p.price_inr||price);
- const artifact=p.artifact_url ? "https://rampaulsaini.github.io/Shirmani-Research-Institute-Shirmani-Research-Institute-/"+String(p.artifact_url).replace(/^\\//,"") : "#"+id;
+ const artifact=p.artifact_url ? "https://rampaulsaini.github.io/Shirmani-Research-Institute-Shirmani-Research-Institute-/"+String(p.artifact_url).replace("/","") : "#"+id;
  const pay="upi://pay?pa=9622254967@ptyes&pn=Shirmani%20Research%20Institute&am="+encodeURIComponent(price)+"&cu=INR";
  const review="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title="+encodeURIComponent("Public Review · "+id+" · "+title)+"&body="+encodeURIComponent("Product: "+title+"\\nCode: "+id+"\\nRating: ★★★★★\\nReview / improvement request:\\n");
  const offer=p.offer||"PUBLIC LAUNCH OFFER";
