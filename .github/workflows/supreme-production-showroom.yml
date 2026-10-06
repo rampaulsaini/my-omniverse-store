@@ -1,0 +1,53 @@
+name: Supreme Production Showroom Automission
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  production-refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refresh factory production status
+        env:
+          RAW: https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          raw=os.environ["RAW"]
+          data=json.load(urllib.request.urlopen(raw, timeout=30))
+          products=data.get("products", [])
+          families=sorted({p.get("family","") for p in products if p.get("family")})
+          engines=sorted({p.get("engine","") for p in products if p.get("engine")})
+          statuses={}
+          commercial={}
+          for p in products:
+              statuses[p.get("status","UNKNOWN")]=statuses.get(p.get("status","UNKNOWN"),0)+1
+              commercial[p.get("commercial_status","UNKNOWN")]=commercial.get(p.get("commercial_status","UNKNOWN"),0)+1
+          out={
+            "schema_version":"1.0",
+            "purpose":"production-first showroom heartbeat",
+            "source":raw,
+            "product_count":len(products),
+            "family_count":len(families),
+            "engine_count":len(engines),
+            "status_counts":statuses,
+            "commercial_status_counts":commercial,
+            "showroom_route":"production-catalog.html",
+            "updated_at_utc":__import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
+          }
+          os.makedirs("data",exist_ok=True)
+          with open("data/production-heartbeat.json","w",encoding="utf-8") as f:
+              json.dump(out,f,ensure_ascii=False,indent=2)
+              f.write("\n")
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit production state
+        run: |
+          git config user.name "SHIRMANI Production Automission"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/production-heartbeat.json
+          git diff --cached --quiet || git commit -m "chore: refresh production showroom heartbeat"
+          git push
