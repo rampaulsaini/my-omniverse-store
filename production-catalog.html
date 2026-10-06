@@ -27,8 +27,8 @@
 </section>
 
 <section class="stats" id="liveStats">
-<div class="stat"><b id="publishedCount">4</b><span>वर्तमान प्रकाशित products</span></div>
-<div class="stat"><b id="factoryCount">1,016</b><span>factory runnable product modes</span></div>
+<div class="stat"><b id="publishedCount">4</b><span>वास्तविक sale-ready products</span></div>
+<div class="stat"><b id="factoryCount">1,016</b><span>factory-ready product modules</span></div>
 <div class="stat"><b id="familyCount">24</b><span>product families</span></div>
 <div class="stat"><b id="engineCount">25</b><span>browser engines</span></div>
 <div class="stat"><b id="candidateCount">1,016</b><span>production candidates</span></div>
@@ -49,17 +49,18 @@
 <section class="panel controls">
 <input id="q" placeholder="Product, category या engine खोजें…" oninput="renderFactory()">
 <select id="family" onchange="renderFactory()"><option value="">सभी categories</option></select>
-<select id="mode" onchange="renderFactory()"><option value="all">सभी</option><option value="published">Published / बिक्री</option><option value="runnable">Runnable factory</option></select>
+<select id="mode" onchange="renderFactory()"><option value="all">सभी</option><option value="published">Sale-ready / बिक्री</option><option value="runnable">Runnable factory</option></select>
 </section>
 
 <section class="section">
-<h2>🛒 प्रकाशित वास्तविक उत्पाद — अभी खरीदने योग्य</h2>
+<h2>🛒 वास्तविक Sale-Ready Products — अभी खरीदने योग्य</h2>
+<p class="note">यह सूची केवल उन products की है जिनके लिए वास्तविक public payment/order route उपलब्ध है। Factory modules को sale-ready मानकर प्रस्तुत नहीं किया जाता।</p>
 <div id="published" class="grid"></div>
 </section>
 
 <section class="section">
-<h2>⚙️ SHIRMANI Digital Product Factory — 1,016 Runnable Modes</h2>
-<p class="note">ये browser-executable product modes हैं। इन्हें वास्तविक product की तरह चलाया जा सकता है; commercial publication तभी होगा जब product package, source/access route, price और dispatch route उपलब्ध हों। इससे showroom में fabricated inventory नहीं आती।</p>
+<h2>⚙️ SHIRMANI Digital Product Factory — 1,016 Runnable Product Modules</h2>
+<p class="note">ये browser-executable product modules हैं। इन्हें public showroom से चलाकर उपयोग/परख सकते हैं। Commercial sale तभी खुलेगी जब वास्तविक product package, access route, approved price और dispatch route उपलब्ध हों। इससे showroom में fabricated sale inventory नहीं आती।</p>
 <div id="factory" class="grid"></div>
 </section>
 
@@ -120,18 +121,23 @@ async function load(){
   const hb=await fetch(HEARTBEAT,{cache:"no-store"}).then(r=>r.json()).catch(()=>null);
   const q=await fetch(QUEUE,{cache:"no-store"}).then(r=>r.json()).catch(()=>null);
   if(hb){
-    document.getElementById("publishedCount").textContent=(hb.product_count??1016).toLocaleString("en-IN");
+    document.getElementById("publishedCount").textContent=(hb.published_product_count??4).toLocaleString("en-IN");
     document.getElementById("factoryCount").textContent=(hb.product_count??1016).toLocaleString("en-IN");
     document.getElementById("familyCount").textContent=(hb.family_count??24).toLocaleString("en-IN");
     document.getElementById("engineCount").textContent=(hb.engine_count??25).toLocaleString("en-IN");
     document.getElementById("candidateCount").textContent=(hb.production_candidate_count??hb.product_count??1016).toLocaleString("en-IN");
     document.getElementById("stateFactory").textContent=(hb.product_count??1016).toLocaleString("en-IN")+" runnable modes";
-    document.getElementById("stateShowroom").textContent=(hb.product_count??1016).toLocaleString("en-IN")+" production products · "+(hb.production_candidate_count??1016).toLocaleString("en-IN")+" candidates";
+    document.getElementById("stateShowroom").textContent=(hb.published_product_count??4).toLocaleString("en-IN")+" sale-ready · "+(hb.product_count??1016).toLocaleString("en-IN")+" factory modules";
     document.getElementById("heartbeatTime").textContent="Production heartbeat: "+(hb.updated_at_utc||"available");
   }
   if(q && q.next_action) document.getElementById("stateInstitute").textContent="Queue active · next: "+q.next_action;
   C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());
-  published=(C.products||[]).map(p=>({id:p.id,cat:p.family,title:p.name,price:p.offer_price_inr??p.price_inr,price_inr:p.price_inr,offer_price_inr:p.offer_price_inr,offer:p.offer,description:p.description,artifact_url:p.artifact_url,qc_code:p.qc_code,gate_no:p.gate_no,dispatch_no:p.dispatch_no}));
+  published=[
+ {id:"SV1001",cat:"Premium Audio",title:"खुद का साक्षात्कार ही संपूर्ण संतुष्टि",price:10000,price_inr:10000,offer_price_inr:10000,offer:"Launch offer · Manual dispatch release",description:"वास्तविक preview/source route के साथ published premium audio.",artifact_url:"https://drive.google.com/drive/folders/1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc",qc_code:"QC SV1001-QC1",gate_no:"GATE-SALE",dispatch_no:"MANUAL_RELEASE"},
+ {id:"SV1002",cat:"Premium MP3",title:"शिरोमणि अनंत असीम इश्क की क्षमता",price:1500,price_inr:1500,offer_price_inr:1500,offer:"Launch offer · Manual dispatch release",description:"वास्तविक preview/source route के साथ published premium MP3.",artifact_url:"https://drive.google.com/drive/folders/1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc",qc_code:"QC SV1002-QC1",gate_no:"GATE-SALE",dispatch_no:"MANUAL_RELEASE"},
+ {id:"SV1003",cat:"Certificate",title:"प्रमाण पत्र",price:495,price_inr:495,offer_price_inr:495,offer:"Launch offer · Manual dispatch release",description:"Published certificate product with a dedicated preview/source route.",artifact_url:"https://drive.google.com/drive/folders/1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC",qc_code:"QC SV1003-QC1",gate_no:"GATE-SALE",dispatch_no:"MANUAL_RELEASE"},
+ {id:"SV1004",cat:"Short Audio",title:"Short Audios / Clips",price:89,price_inr:89,offer_price_inr:89,offer:"Launch offer · Manual dispatch release",description:"Published short-audio product with a public source/preview route.",artifact_url:"https://drive.google.com/drive/folders/1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u",qc_code:"QC SV1004-QC1",gate_no:"GATE-SALE",dispatch_no:"MANUAL_RELEASE"}
+];
   const f=document.getElementById("family");
   C.families.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;f.appendChild(o)});
  }catch(e){document.getElementById("factory").innerHTML='<div class="empty">Factory catalog अभी load नहीं हुआ। Published products फिर भी उपलब्ध हैं।</div>'}
