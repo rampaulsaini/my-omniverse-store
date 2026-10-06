@@ -26,12 +26,24 @@
 <div class="live">● PRODUCTION-FIRST · PUBLIC RESULT SURFACE</div>
 </section>
 
-<section class="stats">
-<div class="stat"><b>4</b><span>वर्तमान प्रकाशित products</span></div>
-<div class="stat"><b>1,016</b><span>factory runnable product modes</span></div>
-<div class="stat"><b>25</b><span>browser engines</span></div>
-<div class="stat"><b>4</b><span>production stages</span></div>
+<section class="stats" id="liveStats">
+<div class="stat"><b id="publishedCount">4</b><span>वर्तमान प्रकाशित products</span></div>
+<div class="stat"><b id="factoryCount">1,016</b><span>factory runnable product modes</span></div>
+<div class="stat"><b id="familyCount">24</b><span>product families</span></div>
+<div class="stat"><b id="engineCount">25</b><span>browser engines</span></div>
+<div class="stat"><b id="candidateCount">1,016</b><span>production candidates</span></div>
 <div class="stat"><b>∞</b><span>review → improvement cycles</span></div>
+</section>
+<section class="panel flow" id="productionState">
+<h2>⚡ Live Production State</h2>
+<p class="note">यह panel workflow activity नहीं, showroom में उपलब्ध production-state को दिखाता है। हर cycle Institute → Factory → Product Package → QC → Showroom → Sale → Review feedback की दिशा में आगे बढ़ती है।</p>
+<div class="steps">
+<div class="step"><b>INSTITUTE</b><span id="stateInstitute">Discovery queue active</span></div>
+<div class="step"><b>FACTORY</b><span id="stateFactory">Loading…</span></div>
+<div class="step"><b>QC GATE</b><span>Product identity + QC/QR + dispatch state</span></div>
+<div class="step"><b>SHOWROOM / SALE</b><span id="stateShowroom">Loading…</span></div>
+</div>
+<p class="note" id="heartbeatTime">Production heartbeat: loading…</p>
 </section>
 
 <section class="panel controls">
@@ -64,12 +76,15 @@
 <section class="flow">
 <h2>⭐ Public Reviews → Quality Improvement</h2>
 <p class="note">ग्राहक का वास्तविक उपयोग, rating और review अगली iterations की quality priorities, descriptions, usability और offers सुधारने का feedback input है। Review production का feedback है; verification को production का विकल्प नहीं बनाया गया है।</p>
+<a class="btn review" href="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title=Public%20Showroom%20Review%20%2F%20Rating" target="_blank" rel="noopener">★ Public Review / Rating / Improvement Request</a>
 </section>
 
 <footer>© 2026 Yatharth / Shirmani · Production-first · No fabricated inventory</footer>
 </main>
 <script>
 const RAW="https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json";
+const HEARTBEAT="./data/production-heartbeat.json";
+const QUEUE="./data/production-queue.json";
 const published=[
 {id:"SV1001",cat:"Premium Audio",title:"खुद का साक्षात्कार ही संपूर्ण संतुष्टि",price:10000,source:"1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc"},
 {id:"SV1002",cat:"Premium MP3",title:"शिरोमणि अनंत असीम इश्क की क्षमता",price:1500,source:"1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc"},
@@ -101,6 +116,19 @@ function renderFactory(){
 }
 async function load(){
  try{
+  const hb=await fetch(HEARTBEAT,{cache:"no-store"}).then(r=>r.json()).catch(()=>null);
+  const q=await fetch(QUEUE,{cache:"no-store"}).then(r=>r.json()).catch(()=>null);
+  if(hb){
+    document.getElementById("publishedCount").textContent=(hb.published_product_count??4).toLocaleString("en-IN");
+    document.getElementById("factoryCount").textContent=(hb.product_count??1016).toLocaleString("en-IN");
+    document.getElementById("familyCount").textContent=(hb.family_count??24).toLocaleString("en-IN");
+    document.getElementById("engineCount").textContent=(hb.engine_count??25).toLocaleString("en-IN");
+    document.getElementById("candidateCount").textContent=(hb.production_candidate_count??hb.product_count??1016).toLocaleString("en-IN");
+    document.getElementById("stateFactory").textContent=(hb.product_count??1016).toLocaleString("en-IN")+" runnable modes";
+    document.getElementById("stateShowroom").textContent=(hb.published_product_count??4).toLocaleString("en-IN")+" published · "+(hb.production_candidate_count??1016).toLocaleString("en-IN")+" candidates";
+    document.getElementById("heartbeatTime").textContent="Production heartbeat: "+(hb.updated_at_utc||"available");
+  }
+  if(q && q.next_action) document.getElementById("stateInstitute").textContent="Queue active · next: "+q.next_action;
   C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());
   const f=document.getElementById("family");
   C.families.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;f.appendChild(o)});
