@@ -97,7 +97,7 @@ const qr=u=>"https://api.qrserver.com/v1/create-qr-code/?size=110x110&data="+enc
 function publishedCard(p){
  const page=location.href.split("#")[0]+"#"+p.id;
  const order="https://wa.me/918082935186?text="+encodeURIComponent("मैं "+p.title+" खरीदना चाहता/चाहती हूँ। Product code: "+p.id+" Price: ₹"+p.price);
- const pay="upi://pay?pa=sainirampaul90-1@okhdfcbank&pn=Rampaul&am="+p.price+"&cu=INR";
+ const pay="upi://pay?pa=9622254967@ptyes&pn=Rampaul&am="+p.price+"&cu=INR";
  const review="https://github.com/rampaulsaini/my-omniverse-store/issues/new?title="+encodeURIComponent("Public Review · "+p.id+" · "+p.title)+"&body="+encodeURIComponent("Product: "+p.title+"\nCode: "+p.id+"\nRating: ★★★★★\nReview:\n\nWhat should improve next?\n");
  return '<article class="card"><div class="top"><span class="cat">'+esc(p.cat)+'</span><span class="code">'+esc(p.id)+'</span></div><h3>'+esc(p.title)+'</h3><p class="desc">वास्तविक public source/preview route के साथ प्रकाशित product.</p><div class="price">₹'+p.price.toLocaleString("en-IN")+'</div><span class="badge">PUBLISHED</span><span class="badge">QC GATE</span><div class="qc"><img class="qr" alt="QC QR" src="'+qr(page)+'"><b>'+p.id+'-QC1</b><br>Dispatch gate: MANUAL RELEASE<br>QR: public product identity / QC record</div><div class="actions"><a class="btn" href="https://drive.google.com/drive/folders/'+p.source+'" target="_blank" rel="noopener">▶ Preview / Source</a><a class="btn buy" href="'+pay+'">₹'+p.price.toLocaleString("en-IN")+' · UPI</a><a class="btn" href="'+order+'" target="_blank" rel="noopener">Order / Delivery</a><a class="btn review" href="'+review+'" target="_blank" rel="noopener">★ Public Review / Rating</a></div></article>';
 }
