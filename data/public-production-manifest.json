@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "generated_for": "public-showroom",
+  "production_principle": "production-first",
+  "products": [
+    {
+      "id": "SV1001",
+      "category": "Premium Audio",
+      "title": "खुद का साक्षात्कार ही संपूर्ण संतुष्टि",
+      "price_inr": 10000,
+      "status": "PUBLISHED",
+      "qc_gate": "SV1001-QC1",
+      "preview_folder": "1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc"
+    },
+    {
+      "id": "SV1002",
+      "category": "Premium MP3",
+      "title": "शिरोमणि अनंत असीम इश्क की क्षमता",
+      "price_inr": 1500,
+      "status": "PUBLISHED",
+      "qc_gate": "SV1002-QC1",
+      "preview_folder": "1lV-8sFU0vLOQVX3HyXznHbHpcRF9Kojc"
+    },
+    {
+      "id": "SV1003",
+      "category": "Certificate",
+      "title": "प्रमाण पत्र",
+      "price_inr": 495,
+      "status": "PUBLISHED",
+      "qc_gate": "SV1003-QC1",
+      "preview_folder": "1sZEJhlZWFHP7O1kZEINnqFCNgqhOa8XC"
+    },
+    {
+      "id": "SV1004",
+      "category": "Short Audio",
+      "title": "Short Audios / Clips",
+      "price_inr": 89,
+      "status": "PUBLISHED",
+      "qc_gate": "SV1004-QC1",
+      "preview_folder": "1Ap2N-90wM9R75ffOQAiXczZwNu8dTc7u"
+    }
+  ],
+  "pipeline": [
+    "INSTITUTE_DISCOVERY",
+    "FACTORY_PRODUCTION",
+    "QC_GATE",
+    "PUBLIC_SHOWROOM"
+  ],
+  "feedback": [
+    "PUBLIC_REVIEW",
+    "PUBLIC_RATING",
+    "QUALITY_IMPROVEMENT"
+  ],
+  "dispatch_policy": "manual-release",
+  "note": "Only products with real source/preview and an explicit purchase/order route are published; placeholders are not counted as production."
+}
