@@ -65,6 +65,38 @@ jobs:
             "queue_sample":queue[:120]
           }
           os.makedirs("data",exist_ok=True)
+          # Materialize a concrete public product-package record for every catalog entry.
+          # The package points to the existing runnable factory workspace; it is not a placeholder-only card.
+          sale_by_id={p.get("id"):p for p in published}
+          packages=[]
+          for p in products:
+              pid=p.get("id")
+              family=p.get("family","Digital Tools")
+              engine=p.get("engine","generic")
+              published_item=sale_by_id.get(pid)
+              package={
+                "id":pid,
+                "name":p.get("name"),
+                "family":family,
+                "engine":engine,
+                "stage":"PRODUCT_PACKAGE",
+                "module_type":"RUNNABLE_FACTORY_MODE",
+                "module_url":"https://rampaulsaini.github.io/Shirmani-Research-Institute-Shirmani-Research-Institute-/products/1000-digital-product-factory.html?id="+str(pid),
+                "short_description":p.get("short_description") or ("कार्यशील "+family+" digital product — "+engine+" engine."),
+                "long_description_route":"https://rampaulsaini.github.io/Shirmani-Research-Institute-Shirmani-Research-Institute-/products/1000-digital-product-factory.html?id="+str(pid),
+                "qr_route":"https://rampaulsaini.github.io/Shirmani-Research-Institute-Shirmani-Research-Institute-/products/1000-digital-product-factory.html?id="+str(pid),
+                "visual_identity_seed":str(pid)+"|"+family+"|"+engine,
+                "price_inr":(published_item or {}).get("price_inr") or (89 if engine in {"calculator","text","data","time","files"} else 193),
+                "offer_status":"NOT_CONFIGURED",
+                "qc_gate":"QC-PROD-"+str(pid),
+                "dispatch":"NO",
+                "sale_status":"PUBLISHED" if published_item else "NOT_PUBLISHED",
+                "source_status":p.get("status","UNKNOWN")
+              }
+              packages.append(package)
+          with open("data/product-packages.json","w",encoding="utf-8") as f:
+              json.dump({"schema_version":"1.0","generated_at_utc":datetime.now(timezone.utc).isoformat(),"principle":"production-first","count":len(packages),"packages":packages},f,ensure_ascii=False,indent=2)
+              f.write("\n")
           with open("data/production-queue.json","w",encoding="utf-8") as f:
               json.dump(out,f,ensure_ascii=False,indent=2)
               f.write("\n")
@@ -80,7 +112,7 @@ jobs:
                 "commercial_status_counts":dict(commercial),
                 "published_product_count":len(published),
                 "production_candidate_count":len(queue),
-                "showroom_route":"production-catalog.html",
+                "showroom_route":"supreme-public-showroom.html",
                 "updated_at_utc":datetime.now(timezone.utc).isoformat()
               }
               json.dump(hb,f,ensure_ascii=False,indent=2); f.write("\n")
@@ -90,6 +122,6 @@ jobs:
         run: |
           git config user.name "SHIRMANI Production Automission"
           git config user.email "actions@users.noreply.github.com"
-          git add data/production-queue.json data/production-heartbeat.json
+          git add data/production-queue.json data/production-heartbeat.json data/product-packages.json
           git diff --cached --quiet || git commit -m "chore: advance multi-layer production queue"
           git push
