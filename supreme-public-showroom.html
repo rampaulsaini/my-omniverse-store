@@ -28,7 +28,7 @@ footer{text-align:center;color:#71818d;margin-top:30px;font-size:.75rem}
 <h1>Digital Product Universe</h1>
 <p>एक customer-facing production surface: <b>Institute → Factory → QC/Gate → Public Showroom → Sale → Review → Quality Improvement</b>. हर catalog identity का अपना नाम, product code, short description, visual identity और long-description QR route है। केवल वास्तविक sale-ready items को sale status दिया गया है।</p>
 <div class="flow"><span>INSTITUTE DISCOVERY</span><span>FACTORY PRODUCTION</span><span>QC / GATE</span><span>PUBLIC SHOWROOM</span><span>SALE</span><span>REVIEW</span><span>QUALITY IMPROVEMENT</span></div>
-<div class="stats"><div class="stat"><b id="catalogCount">—</b><span>catalog identities loaded</span></div><div class="stat"><b>25</b><span>product families</span></div><div class="stat"><b>25</b><span>engines</span></div><div class="stat"><b>4</b><span>sale-ready products</span></div></div>
+<div class="stats"><div class="stat"><b id="catalogCount">—</b><span>catalog identities loaded</span></div><div class="stat"><b id="familyCount">—</b><span>product families</span></div><div class="stat"><b id="engineCount">—</b><span>engines</span></div><div class="stat"><b>4</b><span>sale-ready products</span></div></div>
 </section>
 
 <div class="section-title"><h2>🛒 Sale-ready products</h2><span class="note">अभी केवल प्रकाशित वास्तविक source/preview वाले products बिक्री के लिए दिखाए गए हैं।</span></div>
@@ -90,6 +90,8 @@ async function load(){
   try{C=await fetch(PACKAGES,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject());}catch(_){C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());}
   const rows=C.packages||C.products||[];
   document.getElementById("catalogCount").textContent=rows.length.toLocaleString("en-IN");
+  document.getElementById("familyCount").textContent=new Set(rows.map(x=>x.family).filter(Boolean)).size;
+  document.getElementById("engineCount").textContent=new Set(rows.map(x=>x.engine).filter(Boolean)).size;
   const families=[...new Set(rows.map(x=>x.family).filter(Boolean))];
   const f=document.getElementById("family");families.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;f.appendChild(o)});
   render();
