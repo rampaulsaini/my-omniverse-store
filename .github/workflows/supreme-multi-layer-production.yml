@@ -1,5 +1,9 @@
 name: Supreme Multi-Layer Production Automission
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/supreme-multi-layer-production.yml"
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
