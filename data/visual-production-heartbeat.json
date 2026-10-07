@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "purpose": "production-first visual identity heartbeat",
+  "visual_system": "deterministic SVG product identity",
+  "quality_target": "responsive 4K-class display; vector source avoids raster scaling blur",
+  "short_description": "shown with product visual",
+  "long_description": "served through QR route to complete product module/detail",
+  "unique_identity": "product-id + family + engine derived visual",
+  "source_catalog": "https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json",
+  "showroom_route": "showroom-visual-upgrade.html",
+  "updated_at_utc": "2026-10-07T06:15:00Z"
+}
