@@ -1,0 +1,55 @@
+name: SHIRMANI Production Visual Showroom Automission
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: production-visual-showroom
+  cancel-in-progress: false
+
+jobs:
+  production-visual-refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Refresh production visual heartbeat
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          path="data/visual-production-heartbeat.json"
+          with open(path, encoding="utf-8") as f:
+              data=json.load(f)
+          data["updated_at_utc"]=datetime.now(timezone.utc).isoformat()
+          data["automation_cycle"]="production-visual-refresh"
+          with open(path,"w",encoding="utf-8") as f:
+              json.dump(data,f,ensure_ascii=False,indent=2)
+              f.write("\n")
+          PY
+
+      - name: Ensure showroom entry point exists
+        shell: bash
+        run: |
+          test -s showroom-visual-upgrade.html
+          test -s data/visual-production-heartbeat.json
+
+      - name: Commit public production result
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add showroom-visual-upgrade.html data/visual-production-heartbeat.json
+          if git diff --cached --quiet; then
+            echo "No production visual changes."
+            exit 0
+          fi
+          git commit -m "chore: refresh production visual showroom"
+          git push
