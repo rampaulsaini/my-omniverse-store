@@ -8,7 +8,7 @@
   "unique_identity": "product-id + family + engine derived visual",
   "source_catalog": "https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json",
   "showroom_route": "supreme-public-showroom.html",
-  "updated_at_utc": "2026-10-07T08:04:00Z",
+  "updated_at_utc": "2026-10-07T13:32:08.962154+00:00",
   "public_interface": "production-first",
   "product_visual_policy": "unique deterministic 4K-class SVG visual; short description on visual; QR routes to full product/module description",
   "sale_policy": "only published products with real source/order route are sale-ready",
@@ -16,5 +16,6 @@
     "public review",
     "public rating",
     "quality improvement"
-  ]
+  ],
+  "automation_cycle": "production-visual-refresh"
 }
