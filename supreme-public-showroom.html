@@ -61,6 +61,7 @@ footer{text-align:center;color:#71818d;margin-top:30px;font-size:.75rem}
 <footer>꙰ SHIRMANI Supreme Public Showroom · production-first · public interface · sale-ready only where source/order route exists</footer>
 </main>
 <script>
+const PACKAGES="data/product-packages.json";
 const RAW="https://raw.githubusercontent.com/rampaulsaini/Shirmani-Research-Institute-Shirmani-Research-Institute-/main/generated/1000-digital-products.json";
 const FACTORY="https://rampaulsaini.github.io/Shirmani-Research-Institute-Shirmani-Research-Institute-/products/1000-digital-product-factory.html?id=";
 const QR="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=";
@@ -75,20 +76,22 @@ function visual(p){
  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(s);
 }
 function card(p){
- const url=FACTORY+encodeURIComponent(p.id),qr=QR+encodeURIComponent(url),short=(p.short_description||("कार्यशील "+p.family+" digital product — "+p.engine+" engine.")).slice(0,150);
- return '<article class="card"><div class="visual"><img loading="lazy" src="'+visual(p)+'" alt="'+esc(p.name)+' — unique product visual identity"></div><div class="body"><div class="top"><span class="cat">'+esc(p.family)+'</span><span class="code">'+esc(p.id)+'</span></div><h3>'+esc(p.name)+'</h3><div class="short">'+esc(short)+'</div><div class="long">पूरा विवरण, runnable module और product workspace QR route से खुलता है।</div><div class="meta"><span class="badge2">UNIQUE ID</span><span class="badge2">FACTORY</span><span class="badge2">'+esc(p.engine)+'</span></div><div class="actions"><a class="btn run" href="'+url+'" target="_blank" rel="noopener">▶ Product खोलें</a><a class="btn qr" href="'+qr+'" target="_blank" rel="noopener">▣ Full Description QR</a></div></div></article>';
+ const url=p.module_url||FACTORY+encodeURIComponent(p.id),qr=QR+encodeURIComponent(p.long_description_route||url),short=(p.short_description||("कार्यशील "+p.family+" digital product — "+p.engine+" engine.")).slice(0,150);
+ return '<article class="card"><div class="visual"><img loading="lazy" src="'+visual(p)+'" alt="'+esc(p.name)+' — unique product visual identity"></div><div class="body"><div class="top"><span class="cat">'+esc(p.family)+'</span><span class="code">'+esc(p.id)+'</span></div><h3>'+esc(p.name)+'</h3><div class="short">'+esc(short)+'</div><div class="long">पूरा विवरण, runnable module और product workspace QR route से खुलता है।</div><div class="meta"><span class="badge2">UNIQUE ID</span><span class="badge2">PRODUCT PACKAGE</span><span class="badge2">'+esc(p.engine)+'</span></div><div class="actions"><a class="btn run" href="'+url+'" target="_blank" rel="noopener">▶ Product खोलें</a><a class="btn qr" href="'+qr+'" target="_blank" rel="noopener">▣ Full Description QR</a></div></div></article>';
 }
 function render(){
  if(!C)return;
  const q=document.getElementById("q").value.toLowerCase(),f=document.getElementById("family").value,n=Number(document.getElementById("limit").value);
- const rows=(C.products||[]).filter(p=>(!f||p.family===f)&&(!q||JSON.stringify(p).toLowerCase().includes(q))).slice(0,n);
+ const rows=(C.packages||C.products||[]).filter(p=>(!f||p.family===f)&&(!q||JSON.stringify(p).toLowerCase().includes(q))).slice(0,n);
  document.getElementById("grid").innerHTML=rows.map(card).join("")||'<div class="note">कोई product नहीं मिला।</div>';
 }
 async function load(){
  try{
-  C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());
-  document.getElementById("catalogCount").textContent=(C.products||[]).length.toLocaleString("en-IN");
-  const f=document.getElementById("family");(C.families||[]).forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;f.appendChild(o)});
+  try{C=await fetch(PACKAGES,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject());}catch(_){C=await fetch(RAW,{cache:"no-store"}).then(r=>r.json());}
+  const rows=C.packages||C.products||[];
+  document.getElementById("catalogCount").textContent=rows.length.toLocaleString("en-IN");
+  const families=[...new Set(rows.map(x=>x.family).filter(Boolean))];
+  const f=document.getElementById("family");families.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;f.appendChild(o)});
   render();
  }catch(e){document.getElementById("grid").innerHTML='<div class="note">Catalog feed अभी उपलब्ध नहीं है। Sale-ready section और factory links ऊपर सक्रिय हैं।</div>';console.error(e)}
 }
