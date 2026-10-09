@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "product_id": "SHI-PPS-0001",
+  "name": "SHIRMANI Product Passport Studio",
+  "category": "Productivity",
+  "engine": "browser-native",
+  "short_description": "Create a portable product identity, usage guide and QR-linked passport.",
+  "full_description": "An interactive browser tool that builds a structured product passport containing a unique ID, category, short and full descriptions, usage guide, INR price, version, QR navigation link and explicit QC/dispatch fields. Exports JSON and supports print-to-PDF.",
+  "usage_guide": [
+    "Enter product name and unique ID.",
+    "Add category, concise description, full description and usage steps.",
+    "Set the intended public price in INR.",
+    "Generate and review the passport preview.",
+    "Download the JSON or print/save the passport as PDF.",
+    "Use the QR to navigate back to the product page."
+  ],
+  "module_url": "https://rampaulsaini.github.io/my-omniverse-store/products/shirmani-product-passport-studio.html",
+  "commercial_status": "DEMO_ONLY",
+  "qc_status": "NOT_YET_RECORDED",
+  "dispatch_status": "NO",
+  "version": "1.0.0"
+}
