@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>꙰ Evidence-to-Answer Studio · SHIRMANI</title>
+<meta name="description" content="A browser-based tool to separate sourced claims, philosophical statements, and insufficient evidence before drafting an answer.">
+<meta property="og:title" content="Evidence-to-Answer Studio · SHIRMANI">
+<style>
+:root{color-scheme:dark;--bg:#05090d;--panel:#0c1720;--gold:#f3d36d;--cyan:#63e6ff;--green:#71e2a5;--muted:#a9b9c5;--line:#31424d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0,#16342f,var(--bg) 55%);color:#f8fbff;font:16px/1.55 system-ui,sans-serif}.wrap{max-width:1100px;margin:auto;padding:22px}.hero,.panel,.result{border:1px solid var(--line);background:#0a141d;border-radius:18px;padding:22px;margin-bottom:16px}.brand{display:flex;align-items:center;gap:12px}.mark{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--gold);color:var(--gold);font-size:25px;box-shadow:0 0 24px #f3d36d33}.ey{color:var(--cyan);font-size:.75rem;letter-spacing:3px}.hero h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.08;color:var(--gold);margin:10px 0}.muted{color:var(--muted)}label{display:block;color:var(--gold);font-weight:700;margin:14px 0 6px}textarea,input,select{width:100%;padding:12px;background:#050b10;border:1px solid #31424d;border-radius:10px;color:#f8fbff;font:inherit}textarea{min-height:100px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.btn{display:inline-block;border:0;border-radius:10px;padding:12px 17px;background:linear-gradient(135deg,#f09a43,#f3d36d);color:#211306;font-weight:800;cursor:pointer;margin:8px 5px 0 0}.btn.secondary{background:#132733;color:var(--cyan);border:1px solid #31424d}.pill{display:inline-block;border:1px solid #31424d;border-radius:99px;padding:5px 10px;margin:3px;color:var(--cyan);font-size:.8rem}.status{font-weight:800;color:var(--green)}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;color:#f8fbff}.qr{width:96px;height:96px;background:#fff;padding:5px;float:right}.foot{font-size:.82rem;color:var(--muted)}@media(max-width:650px){.row{grid-template-columns:1fr}.wrap{padding:12px}.hero,.panel,.result{padding:16px}}
+</style>
+</head><body><main class="wrap">
+<section class="hero">
+<div class="brand"><div class="mark">꙰</div><div><div class="ey">SHIRMANI SUPREME · PRODUCT UT-007</div><div class="muted">Independent evidence workflow · browser-only prototype</div></div><img class="qr" alt="QR to full product guide" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Frampaulsaini.github.io%2Fmy-omniverse-store%2Fevidence-answer-studio.html"></div>
+<h1>Evidence-to-Answer Studio</h1>
+<p class="muted">A practical production tool that separates claims, source notes, philosophical/identity statements, and insufficient evidence before you publish an answer. It does not pretend to independently verify sources; it helps you prepare a transparent, reviewable answer.</p>
+<div><span class="pill">No login</span><span class="pill">Runs in browser</span><span class="pill">Copy-ready output</span><span class="pill">No source verification claim</span></div>
+</section>
+<section class="panel">
+<h2>1 · Enter the question and draft</h2>
+<label for="question">Question / user request</label><textarea id="question" placeholder="What question should this answer address?"></textarea>
+<label for="claim">Proposed answer or main claim</label><textarea id="claim" placeholder="Write the answer you want to communicate."></textarea>
+<div class="row"><div><label for="source">Source URL or source details (optional)</label><input id="source" placeholder="https://... or report/title/date"></div><div><label for="kind">Statement type</label><select id="kind"><option value="claim">Factual claim</option><option value="philosophical">Philosophical / identity statement</option><option value="instruction">Practical instruction</option><option value="opinion">Opinion / interpretation</option></select></div></div>
+<label for="notes">Evidence notes / limitations</label><textarea id="notes" placeholder="What does the source actually support? What remains uncertain?"></textarea>
+<button class="btn" onclick="build()">Build transparent answer</button><button class="btn secondary" onclick="clearAll()">Clear</button>
+</section>
+<section class="result" aria-live="polite"><h2>2 · Answer record</h2><div id="status" class="status">Waiting for input</div><pre id="output" class="muted">Enter a question and proposed answer, then select “Build transparent answer”.</pre><button class="btn secondary" onclick="copyResult()">Copy answer record</button><p class="foot">Status is a drafting classification, not an independent scientific verification. A source URL alone does not prove a claim. Review the original source before publishing.</p></section>
+<section class="panel"><h2>Usage guide</h2><ol><li>Enter the question and proposed answer.</li><li>Choose factual, philosophical/identity, practical, or opinion classification.</li><li>Add source details and accurately summarize the supporting evidence.</li><li>Build the record; inspect its status and uncertainty language.</li><li>Open the cited source yourself and correct the record before publication.</li></ol><p class="foot">Product passport · ID: SH-UT007 · QC-GATE: DRAFT-ONLY · Dispatch: PUBLIC-PROTOTYPE · Price: ₹0 · Version 1.0</p></section>
+<footer class="foot">꙰ SHIRMANI RAMPAL SAINI — TRANSCENDENT • TIMELESS • WORDLESS • ETERNAL • REAL • NATURAL • TRUTH — PRESENT</footer>
+</main><script>
+function build(){
+ const q=document.getElementById('question').value.trim(),claim=document.getElementById('claim').value.trim(),source=document.getElementById('source').value.trim(),kind=document.getElementById('kind').value,notes=document.getElementById('notes').value.trim();
+ if(!q||!claim){document.getElementById('status').textContent='INPUT REQUIRED';document.getElementById('output').textContent='Please enter both a question and a proposed answer.';return}
+ let state,heading,body;
+ if(kind==='philosophical'||kind==='opinion'){state='PHILOSOPHICAL / INTERPRETIVE';heading='This is presented as a viewpoint, not as independently verified scientific fact.';body=claim}
+ else if(source&&notes){state='SOURCE-BASED · NOT INDEPENDENTLY VERIFIED';heading='A source and evidence notes were supplied; review the source to confirm scope and accuracy.';body=claim}
+ else{state='INSUFFICIENT EVIDENCE';heading='अभी पर्याप्त प्रमाण उपलब्ध नहीं है।';body=claim+'\n\nEvidence note: this claim needs a reviewable source and a clear account of what it supports.'}
+ const record='QUESTION\n'+q+'\n\nCLASSIFICATION\n'+state+'\n\nDRAFT ANSWER\n'+body+'\n\nLIMITATION\n'+heading+'\n\nSOURCE\n'+(source||'No source supplied')+'\n\nEVIDENCE NOTES\n'+(notes||'No evidence notes supplied')+'\n\nAUDIT\nPrepared in-browser; no independent verification was performed.';
+ document.getElementById('status').textContent=state;document.getElementById('output').textContent=record;
+}
+function clearAll(){['question','claim','source','notes'].forEach(id=>document.getElementById(id).value='');document.getElementById('kind').value='claim';document.getElementById('status').textContent='Waiting for input';document.getElementById('output').textContent='Enter a question and proposed answer, then select “Build transparent answer”.'}
+async function copyResult(){const t=document.getElementById('output').textContent;try{await navigator.clipboard.writeText(t);document.getElementById('status').textContent+=' · COPIED'}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('output'));const s=getSelection();s.removeAllRanges();s.addRange(r);document.getElementById('status').textContent+=' · SELECTED — copy manually'}}
+</script></body></html>
