@@ -1,0 +1,20 @@
+{
+  "product_id": "SH-UT007",
+  "name": "Evidence-to-Answer Studio",
+  "version": "1.0.0",
+  "family": "AI/ML/NLP · Responsible Content",
+  "public_product_url": "https://rampaulsaini.github.io/my-omniverse-store/evidence-answer-studio.html",
+  "public_showroom_url": "https://rampaulsaini.github.io/my-omniverse-store/supreme-public-showroom.html",
+  "price_inr": 0,
+  "dispatch_state": "PUBLIC-PROTOTYPE",
+  "qc_gate": "DRAFT-ONLY — browser functional test pending",
+  "objective": "Organize a question, proposed claim, source details, evidence notes, and uncertainty into a transparent answer record.",
+  "features": ["Question and answer fields", "Statement-type classification", "Source and evidence-note fields", "Insufficient-evidence wording", "Copyable audit record", "Responsive browser interface"],
+  "limitations": ["Does not independently verify sources", "Does not call an external AI model", "A source URL alone does not prove a claim", "Clipboard action depends on browser permission"],
+  "demo_video": "NOT YET PRODUCED — see SH-UT007-demo-script.md",
+  "visual_asset": "Custom inline CSS brand mark; separate HD product image asset remains to be produced",
+  "qr": "Embedded QR points to the public product page",
+  "created_at": "2026-10-09",
+  "repository_commit": "0d17f192f18a53a38a5e6dec9b912118745416fb",
+  "showroom_commit": "7bd4af5b11d4489a354d67a5d1e43affde9022fd"
+}
