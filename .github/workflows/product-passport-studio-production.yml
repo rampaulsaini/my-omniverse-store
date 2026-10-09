@@ -1,0 +1,61 @@
+name: SHIRMANI Product Passport Studio Production Cycle
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+permissions:
+  contents: write
+jobs:
+  publish-product-state:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm concrete product package
+        run: |
+          test -s products/shirmani-product-passport-studio.html
+          test -s generated/products/shirmani-product-passport-studio.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path("generated/products/shirmani-product-passport-studio.json").read_text())
+          assert p["product_id"] == "SHI-PPS-0001"
+          assert p["module_url"].startswith("https://")
+          assert p["qc_status"] == "NOT_YET_RECORDED"
+          assert p["dispatch_status"] == "NO"
+          print("PRODUCT_PACKAGE_READY:", p["product_id"], p["name"])
+          print("DEMO_MODULE_EXISTS: true")
+          print("QC_APPROVAL_CLAIMED: false")
+          print("DISPATCH_RELEASED: false")
+          PY
+      - name: Write production cycle telemetry
+        run: |
+          mkdir -p generated/production-cycles
+          python3 - <<'PY'
+          import json, datetime
+          from pathlib import Path
+          p=json.loads(Path("generated/products/shirmani-product-passport-studio.json").read_text())
+          state={
+            "schema_version": 1,
+            "cycle": "product-passport-studio",
+            "product_id": p["product_id"],
+            "module_url": p["module_url"],
+            "package_present": Path("products/shirmani-product-passport-studio.html").is_file(),
+            "catalog_manifest_present": True,
+            "demo_ready": True,
+            "qc_status": p["qc_status"],
+            "dispatch_status": p["dispatch_status"],
+            "commercial_status": p["commercial_status"],
+            "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "next_action": "Collect customer feedback and perform actual usability/QC tests before commercial release."
+          }
+          Path("generated/production-cycles/product-passport-studio-state.json").write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n")
+          print(json.dumps(state,indent=2))
+          PY
+      - name: Publish cycle state
+        run: |
+          git config user.name "SHIRMANI Product Production Automission"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add generated/production-cycles/product-passport-studio-state.json
+          if git diff --cached --quiet; then echo "No telemetry delta"; exit 0; fi
+          git commit -m "chore(products): publish product passport studio cycle state"
+          git push
