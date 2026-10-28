@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "cycle": "product-passport-studio",
+  "product_id": "SHI-PPS-0001",
+  "module_url": "https://rampaulsaini.github.io/my-omniverse-store/products/shirmani-product-passport-studio.html",
+  "package_present": true,
+  "catalog_manifest_present": true,
+  "demo_ready": true,
+  "qc_status": "NOT_YET_RECORDED",
+  "dispatch_status": "NO",
+  "commercial_status": "DEMO_ONLY",
+  "generated_at": "2026-10-28T18:20:40.488464+00:00",
+  "next_action": "Collect customer feedback and perform actual usability/QC tests before commercial release."
+}
