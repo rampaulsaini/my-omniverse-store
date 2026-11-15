@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "generated_at_utc": "2026-11-15T14:18:32.997846+00:00",
+  "generated_at_utc": "2026-11-15T19:50:36.398224+00:00",
   "principle": "production-first",
   "pipeline": [
     "INSTITUTE_DISCOVERY",
